@@ -98,15 +98,16 @@ function buildReport(scanId, files, projectName) {
 
 // POST /api/scan/upload - Upload ZIP
 router.post('/upload', upload.single('project'), async (req, res) => {
+  const t = req.t?.errors || {};
   try {
-    if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+    if (!req.file) return res.status(400).json({ error: t.noFile || 'No file provided' });
 
     const scanId = uuidv4();
     const projectName = req.body.projectName || req.file.originalname.replace('.zip', '');
 
     const files = parseZip(req.file.buffer);
     if (files.length === 0) {
-      return res.status(400).json({ error: 'No scannable files found in ZIP' });
+      return res.status(400).json({ error: t.noFilesInZip || 'No scannable files found in ZIP' });
     }
 
     const report = buildReport(scanId, files, projectName);
@@ -121,19 +122,20 @@ router.post('/upload', upload.single('project'), async (req, res) => {
 
 // POST /api/scan/directory - Scan local directory
 router.post('/directory', express.json(), async (req, res) => {
+  const t = req.t?.errors || {};
   try {
     const { dirPath, projectName } = req.body;
-    if (!dirPath) return res.status(400).json({ error: 'dirPath required' });
+    if (!dirPath) return res.status(400).json({ error: t.dirRequired || 'dirPath required' });
 
     if (!fs.existsSync(dirPath)) {
-      return res.status(400).json({ error: `Directory not found: ${dirPath}` });
+      return res.status(400).json({ error: t.dirNotFound ? t.dirNotFound(dirPath) : `Directory not found: ${dirPath}` });
     }
 
     const scanId = uuidv4();
     const files = parseDirectory(dirPath);
 
     if (files.length === 0) {
-      return res.status(400).json({ error: 'No scannable files found in directory' });
+      return res.status(400).json({ error: t.noFilesInDir || 'No scannable files found in directory' });
     }
 
     const report = buildReport(scanId, files, projectName || path.basename(dirPath));
@@ -163,7 +165,7 @@ router.get('/history', (req, res) => {
 // GET /api/scan/:scanId
 router.get('/:scanId', (req, res) => {
   const report = scanHistory.get(req.params.scanId);
-  if (!report) return res.status(404).json({ error: 'Scan not found' });
+  if (!report) return res.status(404).json({ error: req.t?.errors?.notFound || 'Scan not found' });
   res.json(report);
 });
 
