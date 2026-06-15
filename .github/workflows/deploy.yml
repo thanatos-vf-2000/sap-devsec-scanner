@@ -40,6 +40,8 @@ jobs:
         run: |
           mkdir deploy
           cp -r backend/* deploy/
+          cp *.md deploy/
+          cp LICENSE deploy/
       
       - name: List deployment
         run: |
