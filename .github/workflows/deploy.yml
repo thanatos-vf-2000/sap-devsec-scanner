@@ -42,6 +42,8 @@ jobs:
           cp -r backend/* deploy/
           cp *.md deploy/
           cp LICENSE deploy/
+          mkdir -p deploy/.github/workflows
+          cp .github/workflows/docs.yml deploy/.github/workflows
       
       - name: List deployment
         run: |
@@ -55,3 +57,13 @@ jobs:
           publish_branch: master
           publish_dir: ./deploy
           force_orphan: true
+          full_commit_message: |
+            ${{ github.event.head_commit.message }}
+
+            ---
+            Automatic deployment via GitHub Actions.
+
+            Workflow      : ${{ github.workflow }}
+            Branch        : ${{ github.ref_name }}
+            Source commit : ${{ github.sha }}
+            Triggered by  : ${{ github.actor }}

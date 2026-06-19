@@ -3,7 +3,7 @@
     <!-- Shell Header -->
     <header class="shell-header">
       <div class="shell-logo">
-        <div class="shield">🔒</div>
+        <div class="shield"><img src="/logo.png" alt="Logo" /></div>
         SAP DevSec Scanner
       </div>
       <nav class="shell-nav">
@@ -12,7 +12,7 @@
           :key="item.view"
           :class="{ active: currentView === item.view }"
           @click="showView(item.view)"
-        >{{ item.label }}</a>
+        ><i :class="['fas', item.icon]"></i> {{ item.label }}</a>
       </nav>
       <div class="shell-healt-status">
         <span class="shell-healt-dot" :style="{ background: healthColor }"></span>
@@ -59,10 +59,10 @@ export default {
     let healthInterval = null;
 
     const navItems = [
-      { view: 'scan', label: t.nav.scanner },
-      { view: 'report', label: t.nav.report },
-      { view: 'history', label: t.nav.history },
-      { view: 'about', label: t.nav.about },
+      { view: 'scan', label: t.nav.scanner, icon: 'fa-magnifying-glass' },
+      { view: 'report', label: t.nav.report, icon: 'fa-chart-column'  },
+      { view: 'history', label: t.nav.history, icon: 'fa-file-lines'  },
+      { view: 'about', label: t.nav.about, icon: 'fa-circle-info'  },
     ];
 
     function showView(name) {
@@ -130,9 +130,11 @@ body { font-family: var(--font); background: var(--sap-light); color: #333; font
 .shell-header { background: var(--sap-dark); color: white; display: flex; align-items: center; gap: 16px; padding: 0 24px; height: 44px; box-shadow: 0 2px 4px rgba(0,0,0,.3); position: sticky; top: 0; z-index: 100; }
 .shell-logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: white; display: flex; align-items: center; gap: 8px; }
 .shell-logo .shield { width: 24px; height: 24px; background: var(--sap-blue); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.shell-logo .shield img { width: 24px; height: 24px; object-fit: contain; background: var(--sap-accent); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; display: flex; align-items: center; justify-content: center;}
 .shell-nav { display: flex; gap: 0; margin-left: 24px; height: 100%; }
 .shell-nav a { color: rgba(255,255,255,.75); text-decoration: none; padding: 0 16px; height: 100%; display: flex; align-items: center; font-size: 13px; border-bottom: 2px solid transparent; transition: all .15s; cursor: pointer; }
 .shell-nav a:hover, .shell-nav a.active { color: white; border-bottom-color: #5ab4f5; background: rgba(255,255,255,.08); }
+.shell-nav i.fas { margin-right: 10px;}
 .shell-right { margin-left: auto; font-size: 12px; color: rgba(255,255,255,.5); }
 .shell-healt-status { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--sap-white); position: relative; }
 .shell-healt-status:hover .shell-healt-info { visibility: visible; opacity: 1; }
@@ -265,6 +267,9 @@ body { font-family: var(--font); background: var(--sap-light); color: #333; font
 .text-gray { color: var(--sap-gray); }
 .text-sm { font-size: 12px; }
 .font-bold { font-weight: 600; }
+
+.about-version-text {color: var(--sap-blue); font-weight: bold;}
+.sep { width: 90%; height: 2px; background-color: var(--sap-gray); margin: 10px 5% 10px 5%; }
 
 @media (max-width: 768px) {
   .summary-grid { grid-template-columns: repeat(3, 1fr); }

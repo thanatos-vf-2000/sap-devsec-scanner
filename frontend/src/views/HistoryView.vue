@@ -1,11 +1,11 @@
 <template>
   <div class="card">
     <div class="flex items-center gap-8" style="margin-bottom:16px">
-      <div class="card-title" style="margin-bottom:0">{{ t.history.title }}</div>
-      <button class="btn btn-ghost btn-sm ml-auto" @click="clearHistory">{{ t.history.clearAll }}</button>
+      <div class="card-title" style="margin-bottom:0"><i class="fa-regular fa-file-lines"></i> {{ t.history.title }}</div>
+      <button class="btn btn-ghost btn-sm ml-auto" @click="clearHistory"><i class="fa-regular fa-trash-can"></i> {{ t.history.clearAll }}</button>
     </div>
     <div v-if="items.length === 0" class="empty">
-      <div class="icon">📋</div>
+      <div class="icon"><i class="fa-regular fa-file-lines"></i></div>
       <p>{{ t.history.noHistory }}</p>
     </div>
     <div v-else>
@@ -18,7 +18,7 @@
         <div class="risk-dot" :style="{ background: riskColor(r.riskScore) }"></div>
         <div style="flex:1">
           <div class="font-bold">{{ r.projectName }}</div>
-          <div class="text-sm text-gray">{{ t.report.scannedAt(r.scannedAt) }}</div>
+          <div class="text-sm text-gray"><i class="fa-regular fa-calendar-days"></i> {{ t.report.scannedAt(r.scannedAt) }}</div>
           <div style="margin-top:4px">
             <span v-for="type in r.projectTypes" :key="type" class="tag">{{ type }}</span>
           </div>
@@ -26,7 +26,7 @@
         <div style="text-align:right">
           <div style="font-size:22px;font-weight:700;" :style="{ color: riskColor(r.riskScore) }">{{ r.riskScore }}</div>
           <div class="text-sm text-gray">{{ t.history.securityScore }}</div>
-          <div class="text-sm" :style="{ color: riskColor(r.riskScore) }">{{ riskLabel(r.riskLevel) }}</div>
+          <div class="text-sm" :style="{ color: riskColor(r.riskScore) }"><i class="fa-solid" :class="riskIcon(r.riskLevel)"></i> {{ riskLabel(r.riskLevel) }}</div>
         </div>
         <div style="color:#999;font-size:18px">›</div>
       </div>
@@ -78,13 +78,24 @@ export default {
       return '#8b0000';
     }
 
+    function riskIcon(level) {
+      const icons = {
+        LOW: "fa-regular fa-square-check",
+        MEDIUM: "fa-solid fa-triangle-exclamation",
+        HIGH: "fa-solid fa-circle-xmark",
+        CRITICAL: "fa-solid fa-radiation"
+      };
+
+      return icons[level] || "fa-circle-question";
+    }
+
     function riskLabel(level) {
       return t.report.riskLevel[level] || level;
     }
 
     onMounted(loadHistory);
 
-    return { t, items, loadScan, clearHistory, riskColor, riskLabel };
+    return { t, items, loadScan, clearHistory, riskColor, riskIcon, riskLabel };
   },
 };
 </script>

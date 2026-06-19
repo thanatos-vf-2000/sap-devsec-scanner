@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!report" class="card empty">
-      <div class="icon">📊</div>
+      <div class="icon"><i class="fa-solid fa-chart-column"></i></div>
       <p>{{ t.report.noReport }}</p>
     </div>
 
@@ -31,10 +31,13 @@
               <span v-for="type in report.projectTypes" :key="type" class="tag">{{ type }}</span>
             </div>
             <div class="flex gap-8 text-sm text-gray">
-              <span>{{ t.report.scannedAt(report.scannedAt) }}</span>
-              <span>{{ t.report.filesScanned(report.filesScanned) }}</span>
-              <span>{{ t.report.risk }}
-                <strong :style="{ color: riskColor(report.riskScore) }">{{ riskLabel(report.riskLevel) }}</strong>
+              <span><i class="fa-regular fa-calendar-days"></i> {{ t.report.scannedAt(report.scannedAt) }}</span>
+              <span><i class="fa-regular fa-file-lines"></i> {{ t.report.filesScanned(report.filesScanned) }}</span>
+              <span><i class="fa-solid fa-lock"></i> {{ t.report.risk }}
+                <strong :style="{ color: riskColor(report.riskScore) }">
+                  <i class="fa-solid" :class="riskIcon(report.riskLevel)"></i> 
+                  {{ riskLabel(report.riskLevel) }}
+                </strong>
               </span>
             </div>
           </div>
@@ -59,7 +62,7 @@
             :class="{ active: currentTab === tab.id }"
             @click="currentTab = tab.id"
           >
-            {{ tab.label }}
+            <i :class="tabsIcon(tab.id)"></i> {{ tab.label }}
             <span class="count" :class="{ zero: tab.count === 0, crit: tab.crit && tab.count > 0 }">{{ tab.count }}</span>
           </div>
         </div>
@@ -103,11 +106,11 @@ export default {
       if (!props.report) return [];
       const r = props.report.results;
       return [
-        { id: 'ui5', label: t.report.tabs.ui5, count: (r.ui5?.issues?.length||0)+(r.ui5?.codeVulnerabilities?.length||0), crit: false },
-        { id: 'cap', label: t.report.tabs.cap, count: (r.cap?.services?.length||0)+(r.cap?.vulnerabilities?.length||0)+(r.cap?.mtaIssues?.length||0)+(r.cap?.xsuaaIssues?.length||0), crit: false },
-        { id: 'secrets', label: t.report.tabs.secrets, count: r.secrets?.findings?.length||0, crit: true },
-        { id: 'btp', label: t.report.tabs.btp, count: r.btp?.issues?.length||0, crit: true },
-        { id: 'npm', label: t.report.tabs.npm, count: r.npm?.issues?.length||0, crit: false },
+        { id: 'ui5', label: t.report.tabs.ui5, icon: 'fa-solid fa-palette', count: (r.ui5?.issues?.length||0)+(r.ui5?.codeVulnerabilities?.length||0), crit: false },
+        { id: 'cap', label: t.report.tabs.cap, icon: '', count: (r.cap?.services?.length||0)+(r.cap?.vulnerabilities?.length||0)+(r.cap?.mtaIssues?.length||0)+(r.cap?.xsuaaIssues?.length||0), crit: false },
+        { id: 'secrets', label: t.report.tabs.secrets, icon: '', count: r.secrets?.findings?.length||0, crit: true },
+        { id: 'btp', label: t.report.tabs.btp, icon: '', count: r.btp?.issues?.length||0, crit: true },
+        { id: 'npm', label: t.report.tabs.npm, icon: '', count: r.npm?.issues?.length||0, crit: false },
       ];
     });
 
@@ -118,11 +121,34 @@ export default {
       return '#8b0000';
     }
 
+    function riskIcon(level) {
+      const icons = {
+        LOW: "fa-regular fa-square-check",
+        MEDIUM: "fa-solid fa-triangle-exclamation",
+        HIGH: "fa-solid fa-circle-xmark",
+        CRITICAL: "fa-solid fa-radiation"
+      };
+
+      return icons[level] || "fa-circle-question";
+    }
+
     function riskLabel(level) {
       return t.report.riskLevel[level] || level;
     }
 
-    return { t, currentTab, severities, tabs, riskColor, riskLabel };
+    function tabsIcon(level) {
+      const icons = {
+        ui5: "fa-solid fa-palette",
+        cap: "fa-solid fa-cubes",
+        secrets: "fa-solid fa-vault",
+        btp: "fa-regular fa-cloud",
+        npm: "fa-brands fa-dropbox"
+      };
+
+      return icons[level] || "fa-circle-question";
+    }
+
+    return { t, currentTab, severities, tabs, riskColor, riskIcon, riskLabel, tabsIcon };
   },
 };
 </script>

@@ -1,0 +1,4527 @@
+{
+    "health": {"status":"ok","version":"1.2.0","service":"SAP DevSec Scanner","lang":"fr"},
+    "scan_upload": {
+    "success": true,
+    "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
+    "report": {
+        "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
+        "projectName": "My-CAP-Apps",
+        "projectTypes": [
+            "SAPUI5/Fiori",
+            "MTA",
+            "CAP/CDS",
+            "XSUAA",
+            "Node.js"
+        ],
+        "scannedAt": "2026-06-16T06:38:22.097Z",
+        "filesScanned": 247,
+        "riskScore": 0,
+        "riskLevel": "CRITICAL",
+        "summary": {
+            "critical": 0,
+            "high": 18,
+            "medium": 9,
+            "low": 27,
+            "info": 10,
+            "total": 64
+        },
+        "results": {
+            "ui5": {
+                "detectedVersion": "1.141.1",
+                "sources": [
+                    {
+                        "file": "app/app1/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app2/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app3/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app4/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app5/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app6/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app7/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app8/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app9/webapp/manifest.json",
+                        "key": "sap.ui5.dependencies.minUI5Version",
+                        "value": "1.141.1"
+                    },
+                    {
+                        "file": "app/app1/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    },
+                    {
+                        "file": "app/app2/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    },
+                    {
+                        "file": "app/app3/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    },
+                    {
+                        "file": "app/app4/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    },
+                    {
+                        "file": "app/app5/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    },
+                    {
+                        "file": "app/app6/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    },
+                    {
+                        "file": "app/app7/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    },
+                    {
+                        "file": "app/app8/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    },
+                    {
+                        "file": "app/app9/package.json",
+                        "key": "@ui5/cli",
+                        "value": "^3.0.0"
+                    }
+                ],
+                "currentStatus": {
+                    "version": "1.141",
+                    "patch": "1.141.4",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                "latestVersion": "1.148.1",
+                "ltsVersion": "1.136.19",
+                "versionTable": [
+                    {
+                        "version": "1.148",
+                        "patch": "1.148.1",
+                        "status": "lts",
+                        "eom": "Q3/2027",
+                        "ecp": "Q3/2028",
+                        "label": "Latest"
+                    },
+                    {
+                        "version": "1.148",
+                        "patch": "1.148.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.147",
+                        "patch": "1.147.2",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.147",
+                        "patch": "1.147.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.147",
+                        "patch": "1.147.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.146",
+                        "patch": "1.146.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.145",
+                        "patch": "1.145.3",
+                        "status": "maintained",
+                        "eom": "Q3/2026",
+                        "ecp": "Q3/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.145",
+                        "patch": "1.145.2",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.145",
+                        "patch": "1.145.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.145",
+                        "patch": "1.145.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.144",
+                        "patch": "1.144.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.144",
+                        "patch": "1.144.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.143",
+                        "patch": "1.143.2",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.143",
+                        "patch": "1.143.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.143",
+                        "patch": "1.143.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.13",
+                        "status": "maintained",
+                        "eom": "Q3/2026",
+                        "ecp": "Q3/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.12",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.11",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.10",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.9",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.8",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.7",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.6",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.5",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.4",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.3",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.2",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.142",
+                        "patch": "1.142.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.141",
+                        "patch": "1.141.4",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.141",
+                        "patch": "1.141.3",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.141",
+                        "patch": "1.141.2",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.141",
+                        "patch": "1.141.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.141",
+                        "patch": "1.141.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.139",
+                        "patch": "1.139.4",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.139",
+                        "patch": "1.139.3",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.139",
+                        "patch": "1.139.2",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.139",
+                        "patch": "1.139.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.139",
+                        "patch": "1.139.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.138",
+                        "patch": "1.138.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.138",
+                        "patch": "1.138.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.19",
+                        "status": "lts",
+                        "eom": "Q4/2032",
+                        "ecp": "Q4/2033",
+                        "label": "LTS (Recommended)"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.18",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.17",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.16",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.15",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.14",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.13",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.12",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.11",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.10",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.9",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.8",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.7",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.6",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.5",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.4",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.3",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.2",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.136",
+                        "patch": "1.136.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.135",
+                        "patch": "1.135.0",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.134",
+                        "patch": "1.134.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.134",
+                        "patch": "1.134.0",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q1/2026",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.133",
+                        "patch": "1.133.5",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.133",
+                        "patch": "1.133.4",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.133",
+                        "patch": "1.133.3",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.133",
+                        "patch": "1.133.2",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.133",
+                        "patch": "1.133.1",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.11",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.10",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.9",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.8",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.7",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q1/2026",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.6",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q1/2026",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.5",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q1/2026",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.4",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q1/2026",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.3",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q1/2026",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.2",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q4/2025",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.1",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q4/2025",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.130",
+                        "patch": "1.130.0",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "Q4/2025",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.46",
+                        "status": "lts",
+                        "eom": "Q4/2030",
+                        "ecp": "Q4/2031",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.45",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.44",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.43",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.42",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.41",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.40",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.39",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.38",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.37",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.36",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.35",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.34",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.33",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.32",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.31",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.30",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.29",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.28",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.27",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.120",
+                        "patch": "1.120.0",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.53",
+                        "status": "lts",
+                        "eom": "Q4/2030",
+                        "ecp": "Q4/2031",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.52",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.51",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.50",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.49",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.48",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.47",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.46",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.45",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.44",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.43",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.42",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.41",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.108",
+                        "patch": "1.108.0",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.48",
+                        "status": "lts",
+                        "eom": "Q4/2026",
+                        "ecp": "Q4/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.47",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.46",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.45",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.44",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.43",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.42",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.41",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.40",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.39",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.96",
+                        "patch": "1.96.0",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.59",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "To Be Determined",
+                        "label": "To Be Determined"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.58",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.57",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.56",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.55",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.54",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.53",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.52",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.84",
+                        "patch": "1.84.0",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.82",
+                        "status": "lts",
+                        "eom": "Q4/2030",
+                        "ecp": "Q4/2031",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.81",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.80",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.79",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.78",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.77",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.76",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.75",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q3/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.74",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.71.73",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.71",
+                        "patch": "1.84.0",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.38",
+                        "patch": "1.38.68",
+                        "status": "lts",
+                        "eom": "Q4/2027",
+                        "ecp": "Q4/2028",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.38",
+                        "patch": "1.38.67",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.38",
+                        "patch": "1.38.66",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q1/2027",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.38",
+                        "patch": "1.38.65",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q4/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.38",
+                        "patch": "1.38.64",
+                        "status": "maintained",
+                        "eom": "",
+                        "ecp": "Q2/2026",
+                        "label": "Maintained"
+                    },
+                    {
+                        "version": "1.38",
+                        "patch": "1.38.63",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    },
+                    {
+                        "version": "1.38",
+                        "patch": "1.38.0",
+                        "status": "eom",
+                        "eom": "",
+                        "ecp": "",
+                        "label": "End of Maintenance"
+                    }
+                ],
+                "versionDate": "2026-06-08",
+                "issues": [
+                    {
+                        "severity": "MEDIUM",
+                        "message": "UI5 version 1.141 is maintained but not the LTS version (1.136.19)",
+                        "code": "UI5_NOT_LTS"
+                    }
+                ],
+                "recommendations": [
+                    "Upgrade to LTS version 1.136.19 for longest support",
+                    "Latest available: 1.148.1",
+                    "Reference: https://ui5.sap.com/versionoverview.html"
+                ],
+                "codeVulnerabilities": []
+            },
+            "cap": {
+                "services": [
+                    {
+                        "name": "from",
+                        "file": "app/app1/annotations.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "app/app2/annotations.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "app/app4/annotations.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "app/app6/annotations.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "app/app8/annotations.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "srv/annotations/schema/display-app9.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "srv/annotations/schema/export-app9.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "srv/annotations/schema/manage-approval.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "srv/annotations/schema/app9.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "from",
+                        "file": "srv/annotations/schema/variant.cds",
+                        "line": 1,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "app1",
+                        "file": "srv/display-app9.cds",
+                        "line": 4,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "app2",
+                        "file": "srv/export-app9.cds",
+                        "line": 5,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "app4",
+                        "file": "srv/manage-approvals.cds",
+                        "line": 4,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "MasterData",
+                        "file": "srv/manage-masterdata.cds",
+                        "line": 3,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    },
+                    {
+                        "name": "Manageapp9",
+                        "file": "srv/manage-app9.cds",
+                        "line": 4,
+                        "hasAuth": false,
+                        "authType": null,
+                        "severity": "HIGH",
+                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    }
+                ],
+                "vulnerabilities": [
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/display-app9.js",
+                        "line": 37,
+                        "snippet": "let { ID } = req.data;"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "CAP_LOG_REQUEST",
+                        "message": "Logging request object - may expose sensitive data",
+                        "file": "srv/handlers/display-app9.js",
+                        "line": 36,
+                        "snippet": "console.log(req.user.attr);"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_SELECT_NOFILTER",
+                        "message": "SELECT without WHERE clause - potential data exposure",
+                        "file": "srv/handlers/export-app9.js",
+                        "line": 57,
+                        "snippet": "let activities = await SELECT.from(Activities);"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_SELECT_NOFILTER",
+                        "message": "SELECT without WHERE clause - potential data exposure",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 84,
+                        "snippet": "let existingEmployees = await SELECT.from(`MasterData_Employees`);"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 21,
+                        "snippet": "* @param {Object} req.data - Request data."
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 22,
+                        "snippet": "* @param {string} req.data.assetType - The type of asset ('EM' or other)."
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 23,
+                        "snippet": "* @param {Object} req.data.content - The stream of the uploaded file."
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 29,
+                        "snippet": "const { assetType } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 32,
+                        "snippet": "const stream = req.data.content;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 164,
+                        "snippet": "* @param {Object} req.data - Request data."
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 165,
+                        "snippet": "* @param {string} req.data.assetType - The type of asset ('EM' or other)."
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/FileHandler.js",
+                        "line": 170,
+                        "snippet": "const { assetType } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-approvals.js",
+                        "line": 44,
+                        "snippet": "let { ID } = req.data;"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "CAP_LOG_REQUEST",
+                        "message": "Logging request object - may expose sensitive data",
+                        "file": "srv/handlers/manage-approvals.js",
+                        "line": 29,
+                        "snippet": "console.log(req.user.attr);"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "CAP_LOG_REQUEST",
+                        "message": "Logging request object - may expose sensitive data",
+                        "file": "srv/handlers/manage-approvals.js",
+                        "line": 43,
+                        "snippet": "console.log(req.user.attr);"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_SELECT_NOFILTER",
+                        "message": "SELECT without WHERE clause - potential data exposure",
+                        "file": "srv/handlers/manage-masterdata.js",
+                        "line": 113,
+                        "snippet": "let existingEmployees = await SELECT.from(Employees);"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-masterdata.js",
+                        "line": 37,
+                        "snippet": "const { assetType } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-masterdata.js",
+                        "line": 40,
+                        "snippet": "const stream = req.data.content;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-masterdata.js",
+                        "line": 74,
+                        "snippet": "//     let activities = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 128,
+                        "snippet": "let { email } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 152,
+                        "snippet": "let { employeeId } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 161,
+                        "snippet": "let { email, activityId } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 180,
+                        "snippet": "let { ID } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 274,
+                        "snippet": "// req.data.status_status = '01';"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 276,
+                        "snippet": "const { ID } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 292,
+                        "snippet": "let { employeeId_employeeId: employeeId, year, month } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 296,
+                        "snippet": "req.data.status_status = '01';"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 298,
+                        "snippet": "req.data.managerId_employeeId = employeeData.managerId;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 356,
+                        "snippet": "let { employeeId, year, month } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 367,
+                        "snippet": "req.data.status_status = '02'; // Set the status to Submitted"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "CAP_LOG_REQUEST",
+                        "message": "Logging request object - may expose sensitive data",
+                        "file": "srv/handlers/manage-app9.js",
+                        "line": 112,
+                        "snippet": "console.log(req.user.attr);"
+                    }
+                ],
+                "mtaIssues": [],
+                "xsuaaIssues": []
+            },
+            "secrets": {
+                "findings": [
+                    {
+                        "severity": "MEDIUM",
+                        "code": "GITIGNORE_MISSING",
+                        "message": "default-env.json not in .gitignore",
+                        "file": ".gitignore",
+                        "line": 0,
+                        "snippet": "Add: default-env.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "GITIGNORE_MISSING",
+                        "message": ".env not in .gitignore",
+                        "file": ".gitignore",
+                        "line": 0,
+                        "snippet": "Add: .env"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "GITIGNORE_MISSING",
+                        "message": "*.env not in .gitignore",
+                        "file": ".gitignore",
+                        "line": 0,
+                        "snippet": "Add: *.env"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "GITIGNORE_MISSING",
+                        "message": "default-env*.json not in .gitignore",
+                        "file": ".gitignore",
+                        "line": 0,
+                        "snippet": "Add: default-env*.json"
+                    }
+                ]
+            },
+            "btp": {
+                "issues": [
+                    {
+                        "severity": "HIGH",
+                        "code": "BTP_MTA_NO_AUTH",
+                        "message": "NoAuthentication found in MTA configuration",
+                        "file": "mta.yaml",
+                        "line": 225,
+                        "snippet": "- Authentication: NoAuthentication"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "BTP_MTA_NO_AUTH",
+                        "message": "NoAuthentication found in MTA configuration",
+                        "file": "mta.yaml",
+                        "line": 230,
+                        "snippet": "- Authentication: NoAuthentication"
+                    }
+                ]
+            },
+            "npm": {
+                "packages": [
+                    {
+                        "file": "app/app1/package.json",
+                        "name": "app1",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3",
+                            "mbt": "^1.2.27"
+                        },
+                        "dependencyCount": 5
+                    },
+                    {
+                        "file": "app/app2/package.json",
+                        "name": "app2",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3"
+                        },
+                        "dependencyCount": 4
+                    },
+                    {
+                        "file": "app/app3/package.json",
+                        "name": "app3",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ux-specification": "UI5-1.124",
+                            "eslint": "8.57.0",
+                            "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+                            "@sapui5/ts-types": "~1.124.0",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3",
+                            "mbt": "^1.2.27"
+                        },
+                        "dependencyCount": 9
+                    },
+                    {
+                        "file": "app/app4/package.json",
+                        "name": "app4",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ux-specification": "UI5-1.125",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3",
+                            "mbt": "^1.2.27"
+                        },
+                        "dependencyCount": 6
+                    },
+                    {
+                        "file": "app/app5/package.json",
+                        "name": "app5",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ux-specification": "UI5-1.124",
+                            "eslint": "8.57.0",
+                            "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+                            "@sapui5/ts-types": "~1.124.0",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3",
+                            "mbt": "^1.2.27"
+                        },
+                        "dependencyCount": 9
+                    },
+                    {
+                        "file": "app/app6/package.json",
+                        "name": "app6",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ux-specification": "UI5-1.125",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3",
+                            "mbt": "^1.2.27"
+                        },
+                        "dependencyCount": 6
+                    },
+                    {
+                        "file": "app/app7/package.json",
+                        "name": "app7",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ux-specification": "UI5-1.124",
+                            "eslint": "8.57.0",
+                            "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+                            "@sapui5/ts-types": "~1.124.0",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3",
+                            "mbt": "^1.2.27"
+                        },
+                        "dependencyCount": 9
+                    },
+                    {
+                        "file": "app/app8/package.json",
+                        "name": "app8",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ux-specification": "UI5-1.124",
+                            "eslint": "8.57.0",
+                            "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+                            "@sapui5/ts-types": "~1.124.0",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3",
+                            "mbt": "^1.2.27"
+                        },
+                        "dependencyCount": 9
+                    },
+                    {
+                        "file": "app/app9/package.json",
+                        "name": "app9",
+                        "version": "0.0.2",
+                        "dependencies": {
+                            "@ui5/cli": "^3.0.0",
+                            "@sap/ux-ui5-tooling": "1",
+                            "@sap/ux-specification": "UI5-1.125",
+                            "@sap/ui5-builder-webide-extension": "^1.1.9",
+                            "ui5-task-zipper": "^3.1.3",
+                            "mbt": "^1.2.27"
+                        },
+                        "dependencyCount": 6
+                    },
+                    {
+                        "file": "package.json",
+                        "name": "oxyaapp9server",
+                        "version": "1.0.1",
+                        "dependencies": {
+                            "@cap-js/postgres": "1.3",
+                            "@sap/cds": "7.9",
+                            "@sap/xssec": "^3",
+                            "express": "^4",
+                            "xlsx": "^0.18.5",
+                            "@cap-js/sqlite": "1.11",
+                            "@sap/cds-dk": "7.9",
+                            "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+                            "@sap/ux-specification": "UI5-1.141",
+                            "@sapui5/ts-types": "^1.92.2",
+                            "eslint": "^7.32.0",
+                            "mbt": "^1.2.29",
+                            "rimraf": "^5.0.5"
+                        },
+                        "dependencyCount": 13
+                    }
+                ],
+                "issues": [
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app1/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app2/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app3/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app4/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app5/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app6/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app7/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app8/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "app/app9/package.json"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "package": "@sap/xssec",
+                        "version": "^3",
+                        "cve": "CVE-2023-25615",
+                        "description": "Improper authorization in XSUAA validation",
+                        "fix": ">=3.2.0",
+                        "source": "SAP Advisory",
+                        "file": "package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "npm audit",
+                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                        "source": "Recommendation",
+                        "file": "package.json"
+                    }
+                ],
+                "sapPackages": [
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app1/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app1/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app2/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app2/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app3/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-specification",
+                        "version": "UI5-1.124",
+                        "file": "app/app3/package.json"
+                    },
+                    {
+                        "name": "@sap/eslint-plugin-ui5-jsdocs",
+                        "version": "2.0.5",
+                        "file": "app/app3/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app3/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app4/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-specification",
+                        "version": "UI5-1.125",
+                        "file": "app/app4/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app4/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app5/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-specification",
+                        "version": "UI5-1.124",
+                        "file": "app/app5/package.json"
+                    },
+                    {
+                        "name": "@sap/eslint-plugin-ui5-jsdocs",
+                        "version": "2.0.5",
+                        "file": "app/app5/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app5/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app6/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-specification",
+                        "version": "UI5-1.125",
+                        "file": "app/app6/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app6/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app7/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-specification",
+                        "version": "UI5-1.124",
+                        "file": "app/app7/package.json"
+                    },
+                    {
+                        "name": "@sap/eslint-plugin-ui5-jsdocs",
+                        "version": "2.0.5",
+                        "file": "app/app7/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app7/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app8/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-specification",
+                        "version": "UI5-1.124",
+                        "file": "app/app8/package.json"
+                    },
+                    {
+                        "name": "@sap/eslint-plugin-ui5-jsdocs",
+                        "version": "2.0.5",
+                        "file": "app/app8/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app8/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-ui5-tooling",
+                        "version": "1",
+                        "file": "app/app9/package.json"
+                    },
+                    {
+                        "name": "@sap/ux-specification",
+                        "version": "UI5-1.125",
+                        "file": "app/app9/package.json"
+                    },
+                    {
+                        "name": "@sap/ui5-builder-webide-extension",
+                        "version": "^1.1.9",
+                        "file": "app/app9/package.json"
+                    },
+                    {
+                        "name": "@sap/cds",
+                        "version": "7.9",
+                        "file": "package.json"
+                    },
+                    {
+                        "name": "@sap/xssec",
+                        "version": "^3",
+                        "file": "package.json"
+                    },
+                    {
+                        "name": "@sap/cds-dk",
+                        "version": "7.9",
+                        "file": "package.json"
+                    },
+                    {
+                        "name": "@sap/eslint-plugin-ui5-jsdocs",
+                        "version": "^2.0.5",
+                        "file": "package.json"
+                    },
+                    {
+                        "name": "@sap/ux-specification",
+                        "version": "UI5-1.141",
+                        "file": "package.json"
+                    }
+                ],
+                "auditResults": null,
+                "summary": {
+                    "total": 76,
+                    "sap": 34,
+                    "critical": 0,
+                    "high": 1,
+                    "medium": 0,
+                    "low": 0
+                }
+            }
+        }
+    }
+},
+    "scan_history": [
+    {
+        "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
+        "projectName": "My-CAP-Apps",
+        "scannedAt": "2026-06-16T06:38:22.097Z",
+        "riskScore": 0,
+        "riskLevel": "CRITICAL",
+        "summary": {
+            "critical": 0,
+            "high": 18,
+            "medium": 9,
+            "low": 27,
+            "info": 10,
+            "total": 64
+        },
+        "projectTypes": [
+            "SAPUI5/Fiori",
+            "MTA",
+            "CAP/CDS",
+            "XSUAA",
+            "Node.js"
+        ]
+    }
+],
+    "scan_4e144b6e-2419-476f-a062-cf0e5a8332d7": {
+    "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
+    "projectName": "My-CAP-Apps",
+    "projectTypes": [
+        "SAPUI5/Fiori",
+        "MTA",
+        "CAP/CDS",
+        "XSUAA",
+        "Node.js"
+    ],
+    "scannedAt": "2026-06-16T06:38:22.097Z",
+    "filesScanned": 247,
+    "riskScore": 0,
+    "riskLevel": "CRITICAL",
+    "summary": {
+        "critical": 0,
+        "high": 18,
+        "medium": 9,
+        "low": 27,
+        "info": 10,
+        "total": 64
+    },
+    "results": {
+        "ui5": {
+            "detectedVersion": "1.141.1",
+            "sources": [
+                {
+                    "file": "app/app1/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app2/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app3/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app4/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app5/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app6/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app7/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app8/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app9/webapp/manifest.json",
+                    "key": "sap.ui5.dependencies.minUI5Version",
+                    "value": "1.141.1"
+                },
+                {
+                    "file": "app/app1/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                },
+                {
+                    "file": "app/app2/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                },
+                {
+                    "file": "app/app3/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                },
+                {
+                    "file": "app/app4/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                },
+                {
+                    "file": "app/app5/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                },
+                {
+                    "file": "app/app6/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                },
+                {
+                    "file": "app/app7/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                },
+                {
+                    "file": "app/app8/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                },
+                {
+                    "file": "app/app9/package.json",
+                    "key": "@ui5/cli",
+                    "value": "^3.0.0"
+                }
+            ],
+            "currentStatus": {
+                "version": "1.141",
+                "patch": "1.141.4",
+                "status": "maintained",
+                "eom": "",
+                "ecp": "Q4/2026",
+                "label": "Maintained"
+            },
+            "latestVersion": "1.148.1",
+            "ltsVersion": "1.136.19",
+            "versionTable": [
+                {
+                    "version": "1.148",
+                    "patch": "1.148.1",
+                    "status": "lts",
+                    "eom": "Q3/2027",
+                    "ecp": "Q3/2028",
+                    "label": "Latest"
+                },
+                {
+                    "version": "1.148",
+                    "patch": "1.148.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.147",
+                    "patch": "1.147.2",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.147",
+                    "patch": "1.147.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.147",
+                    "patch": "1.147.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.146",
+                    "patch": "1.146.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.145",
+                    "patch": "1.145.3",
+                    "status": "maintained",
+                    "eom": "Q3/2026",
+                    "ecp": "Q3/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.145",
+                    "patch": "1.145.2",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.145",
+                    "patch": "1.145.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.145",
+                    "patch": "1.145.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.144",
+                    "patch": "1.144.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.144",
+                    "patch": "1.144.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.143",
+                    "patch": "1.143.2",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.143",
+                    "patch": "1.143.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.143",
+                    "patch": "1.143.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.13",
+                    "status": "maintained",
+                    "eom": "Q3/2026",
+                    "ecp": "Q3/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.12",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.11",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.10",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.9",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.8",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.7",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.6",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.5",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.4",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.3",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.2",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.142",
+                    "patch": "1.142.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.141",
+                    "patch": "1.141.4",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.141",
+                    "patch": "1.141.3",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.141",
+                    "patch": "1.141.2",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.141",
+                    "patch": "1.141.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.141",
+                    "patch": "1.141.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.139",
+                    "patch": "1.139.4",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.139",
+                    "patch": "1.139.3",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.139",
+                    "patch": "1.139.2",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.139",
+                    "patch": "1.139.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.139",
+                    "patch": "1.139.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.138",
+                    "patch": "1.138.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.138",
+                    "patch": "1.138.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.19",
+                    "status": "lts",
+                    "eom": "Q4/2032",
+                    "ecp": "Q4/2033",
+                    "label": "LTS (Recommended)"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.18",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.17",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.16",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.15",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.14",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.13",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.12",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.11",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.10",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.9",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.8",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.7",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.6",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.5",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.4",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.3",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.2",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.136",
+                    "patch": "1.136.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.135",
+                    "patch": "1.135.0",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.134",
+                    "patch": "1.134.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.134",
+                    "patch": "1.134.0",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q1/2026",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.133",
+                    "patch": "1.133.5",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.133",
+                    "patch": "1.133.4",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.133",
+                    "patch": "1.133.3",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.133",
+                    "patch": "1.133.2",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.133",
+                    "patch": "1.133.1",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.11",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.10",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.9",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.8",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.7",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q1/2026",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.6",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q1/2026",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.5",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q1/2026",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.4",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q1/2026",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.3",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q1/2026",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.2",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q4/2025",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.1",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q4/2025",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.130",
+                    "patch": "1.130.0",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "Q4/2025",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.46",
+                    "status": "lts",
+                    "eom": "Q4/2030",
+                    "ecp": "Q4/2031",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.45",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.44",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.43",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.42",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.41",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.40",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.39",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.38",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.37",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.36",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.35",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.34",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.33",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.32",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.31",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.30",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.29",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.28",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.27",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.120",
+                    "patch": "1.120.0",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.53",
+                    "status": "lts",
+                    "eom": "Q4/2030",
+                    "ecp": "Q4/2031",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.52",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.51",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.50",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.49",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.48",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.47",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.46",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.45",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.44",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.43",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.42",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.41",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.108",
+                    "patch": "1.108.0",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.48",
+                    "status": "lts",
+                    "eom": "Q4/2026",
+                    "ecp": "Q4/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.47",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.46",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.45",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.44",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.43",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.42",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.41",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.40",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.39",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.96",
+                    "patch": "1.96.0",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.59",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "To Be Determined",
+                    "label": "To Be Determined"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.58",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.57",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.56",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.55",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.54",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.53",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.52",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.84",
+                    "patch": "1.84.0",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.82",
+                    "status": "lts",
+                    "eom": "Q4/2030",
+                    "ecp": "Q4/2031",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.81",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.80",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.79",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.78",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.77",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.76",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.75",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q3/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.74",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.71.73",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.71",
+                    "patch": "1.84.0",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.38",
+                    "patch": "1.38.68",
+                    "status": "lts",
+                    "eom": "Q4/2027",
+                    "ecp": "Q4/2028",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.38",
+                    "patch": "1.38.67",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.38",
+                    "patch": "1.38.66",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q1/2027",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.38",
+                    "patch": "1.38.65",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q4/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.38",
+                    "patch": "1.38.64",
+                    "status": "maintained",
+                    "eom": "",
+                    "ecp": "Q2/2026",
+                    "label": "Maintained"
+                },
+                {
+                    "version": "1.38",
+                    "patch": "1.38.63",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                },
+                {
+                    "version": "1.38",
+                    "patch": "1.38.0",
+                    "status": "eom",
+                    "eom": "",
+                    "ecp": "",
+                    "label": "End of Maintenance"
+                }
+            ],
+            "versionDate": "2026-06-08",
+            "issues": [
+                {
+                    "severity": "MEDIUM",
+                    "message": "UI5 version 1.141 is maintained but not the LTS version (1.136.19)",
+                    "code": "UI5_NOT_LTS"
+                }
+            ],
+            "recommendations": [
+                "Upgrade to LTS version 1.136.19 for longest support",
+                "Latest available: 1.148.1",
+                "Reference: https://ui5.sap.com/versionoverview.html"
+            ],
+            "codeVulnerabilities": []
+        },
+        "cap": {
+            "services": [
+                {
+                    "name": "from",
+                    "file": "app/app1/annotations.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "app/app2/annotations.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "app/app4/annotations.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "app/app6/annotations.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "app/app8/annotations.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "srv/annotations/schema/display-app9.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "srv/annotations/schema/export-app9.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "srv/annotations/schema/manage-approval.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "srv/annotations/schema/app9.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "from",
+                    "file": "srv/annotations/schema/variant.cds",
+                    "line": 1,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "app1",
+                    "file": "srv/display-app9.cds",
+                    "line": 4,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "app2",
+                    "file": "srv/export-app9.cds",
+                    "line": 5,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "app4",
+                    "file": "srv/manage-approvals.cds",
+                    "line": 4,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "MasterData",
+                    "file": "srv/manage-masterdata.cds",
+                    "line": 3,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                },
+                {
+                    "name": "Manageapp9",
+                    "file": "srv/manage-app9.cds",
+                    "line": 4,
+                    "hasAuth": false,
+                    "authType": null,
+                    "severity": "HIGH",
+                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                }
+            ],
+            "vulnerabilities": [
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/display-app9.js",
+                    "line": 37,
+                    "snippet": "let { ID } = req.data;"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "CAP_LOG_REQUEST",
+                    "message": "Logging request object - may expose sensitive data",
+                    "file": "srv/handlers/display-app9.js",
+                    "line": 36,
+                    "snippet": "console.log(req.user.attr);"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_SELECT_NOFILTER",
+                    "message": "SELECT without WHERE clause - potential data exposure",
+                    "file": "srv/handlers/export-app9.js",
+                    "line": 57,
+                    "snippet": "let activities = await SELECT.from(Activities);"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_SELECT_NOFILTER",
+                    "message": "SELECT without WHERE clause - potential data exposure",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 84,
+                    "snippet": "let existingEmployees = await SELECT.from(`MasterData_Employees`);"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 21,
+                    "snippet": "* @param {Object} req.data - Request data."
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 22,
+                    "snippet": "* @param {string} req.data.assetType - The type of asset ('EM' or other)."
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 23,
+                    "snippet": "* @param {Object} req.data.content - The stream of the uploaded file."
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 29,
+                    "snippet": "const { assetType } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 32,
+                    "snippet": "const stream = req.data.content;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 164,
+                    "snippet": "* @param {Object} req.data - Request data."
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 165,
+                    "snippet": "* @param {string} req.data.assetType - The type of asset ('EM' or other)."
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/FileHandler.js",
+                    "line": 170,
+                    "snippet": "const { assetType } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-approvals.js",
+                    "line": 44,
+                    "snippet": "let { ID } = req.data;"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "CAP_LOG_REQUEST",
+                    "message": "Logging request object - may expose sensitive data",
+                    "file": "srv/handlers/manage-approvals.js",
+                    "line": 29,
+                    "snippet": "console.log(req.user.attr);"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "CAP_LOG_REQUEST",
+                    "message": "Logging request object - may expose sensitive data",
+                    "file": "srv/handlers/manage-approvals.js",
+                    "line": 43,
+                    "snippet": "console.log(req.user.attr);"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_SELECT_NOFILTER",
+                    "message": "SELECT without WHERE clause - potential data exposure",
+                    "file": "srv/handlers/manage-masterdata.js",
+                    "line": 113,
+                    "snippet": "let existingEmployees = await SELECT.from(Employees);"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-masterdata.js",
+                    "line": 37,
+                    "snippet": "const { assetType } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-masterdata.js",
+                    "line": 40,
+                    "snippet": "const stream = req.data.content;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-masterdata.js",
+                    "line": 74,
+                    "snippet": "//     let activities = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 128,
+                    "snippet": "let { email } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 152,
+                    "snippet": "let { employeeId } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 161,
+                    "snippet": "let { email, activityId } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 180,
+                    "snippet": "let { ID } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 274,
+                    "snippet": "// req.data.status_status = '01';"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 276,
+                    "snippet": "const { ID } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 292,
+                    "snippet": "let { employeeId_employeeId: employeeId, year, month } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 296,
+                    "snippet": "req.data.status_status = '01';"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 298,
+                    "snippet": "req.data.managerId_employeeId = employeeData.managerId;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 356,
+                    "snippet": "let { employeeId, year, month } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 367,
+                    "snippet": "req.data.status_status = '02'; // Set the status to Submitted"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "CAP_LOG_REQUEST",
+                    "message": "Logging request object - may expose sensitive data",
+                    "file": "srv/handlers/manage-app9.js",
+                    "line": 112,
+                    "snippet": "console.log(req.user.attr);"
+                }
+            ],
+            "mtaIssues": [],
+            "xsuaaIssues": []
+        },
+        "secrets": {
+            "findings": [
+                {
+                    "severity": "MEDIUM",
+                    "code": "GITIGNORE_MISSING",
+                    "message": "default-env.json not in .gitignore",
+                    "file": ".gitignore",
+                    "line": 0,
+                    "snippet": "Add: default-env.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "GITIGNORE_MISSING",
+                    "message": ".env not in .gitignore",
+                    "file": ".gitignore",
+                    "line": 0,
+                    "snippet": "Add: .env"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "GITIGNORE_MISSING",
+                    "message": "*.env not in .gitignore",
+                    "file": ".gitignore",
+                    "line": 0,
+                    "snippet": "Add: *.env"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "GITIGNORE_MISSING",
+                    "message": "default-env*.json not in .gitignore",
+                    "file": ".gitignore",
+                    "line": 0,
+                    "snippet": "Add: default-env*.json"
+                }
+            ]
+        },
+        "btp": {
+            "issues": [
+                {
+                    "severity": "HIGH",
+                    "code": "BTP_MTA_NO_AUTH",
+                    "message": "NoAuthentication found in MTA configuration",
+                    "file": "mta.yaml",
+                    "line": 225,
+                    "snippet": "- Authentication: NoAuthentication"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "BTP_MTA_NO_AUTH",
+                    "message": "NoAuthentication found in MTA configuration",
+                    "file": "mta.yaml",
+                    "line": 230,
+                    "snippet": "- Authentication: NoAuthentication"
+                }
+            ]
+        },
+        "npm": {
+            "packages": [
+                {
+                    "file": "app/app1/package.json",
+                    "name": "app1",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3",
+                        "mbt": "^1.2.27"
+                    },
+                    "dependencyCount": 5
+                },
+                {
+                    "file": "app/app2/package.json",
+                    "name": "app2",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3"
+                    },
+                    "dependencyCount": 4
+                },
+                {
+                    "file": "app/app3/package.json",
+                    "name": "app3",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ux-specification": "UI5-1.124",
+                        "eslint": "8.57.0",
+                        "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+                        "@sapui5/ts-types": "~1.124.0",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3",
+                        "mbt": "^1.2.27"
+                    },
+                    "dependencyCount": 9
+                },
+                {
+                    "file": "app/app4/package.json",
+                    "name": "app4",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ux-specification": "UI5-1.125",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3",
+                        "mbt": "^1.2.27"
+                    },
+                    "dependencyCount": 6
+                },
+                {
+                    "file": "app/app5/package.json",
+                    "name": "app5",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ux-specification": "UI5-1.124",
+                        "eslint": "8.57.0",
+                        "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+                        "@sapui5/ts-types": "~1.124.0",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3",
+                        "mbt": "^1.2.27"
+                    },
+                    "dependencyCount": 9
+                },
+                {
+                    "file": "app/app6/package.json",
+                    "name": "app6",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ux-specification": "UI5-1.125",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3",
+                        "mbt": "^1.2.27"
+                    },
+                    "dependencyCount": 6
+                },
+                {
+                    "file": "app/app7/package.json",
+                    "name": "app7",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ux-specification": "UI5-1.124",
+                        "eslint": "8.57.0",
+                        "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+                        "@sapui5/ts-types": "~1.124.0",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3",
+                        "mbt": "^1.2.27"
+                    },
+                    "dependencyCount": 9
+                },
+                {
+                    "file": "app/app8/package.json",
+                    "name": "app8",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ux-specification": "UI5-1.124",
+                        "eslint": "8.57.0",
+                        "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
+                        "@sapui5/ts-types": "~1.124.0",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3",
+                        "mbt": "^1.2.27"
+                    },
+                    "dependencyCount": 9
+                },
+                {
+                    "file": "app/app9/package.json",
+                    "name": "app9",
+                    "version": "0.0.2",
+                    "dependencies": {
+                        "@ui5/cli": "^3.0.0",
+                        "@sap/ux-ui5-tooling": "1",
+                        "@sap/ux-specification": "UI5-1.125",
+                        "@sap/ui5-builder-webide-extension": "^1.1.9",
+                        "ui5-task-zipper": "^3.1.3",
+                        "mbt": "^1.2.27"
+                    },
+                    "dependencyCount": 6
+                },
+                {
+                    "file": "package.json",
+                    "name": "oxyaapp9server",
+                    "version": "1.0.1",
+                    "dependencies": {
+                        "@cap-js/postgres": "1.3",
+                        "@sap/cds": "7.9",
+                        "@sap/xssec": "^3",
+                        "express": "^4",
+                        "xlsx": "^0.18.5",
+                        "@cap-js/sqlite": "1.11",
+                        "@sap/cds-dk": "7.9",
+                        "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+                        "@sap/ux-specification": "UI5-1.141",
+                        "@sapui5/ts-types": "^1.92.2",
+                        "eslint": "^7.32.0",
+                        "mbt": "^1.2.29",
+                        "rimraf": "^5.0.5"
+                    },
+                    "dependencyCount": 13
+                }
+            ],
+            "issues": [
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app1/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app2/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app3/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app4/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app5/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app6/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app7/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app8/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "app/app9/package.json"
+                },
+                {
+                    "severity": "HIGH",
+                    "package": "@sap/xssec",
+                    "version": "^3",
+                    "cve": "CVE-2023-25615",
+                    "description": "Improper authorization in XSUAA validation",
+                    "fix": ">=3.2.0",
+                    "source": "SAP Advisory",
+                    "file": "package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "npm audit",
+                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
+                    "source": "Recommendation",
+                    "file": "package.json"
+                }
+            ],
+            "sapPackages": [
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app1/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app1/package.json"
+                },
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app2/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app2/package.json"
+                },
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app3/package.json"
+                },
+                {
+                    "name": "@sap/ux-specification",
+                    "version": "UI5-1.124",
+                    "file": "app/app3/package.json"
+                },
+                {
+                    "name": "@sap/eslint-plugin-ui5-jsdocs",
+                    "version": "2.0.5",
+                    "file": "app/app3/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app3/package.json"
+                },
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app4/package.json"
+                },
+                {
+                    "name": "@sap/ux-specification",
+                    "version": "UI5-1.125",
+                    "file": "app/app4/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app4/package.json"
+                },
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app5/package.json"
+                },
+                {
+                    "name": "@sap/ux-specification",
+                    "version": "UI5-1.124",
+                    "file": "app/app5/package.json"
+                },
+                {
+                    "name": "@sap/eslint-plugin-ui5-jsdocs",
+                    "version": "2.0.5",
+                    "file": "app/app5/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app5/package.json"
+                },
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app6/package.json"
+                },
+                {
+                    "name": "@sap/ux-specification",
+                    "version": "UI5-1.125",
+                    "file": "app/app6/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app6/package.json"
+                },
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app7/package.json"
+                },
+                {
+                    "name": "@sap/ux-specification",
+                    "version": "UI5-1.124",
+                    "file": "app/app7/package.json"
+                },
+                {
+                    "name": "@sap/eslint-plugin-ui5-jsdocs",
+                    "version": "2.0.5",
+                    "file": "app/app7/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app7/package.json"
+                },
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app8/package.json"
+                },
+                {
+                    "name": "@sap/ux-specification",
+                    "version": "UI5-1.124",
+                    "file": "app/app8/package.json"
+                },
+                {
+                    "name": "@sap/eslint-plugin-ui5-jsdocs",
+                    "version": "2.0.5",
+                    "file": "app/app8/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app8/package.json"
+                },
+                {
+                    "name": "@sap/ux-ui5-tooling",
+                    "version": "1",
+                    "file": "app/app9/package.json"
+                },
+                {
+                    "name": "@sap/ux-specification",
+                    "version": "UI5-1.125",
+                    "file": "app/app9/package.json"
+                },
+                {
+                    "name": "@sap/ui5-builder-webide-extension",
+                    "version": "^1.1.9",
+                    "file": "app/app9/package.json"
+                },
+                {
+                    "name": "@sap/cds",
+                    "version": "7.9",
+                    "file": "package.json"
+                },
+                {
+                    "name": "@sap/xssec",
+                    "version": "^3",
+                    "file": "package.json"
+                },
+                {
+                    "name": "@sap/cds-dk",
+                    "version": "7.9",
+                    "file": "package.json"
+                },
+                {
+                    "name": "@sap/eslint-plugin-ui5-jsdocs",
+                    "version": "^2.0.5",
+                    "file": "package.json"
+                },
+                {
+                    "name": "@sap/ux-specification",
+                    "version": "UI5-1.141",
+                    "file": "package.json"
+                }
+            ],
+            "auditResults": null,
+            "summary": {
+                "total": 76,
+                "sap": 34,
+                "critical": 0,
+                "high": 1,
+                "medium": 0,
+                "low": 0
+            }
+        }
+    }
+}
+}

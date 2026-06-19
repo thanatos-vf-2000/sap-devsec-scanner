@@ -3,7 +3,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
       <!-- Upload ZIP -->
       <div class="card">
-        <div class="card-title">{{ t.scan.zipTitle }}</div>
+        <div class="card-title"><i class="fa-solid fa-cubes"></i>{{ t.scan.zipTitle }}</div>
         <div
           class="upload-zone"
           :class="{ drag: isDragging }"
@@ -12,7 +12,7 @@
           @dragleave="isDragging = false"
           @drop.prevent="onDrop"
         >
-          <div class="upload-icon">📂</div>
+          <div class="upload-icon"><i class="fa-solid fa-folder-open"></i></div>
           <h3>{{ dropLabel }}</h3>
           <p>{{ dropSubLabel }}</p>
           <p class="text-sm text-gray" style="margin-top:8px">{{ t.scan.dropMax }}</p>
@@ -23,22 +23,22 @@
           <input v-model="zipProjectName" type="text" class="form-control" :placeholder="t.scan.projectNamePlaceholder">
         </div>
         <button class="btn btn-primary" style="width:100%" :disabled="scanning" @click="scanZip">
-          {{ t.scan.scanZipBtn }}
+          <i class="fa-solid fa-magnifying-glass"></i> {{ t.scan.scanZipBtn }}
         </button>
       </div>
 
       <!-- Directory scan -->
       <div class="card">
-        <div class="card-title">{{ t.scan.dirTitle }}</div>
+        <div class="card-title"><i class="fa-solid fa-folder-open"></i>{{ t.scan.dirTitle }}</div>
         <div class="info-box">
-          <strong>{{ t.scan.dirInfoTitle }}</strong>
+          <strong><i class="fa-solid fa-circle-info"></i> {{ t.scan.dirInfoTitle }}</strong>
           {{ t.scan.dirInfoText }}
         </div>
         <div class="form-group">
           <label class="form-label">{{ t.scan.dirPathLabel }}</label>
           <div class="form-row">
             <input v-model="dirPath" type="text" class="form-control" :placeholder="t.scan.dirPathPlaceholder">
-            <button class="btn btn-ghost" :disabled="scanning" @click="scanDirectory">{{ t.scan.dirScanBtn }}</button>
+            <button class="btn btn-ghost" :disabled="scanning" @click="scanDirectory"><i class="fa-solid fa-magnifying-glass"></i> {{ t.scan.dirScanBtn }}</button>
           </div>
         </div>
         <div class="form-group">
@@ -46,7 +46,7 @@
           <input v-model="dirProjectName" type="text" class="form-control" :placeholder="t.scan.dirProjectNamePlaceholder">
         </div>
         <div class="info-box" style="margin-top:8px">
-          <strong>{{ t.scan.filesRecognized }}</strong>
+          <strong><i class="fa-solid fa-thumbtack"></i> {{ t.scan.filesRecognized }}</strong>
           manifest.json · package.json · ui5.yaml · mta.yaml · xs-security.json · *.cds · *.js · *.ts · .env · default-env.json
         </div>
       </div>
@@ -60,21 +60,21 @@
     </div>
 
     <!-- Error -->
-    <div v-if="errorMsg" class="alert alert-error">❌ {{ errorMsg }}</div>
+    <div v-if="errorMsg" class="alert alert-error"><i class="fa-regular fa-circle-xmark"></i> {{ errorMsg }}</div>
 
     <!-- Quick stats preview -->
     <div v-if="scanDone && !scanning">
       <div class="alert alert-success">
-        {{ t.scan.scanDone }}
+        <i class="fa-solid fa-circle-check"></i> {{ t.scan.scanDone }}
         <a href="#" style="margin-left:8px;color:var(--sap-blue)" @click.prevent="$emit('scan-complete', lastReport)">{{ t.scan.seeReport }}</a>
       </div>
     </div>
 
     <!-- Recent scans -->
     <div class="card" id="recentScans">
-      <div class="card-title">{{ t.scan.recentScans }}</div>
+      <div class="card-title"><i class="fa-regular fa-clock"></i> {{ t.scan.recentScans }}</div>
       <div v-if="recentItems.length === 0" class="empty">
-        <div class="icon">🔍</div>
+        <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
         <p>{{ t.scan.noScans }}</p>
       </div>
       <div v-else>
@@ -87,7 +87,7 @@
           <div class="risk-dot" :style="{ background: riskColor(r.riskScore) }"></div>
           <div style="flex:1">
             <div class="font-bold">{{ r.projectName }}</div>
-            <div class="text-sm text-gray">{{ t.report.scannedAt(r.scannedAt) }}</div>
+            <div class="text-sm text-gray"><i class="fa-regular fa-calendar-days"></i> {{ t.report.scannedAt(r.scannedAt) }}</div>
           </div>
           <div style="font-size:18px;font-weight:700;" :style="{ color: riskColor(r.riskScore) }">{{ r.riskScore }}/100</div>
           <div style="color:#999">›</div>

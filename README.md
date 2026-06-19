@@ -1,109 +1,64 @@
-# 🔒 SAP DevSec Scanner
+# SAP DevSec Scanner
 
 > Outil open-source d'analyse de sécurité pour projets SAP BTP (SAPUI5/Fiori & CAP)
 
-[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)](https://nodejs.org)
-[![Vue.js](https://img.shields.io/badge/Vue.js-3.x-brightgreen)](https://vuejs.org)
-[![Express](https://img.shields.io/badge/Express-4.x-lightgrey)](https://expressjs.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Node.js](https://img.shields.io/badge/Node.js-23%2B-green)
+![Vue.js](https://img.shields.io/badge/Vue.js-3.4-brightgreen)
+![Express](https://img.shields.io/badge/Express-4.18-lightgrey)
+![GitHub License](https://img.shields.io/github/license/thanatos-vf-2000/sap-devsec-scanner)
+
+[![Docs](https://img.shields.io/badge/docs-online-brightgreen)](https://thanatos-vf-2000.github.io/sap-devsec-scanner/) [![Workflow Status](https://github.com/thanatos-vf-2000/sap-devsec-scanner/actions/workflows/docs.yml/badge.svg?branch=master)](https://github.com/thanatos-vf-2000/sap-devsec-scanner/actions)
+---
+
+## Table des matières
+
+- [Présentation](#présentation)
+- [Fonctionnalités](#fonctionnalités)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Gestion des langues](#gestion-des-langues)
+- [Structure du projet](#structure-du-projet)
+- [API REST](#api-rest)
+- [Scanners disponibles](#scanners-disponibles)
+- [Contribution](#contribution)
+- [Licence](#licence)
 
 ---
 
-## 📋 Table des matières
-
-- [Présentation](#-présentation)
-- [Fonctionnalités](#-fonctionnalités)
-- [Architecture](#-architecture)
-- [Prérequis](#-prérequis)
-- [Installation](#-installation)
-- [Utilisation](#-utilisation)
-- [Gestion des langues](#-gestion-des-langues)
-- [Structure du projet](#-structure-du-projet)
-- [API REST](#-api-rest)
-- [Scanners disponibles](#-scanners-disponibles)
-- [Contribution](#-contribution)
-
----
-
-## 🎯 Présentation
+## Présentation
 
 **SAP DevSec Scanner** analyse automatiquement vos projets SAP BTP pour détecter les vulnérabilités de sécurité courantes. Il prend en charge les projets **SAPUI5/Fiori** et **CAP (Cloud Application Programming)**.
 
 Le scanner accepte :
-- un **fichier ZIP** de projet uploadé depuis le navigateur
-- un **chemin de répertoire** sur le serveur (accès direct au filesystem)
+- un **fichier ZIP** de projet uploadé depuis le navigateur,
+- un **chemin de répertoire** sur le serveur (accès direct au filesystem).
 
 ---
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
 | Fonctionnalité | Description |
 |---|---|
-| 🎨 **UI5 Version Scanner** | Détecte les versions SAPUI5 obsolètes ou EOL (End of Life) |
-| 📦 **NPM Security Scanner** | Audit des dépendances npm, détection de CVE |
-| ⚙️ **CAP Security Scanner** | Contrôle d'accès, injection SQL, sécurité des services CDS |
-| 🔍 **UI5 Code Scanner** | Détection XSS, `eval()`, `innerHTML`, open redirect |
-| 🔐 **Secrets Scanner** | Credentials en clair, tokens JWT, clés API exposées |
-| ☁️ **BTP Destinations Scanner** | Analyse des configurations XSUAA et destinations BTP |
-| 🌐 **i18n automatique** | Interface en français ou anglais selon le navigateur |
-| 📊 **Score de risque** | Score 0–100 pondéré par sévérité (CRITICAL / HIGH / MEDIUM / LOW) |
-| 📋 **Historique des scans** | Conservation en mémoire des rapports de session |
+| **UI5 Version Scanner** | Détecte les versions SAPUI5 obsolètes ou EOL (End of Life) |
+| **NPM Security Scanner** | Audit des dépendances npm, détection de CVE |
+| **CAP Security Scanner** | Contrôle d'accès, injection SQL, sécurité des services CDS |
+| **UI5 Code Scanner** | Détection XSS, `eval()`, `innerHTML`, open redirect |
+| **Secrets Scanner** | Credentials en clair, tokens JWT, clés API exposées |
+| **BTP Destinations Scanner** | Analyse des configurations XSUAA et destinations BTP |
+| **Score de risque** | Score 0-100 pondéré par sévérité (CRITICAL / HIGH / MEDIUM / LOW) |
+| **Historique des scans** | Conservation en mémoire des rapports de session |
 
 ---
 
-## 🏗️ Architecture
+## Prérequis
 
-```
-sap-devsec-scanner/
-├── backend/                  # API Express.js (Node.js)
-│   ├── server.js             # Point d'entrée, middleware i18n
-│   ├── routes/
-│   │   └── scan.js           # Routes /api/scan/*
-│   ├── scanners/
-│   │   ├── ui5Scanner.js     # Scanner versions SAPUI5
-│   │   ├── capScanner.js     # Scanner sécurité CAP/CDS
-│   │   ├── secretsScanner.js # Scanner secrets & credentials
-│   │   ├── btpScanner.js     # Scanner destinations BTP
-│   │   └── npmScanner.js     # Scanner dépendances npm
-│   └── utils/
-│       ├── fileParser.js     # Parser ZIP et répertoire
-│       └── i18n.js           # Messages d'erreur backend (FR/EN)
-│
-├── frontend-vue/             # Application Vue.js 3
-│   ├── index.html
-│   ├── vite.config.js        # Build & proxy dev vers backend
-│   ├── package.json
-│   └── src/
-│       ├── main.js
-│       ├── App.vue           # Shell, navigation, health check
-│       ├── i18n/
-│       │   └── index.js      # Détection langue navigateur + traductions
-│       ├── views/
-│       │   ├── ScanView.vue      # Upload ZIP / scan répertoire
-│       │   ├── ReportView.vue    # Rapport de scan avec onglets
-│       │   ├── HistoryView.vue   # Historique des scans
-│       │   └── AboutView.vue     # À propos
-│       └── components/
-│           ├── UI5Tab.vue        # Onglet versions UI5
-│           ├── CAPTab.vue        # Onglet services CAP
-│           ├── SecretsTab.vue    # Onglet secrets
-│           ├── BTPTab.vue        # Onglet BTP
-│           ├── NPMTab.vue        # Onglet dépendances NPM
-│           └── IssuesTable.vue   # Tableau de problèmes réutilisable
-│
-└── frontend-dist/            # Build Vue (généré par `npm run build`)
-```
+- **Node.js** ≥ 23
+- **npm** ≥ 11
 
 ---
 
-## 📦 Prérequis
-
-- **Node.js** ≥ 18
-- **npm** ≥ 9
-
----
-
-## 🚀 Installation
+## Installation
 
 ### 1. Cloner le dépôt
 
@@ -115,48 +70,23 @@ cd sap-devsec-scanner
 ### 2. Installer les dépendances backend
 
 ```bash
-cd backend
 npm install
-```
-
-### 3. Installer les dépendances frontend et builder
-
-```bash
-cd ../frontend-vue
-npm install
-npm run build      # Génère frontend-dist/ pour la production
 ```
 
 ---
 
-## 🖥️ Utilisation
+## Utilisation
 
 ### Mode production (frontend buildé servi par Express)
 
 ```bash
-cd backend
 npm start
 # → http://localhost:3001
 ```
 
-### Mode développement (hot-reload Vue + proxy API)
-
-Terminal 1 — Backend :
-```bash
-cd backend
-npm run dev        # nodemon, redémarre auto
-```
-
-Terminal 2 — Frontend Vue :
-```bash
-cd frontend-vue
-npm run dev        # Vite dev server sur :5173, proxy /api → :3001
-# → http://localhost:5173
-```
-
 ---
 
-## 🌐 Gestion des langues
+## Gestion des langues
 
 L'interface est automatiquement affichée en **français** ou en **anglais** selon la langue configurée dans le navigateur.
 
@@ -195,18 +125,20 @@ Les messages d'erreur API sont traduits via `backend/utils/i18n.js`.
 
 ---
 
-## 📁 Structure du projet
+## Structure du projet
+
+>Source du projet uniquement disponible dans la branche **dev**.
 
 ```
 Racine/
-├── backend/           # Serveur Express (API + serve du frontend buildé)
-├── frontend-vue/      # Sources Vue.js (développement)
-└── frontend-dist/     # Frontend buildé (généré, servi en production)
+├── backend/           # Serveur Express (API + serveur du frontend buildé)
+├── frontend/          # Sources Vue.js (développement)
+└── docs/              # Documentation github (https://thanatos-vf-2000.github.io/sap-devsec-scanner/)
 ```
 
 ---
 
-## 📡 API REST
+## API REST
 
 | Méthode | Endpoint | Description |
 |---|---|---|
@@ -254,33 +186,33 @@ Racine/
 
 ---
 
-## 🔍 Scanners disponibles
+## Scanners disponibles
 
-### 🎨 UI5 Version Scanner
+### UI5 Version Scanner
 Détecte la version SAPUI5 déclarée dans `manifest.json`, `ui5.yaml`, et les CDN bootstrap, puis la compare au tableau officiel des versions supportées (LTS, latest, EOM).
 
-### 📦 NPM Security Scanner
+### NPM Security Scanner
 Analyse les `package.json` pour inventorier les dépendances SAP et signaler les paquets présentant des risques connus.
 
-### ⚙️ CAP Security Scanner
+### CAP Security Scanner
 Inspecte les fichiers `.cds`, `mta.yaml` et `xs-security.json` pour détecter : services sans `@requires`, configurations XSUAA risquées, problèmes MTA.
 
-### 🔍 UI5 Code Scanner
+### UI5 Code Scanner
 Parcourt les fichiers `.js` et `.ts` des projets UI5/Fiori à la recherche de patterns dangereux : `eval()`, `innerHTML`, `sap.ui.require` non sécurisé, open redirect.
 
-### 🔐 Secrets Scanner
+### Secrets Scanner
 Détecte les credentials, tokens JWT, clés API et mots de passe codés en dur dans les fichiers `.env`, `default-env.json` et le code source.
 
-### ☁️ BTP Destinations Scanner
+### BTP Destinations Scanner
 Vérifie les configurations de destinations SAP BTP et XSUAA pour détecter les authentifications faibles ou les mauvaises pratiques.
 
 ---
 
-## 🤝 Contribution
+## Contribution
 
 Les contributions sont les bienvenues ! Pour proposer une amélioration :
 
-1. Forker le dépôt
+1. Forker le dépôt branche **dev**
 2. Créer une branche (`git checkout -b feature/ma-feature`)
 3. Commiter vos changements (`git commit -m 'feat: ajouter ...'`)
 4. Pousser la branche (`git push origin feature/ma-feature`)
@@ -288,9 +220,14 @@ Les contributions sont les bienvenues ! Pour proposer une amélioration :
 
 ---
 
-## 📄 Licence
+## Licence
 
-MIT — voir [LICENSE](LICENSE)
+Copyright 2026 @Franck VANHOUCKE
+
+Licensed under the [Apache License, Version 2.0](LICENSE).
+
+> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied
+
 
 ---
 
