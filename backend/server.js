@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+var RateLimit = require('express-rate-limit');
 
 const { version } = require('./package.json');
 const scanRouter = require('./routes/scan');
@@ -12,7 +13,16 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: '256mb' }));
+
+// set up rate limiter: maximum of requests per minute
+var limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minutes
+  max: 50, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 
 // ── Language detection middleware ──────────────────────────────
 // Detects language from Accept-Language header.

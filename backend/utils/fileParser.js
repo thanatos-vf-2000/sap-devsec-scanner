@@ -80,19 +80,20 @@ function parseDirectory(dirPath) {
 
   function walk(currentPath) {
     if (files.length >= MAX_TOTAL_FILES) return;
-    const relative = path.relative(absoluteDir, currentPath);
+    const resolvecurrentPath = path.resolve(currentPath);
+    const relative = path.relative(absoluteDir, resolvecurrentPath);
     if (shouldSkip(relative + '/')) return;
 
     let entries;
     try {
-      entries = fs.readdirSync(currentPath, { withFileTypes: true });
+      entries = fs.readdirSync(resolvecurrentPath, { withFileTypes: true });
     } catch (e) {
       return;
     }
 
     for (const entry of entries) {
       if (files.length >= MAX_TOTAL_FILES) break;
-      const fullPath = path.join(currentPath, entry.name);
+      const fullPath = path.join(resolvecurrentPath, entry.name);
       const relPath = path.relative(absoluteDir, fullPath);
 
       if (entry.isDirectory()) {

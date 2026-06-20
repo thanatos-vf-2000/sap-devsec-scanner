@@ -26,7 +26,7 @@ const messages = {
       zipTitle: 'Scanner un projet ZIP',
       dropHere: 'Déposer un ZIP ici',
       dropOr: 'ou cliquer pour sélectionner',
-      dropMax: 'Max 50MB - ZIP de projet SAP',
+      dropMax: 'Max 250MB - ZIP de projet SAP',
       fileSelected: 'Fichier sélectionné',
       projectNameLabel: 'Nom du projet (optionnel)',
       projectNamePlaceholder: 'my-fiori-app',
@@ -44,7 +44,7 @@ const messages = {
       extracting: 'Extraction du ZIP...',
       reading: 'Lecture des fichiers...',
       scanDone: 'Scan terminé !',
-      seeReport: 'Voir le rapport complet →',
+      seeReport: 'Voir le rapport complet ',
       recentScans: 'Scans récents',
       noScans: 'Aucun scan effectué',
       errorNoFile: 'Veuillez sélectionner un fichier ZIP',
@@ -143,6 +143,12 @@ const messages = {
       scanners: 'Scanners disponibles',
       resources: 'Ressources SAP',
       version: "Version",
+      versionList: {
+        build: 'Build date',
+        git: 'Git Hash',
+        app: 'App Version',
+        ui: 'UI Version,'
+      },
       scannerList: [
         'UI5 Version Scanner - Détecte les versions obsolètes ou EOL',
         'NPM Security Scanner - Audit des dépendances npm (CVE)',
@@ -150,6 +156,8 @@ const messages = {
         'UI5 Code Scanner - XSS, eval(), innerHTML, open redirect',
         'Secrets Scanner - Credentials, tokens JWT, clés API',
       ],
+      authors: 'Auteurs',
+      maintainers: 'Maintenance',
     },
   },
 
@@ -169,7 +177,7 @@ const messages = {
       zipTitle: 'Scan a ZIP project',
       dropHere: 'Drop a ZIP here',
       dropOr: 'or click to select',
-      dropMax: 'Max 50MB - SAP project ZIP',
+      dropMax: 'Max 250MB - SAP project ZIP',
       fileSelected: 'File selected',
       projectNameLabel: 'Project name (optional)',
       projectNamePlaceholder: 'my-fiori-app',
@@ -187,7 +195,7 @@ const messages = {
       extracting: 'Extracting ZIP...',
       reading: 'Reading files...',
       scanDone: 'Scan complete!',
-      seeReport: 'View full report →',
+      seeReport: 'View full report ',
       recentScans: 'Recent scans',
       noScans: 'No scans performed',
       errorNoFile: 'Please select a ZIP file',
@@ -277,6 +285,12 @@ const messages = {
       scanners: 'Available scanners',
       resources: 'SAP Resources',
       version: "Version",
+      versionList: {
+        build: 'Build date',
+        git: 'Git Hash',
+        app: 'App Version',
+        ui: 'UI Version,'
+      },
       scannerList: [
         'UI5 Version Scanner - Detects outdated or EOL versions',
         'NPM Security Scanner - npm dependency audit (CVE)',
@@ -284,6 +298,8 @@ const messages = {
         'UI5 Code Scanner - XSS, eval(), innerHTML, open redirect',
         'Secrets Scanner - Credentials, JWT tokens, API keys',
       ],
+      authors: 'Authors',
+      maintainers: 'Maintainers',
     },
   },
 };

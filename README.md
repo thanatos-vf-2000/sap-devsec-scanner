@@ -63,7 +63,7 @@ Le scanner accepte :
 ### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/votre-org/sap-devsec-scanner.git
+git clone https://github.com/thanatos-vf-2000/sap-devsec-scanner.git
 cd sap-devsec-scanner
 ```
 

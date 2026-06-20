@@ -72,7 +72,7 @@
     </div>
 
     <div class="font-bold mb-8"><i class="fa-solid fa-triangle-exclamation"></i> {{ t.report.ui5.issues }}</div>
-    <IssuesTable :issues="allIssues" :empty-msg="`<i class='fa-regular fa-circle-check'></i> ${t.report.ui5.noIssues}`" />
+    <IssuesTable :issues="allIssues" :empty-msg="`${t.report.ui5.noIssues}`" />
   </div>
 </template>
 
@@ -169,8 +169,13 @@ export default {
 
       // ── 5. Enrich each row with display-ready fields ──────────────────────
       return filtered.map(v => {
-        const majorMinor = v.version.split('.').slice(0, 2).join('.');
-        const isCurrent = !!currentMajor && majorMinor === currentMajor;
+        //const majorMinor = v.version.split('.').slice(0, 2).join('.');
+        //const isCurrent = !!currentMajor && majorMinor === currentMajor;
+        const detected = props.data.detectedVersion?.split('.');
+        const isCurrent =
+          detected &&
+          v.version === `${detected[0]}.${detected[1]}` &&
+          v.patches?.includes(props.data.detectedVersion);
 
         const eomDate = parseQuarterDate(v.eom);
         const ecpDate = parseQuarterDate(v.ecp);
@@ -179,7 +184,7 @@ export default {
         const ecpPassed = ecpDate && ecpDate < today;
 
         // Effective status: if EOM date has passed, override status regardless
-        const effectiveStatus = eomPassed ? 'eom' : v.status;
+        const effectiveStatus = eomPassed||ecpPassed ? 'eom' : v.status;
 
         // Label shown in the Status column
         const effectiveLabel =
@@ -226,3 +231,6 @@ export default {
   },
 };
 </script>
+<style>
+tr.current.version-row-maintained {background: var(--sap-accent); }
+</style>

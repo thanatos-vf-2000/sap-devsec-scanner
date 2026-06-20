@@ -3,12 +3,25 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import { execSync } from 'node:child_process';
 
-const rewrites = {
-  '/scan/upload': '/scan_upload',
-  '/scan/history': '/scan_history',
-  'scan/4e144b6e-2419-476f-a062-cf0e5a8332d7': 'scan_4e144b6e-2419-476f-a062-cf0e5a8332d7',
-};
+import appPkg from '../backend/package.json';
+import uiPkg from './package.json';
+import humans from '../humans.json';
+
+
+const buildTime = new Date().toISOString();
+
+function getGitHash() {
+  try {
+    return execSync('git rev-parse --short HEAD')
+      .toString()
+      .trim();
+  } catch (e) {
+    return 'unknown';
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -16,8 +29,14 @@ export default defineConfig({
     vueDevTools(),
   ],
   define: {
-    __APP_VERSION__: JSON.stringify(require('../backend/package.json').version),
-    __UI_VERSION__: JSON.stringify(require('./package.json').version),
+    __APP_VERSION__    : JSON.stringify(appPkg.version),
+    __UI_VERSION__     : JSON.stringify(uiPkg.version),
+    __BUILD_TIME__     : JSON.stringify(buildTime),
+    __GIT_HASH__       : JSON.stringify(process.env.GIT_COMMIT || getGitHash()),
+    __NODE_ENV__       : JSON.stringify(process.env.NODE_ENV),
+    __BUILD_NUMBER__   : JSON.stringify(process.env.BUILD_NUMBER || 'local'),
+    __HUMANS_AUTHORS__ : humans.authors,
+    __HUMANS_MAINT__   : humans.maintainers,
   },
   resolve: {
     alias: {
