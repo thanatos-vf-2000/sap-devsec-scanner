@@ -29,7 +29,7 @@
       <ReportView v-show="currentView === 'report'" :report="currentReport" />
 
       <!-- HISTORY VIEW -->
-      <HistoryView v-show="currentView === 'history'" @load-scan="onLoadScan" />
+      <HistoryView v-if="currentView === 'history'" @load-scan="onLoadScan" />
 
       <!-- ABOUT VIEW -->
       <AboutView v-show="currentView === 'about'" />

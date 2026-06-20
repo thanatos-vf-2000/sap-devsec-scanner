@@ -6,7 +6,8 @@
 - backend: update size limit 10mb to 250mb (Max file Upload),
 - Security and Quality - Code scanning - Missing rate limiting #8
 - Security and Quality - Uncontrolled data used in path expression - routes/scan.js #9
-- Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js #10
+- Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js #10 / #11 / #12
+- Correction - Load vue History not refresh,
 
 ## v1.2.0 (2026-06-20)
 - Add documentation gh-pages,

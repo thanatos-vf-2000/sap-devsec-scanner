@@ -66,7 +66,7 @@
     <div v-if="scanDone && !scanning">
       <div class="alert alert-success">
         <i class="fa-solid fa-circle-check"></i> {{ t.scan.scanDone }}
-        <a href="#" style="margin-left:8px;color:var(--sap-blue)" @click.prevent="$emit('scan-complete', lastReport)">{{ t.scan.seeReport }}</a>
+        <a href="#" style="margin-left:8px;color:var(--sap-blue)" @click.prevent="$emit('scan-complete', lastReport)">{{ t.scan.seeReport }} <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
       </div>
     </div>
 
