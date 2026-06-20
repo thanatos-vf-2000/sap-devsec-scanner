@@ -18,7 +18,7 @@
     </div>
 
     <div class="font-bold mb-8 mt-16"><i class="fa-solid fa-triangle-exclamation"></i> {{ t.report.cap.vulns }}</div>
-    <IssuesTable :issues="allVulns" :empty-msg="`<i class='fa-regular fa-circle-check'></i> ${t.report.cap.noVulns}`" />
+    <IssuesTable :issues="allVulns" :empty-msg="`${t.report.cap.noVulns}`" />
   </div>
 </template>
 

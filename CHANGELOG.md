@@ -16,6 +16,10 @@
   - Bug 2 - parseCDSServices searches for @requires and @restrict in the raw context,
   - Correction in CDS_AUTH_PATTERNS to account for cases with and without @,
   - Correction to exclude annotate in searches for @requires and @restrict.
+- Backend - BTP Scanner:
+  - Bug 1 - Destination: ui5.sap.com: Ignored,
+  - Bug 2 - Destination: srv-api/srv-url & HTML5.ForwardAuthToken = true: Add LOW BTP_MTA_NO_AUTH_FORWARD,
+  - Bug 3 - Other Destination: HIGH BTP_MTA_NO_AUTH.
 
 ## v1.2.0 (2026-06-20)
 - Add documentation gh-pages,

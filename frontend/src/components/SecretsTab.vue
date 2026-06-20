@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="font-bold mb-8"><i class="fa-solid fa-vault"></i> {{ t.report.secrets.title }}</div>
-    <IssuesTable :issues="findings" :empty-msg="`<i class='fa-regular fa-circle-check'></i> ${t.report.secrets.noSecrets}`" />
+    <IssuesTable :issues="findings" :empty-msg="`${t.report.secrets.noSecrets}`" />
   </div>
 </template>
 

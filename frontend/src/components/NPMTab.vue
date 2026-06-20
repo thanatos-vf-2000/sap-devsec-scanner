@@ -46,7 +46,7 @@
     </table>
 
     <div class="font-bold mb-8"><i class="fa-solid fa-triangle-exclamation"></i> {{ t.report.npm.npmIssues }}</div>
-    <IssuesTable :issues="data.issues || []" :empty-msg="`<i class='fa-regular fa-circle-check'></i> ${t.report.npm.noIssues}`" />
+    <IssuesTable :issues="data.issues || []" :empty-msg="`${t.report.npm.noIssues}`" />
   </div>
 </template>
 

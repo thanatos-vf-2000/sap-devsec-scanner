@@ -41,16 +41,35 @@ function scanBTPDestinations(files) {
     if (file.content.includes('NoAuthentication')) {
       const lines = file.content.split('\n');
       lines.forEach((line, idx) => {
-        if (line.includes('NoAuthentication')) {
+        if (!line.includes('NoAuthentication')) return;
+
+        // Chercher le bloc destination autour (jusqu'à 10 lignes avant)
+        const contextLines = lines.slice(Math.max(0, idx - 10), idx + 5).join('\n');
+
+        // Exclure ui5.sap.com : CDN public SAP, NoAuthentication attendu
+        if (/URL:\s*https?:\/\/ui5\.sap\.com/.test(contextLines)) return;
+
+        // Exclure les destinations avec ForwardAuthToken : le token XSUAA est bien transmis
+        if (/HTML5\.ForwardAuthToken:\s*true/.test(contextLines)) {
           issues.push({
-            severity: 'HIGH',
-            code: 'BTP_MTA_NO_AUTH',
-            message: 'NoAuthentication found in MTA configuration',
+            severity: 'LOW',
+            code: 'BTP_MTA_NO_AUTH_FORWARD',
+            message: 'NoAuthentication avec ForwardAuthToken:true - token XSUAA transmis au backend',
             file: file.name,
             line: idx + 1,
             snippet: line.trim(),
           });
+          return;
         }
+
+        issues.push({
+          severity: 'HIGH',
+          code: 'BTP_MTA_NO_AUTH',
+          message: 'NoAuthentication found in MTA configuration',
+          file: file.name,
+          line: idx + 1,
+          snippet: line.trim(),
+        });
       });
     }
   }

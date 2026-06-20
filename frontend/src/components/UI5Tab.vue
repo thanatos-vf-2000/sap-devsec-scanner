@@ -72,7 +72,7 @@
     </div>
 
     <div class="font-bold mb-8"><i class="fa-solid fa-triangle-exclamation"></i> {{ t.report.ui5.issues }}</div>
-    <IssuesTable :issues="allIssues" :empty-msg="`<i class='fa-regular fa-circle-check'></i> ${t.report.ui5.noIssues}`" />
+    <IssuesTable :issues="allIssues" :empty-msg="`${t.report.ui5.noIssues}`" />
   </div>
 </template>
 
