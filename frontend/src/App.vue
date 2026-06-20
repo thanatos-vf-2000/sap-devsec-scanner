@@ -34,12 +34,28 @@
       <!-- ABOUT VIEW -->
       <AboutView v-show="currentView === 'about'" />
     </main>
+
+    <footer class="footer">
+      <div>App v{{ APP_VERSION }} · UI v{{ UI_VERSION }} (node: {{ NODE_ENV }} - build: {{ BUILD_NUMBER }})</div>
+      <div>Build: {{ buildTime }}</div>
+      <div>Commit: {{ GIT_HASH }}</div>
+    </footer>
   </div>
 </template>
 
-<script>
+<script setup>
+const APP_VERSION = __APP_VERSION__;
+const UI_VERSION = __UI_VERSION__;
+const GIT_HASH = __GIT_HASH__;
+
+const buildTime = new Date(__BUILD_TIME__).toLocaleString();
+
+const NODE_ENV = __NODE_ENV__;
+const BUILD_NUMBER = __BUILD_NUMBER__;
+
 import { ref, onMounted, onUnmounted } from 'vue';
 import { t } from './i18n/index.js';
+
 import ScanView from './views/ScanView.vue';
 import ReportView from './views/ReportView.vue';
 import HistoryView from './views/HistoryView.vue';
@@ -47,63 +63,59 @@ import AboutView from './views/AboutView.vue';
 
 const API = '';
 
-export default {
-  name: 'App',
-  components: { ScanView, ReportView, HistoryView, AboutView },
-  setup() {
-    const currentView = ref('scan');
-    const currentReport = ref(null);
-    const appVersion = ref('...');
-    const healthColor = ref('#107e3e');
-    const healthMsg = ref(t.health.connected);
-    let healthInterval = null;
+const currentView = ref('scan');
+const currentReport = ref(null);
+const appVersion = ref('...');
+const healthColor = ref('#107e3e');
+const healthMsg = ref(t.health.connected);
 
-    const navItems = [
-      { view: 'scan', label: t.nav.scanner, icon: 'fa-magnifying-glass' },
-      { view: 'report', label: t.nav.report, icon: 'fa-chart-column'  },
-      { view: 'history', label: t.nav.history, icon: 'fa-file-lines'  },
-      { view: 'about', label: t.nav.about, icon: 'fa-circle-info'  },
-    ];
+let healthInterval = null;
 
-    function showView(name) {
-      currentView.value = name;
+const navItems = [
+  { view: 'scan', label: t.nav.scanner, icon: 'fa-magnifying-glass' },
+  { view: 'report', label: t.nav.report, icon: 'fa-chart-column' },
+  { view: 'history', label: t.nav.history, icon: 'fa-file-lines' },
+  { view: 'about', label: t.nav.about, icon: 'fa-circle-info' },
+];
+
+function showView(name) {
+  currentView.value = name;
+}
+
+function onScanComplete(report) {
+  currentReport.value = report;
+  showView('report');
+}
+
+function onLoadScan(report) {
+  currentReport.value = report;
+  showView('report');
+}
+
+async function checkBackend() {
+  try {
+    const res = await fetch(`${API}/api/health`);
+    if (res.ok) {
+      const data = await res.json();
+      healthColor.value = '#107e3e';
+      healthMsg.value = t.health.status(data.service, data.version);
+      appVersion.value = data.version;
     }
+  } catch {
+    healthColor.value = '#8b0000';
+    healthMsg.value = t.health.disconnected;
+  }
+}
 
-    function onScanComplete(report) {
-      currentReport.value = report;
-      showView('report');
-    }
+onMounted(() => {
+  checkBackend();
+  healthInterval = setInterval(checkBackend, 10000);
+});
 
-    function onLoadScan(report) {
-      currentReport.value = report;
-      showView('report');
-    }
+onUnmounted(() => {
+  clearInterval(healthInterval);
+});
 
-    async function checkBackend() {
-      try {
-        const res = await fetch(`${API}/api/health`);
-        if (res.ok) {
-          const data = await res.json();
-          healthColor.value = '#107e3e';
-          healthMsg.value = t.health.status(data.service, data.version);
-          appVersion.value = data.version;
-        }
-      } catch {
-        healthColor.value = '#8b0000';
-        healthMsg.value = t.health.disconnected;
-      }
-    }
-
-    onMounted(() => {
-      checkBackend();
-      healthInterval = setInterval(checkBackend, 10000);
-    });
-
-    onUnmounted(() => clearInterval(healthInterval));
-
-    return { currentView, currentReport, appVersion, healthColor, healthMsg, navItems, showView, onScanComplete, onLoadScan };
-  },
-};
 </script>
 
 <style>
@@ -271,6 +283,13 @@ body { font-family: var(--font); background: var(--sap-light); color: #333; font
 .about-version-text {color: var(--sap-blue); font-weight: bold;}
 .sep { width: 90%; height: 2px; background-color: var(--sap-gray); margin: 10px 5% 10px 5%; }
 
+.humans-link { color: inherit; text-decoration: none; font: inherit; }
+.humans-link:visited { color: inherit; }
+.humans-link:hover { color: inherit; text-decoration: none; }
+.humans-link:active { color: inherit; }
+
+/* Footer */
+.footer { position: fixed; bottom: 0; left: 0; right: 0; font-size: 12px; padding: 6px 12px; display: flex; justify-content: space-between; background: var(--sap-gray); color: var(--sap-light); border-top: 1px solid color-mix(in srgb, var(--sap-gray), black 20%); }
 @media (max-width: 768px) {
   .summary-grid { grid-template-columns: repeat(3, 1fr); }
   .main { padding: 16px; }

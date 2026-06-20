@@ -9,7 +9,8 @@
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js #10 / #11 / #12
 - Correction - Load vue History not refresh,
 - Correction - Report UI5 - Display End of Maintenance,
-- Report UI5 - Highlighting "Your version".
+- Report UI5 - Highlighting "Your version",
+- Frontend - Add Footer on APP.vue / Add humans informations (authors and maintainers) to AboutView.vue.
 
 ## v1.2.0 (2026-06-20)
 - Add documentation gh-pages,

@@ -143,6 +143,12 @@ const messages = {
       scanners: 'Scanners disponibles',
       resources: 'Ressources SAP',
       version: "Version",
+      versionList: {
+        build: 'Build date',
+        git: 'Git Hash',
+        app: 'App Version',
+        ui: 'UI Version,'
+      },
       scannerList: [
         'UI5 Version Scanner - Détecte les versions obsolètes ou EOL',
         'NPM Security Scanner - Audit des dépendances npm (CVE)',
@@ -150,6 +156,8 @@ const messages = {
         'UI5 Code Scanner - XSS, eval(), innerHTML, open redirect',
         'Secrets Scanner - Credentials, tokens JWT, clés API',
       ],
+      authors: 'Auteurs',
+      maintainers: 'Maintenance',
     },
   },
 
@@ -277,6 +285,12 @@ const messages = {
       scanners: 'Available scanners',
       resources: 'SAP Resources',
       version: "Version",
+      versionList: {
+        build: 'Build date',
+        git: 'Git Hash',
+        app: 'App Version',
+        ui: 'UI Version,'
+      },
       scannerList: [
         'UI5 Version Scanner - Detects outdated or EOL versions',
         'NPM Security Scanner - npm dependency audit (CVE)',
@@ -284,6 +298,8 @@ const messages = {
         'UI5 Code Scanner - XSS, eval(), innerHTML, open redirect',
         'Secrets Scanner - Credentials, JWT tokens, API keys',
       ],
+      authors: 'Authors',
+      maintainers: 'Maintainers',
     },
   },
 };
