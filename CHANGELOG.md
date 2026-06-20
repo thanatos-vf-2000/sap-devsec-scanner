@@ -14,7 +14,8 @@
 - Backend - CAP Scanner:
   - Bug 1 - @requires in the CDS_AUTH_PATTERNS regex:  without @, because it is already included in the enclosing @(...) annotation,
   - Bug 2 - parseCDSServices searches for @requires and @restrict in the raw context,
-  - Correction in CDS_AUTH_PATTERNS to account for cases with and without @.
+  - Correction in CDS_AUTH_PATTERNS to account for cases with and without @,
+  - Correction to exclude annotate in searches for @requires and @restrict.
 
 ## v1.2.0 (2026-06-20)
 - Add documentation gh-pages,

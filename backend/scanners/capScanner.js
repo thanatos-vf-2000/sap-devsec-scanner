@@ -108,18 +108,27 @@ function parseCDSServices(content, filename) {
   const services = [];
   const lines = content.split('\n');
 
-  // Find all service definitions
-  const serviceRegex = /service\s+(\w+)/g;
+  const serviceRegex = /\bservice\s+(\w+)/g;
   let match;
   while ((match = serviceRegex.exec(content)) !== null) {
-    const serviceName = match[1];
     const lineNum = content.substring(0, match.index).split('\n').length;
+    const currentLine = lines[lineNum - 1] || '';
+    const prevLine = lines[lineNum - 2] || '';
 
-    // Check for auth annotations on this service
+    // Exclure : "annotate service.X" sur la même ligne ou "using X as service from"
+    if (
+      /annotate\s+/.test(currentLine) ||
+      /\bservice\s*\./.test(currentLine) ||        // service.Entity
+      /\bas\s+service\b/.test(currentLine) ||      // using X as service from
+      /annotate\s+$/.test(prevLine.trimEnd())      // annotate seul sur la ligne précédente
+    ) {
+      continue;
+    }
+
     const contextBefore = content.substring(Math.max(0, match.index - 200), match.index);
     const contextAfter = content.substring(match.index, Math.min(content.length, match.index + 500));
-
     const context = contextBefore + contextAfter;
+
     const hasRequires = /@requires|[\(@,\s]requires\s*:/i.test(context);
     const hasRestrict = /@restrict|[\(@,\s]restrict\s*:/i.test(context);
     const requiresMatch =
@@ -127,7 +136,7 @@ function parseCDSServices(content, filename) {
       context.match(/[\(@,\s]requires\s*:\s*['"`]([^'"`]+)['"`]/);
 
     services.push({
-      name: serviceName,
+      name: match[1],
       file: filename,
       line: lineNum,
       hasAuth: hasRequires || hasRestrict,
