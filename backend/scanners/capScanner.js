@@ -5,12 +5,12 @@ const path = require('path');
 // CAP/CDS security checks
 const CDS_AUTH_PATTERNS = [
   {
-    pattern: /@requires\s*:\s*['"`]([^'"`]+)['"`]/g,
+    pattern: /(?:@requires|[\(@,\s]requires)\s*:\s*['"`]([^'"`]+)['"`]/g,
     type: 'auth_found',
     message: 'Authorization restriction found',
   },
   {
-    pattern: /@restrict\s*to\s*[^;{]+/g,
+    pattern: /@\(?restrict\s*(?:to\s*[^;{]+|\s*:\s*\[)/g,
     type: 'restrict_found',
     message: 'Restrict annotation found',
   },
@@ -119,9 +119,12 @@ function parseCDSServices(content, filename) {
     const contextBefore = content.substring(Math.max(0, match.index - 200), match.index);
     const contextAfter = content.substring(match.index, Math.min(content.length, match.index + 500));
 
-    const hasRequires = /@requires/.test(contextBefore + contextAfter);
-    const hasRestrict = /@restrict/.test(contextBefore + contextAfter);
-    const requiresMatch = contextBefore.match(/@requires\s*:\s*['"`]([^'"`]+)['"`]/);
+    const context = contextBefore + contextAfter;
+    const hasRequires = /@requires|[\(@,\s]requires\s*:/i.test(context);
+    const hasRestrict = /@restrict|[\(@,\s]restrict\s*:/i.test(context);
+    const requiresMatch =
+      context.match(/@requires\s*:\s*['"`]([^'"`]+)['"`]/) ||
+      context.match(/[\(@,\s]requires\s*:\s*['"`]([^'"`]+)['"`]/);
 
     services.push({
       name: serviceName,

@@ -10,7 +10,11 @@
 - Correction - Load vue History not refresh,
 - Correction - Report UI5 - Display End of Maintenance,
 - Report UI5 - Highlighting "Your version",
-- Frontend - Add Footer on APP.vue / Add humans informations (authors and maintainers) to AboutView.vue.
+- Frontend - Add Footer on APP.vue / Add humans informations (authors and maintainers) to AboutView.vue,
+- Backend - CAP Scanner:
+  - Bug 1 - @requires in the CDS_AUTH_PATTERNS regex:  without @, because it is already included in the enclosing @(...) annotation,
+  - Bug 2 - parseCDSServices searches for @requires and @restrict in the raw context,
+  - Correction in CDS_AUTH_PATTERNS to account for cases with and without @.
 
 ## v1.2.0 (2026-06-20)
 - Add documentation gh-pages,
