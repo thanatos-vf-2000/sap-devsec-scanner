@@ -1,7 +1,7 @@
 # CHANGELOG
 
 <!-- version list -->
-## v1.3.0 (2026-06-xx)
+## v1.2.1 (2026-06-xx)
 - Update README,
 - backend: update size limit 10mb to 250mb (Max file Upload),
 - Security and Quality - Code scanning - Missing rate limiting #8
