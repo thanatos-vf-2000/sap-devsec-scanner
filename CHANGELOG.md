@@ -8,7 +8,8 @@
 - Security and Quality - Uncontrolled data used in path expression - routes/scan.js #9
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js #10 / #11 / #12
 - Correction - Load vue History not refresh,
-- Correction - Report UI5 - Display End of Maintenance.
+- Correction - Report UI5 - Display End of Maintenance,
+- Report UI5 - Highlighting "Your version".
 
 ## v1.2.0 (2026-06-20)
 - Add documentation gh-pages,

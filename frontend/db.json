@@ -1,5 +1,5 @@
 {
-    "health": {"status":"ok","version":"1.2.0","service":"SAP DevSec Scanner","lang":"fr"},
+    "health": {"status":"ok","version":"1.3.0","service":"SAP DevSec Scanner","lang":"fr"},
     "scan_upload": {
     "success": true,
     "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
@@ -125,7 +125,7 @@
                     "patch": "1.141.4",
                     "status": "maintained",
                     "eom": "",
-                    "ecp": "Q4/2026",
+                    "ecp": "Q1/2027",
                     "label": "Maintained"
                 },
                 "latestVersion": "1.148.1",
@@ -368,7 +368,7 @@
                         "patch": "1.141.4",
                         "status": "maintained",
                         "eom": "",
-                        "ecp": "Q4/2026",
+                        "ecp": "Q1/2027",
                         "label": "Maintained"
                     },
                     {
@@ -2398,7 +2398,7 @@
                 "patch": "1.141.4",
                 "status": "maintained",
                 "eom": "",
-                "ecp": "Q4/2026",
+                "ecp": "Q1/2027",
                 "label": "Maintained"
             },
             "latestVersion": "1.148.1",
@@ -2641,7 +2641,7 @@
                     "patch": "1.141.4",
                     "status": "maintained",
                     "eom": "",
-                    "ecp": "Q4/2026",
+                    "ecp": "Q1/2027",
                     "label": "Maintained"
                 },
                 {

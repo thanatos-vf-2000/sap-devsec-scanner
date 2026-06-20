@@ -169,8 +169,13 @@ export default {
 
       // ── 5. Enrich each row with display-ready fields ──────────────────────
       return filtered.map(v => {
-        const majorMinor = v.version.split('.').slice(0, 2).join('.');
-        const isCurrent = !!currentMajor && majorMinor === currentMajor;
+        //const majorMinor = v.version.split('.').slice(0, 2).join('.');
+        //const isCurrent = !!currentMajor && majorMinor === currentMajor;
+        const detected = props.data.detectedVersion?.split('.');
+        const isCurrent =
+          detected &&
+          v.version === `${detected[0]}.${detected[1]}` &&
+          v.patches?.includes(props.data.detectedVersion);
 
         const eomDate = parseQuarterDate(v.eom);
         const ecpDate = parseQuarterDate(v.ecp);
@@ -226,3 +231,6 @@ export default {
   },
 };
 </script>
+<style>
+tr.current.version-row-maintained {background: var(--sap-accent); }
+</style>
