@@ -4,8 +4,8 @@
 ## v1.3.0 (2026-06-xx)
 - Update README,
 - backend: update size limit 10mb to 250mb (Max file Upload),
-- Security and Quality - Code scanning - Missing rate limiting
-
+- Security and Quality - Code scanning - Missing rate limiting #8
+- Security and Quality - Uncontrolled data used in path expression - routes/scan.js #9
 
 ## v1.2.0 (2026-06-20)
 - Add documentation gh-pages,

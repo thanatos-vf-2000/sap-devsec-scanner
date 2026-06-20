@@ -127,18 +127,19 @@ router.post('/directory', express.json(), async (req, res) => {
     const { dirPath, projectName } = req.body;
     if (!dirPath) return res.status(400).json({ error: t.dirRequired || 'dirPath required' });
 
-    if (!fs.existsSync(dirPath)) {
-      return res.status(400).json({ error: t.dirNotFound ? t.dirNotFound(dirPath) : `Directory not found: ${dirPath}` });
+    const resolvedPath = path.resolve(dirPath);
+    if (!fs.existsSync(resolvedPath)) {
+      return res.status(400).json({ error: t.dirNotFound ? t.dirNotFound(resolvedPath) : `Directory not found: ${resolvedPath}` });
     }
 
     const scanId = uuidv4();
-    const files = parseDirectory(dirPath);
+    const files = parseDirectory(resolvedPath);
 
     if (files.length === 0) {
       return res.status(400).json({ error: t.noFilesInDir || 'No scannable files found in directory' });
     }
 
-    const report = buildReport(scanId, files, projectName || path.basename(dirPath));
+    const report = buildReport(scanId, files, projectName || path.basename(resolvedPath));
     scanHistory.set(scanId, report);
 
     res.json({ success: true, scanId, report });
