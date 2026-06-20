@@ -179,7 +179,7 @@ export default {
         const ecpPassed = ecpDate && ecpDate < today;
 
         // Effective status: if EOM date has passed, override status regardless
-        const effectiveStatus = eomPassed ? 'eom' : v.status;
+        const effectiveStatus = eomPassed||ecpPassed ? 'eom' : v.status;
 
         // Label shown in the Status column
         const effectiveLabel =
