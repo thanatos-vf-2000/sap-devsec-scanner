@@ -1,7 +1,10 @@
 # CHANGELOG
 
 <!-- version list -->
-## v1.2.1 (2026-06-xx)
+## v1.2.2 (2026-06-xx)
+- Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104 #3 / #4.
+
+## v1.2.1 (2026-06-21)
 - Update README,
 - backend: update size limit 10mb to 250mb (Max file Upload),
 - Security and Quality - Code scanning - Missing rate limiting #8
