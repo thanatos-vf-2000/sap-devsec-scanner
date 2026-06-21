@@ -127,7 +127,8 @@ router.post('/directory', express.json(), async (req, res) => {
     const { dirPath, projectName } = req.body;
     if (!dirPath) return res.status(400).json({ error: t.dirRequired || 'dirPath required' });
 
-    const resolvedPath = path.resolve(dirPath);
+    const allowedDirPath = fs.realpathSync(dirPath);
+    const resolvedPath = path.resolve(allowedDirPath);
     if (!fs.existsSync(resolvedPath)) {
       return res.status(400).json({ error: t.dirNotFound ? t.dirNotFound(resolvedPath) : `Directory not found: ${resolvedPath}` });
     }
