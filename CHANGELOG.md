@@ -1,8 +1,10 @@
 # CHANGELOG
 
 <!-- version list -->
-## v1.2.2 (2026-06-xx)
-- Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104 #3 / #4.
+## v1.2.2 (2026-06-21)
+- Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104,
+- Security and Quality - Uncontrolled data used in path expression - routes/scan.js:131,
+- Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:89.
 
 ## v1.2.1 (2026-06-21)
 - Update README,
