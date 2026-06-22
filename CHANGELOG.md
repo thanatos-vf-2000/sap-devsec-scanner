@@ -1,6 +1,9 @@
 # CHANGELOG
 
 <!-- version list -->
+## v1.3.0 (2026-06-xx)
+- enable / disable Vue DevTools (ENABLE_DEVTOOLS=true/false).
+
 ## v1.2.2 (2026-06-21)
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104,
 - Security and Quality - Uncontrolled data used in path expression - routes/scan.js:131,
