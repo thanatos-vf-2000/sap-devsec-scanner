@@ -178,6 +178,12 @@ const UI5_SECURITY_PATTERNS = [
     message: 'Direct innerHTML assignment - XSS vulnerability',
   },
   {
+    pattern: /\.outerHTML\s*=\s*/g,
+    severity: 'HIGH',
+    code: 'UI5_XSS_OUTERHTML',
+    message: 'Avoid using `outerHTML` with unsanitized data',
+  },
+  {
     pattern: /eval\s*\(/g,
     severity: 'CRITICAL',
     code: 'UI5_EVAL',
@@ -225,20 +231,141 @@ const UI5_SECURITY_PATTERNS = [
     code: 'UI5_SENSITIVE_LOG',
     message: 'Logging potentially sensitive information',
   },
+  {
+    pattern: /setTimeout\s*\(\s*['"`]/g,
+    severity: 'MEDIUM',
+    code: 'UI5_SET_TIMEOUT',
+    message: 'Pass a function to `setTimeout`, not a string',
+  },
+  {
+    pattern: /setInterval\s*\(\s*['"`]/g,
+    severity: 'MEDIUM',
+    code: 'UI5_SET_INTERVAL',
+    message: 'Pass a function to `setInterval`, not a string',
+  },
 ];
 
-function scanUI5Code(files) {
+const REDIRECT_PATTERNS = [
+  {
+    pattern: /window\.location\s*=\s*(?!['"`][^'"`]*['"`])/g,
+    severity: 'MEDIUM',
+    code: 'REDIRECT_LOCATION',
+    message: 'Validate and whitelist URLs before redirecting',
+  },
+  {
+    pattern: /window\.location\.href\s*=\s*(?!['"`][^'"`]*['"`])/g,
+    severity: 'MEDIUM',
+    code: 'REDIRECT_LOCATION_HREF',
+    message: 'Validate URLs using a whitelist',
+  },
+  {
+    pattern: /window\.open\s*\(\s*(?!['"`][^'"`]*['"`])/g,
+    severity: 'MEDIUM',
+    code: 'REDIRECT_OPEN',
+    message: 'Verify URLs before opening them',
+  },
+];
+
+const SENSITIVE_DATA_PATTERNS = [
+  {
+    pattern: /localStorage\.(setItem|getItem)\s*\([^,)]+,?\s*(?:password|token|secret|key)/gi,
+    severity: 'LOW',
+    code: 'SENSITIVE_DATA_LOCAL',
+    message: 'Do not store secrets in localStorage (accessible via XSS)',
+  },
+  {
+    pattern: /sessionStorage\.(setItem|getItem)\s*\([^,)]+,?\s*(?:password|token|secret|key)/gi,
+    severity: 'LOW',
+    code: 'SENSITIVE_DATA_SESSION',
+    message: 'Avoid storing sensitive tokens in sessionStorage',
+  },
+  {
+    pattern: /console\.(log|info|debug|warn)\s*\([^)]*(?:password|token|secret|key)/gi,
+    severity: 'LOW',
+    code: 'SENSITIVE_DATA_CONSOLE',
+    message: 'Never log sensitive data in production',
+  },
+]
+
+const OWASP_PATTERNS = [
+  {
+    pattern: /require\s*\(\s*['"`]\.\.\/\.\.\/\.\.\/\.\.\/\//g,
+    severity: 'HIGH',
+    code: 'OWASP_REQUIRE',
+    message: 'Validate and sanitize file paths',
+  },
+  {
+    pattern: /fs\.(readFile|writeFile|unlink|readdir)\s*\([^,)]*(?:req\.|request\.|params\.|body\.)/g,
+    severity: 'HIGH',
+    code: 'OWASP_FS',
+    message: 'Strictly sanitize and validate paths from user requests',
+  },
+  {
+    pattern: /child_process\.(exec|spawn|execSync)\s*\([^,)]*(?:\+|\$\{)/g,
+    severity: 'CRITICAL',
+    code: 'OWASP_CHILD_PROCESS',
+    message: 'Never use user data in `child_process` without sanitizing it first',
+  },
+  {
+    pattern: /(?:http|https)\.request\s*\([^)]*(?:req\.|request\.|params\.|body\.)/g,
+    severity: 'HIGH',
+    code: 'OWASP_HTTP',
+    message: 'Validate and whitelist the URLs used in outbound HTTP requests',
+  },
+  {
+    pattern: /deserializ/gi,
+    severity: 'MEDIUM',
+    code: 'OWASP_DESERIALIZ',
+    message: 'Verify that deserialization is secure and does not come from untrusted sources',
+  },
+];
+
+const SAP_SPECIFIC_PATTERNS = [
+  {
+    pattern: /sap\.ui\.getCore\(\)\.getConfiguration\(\)\.setSecurityTokenHandlers/g,
+    severity: 'HIGH',
+    code: 'SAP_SPECIFIC_GETCORE',
+    message: 'Don t modify security token handlers without validation',
+  },
+  {
+    pattern: /jQuery\.sap\.loadResource\s*\([^)]*(?:\+|\$\{)/g,
+    severity: 'MEDIUM',
+    code: 'SAP_SPECIFIC_JQUERY',
+    message: 'Avoid dynamically constructed resource paths',
+  },
+  {
+    pattern: /sap\.ui\.require\s*\(\s*\[[^\]]*(?:\+|\$\{)/g,
+    severity: 'MEDIUM',
+    code: 'SAP_SPECIFIC_REQUIRE',
+    message: 'Avoid dynamically constructed module names',
+  },
+  {
+    pattern: /jQuery\.ajax\s*\(\s*\{[^}]*url\s*:\s*(?!['"`][^'"`]*['"`])/g,
+    severity: 'MEDIUM',
+    code: 'SAP_SPECIFIC_JQUERY_AJAX',
+    message: 'Validate the URLs used in jQuery.ajax calls',
+  },
+  {
+    pattern: /sap\.ui\.core\.BusyIndicator\.(show|hide)/g,
+    severity: 'INFO',
+    code: 'SAP_SPECIFIC_JQUERY_AJAX',
+    message: 'Make sure the BusyIndicator remains hidden even if an error occurs',
+  },
+
+];
+
+function scanDefault(files, patterns) {
   const vulnerabilities = [];
 
   const jsFiles = files.filter(f =>
-    (f.name.endsWith('.js') || f.name.endsWith('.ts')) &&
+    (f.name.endsWith('.js') || f.name.endsWith('.ts') || f.name.endsWith('.jsx') || f.name.endsWith('.tsx')) &&
     !f.name.includes('node_modules') &&
     !f.name.includes('.min.')
   );
 
   for (const file of jsFiles) {
     const lines = file.content.split('\n');
-    for (const rule of UI5_SECURITY_PATTERNS) {
+    for (const rule of patterns) {
       const matches = [...file.content.matchAll(rule.pattern)];
       for (const match of matches) {
         const lineNum = file.content.substring(0, match.index).split('\n').length;
@@ -259,6 +386,7 @@ function scanUI5Code(files) {
   return vulnerabilities;
 }
 
+
 function detectUI5Version(files) {
   const findings = {
     detectedVersion: null,
@@ -267,10 +395,14 @@ function detectUI5Version(files) {
     latestVersion: UI5_VERSION_DATA.latest,
     ltsVersion: UI5_VERSION_DATA.lts,
     versionTable: UI5_VERSION_DATA.maintained,
-	versionDate: UI5_VERSION_DATA.lastupdate,
+	  versionDate: UI5_VERSION_DATA.lastupdate,
     issues: [],
     recommendations: [],
     codeVulnerabilities: [],
+    redirectVulnerabilities: [],
+    sensitiveData: [],
+    owasp: [],
+    sapSpecific: [],
   };
 
   // Check manifest.json
@@ -348,7 +480,11 @@ function detectUI5Version(files) {
   ];
 
   // Scan code
-  findings.codeVulnerabilities = scanUI5Code(files);
+  findings.codeVulnerabilities = scanDefault(files, UI5_SECURITY_PATTERNS);
+  findings.redirectVulnerabilities = scanDefault(files, REDIRECT_PATTERNS);
+  findings.sensitiveData = scanDefault(files, SENSITIVE_DATA_PATTERNS);
+  findings.owasp = scanDefault(files, OWASP_PATTERNS);
+  findings.sapSpecific = scanDefault(files, SAP_SPECIFIC_PATTERNS);
 
   return findings;
 }

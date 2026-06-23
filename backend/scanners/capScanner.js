@@ -185,7 +185,7 @@ function scanCAPCode(files) {
 
   // Scan .js/.ts handler files
   const jsFiles = files.filter(f =>
-    (f.name.endsWith('.js') || f.name.endsWith('.ts')) &&
+    (f.name.endsWith('.js') || f.name.endsWith('.ts') || f.name.endsWith('.jsx') || f.name.endsWith('.tsx')) &&
     !f.name.includes('node_modules') &&
     !f.name.includes('.min.')
   );
