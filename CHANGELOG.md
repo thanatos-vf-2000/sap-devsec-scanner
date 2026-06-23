@@ -2,7 +2,8 @@
 
 <!-- version list -->
 ## v1.3.0 (2026-06-xx)
-- enable / disable Vue DevTools (ENABLE_DEVTOOLS=true/false).
+- enable / disable Vue DevTools (ENABLE_DEVTOOLS=true/false),
+- Update Secret Scanner: SECRET_KEY / SECRET_PRIVATE_KEY / SECRET_XSUAA / SECRET_HDI_USER / SECRET_HDI_PASSWORD.
 
 ## v1.2.2 (2026-06-21)
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104,

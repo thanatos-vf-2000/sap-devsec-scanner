@@ -26,6 +26,18 @@ const SECRET_PATTERNS = [
     message: 'Hardcoded token detected',
   },
   {
+    pattern: /(?:secret[_-]?key|secretkey)\s*[=:]\s*['"]?([^'"\s\n]{8,})['"]?/gi,
+    severity: 'CRITICAL',
+    code: 'SECRET_KEY',
+    message: 'Hardcoded client secret Key detected',
+  },
+  {
+    pattern: /(?:private[_-]?key|privatekey)\s*[=:]\s*['"]?([^'"\s\n]{8,})['"]?/gi,
+    severity: 'CRITICAL',
+    code: 'SECRET_PRIVATE_KEY',
+    message: 'Private key embedded in file',
+  },
+  {
     pattern: /BEGIN\s+(?:RSA\s+)?PRIVATE\s+KEY/g,
     severity: 'CRITICAL',
     code: 'SECRET_PRIVATE_KEY',
@@ -60,6 +72,24 @@ const SECRET_PATTERNS = [
     severity: 'CRITICAL',
     code: 'SECRET_AWS_KEY',
     message: 'AWS access key detected',
+  },
+  {
+    pattern: /xsuaa.*clientsecret\s*[=:]\s*['"]?([^'"\s\n]{8,})['"]?/gi, 
+    severity: 'CRITICAL',
+    code: 'SECRET_XSUAA',
+    message: 'Secret XSUAA detected',
+  },
+  {
+    pattern: /hdi[_-]?user\s*[=:]\s*['"]?([^'"\s\n]{4,})['"]?/gi, 
+    severity: 'CRITICAL',
+    code: 'SECRET_HDI_USER',
+    message: 'User HDI detected',
+  },
+  {
+    pattern: /hdi[_-]?password\s*[=:]\s*['"]?([^'"\s\n]{4,})['"]?/gi, 
+    severity: 'CRITICAL',
+    code: 'SECRET_HDI_PASSWORD',
+    message: 'Password HDI detected',
   },
 ];
 
