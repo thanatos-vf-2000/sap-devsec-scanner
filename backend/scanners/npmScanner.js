@@ -1,9 +1,6 @@
 'use strict';
 
-const { execSync } = require('child_process');
-const fs = require('fs');
 const path = require('path');
-const os = require('os');
 
 // Known vulnerable SAP package versions (static database supplement)
 const SAP_KNOWN_VULNS = [
@@ -31,6 +28,80 @@ const SAP_KNOWN_VULNS = [
     description: 'Log injection in approuter request handling',
     fix: '>=12.0.0',
   },
+  // NEW entries
+  {
+    package: '@sap/hdbext',
+    affectedVersions: '<7.0.0',
+    severity: 'MEDIUM',
+    cve: 'CVE-2022-28214',
+    description: 'Improper error handling exposes internal HANA connection details',
+    fix: '>=7.0.0',
+  },
+  {
+    package: '@sap/xsenv',
+    affectedVersions: '<3.1.0',
+    severity: 'LOW',
+    cve: 'CVE-2021-33690',
+    description: 'Server-side request forgery via proxy configuration in xsenv',
+    fix: '>=3.1.0',
+  },
+  {
+    package: 'passport',
+    affectedVersions: '<0.6.0',
+    severity: 'HIGH',
+    cve: 'CVE-2022-25896',
+    description: 'Session fixation attack in passport.js',
+    fix: '>=0.6.0',
+  },
+  {
+    package: 'jsonwebtoken',
+    affectedVersions: '<9.0.0',
+    severity: 'HIGH',
+    cve: 'CVE-2022-23529',
+    description: 'Insecure implementation allows JWT token forgery',
+    fix: '>=9.0.0',
+  },
+  {
+    package: 'express',
+    affectedVersions: '<4.19.0',
+    severity: 'HIGH',
+    cve: 'CVE-2024-29041',
+    description: 'Open redirect via malformed URL in express',
+    fix: '>=4.19.0',
+  },
+  {
+    package: 'axios',
+    affectedVersions: '<1.6.0',
+    severity: 'HIGH',
+    cve: 'CVE-2023-45857',
+    description: 'CSRF vulnerability — confidential headers sent to third-party redirects',
+    fix: '>=1.6.0',
+  },
+  {
+    package: 'helmet',
+    affectedVersions: '<7.0.0',
+    severity: 'MEDIUM',
+    cve: null,
+    description: 'helmet <7.0.0 does not enable all modern security headers by default',
+    fix: '>=7.0.0',
+  },
+];
+
+// NEW: Security-relevant packages that should be present in SAP BTP apps
+const RECOMMENDED_PACKAGES = [
+  { package: 'helmet', reason: 'Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)' },
+  { package: '@sap/xssec', reason: 'Required for XSUAA JWT validation' },
+  { package: '@sap/audit-logging', reason: 'Required for GDPR audit logging on BTP' },
+];
+
+// NEW: Packages that should never be in production dependencies
+const FORBIDDEN_IN_PROD = [
+  { package: '@sap/cds-dk', reason: 'Development toolkit — move to devDependencies' },
+  { package: 'nodemon', reason: 'Dev auto-restart tool — move to devDependencies' },
+  { package: 'jest', reason: 'Test framework — move to devDependencies' },
+  { package: 'mocha', reason: 'Test framework — move to devDependencies' },
+  { package: 'chai', reason: 'Assertion library — move to devDependencies' },
+  { package: 'sinon', reason: 'Test stub library — move to devDependencies' },
 ];
 
 const OUTDATED_THRESHOLD_DAYS = 365;
@@ -47,7 +118,6 @@ function parseSemver(version) {
 }
 
 function versionSatisfies(version, range) {
-  // Simple range check for < operator
   const match = range.match(/^<([\d.]+)$/);
   if (!match) return false;
   const threshold = parseSemver(match[1]);
@@ -72,9 +142,10 @@ function checkSAPPackages(dependencies) {
         package: vuln.package,
         version: installedVersion,
         cve: vuln.cve,
-        description: vuln.description,
+        code: vuln.cve,
+        description: `${vuln.description} (fix: ${vuln.fix})`,
         fix: vuln.fix,
-        source: 'SAP Advisory',
+        source: vuln.cve ? 'SAP Advisory / NVD' : 'Best Practice',
       });
     }
   }
@@ -88,7 +159,7 @@ function analyzePackageJson(files) {
     issues: [],
     sapPackages: [],
     auditResults: null,
-    summary: { total: 0, sap: 0, critical: 0, high: 0, medium: 0, low: 0 },
+    summary: { total: 0, sap: 0, critical: 0, high: 0, medium: 0, low: 0, info: 0 },
   };
 
   const pkgFiles = files.filter(f =>
@@ -99,10 +170,9 @@ function analyzePackageJson(files) {
   for (const file of pkgFiles) {
     try {
       const pkg = JSON.parse(file.content);
-      const allDeps = {
-        ...(pkg.dependencies || {}),
-        ...(pkg.devDependencies || {}),
-      };
+      const prodDeps = pkg.dependencies || {};
+      const devDeps = pkg.devDependencies || {};
+      const allDeps = { ...prodDeps, ...devDeps };
 
       results.packages.push({
         file: file.name,
@@ -122,32 +192,91 @@ function analyzePackageJson(files) {
         }
       }
 
-      // Check known SAP vulnerabilities
+      // Check known vulnerabilities
       const sapIssues = checkSAPPackages(allDeps);
       for (const issue of sapIssues) {
         results.issues.push({ ...issue, file: file.name });
-        results.summary[issue.severity.toLowerCase()]++;
+        results.summary[(issue.severity || 'low').toLowerCase()]++;
       }
 
-      // Check for very old or risky patterns
+      // Check for wildcard versions
       for (const [name, version] of Object.entries(allDeps)) {
-        // Check for wildcard versions
         if (version === '*' || version === 'latest') {
           results.issues.push({
             severity: 'MEDIUM',
             package: name,
             version,
+            code: 'VERSION_WILCARD',
             description: 'Unpinned version (wildcard) - non-deterministic builds',
             source: 'Best Practice',
+            file: file.name,
+          });
+          results.summary.medium++;
+        }
+      }
+
+      // NEW: Check for dev-only packages in production dependencies
+      for (const forbidden of FORBIDDEN_IN_PROD) {
+        if (prodDeps[forbidden.package]) {
+          results.issues.push({
+            severity: 'LOW',
+            package: forbidden.package,
+            version: prodDeps[forbidden.package],
+            description: `${forbidden.package} in production dependencies: ${forbidden.reason}`,
+            code: 'FORBIDDEN_IN_PROD',
+            source: 'Best Practice',
+            file: file.name,
+          });
+          results.summary.low++;
+        }
+      }
+
+      // NEW: Check for recommended security packages missing from production deps
+      for (const rec of RECOMMENDED_PACKAGES) {
+        if (!prodDeps[rec.package] && !allDeps[rec.package]) {
+          results.issues.push({
+            severity: 'INFO',
+            package: rec.package,
+            version: null,
+            code: 'RECOMMENDED_PACKAGES',
+            description: `Recommended security package missing: ${rec.package} — ${rec.reason}`,
+            source: 'SAP Best Practice',
+            file: file.name,
+          });
+          results.summary.info++;
+        }
+      }
+
+      // NEW: Check for missing "engines" field (node version pinning)
+      if (!pkg.engines || !pkg.engines.node) {
+        results.issues.push({
+          severity: 'LOW',
+          package: pkg.name || 'unknown',
+          description: 'No "engines.node" field — pin the Node.js version to avoid supply-chain runtime differences',
+          source: 'Best Practice',
+          code: 'MISSING_ENGINES',
+          file: file.name,
+        });
+      }
+
+      // NEW: Detect use of npm scripts that could be exploited (preinstall/postinstall)
+      const scripts = pkg.scripts || {};
+      for (const hook of ['preinstall', 'postinstall', 'prepare']) {
+        if (scripts[hook]) {
+          results.issues.push({
+            severity: 'MEDIUM',
+            package: pkg.name || 'unknown',
+            description: `npm lifecycle hook "${hook}" detected: "${scripts[hook]}" — review for supply-chain risk`,
+            code: 'NPM_SCRIPT',
+            source: 'Supply Chain',
             file: file.name,
           });
         }
       }
 
-      // Try npm audit if package.json has a lockfile neighbor
+      // Lockfile recommendation
       const lockFile = files.find(f =>
-        f.name.includes('package-lock.json') ||
-        f.name.includes('yarn.lock')
+        f.name.includes('package-lock.json') || f.name.includes('yarn.lock')
       );
 
       if (lockFile) {
@@ -155,6 +284,7 @@ function analyzePackageJson(files) {
           severity: 'INFO',
           package: 'npm audit',
           description: 'Lock file found - run "npm audit" in project directory for full vulnerability report',
+          code: 'LOCK_FILE',
           source: 'Recommendation',
           file: file.name,
         });
@@ -163,15 +293,18 @@ function analyzePackageJson(files) {
           severity: 'LOW',
           package: 'lockfile',
           description: 'No package-lock.json or yarn.lock found - run "npm install" to generate',
+          code: 'NO_LOCK_FILE',
           source: 'Best Practice',
           file: file.name,
         });
+        results.summary.low++;
       }
     } catch (e) {
       results.issues.push({
         severity: 'LOW',
         package: 'parse-error',
         description: `Cannot parse ${file.name}: ${e.message}`,
+        code: 'PARSE_ERROR',
         source: 'Parser',
         file: file.name,
       });
