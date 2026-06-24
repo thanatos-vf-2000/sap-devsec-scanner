@@ -11,7 +11,8 @@
 - Add Scanner for AppRouter,
 - Update BTP Scanner,
 - Update CAP Scanner,
-- Update NPM Scanner.
+- Update NPM Scanner,
+- Update Secret Scanner.
 
 ## v1.2.2 (2026-06-21)
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104,
