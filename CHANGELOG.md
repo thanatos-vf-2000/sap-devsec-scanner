@@ -9,7 +9,8 @@
   - Add REDIRECT_PATTERNS / SENSITIVE_DATA_PATTERNS / OWASP_PATTERNS / SAP_SPECIFIC_PATTERNS,
 - Add file .jsx and .tsx' to scan,
 - Add Scanner for AppRouter,
-- Update BTP Scanner.
+- Update BTP Scanner,
+- Update CAP Scanner.
 
 ## v1.2.2 (2026-06-21)
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104,
