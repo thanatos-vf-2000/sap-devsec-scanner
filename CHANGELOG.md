@@ -8,7 +8,8 @@
   - Update UI5_SECURITY_PATTERNS,
   - Add REDIRECT_PATTERNS / SENSITIVE_DATA_PATTERNS / OWASP_PATTERNS / SAP_SPECIFIC_PATTERNS,
 - Add file .jsx and .tsx' to scan,
-- Add Scanner for AppRouter.
+- Add Scanner for AppRouter,
+- Update BTP Scanner.
 
 ## v1.2.2 (2026-06-21)
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104,
