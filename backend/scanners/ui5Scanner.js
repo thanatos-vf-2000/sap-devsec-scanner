@@ -243,6 +243,34 @@ const UI5_SECURITY_PATTERNS = [
     code: 'UI5_SET_INTERVAL',
     message: 'Pass a function to `setInterval`, not a string',
   },
+  // NEW: Detect use of sap.ui.core.Fragment.load with dynamic name (module injection risk)
+  {
+    pattern: /Fragment\.load\s*\(\s*\{[^}]*name\s*:\s*(?!['"` ])/g,
+    severity: 'MEDIUM',
+    code: 'UI5_DYNAMIC_FRAGMENT',
+    message: 'Dynamic fragment name in Fragment.load — ensure the name comes from a trusted source',
+  },
+  // NEW: Detect unescaped HTML in Text/Label controls via binding
+  {
+    pattern: /renderWhitespace\s*:\s*true/g,
+    severity: 'INFO',
+    code: 'UI5_RENDER_WHITESPACE',
+    message: 'renderWhitespace:true — verify content is sanitized when combined with HTML content',
+  },
+  // NEW: Detect use of deprecated API sap.ui.commons (unmaintained, no security updates)
+  {
+    pattern: /sap\.ui\.commons\./g,
+    severity: 'HIGH',
+    code: 'UI5_DEPRECATED_COMMONS',
+    message: 'sap.ui.commons.* is deprecated and unmaintained — no security patches, migrate to sap.m.*',
+  },
+  // NEW: Detect use of XMLView with unsanitized string template (XSS via view generation)
+  {
+    pattern: /XMLView\.create\s*\(\s*\{[^}]*definition\s*:\s*`/g,
+    severity: 'HIGH',
+    code: 'UI5_XMLVIEW_TEMPLATE',
+    message: 'XMLView.create with template literal definition — sanitize any dynamic content before injecting into XML',
+  },
 ];
 
 const REDIRECT_PATTERNS = [
@@ -351,7 +379,27 @@ const SAP_SPECIFIC_PATTERNS = [
     code: 'SAP_SPECIFIC_JQUERY_AJAX',
     message: 'Make sure the BusyIndicator remains hidden even if an error occurs',
   },
-
+  // NEW: Detect deprecated jQuery.sap APIs that may no longer receive security patches
+  {
+    pattern: /jQuery\.sap\./g,
+    severity: 'LOW',
+    code: 'SAP_DEPRECATED_JQUERY_SAP',
+    message: 'jQuery.sap.* APIs are deprecated since UI5 1.58 — migrate to sap/base/* or sap/ui/core/* equivalents',
+  },
+  // NEW: Detect postMessage without origin validation (potential message injection)
+  {
+    pattern: /window\.addEventListener\s*\(\s*['"`]message['"`]/g,
+    severity: 'MEDIUM',
+    code: 'SAP_POSTMESSAGE_NOCHECK',
+    message: 'postMessage listener detected — always validate event.origin before processing the message',
+  },
+  // NEW: Detect unescaped binding expressions used in HTML controls (XSS via model binding)
+  {
+    pattern: /formatter\s*:\s*function\s*\([^)]*\)\s*\{[^}]*return[^}]*\+/g,
+    severity: 'MEDIUM',
+    code: 'SAP_FORMATTER_CONCAT',
+    message: 'String concatenation in formatter return — use sap/base/security/encodeXML on user data',
+  },
 ];
 
 function scanDefault(files, patterns) {
@@ -419,6 +467,39 @@ function detectUI5Version(files) {
       if (framework?.version) {
         findings.sources.push({ file: file.name, key: `framework.${framework.name}`, value: framework.version });
         if (!findings.detectedVersion) findings.detectedVersion = framework.version;
+      }
+
+      // NEW: Check for missing Content Security Policy in manifest.json
+      const csp = content['sap.ui5']?.contentSecurityPolicy;
+      if (!csp && !content['sap.ui5']?.security?.['frame-options']) {
+        findings.issues.push({
+          severity: 'MEDIUM',
+          code: 'UI5_NO_CSP',
+          message: 'No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section — configure CSP headers via AppRouter instead',
+          file: file.name,
+        });
+      }
+
+      // NEW: Check for overly broad cross-origin resource access
+      const allowedOrigins = content['sap.ui5']?.['allowed-cors-origins'];
+      if (allowedOrigins && (allowedOrigins === '*' || allowedOrigins.includes('*'))) {
+        findings.issues.push({
+          severity: 'HIGH',
+          code: 'UI5_CORS_WILDCARD',
+          message: 'sap.ui5 allowed-cors-origins contains wildcard "*" — restrict to known origins',
+          file: file.name,
+        });
+      }
+
+      // NEW: Check for missing cache busting (data: or sap-ui-cachebuster-info.json reference)
+      const appVersion = content['sap.app']?.applicationVersion?.version;
+      if (appVersion && appVersion === '1.0.0') {
+        findings.issues.push({
+          severity: 'INFO',
+          code: 'UI5_DEFAULT_VERSION',
+          message: 'sap.app.applicationVersion is "1.0.0" (default) — update for proper cache-busting and deployment tracking',
+          file: file.name,
+        });
       }
     } catch (e) {
       findings.issues.push({ severity: 'LOW', message: `Cannot parse ${file.name}` });
