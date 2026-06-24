@@ -94,3 +94,10 @@ Vérifie les configurations de destinations SAP BTP et les fichiers XSUAA pour d
 | `allowedJwtClaims` vide | 🟡 MEDIUM | Validation JWT insuffisante |
 | `xsappname` non unique | 🔵 LOW | Risque de collision de namespace |
 | `oauth2-configuration` absente | 🟡 MEDIUM | Config OAuth manquante |
+
+---
+
+## 🌐 AppRouter Security Scanner
+ Il couvre tout ce que le repo btp-secure-development aborde autour de l'AppRouter
+
+**Fichiers analysés :** `xs-app.json`, `package.json` et `mta.yaml`

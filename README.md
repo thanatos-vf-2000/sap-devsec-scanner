@@ -41,11 +41,12 @@ Le scanner accepte :
 | Fonctionnalité | Description |
 |---|---|
 | **UI5 Version Scanner** | Détecte les versions SAPUI5 obsolètes ou EOL (End of Life) |
+| **UI5 Code Scanner** | Détection XSS, `eval()`, `innerHTML`, open redirect |
 | **NPM Security Scanner** | Audit des dépendances npm, détection de CVE |
 | **CAP Security Scanner** | Contrôle d'accès, injection SQL, sécurité des services CDS |
-| **UI5 Code Scanner** | Détection XSS, `eval()`, `innerHTML`, open redirect |
 | **Secrets Scanner** | Credentials en clair, tokens JWT, clés API exposées |
 | **BTP Destinations Scanner** | Analyse des configurations XSUAA et destinations BTP |
+| **AppRouter Security Scanner** | Il couvre tout ce que le repo btp-secure-development aborde autour de l AppRouter|
 | **Score de risque** | Score 0-100 pondéré par sévérité (CRITICAL / HIGH / MEDIUM / LOW) |
 | **Historique des scans** | Conservation en mémoire des rapports de session |
 
@@ -179,7 +180,8 @@ Racine/
     "cap": { ... },
     "secrets": { "findings": [] },
     "btp": { "issues": [] },
-    "npm": { ... }
+    "npm": { ... },
+    "approuter": { ... }
   }
 }
 ```
@@ -205,6 +207,12 @@ Détecte les credentials, tokens JWT, clés API et mots de passe codés en dur d
 
 ### BTP Destinations Scanner
 Vérifie les configurations de destinations SAP BTP et XSUAA pour détecter les authentifications faibles ou les mauvaises pratiques.
+
+### AppRouter Security Scanner
+- `xs-app.json` : `authenticationMethod: "none"` global, `csrfProtection: false`, `sessionTimeout` trop long, absence d'endpoint de logout, analyse des headers HTTP (CSP, X-Frame-Options, HSTS, X-Content-Type-Options, Referrer-Policy), valeurs CSP dangereuses (`unsafe-inline`, `unsafe-eval`, wildcards), routes sans authentification, routes catch-all publiques, `forwardAuthToken` sans auth, absence de `scope` sur les routes API
+- `package.json` : version `@sap/approuter` < 14.0.0
+- `mta.yaml` : AppRouter sans binding XSUAA/IAS, `SAP_JWT_TRUST_ACL` avec wildcard `*`, `SEND_XFRAMEOPTIONS: false`
+
 
 ---
 

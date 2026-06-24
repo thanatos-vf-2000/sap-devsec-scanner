@@ -32,6 +32,9 @@ features:
   - icon: ☁️
     title: BTP Destinations Scanner
     details: Analyse des configurations XSUAA et destinations SAP BTP.
+  - icon: 🌐
+    title: AppRouter Security Scanner
+    details: Analyse des configurations AppRouter.
   - icon: 📊
     title: Score de risque
     details: Score 0-100 pondéré par sévérité (CRITICAL / HIGH / MEDIUM / LOW).
