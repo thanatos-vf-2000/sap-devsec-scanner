@@ -85,21 +85,21 @@ const CAP_JS_PATTERNS = [
     pattern: /app\.(?:get|post|put|delete|patch)\s*\(\s*['"`][^'"`]+['"`]\s*,\s*(?!.*passport|.*xsuaa|.*auth)/g,
     severity: 'MEDIUM',
     code: 'CAP_EXPRESS_UNPROTECTED',
-    message: 'Raw Express route registered — ensure it is protected by XSUAA/passport middleware',
+    message: 'Raw Express route registered - ensure it is protected by XSUAA/passport middleware',
   },
   // NEW: Insecure deserialization via JSON.parse on request input
   {
     pattern: /JSON\.parse\s*\(\s*req\.(body|data|query|params)/g,
     severity: 'MEDIUM',
     code: 'CAP_JSON_PARSE_INPUT',
-    message: 'JSON.parse on raw request input — validate schema before deserialization',
+    message: 'JSON.parse on raw request input - validate schema before deserialization',
   },
   // NEW: Potential path traversal via user-supplied file paths
   {
     pattern: /(?:readFile|readFileSync|createReadStream)\s*\([^)]*req\./g,
     severity: 'HIGH',
     code: 'CAP_PATH_TRAVERSAL',
-    message: 'File read using request-supplied input — potential path traversal',
+    message: 'File read using request-supplied input - potential path traversal',
   },
 ];
 
@@ -146,7 +146,7 @@ const CDS_CONFIG_CHECKS = [
     dangerValues: ['dummy', 'mock'],
     severity: 'HIGH',
     code: 'CAP_AUTH_MOCK',
-    message: 'CDS auth kind is set to dummy/mock — never use in production',
+    message: 'CDS auth kind is set to dummy/mock - never use in production',
   },
 ];
 
@@ -215,7 +215,7 @@ function checkCDSConfig(files) {
         issues.push({
           severity: 'HIGH',
           code: 'CAP_AUTH_MOCK',
-          message: `CDS auth kind is "${authKind}" — remove before production, must use "xsuaa" or "ias"`,
+          message: `CDS auth kind is "${authKind}" - remove before production, must use "xsuaa" or "ias"`,
           file: file.name,
           snippet: `requires.auth.kind: ${authKind}`,
         });
@@ -238,7 +238,7 @@ function checkCDSConfig(files) {
         issues.push({
           severity: 'MEDIUM',
           code: 'CAP_INSECURE_PROFILE',
-          message: `CDS profile includes "development" or "hybrid" — verify this is intentional and not deployed to production`,
+          message: `CDS profile includes "development" or "hybrid" - verify this is intentional and not deployed to production`,
           file: file.name,
           snippet: `profiles: ${JSON.stringify(profiles)}`,
         });
@@ -287,7 +287,7 @@ function scanCAPCode(files) {
       results.vulnerabilities.push({
         severity: 'INFO',
         code: 'CDS_PERSONAL_DATA_NO_LABEL',
-        message: '@PersonalData annotation present but @EndUserText.label is missing — required for GDPR audit log readability',
+        message: '@PersonalData annotation present but @EndUserText.label is missing - required for GDPR audit log readability',
         file: file.name,
         snippet: '@PersonalData',
       });
@@ -305,7 +305,7 @@ function scanCAPCode(files) {
           results.vulnerabilities.push({
             severity: 'MEDIUM',
             code: 'CDS_AUTOEXPOSE_NO_AUTH',
-            message: '@cds.autoexpose entity without @requires or @restrict — auto-exposed entities inherit service auth, verify this is intended',
+            message: '@cds.autoexpose entity without @requires or @restrict - auto-exposed entities inherit service auth, verify this is intended',
             file: file.name,
             line: idx + 1,
             snippet: line.trim(),

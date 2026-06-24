@@ -27,18 +27,18 @@ const UNSAFE_AUTH_TYPES = new Set(['none', 'NoAuthentication']);
 
 // ─── Required security response headers (should appear in httpHeaders or helmet) ─
 const REQUIRED_SECURITY_HEADERS = [
-  { header: 'Content-Security-Policy', code: 'AR_MISSING_CSP', severity: 'HIGH', message: 'Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js' },
-  { header: 'X-Frame-Options', code: 'AR_MISSING_XFO', severity: 'MEDIUM', message: 'X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN' },
-  { header: 'X-Content-Type-Options', code: 'AR_MISSING_XCTO', severity: 'MEDIUM', message: 'X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks' },
-  { header: 'Strict-Transport-Security', code: 'AR_MISSING_HSTS', severity: 'MEDIUM', message: 'Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication' },
-  { header: 'Referrer-Policy', code: 'AR_MISSING_RP', severity: 'LOW', message: 'Referrer-Policy not set — consider "strict-origin-when-cross-origin" to limit referrer leakage' },
+  { header: 'Content-Security-Policy', code: 'AR_MISSING_CSP', severity: 'HIGH', message: 'Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js' },
+  { header: 'X-Frame-Options', code: 'AR_MISSING_XFO', severity: 'MEDIUM', message: 'X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN' },
+  { header: 'X-Content-Type-Options', code: 'AR_MISSING_XCTO', severity: 'MEDIUM', message: 'X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks' },
+  { header: 'Strict-Transport-Security', code: 'AR_MISSING_HSTS', severity: 'MEDIUM', message: 'Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication' },
+  { header: 'Referrer-Policy', code: 'AR_MISSING_RP', severity: 'LOW', message: 'Referrer-Policy not set - consider "strict-origin-when-cross-origin" to limit referrer leakage' },
 ];
 
 // ─── Unsafe CSP directive values ─────────────────────────────────────────────
 const UNSAFE_CSP_VALUES = [
-  { value: "'unsafe-inline'", code: 'AR_CSP_UNSAFE_INLINE', severity: 'HIGH', message: "CSP contains 'unsafe-inline' — allows inline scripts/styles, undermining XSS protection; use nonces or hashes instead" },
-  { value: "'unsafe-eval'", code: 'AR_CSP_UNSAFE_EVAL', severity: 'HIGH', message: "CSP contains 'unsafe-eval' — allows eval() and Function() constructors; remove if possible" },
-  { value: '*', code: 'AR_CSP_WILDCARD', severity: 'HIGH', message: "CSP directive uses wildcard '*' — restrict to specific trusted origins" },
+  { value: "'unsafe-inline'", code: 'AR_CSP_UNSAFE_INLINE', severity: 'HIGH', message: "CSP contains 'unsafe-inline' - allows inline scripts/styles, undermining XSS protection; use nonces or hashes instead" },
+  { value: "'unsafe-eval'", code: 'AR_CSP_UNSAFE_EVAL', severity: 'HIGH', message: "CSP contains 'unsafe-eval' - allows eval() and Function() constructors; remove if possible" },
+  { value: '*', code: 'AR_CSP_WILDCARD', severity: 'HIGH', message: "CSP directive uses wildcard '*' - restrict to specific trusted origins" },
 ];
 
 function parseSemver(version) {
@@ -72,7 +72,7 @@ function scanXsAppJson(file) {
     issues.push({
       severity: 'LOW',
       code: 'AR_PARSE_ERROR',
-      message: 'Cannot parse xs-app.json — invalid JSON',
+      message: 'Cannot parse xs-app.json - invalid JSON',
       file: file.name,
     });
     return issues;
@@ -84,7 +84,7 @@ function scanXsAppJson(file) {
     issues.push({
       severity: 'HIGH',
       code: 'AR_AUTH_NONE_GLOBAL',
-      message: 'xs-app.json: authenticationMethod is "none" — all routes are publicly accessible; set to "route" and secure individual routes',
+      message: 'xs-app.json: authenticationMethod is "none" - all routes are publicly accessible; set to "route" and secure individual routes',
       file: file.name,
       snippet: 'authenticationMethod: "none"',
     });
@@ -96,7 +96,7 @@ function scanXsAppJson(file) {
     issues.push({
       severity: 'HIGH',
       code: 'AR_CSRF_DISABLED',
-      message: 'xs-app.json: csrfProtection is explicitly false — re-enable to protect state-changing requests',
+      message: 'xs-app.json: csrfProtection is explicitly false - re-enable to protect state-changing requests',
       file: file.name,
       snippet: 'csrfProtection: false',
     });
@@ -109,7 +109,7 @@ function scanXsAppJson(file) {
       issues.push({
         severity: 'MEDIUM',
         code: 'AR_SESSION_LONG',
-        message: `xs-app.json: sessionTimeout is ${timeoutMin} minutes — sessions longer than 60 minutes increase session hijacking risk`,
+        message: `xs-app.json: sessionTimeout is ${timeoutMin} minutes - sessions longer than 60 minutes increase session hijacking risk`,
         file: file.name,
         snippet: `sessionTimeout: ${timeoutMin}`,
       });
@@ -118,7 +118,7 @@ function scanXsAppJson(file) {
     issues.push({
       severity: 'INFO',
       code: 'AR_NO_SESSION_TIMEOUT',
-      message: 'xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy',
+      message: 'xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy',
       file: file.name,
     });
   }
@@ -128,7 +128,7 @@ function scanXsAppJson(file) {
     issues.push({
       severity: 'LOW',
       code: 'AR_NO_LOGOUT_ENDPOINT',
-      message: 'xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session',
+      message: 'xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session',
       file: file.name,
     });
   }
@@ -174,7 +174,7 @@ function scanXsAppJson(file) {
       issues.push({
         severity: 'LOW',
         code: 'AR_CSP_NO_FRAME_ANCESTORS',
-        message: "CSP is present but missing 'frame-ancestors' directive — add frame-ancestors 'none' or 'self' for clickjacking protection (supersedes X-Frame-Options in modern browsers)",
+        message: "CSP is present but missing 'frame-ancestors' directive - add frame-ancestors 'none' or 'self' for clickjacking protection (supersedes X-Frame-Options in modern browsers)",
         file: file.name,
       });
     }
@@ -186,7 +186,7 @@ function scanXsAppJson(file) {
     issues.push({
       severity: 'MEDIUM',
       code: 'AR_XFO_UNSAFE',
-      message: `X-Frame-Options value "${xfo}" is not recommended — use DENY or SAMEORIGIN`,
+      message: `X-Frame-Options value "${xfo}" is not recommended - use DENY or SAMEORIGIN`,
       file: file.name,
       snippet: `X-Frame-Options: ${xfo}`,
     });
@@ -219,7 +219,7 @@ function scanXsAppJson(file) {
         issues.push({
           severity: 'HIGH',
           code: 'AR_ROUTE_NO_AUTH',
-          message: `${routeLabel}: authenticationType is "${authType}" — unauthenticated access to this route`,
+          message: `${routeLabel}: authenticationType is "${authType}" - unauthenticated access to this route`,
           file: file.name,
           snippet: `source: ${route.source}`,
         });
@@ -231,7 +231,7 @@ function scanXsAppJson(file) {
       issues.push({
         severity: 'MEDIUM',
         code: 'AR_ROUTE_CSRF_OFF',
-        message: `${routeLabel}: csrfProtection disabled — state-changing requests on this route are not CSRF-protected`,
+        message: `${routeLabel}: csrfProtection disabled - state-changing requests on this route are not CSRF-protected`,
         file: file.name,
         snippet: `source: ${route.source}`,
       });
@@ -242,7 +242,7 @@ function scanXsAppJson(file) {
       issues.push({
         severity: 'HIGH',
         code: 'AR_ROUTE_HTTP_DEST',
-        message: `${routeLabel}: destination uses plain HTTP — use HTTPS`,
+        message: `${routeLabel}: destination uses plain HTTP - use HTTPS`,
         file: file.name,
         snippet: `destination: ${route.destination}`,
       });
@@ -254,7 +254,7 @@ function scanXsAppJson(file) {
         issues.push({
           severity: 'CRITICAL',
           code: 'AR_WILDCARD_ROUTE_NO_AUTH',
-          message: `${routeLabel}: catch-all route with no authentication — all unmatched paths are public`,
+          message: `${routeLabel}: catch-all route with no authentication - all unmatched paths are public`,
           file: file.name,
           snippet: `source: ${route.source}`,
         });
@@ -266,32 +266,32 @@ function scanXsAppJson(file) {
       issues.push({
         severity: 'HIGH',
         code: 'AR_FORWARD_TOKEN_NO_AUTH',
-        message: `${routeLabel}: forwardAuthToken:true but authenticationType is "none" — no token will be forwarded (route is unauthenticated)`,
+        message: `${routeLabel}: forwardAuthToken:true but authenticationType is "none" - no token will be forwarded (route is unauthenticated)`,
         file: file.name,
         snippet: `source: ${route.source}`,
       });
     }
 
-    // scope check — routes to sensitive APIs should require specific scopes
+    // scope check - routes to sensitive APIs should require specific scopes
     if ((authType === 'xsuaa' || authType === 'ias') && !route.scope && !route.requiredScopes) {
       // Only warn for API/backend routes, not static resources
       if (route.destination && !route.localDir && !route.service) {
         issues.push({
           severity: 'LOW',
           code: 'AR_ROUTE_NO_SCOPE',
-          message: `${routeLabel}: no scope restriction on authenticated route — consider adding a "scope" property for fine-grained access control`,
+          message: `${routeLabel}: no scope restriction on authenticated route - consider adding a "scope" property for fine-grained access control`,
           file: file.name,
           snippet: `source: ${route.source}`,
         });
       }
     }
 
-    // Service routes — html5-apps-repo-rt should use xsuaa
+    // Service routes - html5-apps-repo-rt should use xsuaa
     if (route.service === 'html5-apps-repo-rt' && authType === 'none') {
       issues.push({
         severity: 'MEDIUM',
         code: 'AR_HTML5_REPO_NO_AUTH',
-        message: `${routeLabel}: html5-apps-repo-rt service route has no authentication — static apps served without XSUAA protection`,
+        message: `${routeLabel}: html5-apps-repo-rt service route has no authentication - static apps served without XSUAA protection`,
         file: file.name,
         snippet: `source: ${route.source}`,
       });
@@ -321,7 +321,7 @@ function scanApprouterVersion(files) {
           issues.push({
             severity: 'HIGH',
             code: 'AR_OUTDATED_VERSION',
-            message: `@sap/approuter version "${arVersion}" is below the recommended minimum ${MIN_APPROUTER_VERSION} — update to get security fixes (log injection CVE-2022-41271 patched in >=12.0.0)`,
+            message: `@sap/approuter version "${arVersion}" is below the recommended minimum ${MIN_APPROUTER_VERSION} - update to get security fixes (log injection CVE-2022-41271 patched in >=12.0.0)`,
             file: file.name,
             snippet: `"@sap/approuter": "${arVersion}"`,
             fix: `>=${MIN_APPROUTER_VERSION}`,
@@ -356,7 +356,7 @@ function scanMtaApprouter(files) {
           issues.push({
             severity: 'HIGH',
             code: 'AR_MTA_NO_XSUAA',
-            message: 'AppRouter module in mta.yaml has no XSUAA or IAS binding — authentication cannot work without a bound UAA service',
+            message: 'AppRouter module in mta.yaml has no XSUAA or IAS binding - authentication cannot work without a bound UAA service',
             file: file.name,
             line: idx + 1,
             snippet: line.trim(),
@@ -380,7 +380,7 @@ function scanMtaApprouter(files) {
           issues.push({
             severity: 'INFO',
             code: 'AR_MTA_NO_SESSION_TIMEOUT',
-            message: 'AppRouter module does not configure SESSION_TIMEOUT — verify the default 15-minute timeout suits your security policy',
+            message: 'AppRouter module does not configure SESSION_TIMEOUT - verify the default 15-minute timeout suits your security policy',
             file: file.name,
             line: idx + 1,
             snippet: line.trim(),
@@ -398,7 +398,7 @@ function scanMtaApprouter(files) {
           issues.push({
             severity: 'CRITICAL',
             code: 'AR_JWT_TRUST_WILDCARD',
-            message: 'SAP_JWT_TRUST_ACL contains wildcard clientid "*" — this trusts JWT tokens from ANY client, remove or restrict',
+            message: 'SAP_JWT_TRUST_ACL contains wildcard clientid "*" - this trusts JWT tokens from ANY client, remove or restrict',
             file: file.name,
             snippet: `SAP_JWT_TRUST_ACL: ${aclValue.substring(0, 80)}`,
           });
@@ -411,7 +411,7 @@ function scanMtaApprouter(files) {
       issues.push({
         severity: 'HIGH',
         code: 'AR_XFO_DISABLED',
-        message: 'SEND_XFRAMEOPTIONS is set to false in AppRouter environment — X-Frame-Options header will not be sent, enabling clickjacking',
+        message: 'SEND_XFRAMEOPTIONS is set to false in AppRouter environment - X-Frame-Options header will not be sent, enabling clickjacking',
         file: file.name,
         snippet: 'SEND_XFRAMEOPTIONS: false',
       });
@@ -444,7 +444,7 @@ function checkManagedApprouter(files) {
       issues.push({
         severity: 'INFO',
         code: 'AR_XSAPP_NO_PKG',
-        message: `xs-app.json found at ${file.name} but no nearby package.json with @sap/approuter — this may be a managed AppRouter config; ensure the file is intentionally at this location`,
+        message: `xs-app.json found at ${file.name} but no nearby package.json with @sap/approuter - this may be a managed AppRouter config; ensure the file is intentionally at this location`,
         file: file.name,
       });
     }

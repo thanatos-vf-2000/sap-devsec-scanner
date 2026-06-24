@@ -74,7 +74,7 @@ const SAP_KNOWN_VULNS = [
     affectedVersions: '<1.6.0',
     severity: 'HIGH',
     cve: 'CVE-2023-45857',
-    description: 'CSRF vulnerability — confidential headers sent to third-party redirects',
+    description: 'CSRF vulnerability - confidential headers sent to third-party redirects',
     fix: '>=1.6.0',
   },
   {
@@ -96,12 +96,12 @@ const RECOMMENDED_PACKAGES = [
 
 // NEW: Packages that should never be in production dependencies
 const FORBIDDEN_IN_PROD = [
-  { package: '@sap/cds-dk', reason: 'Development toolkit — move to devDependencies' },
-  { package: 'nodemon', reason: 'Dev auto-restart tool — move to devDependencies' },
-  { package: 'jest', reason: 'Test framework — move to devDependencies' },
-  { package: 'mocha', reason: 'Test framework — move to devDependencies' },
-  { package: 'chai', reason: 'Assertion library — move to devDependencies' },
-  { package: 'sinon', reason: 'Test stub library — move to devDependencies' },
+  { package: '@sap/cds-dk', reason: 'Development toolkit - move to devDependencies' },
+  { package: 'nodemon', reason: 'Dev auto-restart tool - move to devDependencies' },
+  { package: 'jest', reason: 'Test framework - move to devDependencies' },
+  { package: 'mocha', reason: 'Test framework - move to devDependencies' },
+  { package: 'chai', reason: 'Assertion library - move to devDependencies' },
+  { package: 'sinon', reason: 'Test stub library - move to devDependencies' },
 ];
 
 const OUTDATED_THRESHOLD_DAYS = 365;
@@ -239,7 +239,7 @@ function analyzePackageJson(files) {
             package: rec.package,
             version: null,
             code: 'RECOMMENDED_PACKAGES',
-            description: `Recommended security package missing: ${rec.package} — ${rec.reason}`,
+            description: `Recommended security package missing: ${rec.package} - ${rec.reason}`,
             source: 'SAP Best Practice',
             file: file.name,
           });
@@ -252,7 +252,7 @@ function analyzePackageJson(files) {
         results.issues.push({
           severity: 'LOW',
           package: pkg.name || 'unknown',
-          description: 'No "engines.node" field — pin the Node.js version to avoid supply-chain runtime differences',
+          description: 'No "engines.node" field - pin the Node.js version to avoid supply-chain runtime differences',
           source: 'Best Practice',
           code: 'MISSING_ENGINES',
           file: file.name,
@@ -266,7 +266,7 @@ function analyzePackageJson(files) {
           results.issues.push({
             severity: 'MEDIUM',
             package: pkg.name || 'unknown',
-            description: `npm lifecycle hook "${hook}" detected: "${scripts[hook]}" — review for supply-chain risk`,
+            description: `npm lifecycle hook "${hook}" detected: "${scripts[hook]}" - review for supply-chain risk`,
             code: 'NPM_SCRIPT',
             source: 'Supply Chain',
             file: file.name,

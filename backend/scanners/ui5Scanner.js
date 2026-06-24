@@ -248,28 +248,28 @@ const UI5_SECURITY_PATTERNS = [
     pattern: /Fragment\.load\s*\(\s*\{[^}]*name\s*:\s*(?!['"` ])/g,
     severity: 'MEDIUM',
     code: 'UI5_DYNAMIC_FRAGMENT',
-    message: 'Dynamic fragment name in Fragment.load — ensure the name comes from a trusted source',
+    message: 'Dynamic fragment name in Fragment.load - ensure the name comes from a trusted source',
   },
   // NEW: Detect unescaped HTML in Text/Label controls via binding
   {
     pattern: /renderWhitespace\s*:\s*true/g,
     severity: 'INFO',
     code: 'UI5_RENDER_WHITESPACE',
-    message: 'renderWhitespace:true — verify content is sanitized when combined with HTML content',
+    message: 'renderWhitespace:true - verify content is sanitized when combined with HTML content',
   },
   // NEW: Detect use of deprecated API sap.ui.commons (unmaintained, no security updates)
   {
     pattern: /sap\.ui\.commons\./g,
     severity: 'HIGH',
     code: 'UI5_DEPRECATED_COMMONS',
-    message: 'sap.ui.commons.* is deprecated and unmaintained — no security patches, migrate to sap.m.*',
+    message: 'sap.ui.commons.* is deprecated and unmaintained - no security patches, migrate to sap.m.*',
   },
   // NEW: Detect use of XMLView with unsanitized string template (XSS via view generation)
   {
     pattern: /XMLView\.create\s*\(\s*\{[^}]*definition\s*:\s*`/g,
     severity: 'HIGH',
     code: 'UI5_XMLVIEW_TEMPLATE',
-    message: 'XMLView.create with template literal definition — sanitize any dynamic content before injecting into XML',
+    message: 'XMLView.create with template literal definition - sanitize any dynamic content before injecting into XML',
   },
 ];
 
@@ -384,21 +384,21 @@ const SAP_SPECIFIC_PATTERNS = [
     pattern: /jQuery\.sap\./g,
     severity: 'LOW',
     code: 'SAP_DEPRECATED_JQUERY_SAP',
-    message: 'jQuery.sap.* APIs are deprecated since UI5 1.58 — migrate to sap/base/* or sap/ui/core/* equivalents',
+    message: 'jQuery.sap.* APIs are deprecated since UI5 1.58 - migrate to sap/base/* or sap/ui/core/* equivalents',
   },
   // NEW: Detect postMessage without origin validation (potential message injection)
   {
     pattern: /window\.addEventListener\s*\(\s*['"`]message['"`]/g,
     severity: 'MEDIUM',
     code: 'SAP_POSTMESSAGE_NOCHECK',
-    message: 'postMessage listener detected — always validate event.origin before processing the message',
+    message: 'postMessage listener detected - always validate event.origin before processing the message',
   },
   // NEW: Detect unescaped binding expressions used in HTML controls (XSS via model binding)
   {
     pattern: /formatter\s*:\s*function\s*\([^)]*\)\s*\{[^}]*return[^}]*\+/g,
     severity: 'MEDIUM',
     code: 'SAP_FORMATTER_CONCAT',
-    message: 'String concatenation in formatter return — use sap/base/security/encodeXML on user data',
+    message: 'String concatenation in formatter return - use sap/base/security/encodeXML on user data',
   },
 ];
 
@@ -475,7 +475,7 @@ function detectUI5Version(files) {
         findings.issues.push({
           severity: 'MEDIUM',
           code: 'UI5_NO_CSP',
-          message: 'No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section — configure CSP headers via AppRouter instead',
+          message: 'No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead',
           file: file.name,
         });
       }
@@ -486,7 +486,7 @@ function detectUI5Version(files) {
         findings.issues.push({
           severity: 'HIGH',
           code: 'UI5_CORS_WILDCARD',
-          message: 'sap.ui5 allowed-cors-origins contains wildcard "*" — restrict to known origins',
+          message: 'sap.ui5 allowed-cors-origins contains wildcard "*" - restrict to known origins',
           file: file.name,
         });
       }
@@ -497,7 +497,7 @@ function detectUI5Version(files) {
         findings.issues.push({
           severity: 'INFO',
           code: 'UI5_DEFAULT_VERSION',
-          message: 'sap.app.applicationVersion is "1.0.0" (default) — update for proper cache-busting and deployment tracking',
+          message: 'sap.app.applicationVersion is "1.0.0" (default) - update for proper cache-busting and deployment tracking',
           file: file.name,
         });
       }

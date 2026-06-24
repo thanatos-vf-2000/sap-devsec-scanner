@@ -67,7 +67,7 @@ function scanBTPDestinations(files) {
         // Exclude SAP public CDN
         if (/URL:\s*https?:\/\/ui5\.sap\.com/.test(contextLines)) return;
 
-        // ForwardAuthToken — lower severity
+        // ForwardAuthToken - lower severity
         if (/HTML5\.ForwardAuthToken:\s*true/.test(contextLines)) {
           issues.push({
             severity: 'LOW',
@@ -91,7 +91,7 @@ function scanBTPDestinations(files) {
       });
     }
 
-    // NEW: Detect missing memory/disk quotas — can lead to DoS via resource exhaustion
+    // NEW: Detect missing memory/disk quotas - can lead to DoS via resource exhaustion
     const lines = file.content.split('\n');
     let inModuleBlock = false;
     let moduleHasMemory = false;
@@ -103,7 +103,7 @@ function scanBTPDestinations(files) {
           issues.push({
             severity: 'LOW',
             code: 'BTP_MTA_NO_MEMORY',
-            message: `MTA module "${moduleName}" has no memory quota set — consider specifying memory: in parameters`,
+            message: `MTA module "${moduleName}" has no memory quota set - consider specifying memory: in parameters`,
             file: file.name,
             line: moduleStartLine + 1,
             snippet: `- name: ${moduleName}`,
@@ -122,7 +122,7 @@ function scanBTPDestinations(files) {
       issues.push({
         severity: 'INFO',
         code: 'BTP_MTA_NO_HEALTHCHECK',
-        message: 'No health-check-type defined for Node.js modules in mta.yaml — consider adding health-check-type: http',
+        message: 'No health-check-type defined for Node.js modules in mta.yaml - consider adding health-check-type: http',
         file: file.name,
         snippet: 'type: nodejs',
       });
@@ -158,7 +158,7 @@ function scanBTPDestinations(files) {
       const redirectUris = config['oauth2-configuration']?.['redirect-uris'] || [];
       for (const uri of redirectUris) {
         if (uri.includes('localhost') || uri.startsWith('http://')) {
-          issues.push({ severity: 'MEDIUM', code: 'XSUAA_REDIRECT_LOCALHOST', message: `Redirect URI contains localhost or HTTP — remove before production: ${uri}`, file: file.name, snippet: uri });
+          issues.push({ severity: 'MEDIUM', code: 'XSUAA_REDIRECT_LOCALHOST', message: `Redirect URI contains localhost or HTTP - remove before production: ${uri}`, file: file.name, snippet: uri });
         }
         if (uri.includes('*') && !uri.startsWith('https://')) {
           issues.push({ severity: 'HIGH', code: 'XSUAA_WILDCARD_REDIRECT', message: `Wildcard redirect URI over non-HTTPS is an open redirect risk: ${uri}`, file: file.name, snippet: uri });
@@ -171,19 +171,19 @@ function scanBTPDestinations(files) {
           (rt['scope-references'] || []).some(s => s.includes('$XSSERVICENAME'))
         );
         if (!hasForeignRef) {
-          issues.push({ severity: 'LOW', code: 'XSUAA_SHARED_NO_FOREIGN_SCOPE', message: 'tenant-mode is "shared" — ensure cross-tenant access uses $XSSERVICENAME scope references, not $XSAPPNAME', file: file.name });
+          issues.push({ severity: 'LOW', code: 'XSUAA_SHARED_NO_FOREIGN_SCOPE', message: 'tenant-mode is "shared" - ensure cross-tenant access uses $XSSERVICENAME scope references, not $XSAPPNAME', file: file.name });
         }
       }
 
       // NEW: Check for ACCEPT_GRANTED_AUTHORITIES (accepts all authorities from bound services)
       const foreignScopeRefs = config['foreign-scope-references'] || [];
       if (foreignScopeRefs.includes('$ACCEPT_GRANTED_AUTHORITIES')) {
-        issues.push({ severity: 'HIGH', code: 'XSUAA_ACCEPT_GRANTED', message: 'ACCEPT_GRANTED_AUTHORITIES in foreign-scope-references — service accepts ALL authorities from bound apps', file: file.name });
+        issues.push({ severity: 'HIGH', code: 'XSUAA_ACCEPT_GRANTED', message: 'ACCEPT_GRANTED_AUTHORITIES in foreign-scope-references - service accepts ALL authorities from bound apps', file: file.name });
       }
 
       // NEW: Check missing role-collections (easier onboarding but security review needed)
       if (!config['role-collections'] || config['role-collections'].length === 0) {
-        issues.push({ severity: 'INFO', code: 'XSUAA_NO_ROLE_COLLECTIONS', message: 'No role-collections defined — administrators must manually assemble roles, consider pre-defining role-collections', file: file.name });
+        issues.push({ severity: 'INFO', code: 'XSUAA_NO_ROLE_COLLECTIONS', message: 'No role-collections defined - administrators must manually assemble roles, consider pre-defining role-collections', file: file.name });
       }
 
     } catch (e) {

@@ -137,7 +137,7 @@ const SECRET_PATTERNS = [
     pattern: /[A-Za-z0-9+/]{52}={0,2}(?=\s|$)/g,
     severity: 'INFO',
     code: 'SECRET_BASE64_CANDIDATE',
-    message: 'Possible base64-encoded secret (52-char string) — verify it is not a hardcoded credential',
+    message: 'Possible base64-encoded secret (52-char string) - verify it is not a hardcoded credential',
   },
 ];
 
@@ -224,7 +224,7 @@ const SENSITIVE_FILES_CHECK = [
       return [{
         severity: 'CRITICAL',
         code: 'SERVICE_KEY_COMMITTED',
-        message: 'service-key.json committed to repository — this file contains raw service credentials, add to .gitignore immediately',
+        message: 'service-key.json committed to repository - this file contains raw service credentials, add to .gitignore immediately',
         line: 1,
         snippet: 'Remove from repository and rotate credentials',
       }];
@@ -291,7 +291,7 @@ function checkPipelineFiles(files) {
         issues.push({
           severity: 'CRITICAL',
           code: 'PIPELINE_SECRET',
-          message: 'Possible hardcoded secret in CI/CD pipeline file — use secrets store instead',
+          message: 'Possible hardcoded secret in CI/CD pipeline file - use secrets store instead',
           file: file.name,
           line: idx + 1,
           snippet: line.trim().replace(/:\s*.+/, ': ***'),

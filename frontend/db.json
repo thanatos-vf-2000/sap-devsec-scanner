@@ -2178,735 +2178,735 @@
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app1/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app1/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app1/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app1/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app1/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app1/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app1/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app1/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app1/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app1/xs-app.json",
                         "snippet": "source: /destinations/(.*)/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app1/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app1/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app2/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app2/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app2/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app2/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app2/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app2/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app2/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app2/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app2/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app2/xs-app.json",
                         "snippet": "source: /destinations/(.*)/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app2/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app2/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app3/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app3/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app3/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app3/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app3/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app3/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app3/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app3/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app3/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app3/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app3/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app4/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app4/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app4/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app4/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app4/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app4/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app4/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app4/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app4/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app4/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app4/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app5/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app5/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app5/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app5/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app5/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app5/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app5/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app5/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app5/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app5/xs-app.json",
                         "snippet": "source: /destinations/(.*)/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app5/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app5/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/router/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/router/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/router/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/router/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/router/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/router/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/router/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/router/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/router/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/router/xs-app.json",
                         "snippet": "source: /destinations/(.*)/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app6/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app6/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app6/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app6/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app6/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app6/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app6/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app6/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app6/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app6/xs-app.json",
                         "snippet": "source: /destinations/(.*)/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app6/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app6/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app7/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app7/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app7/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app7/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app7/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app7/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app7/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app7/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app7/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app7/xs-app.json",
                         "snippet": "source: /destinations/(.*)/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app7/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app7/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app8/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app8/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app8/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app8/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app8/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app8/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app8/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app8/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app8/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app8/xs-app.json",
                         "snippet": "source: /destinations/(.*)/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app8/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app8/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     },
                     {
                         "severity": "INFO",
                         "code": "AR_NO_SESSION_TIMEOUT",
-                        "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                         "file": "app/app9/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_NO_LOGOUT_ENDPOINT",
-                        "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                         "file": "app/app9/xs-app.json"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_MISSING_CSP",
-                        "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                         "file": "app/app9/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XFO",
-                        "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                         "file": "app/app9/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_XCTO",
-                        "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                         "file": "app/app9/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_MISSING_HSTS",
-                        "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                         "file": "app/app9/xs-app.json"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_MISSING_RP",
-                        "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                         "file": "app/app9/xs-app.json"
                     },
                     {
                         "severity": "MEDIUM",
                         "code": "AR_ROUTE_CSRF_OFF",
-                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                        "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                         "file": "app/app9/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "LOW",
                         "code": "AR_ROUTE_NO_SCOPE",
-                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                        "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                         "file": "app/app9/xs-app.json",
                         "snippet": "source: ^/apps/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app9/xs-app.json",
                         "snippet": "source: ^/resources/(.*)$"
                     },
                     {
                         "severity": "HIGH",
                         "code": "AR_ROUTE_NO_AUTH",
-                        "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                        "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                         "file": "app/app9/xs-app.json",
                         "snippet": "source: ^/test-resources/(.*)$"
                     }
@@ -2916,7 +2916,7 @@
                     {
                         "severity": "HIGH",
                         "code": "AR_MTA_NO_XSUAA",
-                        "message": "AppRouter module in mta.yaml has no XSUAA or IAS binding — authentication cannot work without a bound UAA service",
+                        "message": "AppRouter module in mta.yaml has no XSUAA or IAS binding - authentication cannot work without a bound UAA service",
                         "file": "mta.yaml",
                         "line": 60,
                         "snippet": "type: approuter.nodejs"
@@ -2924,7 +2924,7 @@
                     {
                         "severity": "INFO",
                         "code": "AR_MTA_NO_SESSION_TIMEOUT",
-                        "message": "AppRouter module does not configure SESSION_TIMEOUT — verify the default 15-minute timeout suits your security policy",
+                        "message": "AppRouter module does not configure SESSION_TIMEOUT - verify the default 15-minute timeout suits your security policy",
                         "file": "mta.yaml",
                         "line": 60,
                         "snippet": "type: approuter.nodejs"
@@ -5134,735 +5134,735 @@
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app1/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app1/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app1/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app1/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app1/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app1/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app1/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app1/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app1/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app1/xs-app.json",
                     "snippet": "source: /destinations/(.*)/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app1/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app1/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app2/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app2/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app2/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app2/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app2/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app2/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app2/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app2/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app2/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app2/xs-app.json",
                     "snippet": "source: /destinations/(.*)/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app2/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app2/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app3/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app3/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app3/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app3/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app3/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app3/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app3/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app3/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app3/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app3/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app3/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app4/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app4/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app4/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app4/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app4/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app4/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app4/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app4/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app4/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app4/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app4/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app5/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app5/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app5/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app5/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app5/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app5/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app5/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app5/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app5/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app5/xs-app.json",
                     "snippet": "source: /destinations/(.*)/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app5/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app5/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/router/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/router/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/router/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/router/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/router/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/router/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/router/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/router/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/router/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/router/xs-app.json",
                     "snippet": "source: /destinations/(.*)/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app6/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app6/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app6/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app6/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app6/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app6/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app6/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app6/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app6/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app6/xs-app.json",
                     "snippet": "source: /destinations/(.*)/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app6/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app6/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app7/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app7/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app7/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app7/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app7/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app7/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app7/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app7/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app7/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app7/xs-app.json",
                     "snippet": "source: /destinations/(.*)/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app7/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app7/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app8/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app8/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app8/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app8/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app8/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app8/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app8/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app8/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app8/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app8/xs-app.json",
                     "snippet": "source: /destinations/(.*)/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app8/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app8/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 },
                 {
                     "severity": "INFO",
                     "code": "AR_NO_SESSION_TIMEOUT",
-                    "message": "xs-app.json: no sessionTimeout configured — default is 15 minutes; verify this matches your security policy",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
                     "file": "app/app9/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_NO_LOGOUT_ENDPOINT",
-                    "message": "xs-app.json: no logout.logoutEndpoint defined — users cannot explicitly invalidate their session",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
                     "file": "app/app9/xs-app.json"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_MISSING_CSP",
-                    "message": "Content-Security-Policy header not configured — set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
                     "file": "app/app9/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XFO",
-                    "message": "X-Frame-Options not set — protects against clickjacking; use DENY or SAMEORIGIN",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
                     "file": "app/app9/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_XCTO",
-                    "message": "X-Content-Type-Options: nosniff not set — prevents MIME-type sniffing attacks",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
                     "file": "app/app9/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_MISSING_HSTS",
-                    "message": "Strict-Transport-Security (HSTS) not configured — enforce HTTPS-only communication",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
                     "file": "app/app9/xs-app.json"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_MISSING_RP",
-                    "message": "Referrer-Policy not set — consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
                     "file": "app/app9/xs-app.json"
                 },
                 {
                     "severity": "MEDIUM",
                     "code": "AR_ROUTE_CSRF_OFF",
-                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled — state-changing requests on this route are not CSRF-protected",
+                    "message": "route[0] (source: ^/apps/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
                     "file": "app/app9/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "LOW",
                     "code": "AR_ROUTE_NO_SCOPE",
-                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route — consider adding a \"scope\" property for fine-grained access control",
+                    "message": "route[0] (source: ^/apps/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
                     "file": "app/app9/xs-app.json",
                     "snippet": "source: ^/apps/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app9/xs-app.json",
                     "snippet": "source: ^/resources/(.*)$"
                 },
                 {
                     "severity": "HIGH",
                     "code": "AR_ROUTE_NO_AUTH",
-                    "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" — unauthenticated access to this route",
+                    "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
                     "file": "app/app9/xs-app.json",
                     "snippet": "source: ^/test-resources/(.*)$"
                 }
@@ -5872,7 +5872,7 @@
                 {
                     "severity": "HIGH",
                     "code": "AR_MTA_NO_XSUAA",
-                    "message": "AppRouter module in mta.yaml has no XSUAA or IAS binding — authentication cannot work without a bound UAA service",
+                    "message": "AppRouter module in mta.yaml has no XSUAA or IAS binding - authentication cannot work without a bound UAA service",
                     "file": "mta.yaml",
                     "line": 60,
                     "snippet": "type: approuter.nodejs"
@@ -5880,7 +5880,7 @@
                 {
                     "severity": "INFO",
                     "code": "AR_MTA_NO_SESSION_TIMEOUT",
-                    "message": "AppRouter module does not configure SESSION_TIMEOUT — verify the default 15-minute timeout suits your security policy",
+                    "message": "AppRouter module does not configure SESSION_TIMEOUT - verify the default 15-minute timeout suits your security policy",
                     "file": "mta.yaml",
                     "line": 60,
                     "snippet": "type: approuter.nodejs"
