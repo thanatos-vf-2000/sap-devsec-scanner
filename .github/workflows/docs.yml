@@ -93,6 +93,13 @@ jobs:
           # Screenshots
           cd docs
           node scripts/screenshots.js
+          cd ..
+
+          # Copy du logo et md
+          cp frontend/public/logo.png docs/public
+          cp CHANGELOG.md docs/changelog.md
+          cp CHANGELOG.md docs/en/changelog.md
+
 
           # Arrêter le backend
           kill $FRONTEND_PID 2>/dev/null || true

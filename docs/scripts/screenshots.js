@@ -9,11 +9,19 @@ const SCREENSHOTS_DIR = path.join(__dirname, '..', 'public', 'screenshots');
 const APP_URL = process.env.APP_URL || 'http://localhost:5173';
 
 const PAGES = [
-  { name: 'home',    path: '/' },
-  { name: 'scan',    path: '/#/scan' },
-  { name: 'report',  path: '/#/history' },  // redirige vers un rapport si dispo
-  { name: 'history', path: '/#/history' },
-  { name: 'about',   path: '/#/about' },
+  { name: 'home' },
+  { name: 'report' },
+  { name: 'scan' },
+  { name: 'history-item' },
+  { name: 'ui5' },
+  { name: 'cap-cds' },
+  { name: 'secrets' },
+  { name: 'btp' },
+  { name: 'npm' },
+  { name: 'approuter' },
+  { name: 'history' },
+  { name: 'about'},
+
 ];
 
 // PNG 1x1 transparent - placeholder valide si le backend est absent
@@ -77,6 +85,40 @@ async function takeScreenshots() {
 
         case "scan":
           await page.locator(".shell-nav a:nth-child(1)").click();
+          break;
+
+        case "history-item":
+          await page.locator(".history-item").click();
+          break;
+
+        case "ui5":
+          await page.locator(".history-item").click();
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(1)").click();
+          break;
+
+        case "cap-cds":
+          await page.locator(".history-item").click();
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(2)").click();
+          break;
+
+        case "secrets":
+          await page.locator(".history-item").click();
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(3)").click();
+          break;
+
+        case "btp":
+          await page.locator(".history-item").click();
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(4)").click();
+          break;
+
+        case "npm":
+          await page.locator(".history-item").click();
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(5)").click();
+          break;
+
+        case "approuter":
+          await page.locator(".history-item").click();
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(6)").click();
           break;
 
         case "report":
