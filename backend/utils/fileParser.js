@@ -131,6 +131,7 @@ function detectProjectType(files) {
     if (!types.includes('CAP/CDS')) types.push('CAP Node.js');
   }
   if (filenames.some(f => f === 'package.json')) types.push('Node.js');
+  if (filenames.some(f => f === 'xs-app.json')) types.push('App Router');
 
   return types.length > 0 ? types : ['Unknown'];
 }

@@ -225,6 +225,10 @@ export default {
     const allIssues = computed(() => [
       ...(props.data?.issues || []),
       ...(props.data?.codeVulnerabilities || []),
+      ...(props.data?.redirectVulnerabilities || []),
+      ...(props.data?.sensitiveData || []),
+      ...(props.data?.owasp || []),
+      ...(props.data?.sapSpecific || []),
     ]);
 
     return { t, sortedVersionRows, allIssues };

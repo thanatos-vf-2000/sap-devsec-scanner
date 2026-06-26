@@ -48,7 +48,7 @@ curl -X POST http://localhost:3001/api/scan/directory \
   "scanId": "uuid",
   "projectName": "my-fiori-app",
   "projectTypes": ["UI5", "CAP"],
-  "scannedAt": "2026-06-15T10:00:00.000Z",
+  "scannedAt": "2026-06-25T10:00:00.000Z",
   "riskScore": 73,
   "riskLevel": "MEDIUM",
   "summary": {

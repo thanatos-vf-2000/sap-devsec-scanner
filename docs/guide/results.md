@@ -30,7 +30,3 @@ Le rapport est organisé en **onglets par scanner**. Chaque onglet affiche :
 
 - Le nombre de findings par sévérité
 - Le détail de chaque finding : fichier concerné, ligne, description, recommandation
-
-## Lire un finding
-
-Chaque finding contient :

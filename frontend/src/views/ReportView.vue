@@ -72,6 +72,7 @@
           <SecretsTab v-else-if="currentTab === 'secrets'" :data="report.results.secrets" />
           <BTPTab v-else-if="currentTab === 'btp'" :data="report.results.btp" />
           <NPMTab v-else-if="currentTab === 'npm'" :data="report.results.npm" />
+          <AppRouterTab v-else-if="currentTab === 'approuter'" :data="report.results.approuter" />
         </div>
       </div>
     </template>
@@ -86,10 +87,11 @@ import CAPTab from '../components/CAPTab.vue';
 import SecretsTab from '../components/SecretsTab.vue';
 import BTPTab from '../components/BTPTab.vue';
 import NPMTab from '../components/NPMTab.vue';
+import AppRouterTab from '../components/AppRouterTab.vue';
 
 export default {
   name: 'ReportView',
-  components: { UI5Tab, CAPTab, SecretsTab, BTPTab, NPMTab },
+  components: { UI5Tab, CAPTab, SecretsTab, BTPTab, NPMTab, AppRouterTab },
   props: { report: { type: Object, default: null } },
   setup(props) {
     const currentTab = ref('ui5');
@@ -106,11 +108,12 @@ export default {
       if (!props.report) return [];
       const r = props.report.results;
       return [
-        { id: 'ui5', label: t.report.tabs.ui5, icon: 'fa-solid fa-palette', count: (r.ui5?.issues?.length||0)+(r.ui5?.codeVulnerabilities?.length||0), crit: false },
+        { id: 'ui5', label: t.report.tabs.ui5, icon: '', count: (r.ui5?.issues?.length||0)+(r.ui5?.codeVulnerabilities?.length||0)+(r.ui5?.redirectVulnerabilities?.length||0)+(r.ui5?.sensitiveData?.length||0)+(r.ui5?.owasp?.length||0)+(r.ui5?.sapSpecific?.length||0), crit: false },
         { id: 'cap', label: t.report.tabs.cap, icon: '', count: (r.cap?.services?.length||0)+(r.cap?.vulnerabilities?.length||0)+(r.cap?.mtaIssues?.length||0)+(r.cap?.xsuaaIssues?.length||0), crit: false },
         { id: 'secrets', label: t.report.tabs.secrets, icon: '', count: r.secrets?.findings?.length||0, crit: true },
         { id: 'btp', label: t.report.tabs.btp, icon: '', count: r.btp?.issues?.length||0, crit: true },
         { id: 'npm', label: t.report.tabs.npm, icon: '', count: r.npm?.issues?.length||0, crit: false },
+        { id: 'approuter', label: t.report.tabs.approuter, icon: '', count: (r.approuter?.routeIssues?.length||0)+(r.approuter?.versionIssues?.length||0)+(r.approuter?.mtaIssues?.length||0)+(r.approuter?.configIssues?.length||0), crit: false },
       ];
     });
 
@@ -142,7 +145,8 @@ export default {
         cap: "fa-solid fa-cubes",
         secrets: "fa-solid fa-vault",
         btp: "fa-regular fa-cloud",
-        npm: "fa-brands fa-dropbox"
+        npm: "fa-brands fa-dropbox",
+        approuter: "fa-regular fa-map",
       };
 
       return icons[level] || "fa-circle-question";

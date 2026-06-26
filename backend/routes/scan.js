@@ -12,6 +12,7 @@ const { scanCAPCode } = require('../scanners/capScanner');
 const { scanSecrets } = require('../scanners/secretsScanner');
 const { scanBTPDestinations } = require('../scanners/btpScanner');
 const { analyzePackageJson } = require('../scanners/npmScanner');
+const { scanApprouter }= require('../scanners/approuterScanner');
 
 const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 50 * 1024 * 1024 } });
@@ -27,12 +28,20 @@ function calculateRiskScore(results) {
     ...(results.secrets?.findings || []),
     ...(results.ui5?.issues || []),
     ...(results.ui5?.codeVulnerabilities || []),
+    ...(results.ui5?.redirectVulnerabilities || []),
+    ...(results.ui5?.sensitiveData || []),
+    ...(results.ui5?.owasp || []),
+    ...(results.ui5?.sapSpecific || []),
     ...(results.cap?.vulnerabilities || []),
     ...(results.cap?.mtaIssues || []),
     ...(results.cap?.xsuaaIssues || []),
     ...(results.btp?.issues || []),
     ...(results.npm?.issues || []),
     ...(results.cap?.services?.filter(s => s.severity === 'HIGH') || []),
+    ...(results.approuter?.routeIssues || []),
+    ...(results.approuter?.versionIssues || []),
+    ...(results.approuter?.mtaIssues || []),
+    ...(results.approuter?.configIssues || []),
   ];
 
   for (const issue of allIssues) {
@@ -50,6 +59,7 @@ function buildReport(scanId, files, projectName) {
   const secretResults = scanSecrets(files);
   const btpResults = scanBTPDestinations(files);
   const npmResults = analyzePackageJson(files);
+  const approuterResults = scanApprouter(files);
 
   const results = {
     ui5: ui5Results,
@@ -57,6 +67,7 @@ function buildReport(scanId, files, projectName) {
     secrets: { findings: secretResults },
     btp: { issues: btpResults },
     npm: npmResults,
+    approuter: approuterResults,
   };
 
   const riskScore = calculateRiskScore(results);
@@ -66,12 +77,20 @@ function buildReport(scanId, files, projectName) {
     ...secretResults,
     ...(ui5Results.issues || []),
     ...(ui5Results.codeVulnerabilities || []),
+    ...(ui5Results.redirectVulnerabilities || []),
+    ...(ui5Results.sensitiveData || []),
+    ...(ui5Results.owasp || []),
+    ...(ui5Results.sapSpecific || []),
     ...(capResults.vulnerabilities || []),
     ...(capResults.mtaIssues || []),
     ...(capResults.xsuaaIssues || []),
     ...btpResults,
     ...(npmResults.issues || []),
     ...(capResults.services?.filter(s => s.severity === 'HIGH') || []),
+    ...(approuterResults.routeIssues || []),
+    ...(approuterResults.versionIssues || []),
+    ...(approuterResults.mtaIssues || []),
+    ...(approuterResults.configIssues || []),
   ];
 
   const summary = {

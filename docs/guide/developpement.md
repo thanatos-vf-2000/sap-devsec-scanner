@@ -40,6 +40,12 @@ npm install
 
 ## Mode développement - Frontend
 
+> **Information**
+>
+> Utiliser la variable d'environnement ENABLE_DEVTOOLS à true pour activer Vue DevTools (http://localhost:5173/__devtools__/).
+>
+>**export ENABLE_DEVTOOLS=true**
+
 ```bash
 cd frontend
 npm run dev

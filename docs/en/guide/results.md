@@ -31,6 +31,3 @@ The report is organized into **tabs per scanner**. Each tab shows:
 - The number of findings by severity
 - Finding details: affected file, line number, description, recommendation
 
-## Reading a finding
-
-Each finding contains:

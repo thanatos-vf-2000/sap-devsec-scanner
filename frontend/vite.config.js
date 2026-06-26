@@ -26,7 +26,10 @@ function getGitHash() {
 export default defineConfig({
   plugins: [
     vue(),
-    vueDevTools(),
+    //vueDevTools(),
+    ...(process.env.ENABLE_DEVTOOLS === 'true'
+      ? [vueDevTools()]
+      : []),
   ],
   define: {
     __APP_VERSION__    : JSON.stringify(appPkg.version),

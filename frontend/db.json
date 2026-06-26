@@ -1,132 +1,78 @@
 {
-    "health": {"status":"ok","version":"1.2.1","service":"SAP DevSec Scanner","lang":"fr"},
+    "health": {"status":"ok","version":"1.3.0","service":"SAP DevSec Scanner","lang":"fr"},
     "scan_upload": {
     "success": true,
-    "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
+    "scanId": "4c4086fe-7548-4a30-bb35-18ee026d8c6d",
     "report": {
-        "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
-        "projectName": "My-CAP-Apps",
+        "scanId": "4c4086fe-7548-4a30-bb35-18ee026d8c6d",
+        "projectName": "app-test-security",
         "projectTypes": [
             "SAPUI5/Fiori",
             "MTA",
             "CAP/CDS",
             "XSUAA",
-            "Node.js"
+            "Node.js",
+            "App Router"
         ],
-        "scannedAt": "2026-06-16T06:38:22.097Z",
-        "filesScanned": 247,
+        "scannedAt": "2026-06-25T23:18:07.029Z",
+        "filesScanned": 130,
         "riskScore": 0,
         "riskLevel": "CRITICAL",
         "summary": {
             "critical": 0,
-            "high": 18,
-            "medium": 9,
-            "low": 27,
-            "info": 10,
-            "total": 64
+            "high": 16,
+            "medium": 35,
+            "low": 46,
+            "info": 32,
+            "total": 129
         },
         "results": {
             "ui5": {
-                "detectedVersion": "1.141.1",
+                "detectedVersion": "1.136.15",
                 "sources": [
                     {
-                        "file": "app/app1/webapp/manifest.json",
+                        "file": "/app/app1-a/webapp/manifest.json",
                         "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
+                        "value": "1.136.14"
                     },
                     {
-                        "file": "app/app2/webapp/manifest.json",
+                        "file": "/app/app1-b/webapp/manifest.json",
                         "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
+                        "value": "1.136.14"
                     },
                     {
-                        "file": "app/app3/webapp/manifest.json",
+                        "file": "/app/app1-c/webapp/manifest.json",
                         "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
+                        "value": "1.136.15"
                     },
                     {
-                        "file": "app/app4/webapp/manifest.json",
-                        "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
-                    },
-                    {
-                        "file": "app/app5/webapp/manifest.json",
-                        "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
-                    },
-                    {
-                        "file": "app/app6/webapp/manifest.json",
-                        "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
-                    },
-                    {
-                        "file": "app/app7/webapp/manifest.json",
-                        "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
-                    },
-                    {
-                        "file": "app/app8/webapp/manifest.json",
-                        "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
-                    },
-                    {
-                        "file": "app/app9/webapp/manifest.json",
-                        "key": "sap.ui5.dependencies.minUI5Version",
-                        "value": "1.141.1"
-                    },
-                    {
-                        "file": "app/app1/package.json",
+                        "file": "/app/app1-a/package.json",
                         "key": "@ui5/cli",
-                        "value": "^3.0.0"
+                        "value": "^4.0.33"
                     },
                     {
-                        "file": "app/app2/package.json",
+                        "file": "/app/app1-b/package.json",
                         "key": "@ui5/cli",
-                        "value": "^3.0.0"
+                        "value": "^4.0.33"
                     },
                     {
-                        "file": "app/app3/package.json",
+                        "file": "/app/app1-c/package.json",
                         "key": "@ui5/cli",
-                        "value": "^3.0.0"
+                        "value": "^4.0.33"
                     },
                     {
-                        "file": "app/app4/package.json",
+                        "file": "/package.json",
                         "key": "@ui5/cli",
-                        "value": "^3.0.0"
-                    },
-                    {
-                        "file": "app/app5/package.json",
-                        "key": "@ui5/cli",
-                        "value": "^3.0.0"
-                    },
-                    {
-                        "file": "app/app6/package.json",
-                        "key": "@ui5/cli",
-                        "value": "^3.0.0"
-                    },
-                    {
-                        "file": "app/app7/package.json",
-                        "key": "@ui5/cli",
-                        "value": "^3.0.0"
-                    },
-                    {
-                        "file": "app/app8/package.json",
-                        "key": "@ui5/cli",
-                        "value": "^3.0.0"
-                    },
-                    {
-                        "file": "app/app9/package.json",
-                        "key": "@ui5/cli",
-                        "value": "^3.0.0"
+                        "value": "^4.0.49"
                     }
                 ],
                 "currentStatus": {
-                    "version": "1.141",
-                    "patch": "1.141.4",
-                    "status": "maintained",
-                    "eom": "",
-                    "ecp": "Q1/2027",
-                    "label": "Maintained"
+                    "version": "1.136",
+                    "patch": "1.136.19",
+                    "status": "lts",
+                    "eom": "Q4/2032",
+                    "ecp": "Q4/2033",
+                    "label": "LTS (Recommended)"
                 },
                 "latestVersion": "1.148.1",
                 "ltsVersion": "1.136.19",
@@ -368,7 +314,7 @@
                         "patch": "1.141.4",
                         "status": "maintained",
                         "eom": "",
-                        "ecp": "Q1/2027",
+                        "ecp": "Q4/2026",
                         "label": "Maintained"
                     },
                     {
@@ -1368,8 +1314,44 @@
                 "issues": [
                     {
                         "severity": "MEDIUM",
-                        "message": "UI5 version 1.141 is maintained but not the LTS version (1.136.19)",
-                        "code": "UI5_NOT_LTS"
+                        "code": "UI5_NO_CSP",
+                        "message": "No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead",
+                        "file": "/app/app1-a/webapp/manifest.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "UI5_DEFAULT_VERSION",
+                        "message": "sap.app.applicationVersion is \"1.0.0\" (default) - update for proper cache-busting and deployment tracking",
+                        "file": "/app/app1-a/webapp/manifest.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "UI5_NO_CSP",
+                        "message": "No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead",
+                        "file": "/app/app1-b/webapp/manifest.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "UI5_DEFAULT_VERSION",
+                        "message": "sap.app.applicationVersion is \"1.0.0\" (default) - update for proper cache-busting and deployment tracking",
+                        "file": "/app/app1-b/webapp/manifest.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "UI5_NO_CSP",
+                        "message": "No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead",
+                        "file": "/app/app1-c/webapp/manifest.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "UI5_DEFAULT_VERSION",
+                        "message": "sap.app.applicationVersion is \"1.0.0\" (default) - update for proper cache-busting and deployment tracking",
+                        "file": "/app/app1-c/webapp/manifest.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "message": "12 minor versions behind latest release",
+                        "code": "UI5_OUTDATED"
                     }
                 ],
                 "recommendations": [
@@ -1377,144 +1359,115 @@
                     "Latest available: 1.148.1",
                     "Reference: https://ui5.sap.com/versionoverview.html"
                 ],
-                "codeVulnerabilities": []
+                "codeVulnerabilities": [
+                    {
+                        "severity": "HIGH",
+                        "code": "UI5_XSS_HTML_CONTROL",
+                        "message": "sap.ui.core.HTML with dynamic content - potential XSS",
+                        "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                        "line": 298,
+                        "snippet": "var oHtml = new sap.ui.core.HTML({"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "UI5_XSS_HTML_CONTROL",
+                        "message": "sap.ui.core.HTML with dynamic content - potential XSS",
+                        "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                        "line": 326,
+                        "snippet": "var oHtml = new sap.ui.core.HTML({"
+                    }
+                ],
+                "redirectVulnerabilities": [
+                    {
+                        "severity": "MEDIUM",
+                        "code": "REDIRECT_OPEN",
+                        "message": "Verify URLs before opening them",
+                        "file": "/app/app1-b/webapp/controller/Home.controller.js",
+                        "line": 125,
+                        "snippet": "window.open(sUrl, \"_blank\");"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "REDIRECT_OPEN",
+                        "message": "Verify URLs before opening them",
+                        "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                        "line": 161,
+                        "snippet": "window.open(iUrl, \"_blank\");"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "REDIRECT_OPEN",
+                        "message": "Verify URLs before opening them",
+                        "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                        "line": 323,
+                        "snippet": "window.open(sUrl, \"_blank\");"
+                    }
+                ],
+                "sensitiveData": [],
+                "owasp": [],
+                "sapSpecific": [
+                    {
+                        "severity": "INFO",
+                        "code": "SAP_SPECIFIC_JQUERY_AJAX",
+                        "message": "Make sure the BusyIndicator remains hidden even if an error occurs",
+                        "file": "/app/app1-b/webapp/controller/Home.controller.js",
+                        "line": 35,
+                        "snippet": "sap.ui.core.BusyIndicator.show(0); // 👈 spinner global immédiat"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "SAP_SPECIFIC_JQUERY_AJAX",
+                        "message": "Make sure the BusyIndicator remains hidden even if an error occurs",
+                        "file": "/app/app1-b/webapp/controller/Home.controller.js",
+                        "line": 53,
+                        "snippet": "sap.ui.core.BusyIndicator.hide(); // 👈 fin loading"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "SAP_SPECIFIC_JQUERY_AJAX",
+                        "message": "Make sure the BusyIndicator remains hidden even if an error occurs",
+                        "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                        "line": 53,
+                        "snippet": "sap.ui.core.BusyIndicator.show(0); // 👈 spinner global immédiat"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "SAP_SPECIFIC_JQUERY_AJAX",
+                        "message": "Make sure the BusyIndicator remains hidden even if an error occurs",
+                        "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                        "line": 101,
+                        "snippet": "sap.ui.core.BusyIndicator.hide(); // 👈 fin loading"
+                    }
+                ]
             },
             "cap": {
                 "services": [
                     {
-                        "name": "from",
-                        "file": "app/app1/annotations.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "app/app2/annotations.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "app/app4/annotations.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "app/app6/annotations.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "app/app8/annotations.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "srv/annotations/schema/display-app9.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "srv/annotations/schema/export-app9.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "srv/annotations/schema/manage-approval.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "srv/annotations/schema/app9.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "from",
-                        "file": "srv/annotations/schema/variant.cds",
-                        "line": 1,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "app1",
-                        "file": "srv/display-app9.cds",
-                        "line": 4,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "app2",
-                        "file": "srv/export-app9.cds",
-                        "line": 5,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "app4",
-                        "file": "srv/manage-approvals.cds",
-                        "line": 4,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                    },
-                    {
-                        "name": "MasterData",
-                        "file": "srv/manage-masterdata.cds",
+                        "name": "DestinationService",
+                        "file": "/srv/destination-security.cds",
                         "line": 3,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                        "hasAuth": true,
+                        "authType": "authenticated-user",
+                        "severity": "OK",
+                        "message": "Authorization found: @requires 'authenticated-user'"
                     },
                     {
-                        "name": "Manageapp9",
-                        "file": "srv/manage-app9.cds",
-                        "line": 4,
-                        "hasAuth": false,
-                        "authType": null,
-                        "severity": "HIGH",
-                        "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                        "name": "ManageService",
+                        "file": "/srv/manage-security.cds",
+                        "line": 3,
+                        "hasAuth": true,
+                        "authType": "authenticated-user",
+                        "severity": "OK",
+                        "message": "Authorization found: @requires 'authenticated-user'"
+                    },
+                    {
+                        "name": "ObjStoreManager",
+                        "file": "/srv/ObjStoreManager.cds",
+                        "line": 3,
+                        "hasAuth": true,
+                        "authType": "authenticated-user",
+                        "severity": "OK",
+                        "message": "Authorization found: @requires 'authenticated-user'"
                     }
                 ],
                 "vulnerabilities": [
@@ -1522,253 +1475,102 @@
                         "severity": "LOW",
                         "code": "CAP_UNVALIDATED_INPUT",
                         "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/display-app9.js",
-                        "line": 37,
-                        "snippet": "let { ID } = req.data;"
+                        "file": "/srv/handlers/destination-security.js",
+                        "line": 8,
+                        "snippet": "const nameFilter = req.data.name;"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "CAP_ENV_ACCESS",
+                        "message": "Accessing environment variable - ensure no secrets in code",
+                        "file": "/srv/handlers/destination-security.js",
+                        "line": 52,
+                        "snippet": "const vcap = JSON.parse(process.env.VCAP_SERVICES || \"{}\");"
                     },
                     {
                         "severity": "MEDIUM",
-                        "code": "CAP_LOG_REQUEST",
-                        "message": "Logging request object - may expose sensitive data",
-                        "file": "srv/handlers/display-app9.js",
-                        "line": 36,
-                        "snippet": "console.log(req.user.attr);"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_SELECT_NOFILTER",
-                        "message": "SELECT without WHERE clause - potential data exposure",
-                        "file": "srv/handlers/export-app9.js",
-                        "line": 57,
-                        "snippet": "let activities = await SELECT.from(Activities);"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_SELECT_NOFILTER",
-                        "message": "SELECT without WHERE clause - potential data exposure",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 84,
-                        "snippet": "let existingEmployees = await SELECT.from(`MasterData_Employees`);"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 21,
-                        "snippet": "* @param {Object} req.data - Request data."
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 22,
-                        "snippet": "* @param {string} req.data.assetType - The type of asset ('EM' or other)."
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 23,
-                        "snippet": "* @param {Object} req.data.content - The stream of the uploaded file."
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 29,
-                        "snippet": "const { assetType } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 32,
-                        "snippet": "const stream = req.data.content;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 164,
-                        "snippet": "* @param {Object} req.data - Request data."
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 165,
-                        "snippet": "* @param {string} req.data.assetType - The type of asset ('EM' or other)."
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/FileHandler.js",
-                        "line": 170,
-                        "snippet": "const { assetType } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-approvals.js",
-                        "line": 44,
-                        "snippet": "let { ID } = req.data;"
+                        "code": "CAP_HANDLER_NOAUTH",
+                        "message": "Event handler without visible authorization check",
+                        "file": "/srv/handlers/manage-security.js",
+                        "line": 14,
+                        "snippet": "srv.on(\"getUserRoles\", async req => {"
                     },
                     {
                         "severity": "MEDIUM",
-                        "code": "CAP_LOG_REQUEST",
-                        "message": "Logging request object - may expose sensitive data",
-                        "file": "srv/handlers/manage-approvals.js",
-                        "line": 29,
-                        "snippet": "console.log(req.user.attr);"
+                        "code": "CAP_HANDLER_NOAUTH",
+                        "message": "Event handler without visible authorization check",
+                        "file": "/srv/handlers/manage-security.js",
+                        "line": 55,
+                        "snippet": "srv.on(\"getSubAccount\", async (req) => {"
                     },
                     {
                         "severity": "MEDIUM",
-                        "code": "CAP_LOG_REQUEST",
-                        "message": "Logging request object - may expose sensitive data",
-                        "file": "srv/handlers/manage-approvals.js",
+                        "code": "CAP_HANDLER_NOAUTH",
+                        "message": "Event handler without visible authorization check",
+                        "file": "/srv/handlers/manage-security.js",
+                        "line": 90,
+                        "snippet": "srv.on('getConfig', async (req) => {"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "CAP_ENV_ACCESS",
+                        "message": "Accessing environment variable - ensure no secrets in code",
+                        "file": "/srv/handlers/manage-security.js",
+                        "line": 77,
+                        "snippet": "const vcap = JSON.parse(process.env.VCAP_SERVICES || '{}');"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "CAP_ENV_ACCESS",
+                        "message": "Accessing environment variable - ensure no secrets in code",
+                        "file": "/srv/handlers/manage-security.js",
+                        "line": 97,
+                        "snippet": "SSO = process.env.OLD_SSO === \"true\";"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "CAP_ENV_ACCESS",
+                        "message": "Accessing environment variable - ensure no secrets in code",
+                        "file": "/srv/handlers/manage-security.js",
+                        "line": 98,
+                        "snippet": "OpenNewTab = process.env.ENABLE_OPEN_IN_NEW_TAB === \"true\";"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "CAP_ENV_ACCESS",
+                        "message": "Accessing environment variable - ensure no secrets in code",
+                        "file": "/srv/handlers/manage-security.js",
+                        "line": 99,
+                        "snippet": "securityWinGui = process.env.security_WIN_GUI === \"true\";"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "/srv/handlers/ObjStoreManager.js",
+                        "line": 17,
+                        "snippet": "const { filename, content, contentType } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "/srv/handlers/ObjStoreManager.js",
+                        "line": 28,
+                        "snippet": "const { filename } = req.data;"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "CAP_UNVALIDATED_INPUT",
+                        "message": "Using req.data without apparent validation",
+                        "file": "/srv/handlers/ObjStoreManager.js",
                         "line": 43,
-                        "snippet": "console.log(req.user.attr);"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_SELECT_NOFILTER",
-                        "message": "SELECT without WHERE clause - potential data exposure",
-                        "file": "srv/handlers/manage-masterdata.js",
-                        "line": 113,
-                        "snippet": "let existingEmployees = await SELECT.from(Employees);"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-masterdata.js",
-                        "line": 37,
-                        "snippet": "const { assetType } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-masterdata.js",
-                        "line": 40,
-                        "snippet": "const stream = req.data.content;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-masterdata.js",
-                        "line": 74,
-                        "snippet": "//     let activities = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 128,
-                        "snippet": "let { email } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 152,
-                        "snippet": "let { employeeId } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 161,
-                        "snippet": "let { email, activityId } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 180,
-                        "snippet": "let { ID } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 274,
-                        "snippet": "// req.data.status_status = '01';"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 276,
-                        "snippet": "const { ID } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 292,
-                        "snippet": "let { employeeId_employeeId: employeeId, year, month } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 296,
-                        "snippet": "req.data.status_status = '01';"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 298,
-                        "snippet": "req.data.managerId_employeeId = employeeData.managerId;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 356,
-                        "snippet": "let { employeeId, year, month } = req.data;"
-                    },
-                    {
-                        "severity": "LOW",
-                        "code": "CAP_UNVALIDATED_INPUT",
-                        "message": "Using req.data without apparent validation",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 367,
-                        "snippet": "req.data.status_status = '02'; // Set the status to Submitted"
-                    },
-                    {
-                        "severity": "MEDIUM",
-                        "code": "CAP_LOG_REQUEST",
-                        "message": "Logging request object - may expose sensitive data",
-                        "file": "srv/handlers/manage-app9.js",
-                        "line": 112,
-                        "snippet": "console.log(req.user.attr);"
+                        "snippet": "const { filename } = req.data;"
                     }
                 ],
                 "mtaIssues": [],
-                "xsuaaIssues": []
+                "xsuaaIssues": [],
+                "configIssues": []
             },
             "secrets": {
                 "findings": [
@@ -1779,14 +1581,6 @@
                         "file": ".gitignore",
                         "line": 0,
                         "snippet": "Add: default-env.json"
-                    },
-                    {
-                        "severity": "MEDIUM",
-                        "code": "GITIGNORE_MISSING",
-                        "message": ".env not in .gitignore",
-                        "file": ".gitignore",
-                        "line": 0,
-                        "snippet": "Add: .env"
                     },
                     {
                         "severity": "MEDIUM",
@@ -1803,603 +1597,979 @@
                         "file": ".gitignore",
                         "line": 0,
                         "snippet": "Add: default-env*.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "GITIGNORE_MISSING",
+                        "message": "service-key.json not in .gitignore",
+                        "file": ".gitignore",
+                        "line": 0,
+                        "snippet": "Add: service-key.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "GITIGNORE_MISSING",
+                        "message": "*.key not in .gitignore",
+                        "file": ".gitignore",
+                        "line": 0,
+                        "snippet": "Add: *.key"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "GITIGNORE_MISSING",
+                        "message": "private-key.pem not in .gitignore",
+                        "file": ".gitignore",
+                        "line": 0,
+                        "snippet": "Add: private-key.pem"
                     }
                 ]
             },
             "btp": {
                 "issues": [
                     {
-                        "severity": "HIGH",
-                        "code": "BTP_MTA_NO_AUTH",
-                        "message": "NoAuthentication found in MTA configuration",
-                        "file": "mta.yaml",
-                        "line": 225,
-                        "snippet": "- Authentication: NoAuthentication"
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"security-srv\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 6,
+                        "snippet": "- name: security-srv"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"security-destination-content\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 29,
+                        "snippet": "- name: security-destination-content"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"security-app-content\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 89,
+                        "snippet": "- name: security-app-content"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1d\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 142,
+                        "snippet": "- name: comsecurityuiapp1d"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1d\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 152,
+                        "snippet": "- name: comsecurityuiapp1d"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1e\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 162,
+                        "snippet": "- name: comsecurityuiapp1e"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1f\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 172,
+                        "snippet": "- name: comsecurityuiapp1f"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1g\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 182,
+                        "snippet": "- name: comsecurityuiapp1g"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1h\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 192,
+                        "snippet": "- name: comsecurityuiapp1h"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1-c\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 202,
+                        "snippet": "- name: comsecurityuiapp1-c"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1i\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 212,
+                        "snippet": "- name: comsecurityuiapp1i"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1-b\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 222,
+                        "snippet": "- name: comsecurityuiapp1-b"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"comsecurityuiapp1-a\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 232,
+                        "snippet": "- name: comsecurityuiapp1-a"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"security-auth\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 243,
+                        "snippet": "- name: security-auth"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"app-api\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 259,
+                        "snippet": "- name: app-api"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"security-destination-service\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 260,
+                        "snippet": "- name: security-destination-service"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"srv-api\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 286,
+                        "snippet": "- name: srv-api"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"security-connectivity\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 287,
+                        "snippet": "- name: security-connectivity"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"security-home-storage\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 294,
+                        "snippet": "- name: security-home-storage"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "BTP_MTA_NO_MEMORY",
+                        "message": "MTA module \"security_html_repo_host\" has no memory quota set - consider specifying memory: in parameters",
+                        "file": "/mta.yaml",
+                        "line": 301,
+                        "snippet": "- name: security_html_repo_host"
                     },
                     {
                         "severity": "HIGH",
-                        "code": "BTP_MTA_NO_AUTH",
-                        "message": "NoAuthentication found in MTA configuration",
-                        "file": "mta.yaml",
-                        "line": 230,
-                        "snippet": "- Authentication: NoAuthentication"
+                        "code": "XSUAA_WILDCARD_REDIRECT",
+                        "message": "Wildcard redirect URI over non-HTTPS is an open redirect risk: http*://*.cfapps.*.hana.ondemand.com/**",
+                        "file": "/xs-security.json",
+                        "snippet": "http*://*.cfapps.*.hana.ondemand.com/**"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "XSUAA_REDIRECT_LOCALHOST",
+                        "message": "Redirect URI contains localhost or HTTP - remove before production: http://localhost:*/**",
+                        "file": "/xs-security.json",
+                        "snippet": "http://localhost:*/**"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "XSUAA_WILDCARD_REDIRECT",
+                        "message": "Wildcard redirect URI over non-HTTPS is an open redirect risk: http://localhost:*/**",
+                        "file": "/xs-security.json",
+                        "snippet": "http://localhost:*/**"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "XSUAA_NO_ROLE_COLLECTIONS",
+                        "message": "No role-collections defined - administrators must manually assemble roles, consider pre-defining role-collections",
+                        "file": "/xs-security.json"
                     }
                 ]
             },
             "npm": {
                 "packages": [
                     {
-                        "file": "app/app1/package.json",
-                        "name": "app1",
-                        "version": "0.0.2",
+                        "file": "/app/app1-a/package.json",
+                        "name": "app1-a",
+                        "version": "0.0.1",
                         "dependencies": {
-                            "@ui5/cli": "^3.0.0",
+                            "@ui5/cli": "^4.0.33",
                             "@sap/ux-ui5-tooling": "1",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3",
-                            "mbt": "^1.2.27"
+                            "ui5-task-zipper": "^3.4.x"
                         },
-                        "dependencyCount": 5
+                        "dependencyCount": 3
                     },
                     {
-                        "file": "app/app2/package.json",
-                        "name": "app2",
-                        "version": "0.0.2",
+                        "file": "/app/app1-b/package.json",
+                        "name": "app1-b",
+                        "version": "0.0.1",
                         "dependencies": {
-                            "@ui5/cli": "^3.0.0",
+                            "@ui5/cli": "^4.0.33",
                             "@sap/ux-ui5-tooling": "1",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3"
+                            "ui5-task-zipper": "^3.4.x"
                         },
-                        "dependencyCount": 4
+                        "dependencyCount": 3
                     },
                     {
-                        "file": "app/app3/package.json",
-                        "name": "app3",
-                        "version": "0.0.2",
+                        "file": "/app/router/package.json",
+                        "name": "approuter",
                         "dependencies": {
-                            "@ui5/cli": "^3.0.0",
-                            "@sap/ux-ui5-tooling": "1",
-                            "@sap/ux-specification": "UI5-1.124",
-                            "eslint": "8.57.0",
-                            "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-                            "@sapui5/ts-types": "~1.124.0",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3",
-                            "mbt": "^1.2.27"
+                            "@sap/approuter": "^20.0.0"
                         },
-                        "dependencyCount": 9
+                        "dependencyCount": 1
                     },
                     {
-                        "file": "app/app4/package.json",
-                        "name": "app4",
-                        "version": "0.0.2",
+                        "file": "/app/app1-c/package.json",
+                        "name": "app1-c",
+                        "version": "0.0.1",
                         "dependencies": {
-                            "@ui5/cli": "^3.0.0",
+                            "@ui5/cli": "^4.0.33",
                             "@sap/ux-ui5-tooling": "1",
-                            "@sap/ux-specification": "UI5-1.125",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3",
-                            "mbt": "^1.2.27"
+                            "ui5-task-zipper": "^3.4.x"
                         },
-                        "dependencyCount": 6
+                        "dependencyCount": 3
                     },
                     {
-                        "file": "app/app5/package.json",
-                        "name": "app5",
-                        "version": "0.0.2",
+                        "file": "/package.json",
+                        "name": "security",
+                        "version": "1.0.0",
                         "dependencies": {
-                            "@ui5/cli": "^3.0.0",
-                            "@sap/ux-ui5-tooling": "1",
-                            "@sap/ux-specification": "UI5-1.124",
-                            "eslint": "8.57.0",
-                            "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-                            "@sapui5/ts-types": "~1.124.0",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3",
-                            "mbt": "^1.2.27"
-                        },
-                        "dependencyCount": 9
-                    },
-                    {
-                        "file": "app/app6/package.json",
-                        "name": "app6",
-                        "version": "0.0.2",
-                        "dependencies": {
-                            "@ui5/cli": "^3.0.0",
-                            "@sap/ux-ui5-tooling": "1",
-                            "@sap/ux-specification": "UI5-1.125",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3",
-                            "mbt": "^1.2.27"
-                        },
-                        "dependencyCount": 6
-                    },
-                    {
-                        "file": "app/app7/package.json",
-                        "name": "app7",
-                        "version": "0.0.2",
-                        "dependencies": {
-                            "@ui5/cli": "^3.0.0",
-                            "@sap/ux-ui5-tooling": "1",
-                            "@sap/ux-specification": "UI5-1.124",
-                            "eslint": "8.57.0",
-                            "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-                            "@sapui5/ts-types": "~1.124.0",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3",
-                            "mbt": "^1.2.27"
-                        },
-                        "dependencyCount": 9
-                    },
-                    {
-                        "file": "app/app8/package.json",
-                        "name": "app8",
-                        "version": "0.0.2",
-                        "dependencies": {
-                            "@ui5/cli": "^3.0.0",
-                            "@sap/ux-ui5-tooling": "1",
-                            "@sap/ux-specification": "UI5-1.124",
-                            "eslint": "8.57.0",
-                            "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-                            "@sapui5/ts-types": "~1.124.0",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3",
-                            "mbt": "^1.2.27"
-                        },
-                        "dependencyCount": 9
-                    },
-                    {
-                        "file": "app/app9/package.json",
-                        "name": "app9",
-                        "version": "0.0.2",
-                        "dependencies": {
-                            "@ui5/cli": "^3.0.0",
-                            "@sap/ux-ui5-tooling": "1",
-                            "@sap/ux-specification": "UI5-1.125",
-                            "@sap/ui5-builder-webide-extension": "^1.1.9",
-                            "ui5-task-zipper": "^3.1.3",
-                            "mbt": "^1.2.27"
-                        },
-                        "dependencyCount": 6
-                    },
-                    {
-                        "file": "package.json",
-                        "name": "oxyaapp9server",
-                        "version": "1.0.1",
-                        "dependencies": {
-                            "@cap-js/postgres": "1.3",
-                            "@sap/cds": "7.9",
-                            "@sap/xssec": "^3",
+                            "@sap-cloud-sdk/connectivity": "^4.4.0",
+                            "@sap-cloud-sdk/http-client": "^4.4.0",
+                            "@sap/cds": "^9",
+                            "@sap/generator-fiori": "^1.20.0",
+                            "@sap/xssec": "^4",
                             "express": "^4",
-                            "xlsx": "^0.18.5",
-                            "@cap-js/sqlite": "1.11",
-                            "@sap/cds-dk": "7.9",
-                            "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
-                            "@sap/ux-specification": "UI5-1.141",
-                            "@sapui5/ts-types": "^1.92.2",
-                            "eslint": "^7.32.0",
+                            "@azure/storage-blob": "^12.31.0",
+                            "@sap-cloud-sdk/resilience": "^4.5.1",
+                            "jsonwebtoken": "^9.0.3",
+                            "@cap-js/sqlite": "^2",
+                            "@sap/cds-dk": "^9",
+                            "@sap/eslint-plugin-ui5-jsdocs": "^2.0.1",
+                            "@sap/ux-specification": "^1.120.16",
+                            "@ui5/cli": "^4.0.49",
                             "mbt": "^1.2.29",
-                            "rimraf": "^5.0.5"
+                            "rimraf": "^5.0.5",
+                            "cds-plugin-ui5": "^0.16.1",
+                            "ui5-middleware-servestatic": "^3.4.1",
+                            "ui5-tooling-modules": "^3.9.1"
                         },
-                        "dependencyCount": 13
+                        "dependencyCount": 19
                     }
                 ],
                 "issues": [
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app1/package.json"
+                        "package": "helmet",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-a/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app2/package.json"
+                        "package": "@sap/xssec",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/xssec - Required for XSUAA JWT validation",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-a/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app3/package.json"
+                        "package": "@sap/audit-logging",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-a/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "app1-a",
+                        "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                        "source": "Best Practice",
+                        "code": "MISSING_ENGINES",
+                        "file": "/app/app1-a/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "lockfile",
+                        "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                        "code": "NO_LOCK_FILE",
+                        "source": "Best Practice",
+                        "file": "/app/app1-a/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app4/package.json"
+                        "package": "helmet",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-b/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app5/package.json"
+                        "package": "@sap/xssec",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/xssec - Required for XSUAA JWT validation",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-b/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app6/package.json"
+                        "package": "@sap/audit-logging",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-b/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "app1-b",
+                        "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                        "source": "Best Practice",
+                        "code": "MISSING_ENGINES",
+                        "file": "/app/app1-b/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "lockfile",
+                        "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                        "code": "NO_LOCK_FILE",
+                        "source": "Best Practice",
+                        "file": "/app/app1-b/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app7/package.json"
+                        "package": "helmet",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                        "source": "SAP Best Practice",
+                        "file": "/app/router/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app8/package.json"
+                        "package": "@sap/xssec",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/xssec - Required for XSUAA JWT validation",
+                        "source": "SAP Best Practice",
+                        "file": "/app/router/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "app/app9/package.json"
+                        "package": "@sap/audit-logging",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                        "source": "SAP Best Practice",
+                        "file": "/app/router/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "approuter",
+                        "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                        "source": "Best Practice",
+                        "code": "MISSING_ENGINES",
+                        "file": "/app/router/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "lockfile",
+                        "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                        "code": "NO_LOCK_FILE",
+                        "source": "Best Practice",
+                        "file": "/app/router/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "helmet",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-c/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "@sap/xssec",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/xssec - Required for XSUAA JWT validation",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-c/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "@sap/audit-logging",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                        "source": "SAP Best Practice",
+                        "file": "/app/app1-c/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "app1-c",
+                        "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                        "source": "Best Practice",
+                        "code": "MISSING_ENGINES",
+                        "file": "/app/app1-c/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "lockfile",
+                        "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                        "code": "NO_LOCK_FILE",
+                        "source": "Best Practice",
+                        "file": "/app/app1-c/package.json"
                     },
                     {
                         "severity": "HIGH",
-                        "package": "@sap/xssec",
-                        "version": "^3",
-                        "cve": "CVE-2023-25615",
-                        "description": "Improper authorization in XSUAA validation",
-                        "fix": ">=3.2.0",
-                        "source": "SAP Advisory",
-                        "file": "package.json"
+                        "package": "express",
+                        "version": "^4",
+                        "cve": "CVE-2024-29041",
+                        "code": "CVE-2024-29041",
+                        "description": "Open redirect via malformed URL in express (fix: >=4.19.0)",
+                        "fix": ">=4.19.0",
+                        "source": "SAP Advisory / NVD",
+                        "file": "/package.json"
                     },
                     {
                         "severity": "INFO",
-                        "package": "npm audit",
-                        "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                        "source": "Recommendation",
-                        "file": "package.json"
+                        "package": "helmet",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                        "source": "SAP Best Practice",
+                        "file": "/package.json"
+                    },
+                    {
+                        "severity": "INFO",
+                        "package": "@sap/audit-logging",
+                        "version": null,
+                        "code": "RECOMMENDED_PACKAGES",
+                        "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                        "source": "SAP Best Practice",
+                        "file": "/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "security",
+                        "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                        "source": "Best Practice",
+                        "code": "MISSING_ENGINES",
+                        "file": "/package.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "package": "lockfile",
+                        "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                        "code": "NO_LOCK_FILE",
+                        "source": "Best Practice",
+                        "file": "/package.json"
                     }
                 ],
                 "sapPackages": [
                     {
                         "name": "@sap/ux-ui5-tooling",
                         "version": "1",
-                        "file": "app/app1/package.json"
-                    },
-                    {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app1/package.json"
+                        "file": "/app/app1-a/package.json"
                     },
                     {
                         "name": "@sap/ux-ui5-tooling",
                         "version": "1",
-                        "file": "app/app2/package.json"
+                        "file": "/app/app1-b/package.json"
                     },
                     {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app2/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-ui5-tooling",
-                        "version": "1",
-                        "file": "app/app3/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-specification",
-                        "version": "UI5-1.124",
-                        "file": "app/app3/package.json"
-                    },
-                    {
-                        "name": "@sap/eslint-plugin-ui5-jsdocs",
-                        "version": "2.0.5",
-                        "file": "app/app3/package.json"
-                    },
-                    {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app3/package.json"
+                        "name": "@sap/approuter",
+                        "version": "^20.0.0",
+                        "file": "/app/router/package.json"
                     },
                     {
                         "name": "@sap/ux-ui5-tooling",
                         "version": "1",
-                        "file": "app/app4/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-specification",
-                        "version": "UI5-1.125",
-                        "file": "app/app4/package.json"
-                    },
-                    {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app4/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-ui5-tooling",
-                        "version": "1",
-                        "file": "app/app5/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-specification",
-                        "version": "UI5-1.124",
-                        "file": "app/app5/package.json"
-                    },
-                    {
-                        "name": "@sap/eslint-plugin-ui5-jsdocs",
-                        "version": "2.0.5",
-                        "file": "app/app5/package.json"
-                    },
-                    {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app5/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-ui5-tooling",
-                        "version": "1",
-                        "file": "app/app6/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-specification",
-                        "version": "UI5-1.125",
-                        "file": "app/app6/package.json"
-                    },
-                    {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app6/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-ui5-tooling",
-                        "version": "1",
-                        "file": "app/app7/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-specification",
-                        "version": "UI5-1.124",
-                        "file": "app/app7/package.json"
-                    },
-                    {
-                        "name": "@sap/eslint-plugin-ui5-jsdocs",
-                        "version": "2.0.5",
-                        "file": "app/app7/package.json"
-                    },
-                    {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app7/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-ui5-tooling",
-                        "version": "1",
-                        "file": "app/app8/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-specification",
-                        "version": "UI5-1.124",
-                        "file": "app/app8/package.json"
-                    },
-                    {
-                        "name": "@sap/eslint-plugin-ui5-jsdocs",
-                        "version": "2.0.5",
-                        "file": "app/app8/package.json"
-                    },
-                    {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app8/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-ui5-tooling",
-                        "version": "1",
-                        "file": "app/app9/package.json"
-                    },
-                    {
-                        "name": "@sap/ux-specification",
-                        "version": "UI5-1.125",
-                        "file": "app/app9/package.json"
-                    },
-                    {
-                        "name": "@sap/ui5-builder-webide-extension",
-                        "version": "^1.1.9",
-                        "file": "app/app9/package.json"
+                        "file": "/app/app1-c/package.json"
                     },
                     {
                         "name": "@sap/cds",
-                        "version": "7.9",
-                        "file": "package.json"
+                        "version": "^9",
+                        "file": "/package.json"
+                    },
+                    {
+                        "name": "@sap/generator-fiori",
+                        "version": "^1.20.0",
+                        "file": "/package.json"
                     },
                     {
                         "name": "@sap/xssec",
-                        "version": "^3",
-                        "file": "package.json"
+                        "version": "^4",
+                        "file": "/package.json"
                     },
                     {
                         "name": "@sap/cds-dk",
-                        "version": "7.9",
-                        "file": "package.json"
+                        "version": "^9",
+                        "file": "/package.json"
                     },
                     {
                         "name": "@sap/eslint-plugin-ui5-jsdocs",
-                        "version": "^2.0.5",
-                        "file": "package.json"
+                        "version": "^2.0.1",
+                        "file": "/package.json"
                     },
                     {
                         "name": "@sap/ux-specification",
-                        "version": "UI5-1.141",
-                        "file": "package.json"
+                        "version": "^1.120.16",
+                        "file": "/package.json"
                     }
                 ],
                 "auditResults": null,
                 "summary": {
-                    "total": 76,
-                    "sap": 34,
+                    "total": 29,
+                    "sap": 10,
                     "critical": 0,
                     "high": 1,
                     "medium": 0,
-                    "low": 0
+                    "low": 5,
+                    "info": 14
                 }
+            },
+            "approuter": {
+                "routeIssues": [
+                    {
+                        "severity": "INFO",
+                        "code": "AR_NO_SESSION_TIMEOUT",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
+                        "file": "/app/app1-a/xs-app.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_NO_LOGOUT_ENDPOINT",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
+                        "file": "/app/app1-a/xs-app.json"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_MISSING_CSP",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "file": "/app/app1-a/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_XFO",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
+                        "file": "/app/app1-a/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_XCTO",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
+                        "file": "/app/app1-a/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_HSTS",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
+                        "file": "/app/app1-a/xs-app.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_MISSING_RP",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "file": "/app/app1-a/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_ROUTE_CSRF_OFF",
+                        "message": "route[0] (source: ^/security/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                        "file": "/app/app1-a/xs-app.json",
+                        "snippet": "source: ^/security/(.*)$"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_ROUTE_NO_SCOPE",
+                        "message": "route[0] (source: ^/security/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
+                        "file": "/app/app1-a/xs-app.json",
+                        "snippet": "source: ^/security/(.*)$"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_ROUTE_NO_AUTH",
+                        "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                        "file": "/app/app1-a/xs-app.json",
+                        "snippet": "source: ^/resources/(.*)$"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_ROUTE_NO_AUTH",
+                        "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                        "file": "/app/app1-a/xs-app.json",
+                        "snippet": "source: ^/test-resources/(.*)$"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "AR_NO_SESSION_TIMEOUT",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
+                        "file": "/app/app1-b/xs-app.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_NO_LOGOUT_ENDPOINT",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
+                        "file": "/app/app1-b/xs-app.json"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_MISSING_CSP",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "file": "/app/app1-b/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_XFO",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
+                        "file": "/app/app1-b/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_XCTO",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
+                        "file": "/app/app1-b/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_HSTS",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
+                        "file": "/app/app1-b/xs-app.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_MISSING_RP",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "file": "/app/app1-b/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_ROUTE_CSRF_OFF",
+                        "message": "route[0] (source: ^/security/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                        "file": "/app/app1-b/xs-app.json",
+                        "snippet": "source: ^/security/(.*)$"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_ROUTE_NO_SCOPE",
+                        "message": "route[0] (source: ^/security/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
+                        "file": "/app/app1-b/xs-app.json",
+                        "snippet": "source: ^/security/(.*)$"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_ROUTE_NO_AUTH",
+                        "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                        "file": "/app/app1-b/xs-app.json",
+                        "snippet": "source: ^/resources/(.*)$"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_ROUTE_NO_AUTH",
+                        "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                        "file": "/app/app1-b/xs-app.json",
+                        "snippet": "source: ^/test-resources/(.*)$"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "AR_NO_SESSION_TIMEOUT",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
+                        "file": "/app/router/xs-app.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_NO_LOGOUT_ENDPOINT",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
+                        "file": "/app/router/xs-app.json"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_MISSING_CSP",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "file": "/app/router/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_XFO",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
+                        "file": "/app/router/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_XCTO",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
+                        "file": "/app/router/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_HSTS",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
+                        "file": "/app/router/xs-app.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_MISSING_RP",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "file": "/app/router/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_ROUTE_CSRF_OFF",
+                        "message": "route[0] (source: ^/security/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                        "file": "/app/router/xs-app.json",
+                        "snippet": "source: ^/security/(.*)$"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_ROUTE_NO_SCOPE",
+                        "message": "route[0] (source: ^/security/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
+                        "file": "/app/router/xs-app.json",
+                        "snippet": "source: ^/security/(.*)$"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_ROUTE_CSRF_OFF",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                        "file": "/app/router/xs-app.json",
+                        "snippet": "source: /destinations/(.*)/(.*)$"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "AR_NO_SESSION_TIMEOUT",
+                        "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
+                        "file": "/app/app1-c/xs-app.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_NO_LOGOUT_ENDPOINT",
+                        "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
+                        "file": "/app/app1-c/xs-app.json"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_MISSING_CSP",
+                        "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
+                        "file": "/app/app1-c/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_XFO",
+                        "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
+                        "file": "/app/app1-c/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_XCTO",
+                        "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
+                        "file": "/app/app1-c/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_MISSING_HSTS",
+                        "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
+                        "file": "/app/app1-c/xs-app.json"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_MISSING_RP",
+                        "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                        "file": "/app/app1-c/xs-app.json"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_ROUTE_CSRF_OFF",
+                        "message": "route[0] (source: ^/security/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                        "file": "/app/app1-c/xs-app.json",
+                        "snippet": "source: ^/security/(.*)$"
+                    },
+                    {
+                        "severity": "LOW",
+                        "code": "AR_ROUTE_NO_SCOPE",
+                        "message": "route[0] (source: ^/security/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
+                        "file": "/app/app1-c/xs-app.json",
+                        "snippet": "source: ^/security/(.*)$"
+                    },
+                    {
+                        "severity": "MEDIUM",
+                        "code": "AR_ROUTE_CSRF_OFF",
+                        "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                        "file": "/app/app1-c/xs-app.json",
+                        "snippet": "source: /destinations/(.*)/(.*)$"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_ROUTE_NO_AUTH",
+                        "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                        "file": "/app/app1-c/xs-app.json",
+                        "snippet": "source: ^/resources/(.*)$"
+                    },
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_ROUTE_NO_AUTH",
+                        "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                        "file": "/app/app1-c/xs-app.json",
+                        "snippet": "source: ^/test-resources/(.*)$"
+                    }
+                ],
+                "versionIssues": [],
+                "mtaIssues": [
+                    {
+                        "severity": "HIGH",
+                        "code": "AR_MTA_NO_XSUAA",
+                        "message": "AppRouter module in mta.yaml has no XSUAA or IAS binding - authentication cannot work without a bound UAA service",
+                        "file": "/mta.yaml",
+                        "line": 60,
+                        "snippet": "type: approuter.nodejs"
+                    },
+                    {
+                        "severity": "INFO",
+                        "code": "AR_MTA_NO_SESSION_TIMEOUT",
+                        "message": "AppRouter module does not configure SESSION_TIMEOUT - verify the default 15-minute timeout suits your security policy",
+                        "file": "/mta.yaml",
+                        "line": 60,
+                        "snippet": "type: approuter.nodejs"
+                    }
+                ],
+                "configIssues": []
             }
         }
     }
 },
     "scan_history": [
     {
-        "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
-        "projectName": "My-CAP-Apps",
-        "scannedAt": "2026-06-16T06:38:22.097Z",
+        "scanId": "4c4086fe-7548-4a30-bb35-18ee026d8c6d",
+        "projectName": "app-test-security",
+        "scannedAt": "2026-06-25T23:18:07.029Z",
         "riskScore": 0,
         "riskLevel": "CRITICAL",
         "summary": {
             "critical": 0,
-            "high": 18,
-            "medium": 9,
-            "low": 27,
-            "info": 10,
-            "total": 64
+            "high": 16,
+            "medium": 35,
+            "low": 46,
+            "info": 32,
+            "total": 129
         },
         "projectTypes": [
             "SAPUI5/Fiori",
             "MTA",
             "CAP/CDS",
             "XSUAA",
-            "Node.js"
+            "Node.js",
+            "App Router"
         ]
     }
 ],
-    "scan_4e144b6e-2419-476f-a062-cf0e5a8332d7": {
-    "scanId": "4e144b6e-2419-476f-a062-cf0e5a8332d7",
-    "projectName": "My-CAP-Apps",
+    "scan_4c4086fe-7548-4a30-bb35-18ee026d8c6d": {
+    "scanId": "4c4086fe-7548-4a30-bb35-18ee026d8c6d",
+    "projectName": "app-test-security",
     "projectTypes": [
         "SAPUI5/Fiori",
         "MTA",
         "CAP/CDS",
         "XSUAA",
-        "Node.js"
+        "Node.js",
+        "App Router"
     ],
-    "scannedAt": "2026-06-16T06:38:22.097Z",
-    "filesScanned": 247,
+    "scannedAt": "2026-06-25T23:18:07.029Z",
+    "filesScanned": 130,
     "riskScore": 0,
     "riskLevel": "CRITICAL",
     "summary": {
         "critical": 0,
-        "high": 18,
-        "medium": 9,
-        "low": 27,
-        "info": 10,
-        "total": 64
+        "high": 16,
+        "medium": 35,
+        "low": 46,
+        "info": 32,
+        "total": 129
     },
     "results": {
         "ui5": {
-            "detectedVersion": "1.141.1",
+            "detectedVersion": "1.136.15",
             "sources": [
                 {
-                    "file": "app/app1/webapp/manifest.json",
+                    "file": "/app/app1-a/webapp/manifest.json",
                     "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
+                    "value": "1.136.14"
                 },
                 {
-                    "file": "app/app2/webapp/manifest.json",
+                    "file": "/app/app1-b/webapp/manifest.json",
                     "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
+                    "value": "1.136.14"
                 },
                 {
-                    "file": "app/app3/webapp/manifest.json",
+                    "file": "/app/app1-c/webapp/manifest.json",
                     "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
+                    "value": "1.136.15"
                 },
                 {
-                    "file": "app/app4/webapp/manifest.json",
-                    "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
-                },
-                {
-                    "file": "app/app5/webapp/manifest.json",
-                    "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
-                },
-                {
-                    "file": "app/app6/webapp/manifest.json",
-                    "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
-                },
-                {
-                    "file": "app/app7/webapp/manifest.json",
-                    "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
-                },
-                {
-                    "file": "app/app8/webapp/manifest.json",
-                    "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
-                },
-                {
-                    "file": "app/app9/webapp/manifest.json",
-                    "key": "sap.ui5.dependencies.minUI5Version",
-                    "value": "1.141.1"
-                },
-                {
-                    "file": "app/app1/package.json",
+                    "file": "/app/app1-a/package.json",
                     "key": "@ui5/cli",
-                    "value": "^3.0.0"
+                    "value": "^4.0.33"
                 },
                 {
-                    "file": "app/app2/package.json",
+                    "file": "/app/app1-b/package.json",
                     "key": "@ui5/cli",
-                    "value": "^3.0.0"
+                    "value": "^4.0.33"
                 },
                 {
-                    "file": "app/app3/package.json",
+                    "file": "/app/app1-c/package.json",
                     "key": "@ui5/cli",
-                    "value": "^3.0.0"
+                    "value": "^4.0.33"
                 },
                 {
-                    "file": "app/app4/package.json",
+                    "file": "/package.json",
                     "key": "@ui5/cli",
-                    "value": "^3.0.0"
-                },
-                {
-                    "file": "app/app5/package.json",
-                    "key": "@ui5/cli",
-                    "value": "^3.0.0"
-                },
-                {
-                    "file": "app/app6/package.json",
-                    "key": "@ui5/cli",
-                    "value": "^3.0.0"
-                },
-                {
-                    "file": "app/app7/package.json",
-                    "key": "@ui5/cli",
-                    "value": "^3.0.0"
-                },
-                {
-                    "file": "app/app8/package.json",
-                    "key": "@ui5/cli",
-                    "value": "^3.0.0"
-                },
-                {
-                    "file": "app/app9/package.json",
-                    "key": "@ui5/cli",
-                    "value": "^3.0.0"
+                    "value": "^4.0.49"
                 }
             ],
             "currentStatus": {
-                "version": "1.141",
-                "patch": "1.141.4",
-                "status": "maintained",
-                "eom": "",
-                "ecp": "Q1/2027",
-                "label": "Maintained"
+                "version": "1.136",
+                "patch": "1.136.19",
+                "status": "lts",
+                "eom": "Q4/2032",
+                "ecp": "Q4/2033",
+                "label": "LTS (Recommended)"
             },
             "latestVersion": "1.148.1",
             "ltsVersion": "1.136.19",
@@ -2641,7 +2811,7 @@
                     "patch": "1.141.4",
                     "status": "maintained",
                     "eom": "",
-                    "ecp": "Q1/2027",
+                    "ecp": "Q4/2026",
                     "label": "Maintained"
                 },
                 {
@@ -3641,8 +3811,44 @@
             "issues": [
                 {
                     "severity": "MEDIUM",
-                    "message": "UI5 version 1.141 is maintained but not the LTS version (1.136.19)",
-                    "code": "UI5_NOT_LTS"
+                    "code": "UI5_NO_CSP",
+                    "message": "No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead",
+                    "file": "/app/app1-a/webapp/manifest.json"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "UI5_DEFAULT_VERSION",
+                    "message": "sap.app.applicationVersion is \"1.0.0\" (default) - update for proper cache-busting and deployment tracking",
+                    "file": "/app/app1-a/webapp/manifest.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "UI5_NO_CSP",
+                    "message": "No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead",
+                    "file": "/app/app1-b/webapp/manifest.json"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "UI5_DEFAULT_VERSION",
+                    "message": "sap.app.applicationVersion is \"1.0.0\" (default) - update for proper cache-busting and deployment tracking",
+                    "file": "/app/app1-b/webapp/manifest.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "UI5_NO_CSP",
+                    "message": "No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead",
+                    "file": "/app/app1-c/webapp/manifest.json"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "UI5_DEFAULT_VERSION",
+                    "message": "sap.app.applicationVersion is \"1.0.0\" (default) - update for proper cache-busting and deployment tracking",
+                    "file": "/app/app1-c/webapp/manifest.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "message": "12 minor versions behind latest release",
+                    "code": "UI5_OUTDATED"
                 }
             ],
             "recommendations": [
@@ -3650,144 +3856,115 @@
                 "Latest available: 1.148.1",
                 "Reference: https://ui5.sap.com/versionoverview.html"
             ],
-            "codeVulnerabilities": []
+            "codeVulnerabilities": [
+                {
+                    "severity": "HIGH",
+                    "code": "UI5_XSS_HTML_CONTROL",
+                    "message": "sap.ui.core.HTML with dynamic content - potential XSS",
+                    "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                    "line": 298,
+                    "snippet": "var oHtml = new sap.ui.core.HTML({"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "UI5_XSS_HTML_CONTROL",
+                    "message": "sap.ui.core.HTML with dynamic content - potential XSS",
+                    "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                    "line": 326,
+                    "snippet": "var oHtml = new sap.ui.core.HTML({"
+                }
+            ],
+            "redirectVulnerabilities": [
+                {
+                    "severity": "MEDIUM",
+                    "code": "REDIRECT_OPEN",
+                    "message": "Verify URLs before opening them",
+                    "file": "/app/app1-b/webapp/controller/Home.controller.js",
+                    "line": 125,
+                    "snippet": "window.open(sUrl, \"_blank\");"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "REDIRECT_OPEN",
+                    "message": "Verify URLs before opening them",
+                    "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                    "line": 161,
+                    "snippet": "window.open(iUrl, \"_blank\");"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "REDIRECT_OPEN",
+                    "message": "Verify URLs before opening them",
+                    "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                    "line": 323,
+                    "snippet": "window.open(sUrl, \"_blank\");"
+                }
+            ],
+            "sensitiveData": [],
+            "owasp": [],
+            "sapSpecific": [
+                {
+                    "severity": "INFO",
+                    "code": "SAP_SPECIFIC_JQUERY_AJAX",
+                    "message": "Make sure the BusyIndicator remains hidden even if an error occurs",
+                    "file": "/app/app1-b/webapp/controller/Home.controller.js",
+                    "line": 35,
+                    "snippet": "sap.ui.core.BusyIndicator.show(0); // 👈 spinner global immédiat"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "SAP_SPECIFIC_JQUERY_AJAX",
+                    "message": "Make sure the BusyIndicator remains hidden even if an error occurs",
+                    "file": "/app/app1-b/webapp/controller/Home.controller.js",
+                    "line": 53,
+                    "snippet": "sap.ui.core.BusyIndicator.hide(); // 👈 fin loading"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "SAP_SPECIFIC_JQUERY_AJAX",
+                    "message": "Make sure the BusyIndicator remains hidden even if an error occurs",
+                    "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                    "line": 53,
+                    "snippet": "sap.ui.core.BusyIndicator.show(0); // 👈 spinner global immédiat"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "SAP_SPECIFIC_JQUERY_AJAX",
+                    "message": "Make sure the BusyIndicator remains hidden even if an error occurs",
+                    "file": "/app/app1-c/webapp/controller/Home.controller.js",
+                    "line": 101,
+                    "snippet": "sap.ui.core.BusyIndicator.hide(); // 👈 fin loading"
+                }
+            ]
         },
         "cap": {
             "services": [
                 {
-                    "name": "from",
-                    "file": "app/app1/annotations.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "app/app2/annotations.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "app/app4/annotations.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "app/app6/annotations.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "app/app8/annotations.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "srv/annotations/schema/display-app9.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "srv/annotations/schema/export-app9.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "srv/annotations/schema/manage-approval.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "srv/annotations/schema/app9.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "from",
-                    "file": "srv/annotations/schema/variant.cds",
-                    "line": 1,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "app1",
-                    "file": "srv/display-app9.cds",
-                    "line": 4,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "app2",
-                    "file": "srv/export-app9.cds",
-                    "line": 5,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "app4",
-                    "file": "srv/manage-approvals.cds",
-                    "line": 4,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
-                },
-                {
-                    "name": "MasterData",
-                    "file": "srv/manage-masterdata.cds",
+                    "name": "DestinationService",
+                    "file": "/srv/destination-security.cds",
                     "line": 3,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    "hasAuth": true,
+                    "authType": "authenticated-user",
+                    "severity": "OK",
+                    "message": "Authorization found: @requires 'authenticated-user'"
                 },
                 {
-                    "name": "Manageapp9",
-                    "file": "srv/manage-app9.cds",
-                    "line": 4,
-                    "hasAuth": false,
-                    "authType": null,
-                    "severity": "HIGH",
-                    "message": "No @requires or @restrict annotation - service may be publicly accessible"
+                    "name": "ManageService",
+                    "file": "/srv/manage-security.cds",
+                    "line": 3,
+                    "hasAuth": true,
+                    "authType": "authenticated-user",
+                    "severity": "OK",
+                    "message": "Authorization found: @requires 'authenticated-user'"
+                },
+                {
+                    "name": "ObjStoreManager",
+                    "file": "/srv/ObjStoreManager.cds",
+                    "line": 3,
+                    "hasAuth": true,
+                    "authType": "authenticated-user",
+                    "severity": "OK",
+                    "message": "Authorization found: @requires 'authenticated-user'"
                 }
             ],
             "vulnerabilities": [
@@ -3795,253 +3972,102 @@
                     "severity": "LOW",
                     "code": "CAP_UNVALIDATED_INPUT",
                     "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/display-app9.js",
-                    "line": 37,
-                    "snippet": "let { ID } = req.data;"
+                    "file": "/srv/handlers/destination-security.js",
+                    "line": 8,
+                    "snippet": "const nameFilter = req.data.name;"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "CAP_ENV_ACCESS",
+                    "message": "Accessing environment variable - ensure no secrets in code",
+                    "file": "/srv/handlers/destination-security.js",
+                    "line": 52,
+                    "snippet": "const vcap = JSON.parse(process.env.VCAP_SERVICES || \"{}\");"
                 },
                 {
                     "severity": "MEDIUM",
-                    "code": "CAP_LOG_REQUEST",
-                    "message": "Logging request object - may expose sensitive data",
-                    "file": "srv/handlers/display-app9.js",
-                    "line": 36,
-                    "snippet": "console.log(req.user.attr);"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_SELECT_NOFILTER",
-                    "message": "SELECT without WHERE clause - potential data exposure",
-                    "file": "srv/handlers/export-app9.js",
-                    "line": 57,
-                    "snippet": "let activities = await SELECT.from(Activities);"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_SELECT_NOFILTER",
-                    "message": "SELECT without WHERE clause - potential data exposure",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 84,
-                    "snippet": "let existingEmployees = await SELECT.from(`MasterData_Employees`);"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 21,
-                    "snippet": "* @param {Object} req.data - Request data."
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 22,
-                    "snippet": "* @param {string} req.data.assetType - The type of asset ('EM' or other)."
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 23,
-                    "snippet": "* @param {Object} req.data.content - The stream of the uploaded file."
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 29,
-                    "snippet": "const { assetType } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 32,
-                    "snippet": "const stream = req.data.content;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 164,
-                    "snippet": "* @param {Object} req.data - Request data."
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 165,
-                    "snippet": "* @param {string} req.data.assetType - The type of asset ('EM' or other)."
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/FileHandler.js",
-                    "line": 170,
-                    "snippet": "const { assetType } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-approvals.js",
-                    "line": 44,
-                    "snippet": "let { ID } = req.data;"
+                    "code": "CAP_HANDLER_NOAUTH",
+                    "message": "Event handler without visible authorization check",
+                    "file": "/srv/handlers/manage-security.js",
+                    "line": 14,
+                    "snippet": "srv.on(\"getUserRoles\", async req => {"
                 },
                 {
                     "severity": "MEDIUM",
-                    "code": "CAP_LOG_REQUEST",
-                    "message": "Logging request object - may expose sensitive data",
-                    "file": "srv/handlers/manage-approvals.js",
-                    "line": 29,
-                    "snippet": "console.log(req.user.attr);"
+                    "code": "CAP_HANDLER_NOAUTH",
+                    "message": "Event handler without visible authorization check",
+                    "file": "/srv/handlers/manage-security.js",
+                    "line": 55,
+                    "snippet": "srv.on(\"getSubAccount\", async (req) => {"
                 },
                 {
                     "severity": "MEDIUM",
-                    "code": "CAP_LOG_REQUEST",
-                    "message": "Logging request object - may expose sensitive data",
-                    "file": "srv/handlers/manage-approvals.js",
+                    "code": "CAP_HANDLER_NOAUTH",
+                    "message": "Event handler without visible authorization check",
+                    "file": "/srv/handlers/manage-security.js",
+                    "line": 90,
+                    "snippet": "srv.on('getConfig', async (req) => {"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "CAP_ENV_ACCESS",
+                    "message": "Accessing environment variable - ensure no secrets in code",
+                    "file": "/srv/handlers/manage-security.js",
+                    "line": 77,
+                    "snippet": "const vcap = JSON.parse(process.env.VCAP_SERVICES || '{}');"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "CAP_ENV_ACCESS",
+                    "message": "Accessing environment variable - ensure no secrets in code",
+                    "file": "/srv/handlers/manage-security.js",
+                    "line": 97,
+                    "snippet": "SSO = process.env.OLD_SSO === \"true\";"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "CAP_ENV_ACCESS",
+                    "message": "Accessing environment variable - ensure no secrets in code",
+                    "file": "/srv/handlers/manage-security.js",
+                    "line": 98,
+                    "snippet": "OpenNewTab = process.env.ENABLE_OPEN_IN_NEW_TAB === \"true\";"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "CAP_ENV_ACCESS",
+                    "message": "Accessing environment variable - ensure no secrets in code",
+                    "file": "/srv/handlers/manage-security.js",
+                    "line": 99,
+                    "snippet": "securityWinGui = process.env.security_WIN_GUI === \"true\";"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "/srv/handlers/ObjStoreManager.js",
+                    "line": 17,
+                    "snippet": "const { filename, content, contentType } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "/srv/handlers/ObjStoreManager.js",
+                    "line": 28,
+                    "snippet": "const { filename } = req.data;"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "CAP_UNVALIDATED_INPUT",
+                    "message": "Using req.data without apparent validation",
+                    "file": "/srv/handlers/ObjStoreManager.js",
                     "line": 43,
-                    "snippet": "console.log(req.user.attr);"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_SELECT_NOFILTER",
-                    "message": "SELECT without WHERE clause - potential data exposure",
-                    "file": "srv/handlers/manage-masterdata.js",
-                    "line": 113,
-                    "snippet": "let existingEmployees = await SELECT.from(Employees);"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-masterdata.js",
-                    "line": 37,
-                    "snippet": "const { assetType } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-masterdata.js",
-                    "line": 40,
-                    "snippet": "const stream = req.data.content;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-masterdata.js",
-                    "line": 74,
-                    "snippet": "//     let activities = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 128,
-                    "snippet": "let { email } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 152,
-                    "snippet": "let { employeeId } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 161,
-                    "snippet": "let { email, activityId } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 180,
-                    "snippet": "let { ID } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 274,
-                    "snippet": "// req.data.status_status = '01';"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 276,
-                    "snippet": "const { ID } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 292,
-                    "snippet": "let { employeeId_employeeId: employeeId, year, month } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 296,
-                    "snippet": "req.data.status_status = '01';"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 298,
-                    "snippet": "req.data.managerId_employeeId = employeeData.managerId;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 356,
-                    "snippet": "let { employeeId, year, month } = req.data;"
-                },
-                {
-                    "severity": "LOW",
-                    "code": "CAP_UNVALIDATED_INPUT",
-                    "message": "Using req.data without apparent validation",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 367,
-                    "snippet": "req.data.status_status = '02'; // Set the status to Submitted"
-                },
-                {
-                    "severity": "MEDIUM",
-                    "code": "CAP_LOG_REQUEST",
-                    "message": "Logging request object - may expose sensitive data",
-                    "file": "srv/handlers/manage-app9.js",
-                    "line": 112,
-                    "snippet": "console.log(req.user.attr);"
+                    "snippet": "const { filename } = req.data;"
                 }
             ],
             "mtaIssues": [],
-            "xsuaaIssues": []
+            "xsuaaIssues": [],
+            "configIssues": []
         },
         "secrets": {
             "findings": [
@@ -4052,14 +4078,6 @@
                     "file": ".gitignore",
                     "line": 0,
                     "snippet": "Add: default-env.json"
-                },
-                {
-                    "severity": "MEDIUM",
-                    "code": "GITIGNORE_MISSING",
-                    "message": ".env not in .gitignore",
-                    "file": ".gitignore",
-                    "line": 0,
-                    "snippet": "Add: .env"
                 },
                 {
                     "severity": "MEDIUM",
@@ -4076,451 +4094,880 @@
                     "file": ".gitignore",
                     "line": 0,
                     "snippet": "Add: default-env*.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "GITIGNORE_MISSING",
+                    "message": "service-key.json not in .gitignore",
+                    "file": ".gitignore",
+                    "line": 0,
+                    "snippet": "Add: service-key.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "GITIGNORE_MISSING",
+                    "message": "*.key not in .gitignore",
+                    "file": ".gitignore",
+                    "line": 0,
+                    "snippet": "Add: *.key"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "GITIGNORE_MISSING",
+                    "message": "private-key.pem not in .gitignore",
+                    "file": ".gitignore",
+                    "line": 0,
+                    "snippet": "Add: private-key.pem"
                 }
             ]
         },
         "btp": {
             "issues": [
                 {
-                    "severity": "HIGH",
-                    "code": "BTP_MTA_NO_AUTH",
-                    "message": "NoAuthentication found in MTA configuration",
-                    "file": "mta.yaml",
-                    "line": 225,
-                    "snippet": "- Authentication: NoAuthentication"
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"security-srv\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 6,
+                    "snippet": "- name: security-srv"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"security-destination-content\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 29,
+                    "snippet": "- name: security-destination-content"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"security-app-content\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 89,
+                    "snippet": "- name: security-app-content"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1d\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 142,
+                    "snippet": "- name: comsecurityuiapp1d"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1d\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 152,
+                    "snippet": "- name: comsecurityuiapp1d"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1e\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 162,
+                    "snippet": "- name: comsecurityuiapp1e"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1f\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 172,
+                    "snippet": "- name: comsecurityuiapp1f"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1g\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 182,
+                    "snippet": "- name: comsecurityuiapp1g"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1h\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 192,
+                    "snippet": "- name: comsecurityuiapp1h"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1-c\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 202,
+                    "snippet": "- name: comsecurityuiapp1-c"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1i\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 212,
+                    "snippet": "- name: comsecurityuiapp1i"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1-b\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 222,
+                    "snippet": "- name: comsecurityuiapp1-b"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"comsecurityuiapp1-a\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 232,
+                    "snippet": "- name: comsecurityuiapp1-a"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"security-auth\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 243,
+                    "snippet": "- name: security-auth"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"app-api\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 259,
+                    "snippet": "- name: app-api"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"security-destination-service\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 260,
+                    "snippet": "- name: security-destination-service"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"srv-api\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 286,
+                    "snippet": "- name: srv-api"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"security-connectivity\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 287,
+                    "snippet": "- name: security-connectivity"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"security-home-storage\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 294,
+                    "snippet": "- name: security-home-storage"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "BTP_MTA_NO_MEMORY",
+                    "message": "MTA module \"security_html_repo_host\" has no memory quota set - consider specifying memory: in parameters",
+                    "file": "/mta.yaml",
+                    "line": 301,
+                    "snippet": "- name: security_html_repo_host"
                 },
                 {
                     "severity": "HIGH",
-                    "code": "BTP_MTA_NO_AUTH",
-                    "message": "NoAuthentication found in MTA configuration",
-                    "file": "mta.yaml",
-                    "line": 230,
-                    "snippet": "- Authentication: NoAuthentication"
+                    "code": "XSUAA_WILDCARD_REDIRECT",
+                    "message": "Wildcard redirect URI over non-HTTPS is an open redirect risk: http*://*.cfapps.*.hana.ondemand.com/**",
+                    "file": "/xs-security.json",
+                    "snippet": "http*://*.cfapps.*.hana.ondemand.com/**"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "XSUAA_REDIRECT_LOCALHOST",
+                    "message": "Redirect URI contains localhost or HTTP - remove before production: http://localhost:*/**",
+                    "file": "/xs-security.json",
+                    "snippet": "http://localhost:*/**"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "XSUAA_WILDCARD_REDIRECT",
+                    "message": "Wildcard redirect URI over non-HTTPS is an open redirect risk: http://localhost:*/**",
+                    "file": "/xs-security.json",
+                    "snippet": "http://localhost:*/**"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "XSUAA_NO_ROLE_COLLECTIONS",
+                    "message": "No role-collections defined - administrators must manually assemble roles, consider pre-defining role-collections",
+                    "file": "/xs-security.json"
                 }
             ]
         },
         "npm": {
             "packages": [
                 {
-                    "file": "app/app1/package.json",
-                    "name": "app1",
-                    "version": "0.0.2",
+                    "file": "/app/app1-a/package.json",
+                    "name": "app1-a",
+                    "version": "0.0.1",
                     "dependencies": {
-                        "@ui5/cli": "^3.0.0",
+                        "@ui5/cli": "^4.0.33",
                         "@sap/ux-ui5-tooling": "1",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3",
-                        "mbt": "^1.2.27"
+                        "ui5-task-zipper": "^3.4.x"
                     },
-                    "dependencyCount": 5
+                    "dependencyCount": 3
                 },
                 {
-                    "file": "app/app2/package.json",
-                    "name": "app2",
-                    "version": "0.0.2",
+                    "file": "/app/app1-b/package.json",
+                    "name": "app1-b",
+                    "version": "0.0.1",
                     "dependencies": {
-                        "@ui5/cli": "^3.0.0",
+                        "@ui5/cli": "^4.0.33",
                         "@sap/ux-ui5-tooling": "1",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3"
+                        "ui5-task-zipper": "^3.4.x"
                     },
-                    "dependencyCount": 4
+                    "dependencyCount": 3
                 },
                 {
-                    "file": "app/app3/package.json",
-                    "name": "app3",
-                    "version": "0.0.2",
+                    "file": "/app/router/package.json",
+                    "name": "approuter",
                     "dependencies": {
-                        "@ui5/cli": "^3.0.0",
-                        "@sap/ux-ui5-tooling": "1",
-                        "@sap/ux-specification": "UI5-1.124",
-                        "eslint": "8.57.0",
-                        "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-                        "@sapui5/ts-types": "~1.124.0",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3",
-                        "mbt": "^1.2.27"
+                        "@sap/approuter": "^20.0.0"
                     },
-                    "dependencyCount": 9
+                    "dependencyCount": 1
                 },
                 {
-                    "file": "app/app4/package.json",
-                    "name": "app4",
-                    "version": "0.0.2",
+                    "file": "/app/app1-c/package.json",
+                    "name": "app1-c",
+                    "version": "0.0.1",
                     "dependencies": {
-                        "@ui5/cli": "^3.0.0",
+                        "@ui5/cli": "^4.0.33",
                         "@sap/ux-ui5-tooling": "1",
-                        "@sap/ux-specification": "UI5-1.125",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3",
-                        "mbt": "^1.2.27"
+                        "ui5-task-zipper": "^3.4.x"
                     },
-                    "dependencyCount": 6
+                    "dependencyCount": 3
                 },
                 {
-                    "file": "app/app5/package.json",
-                    "name": "app5",
-                    "version": "0.0.2",
+                    "file": "/package.json",
+                    "name": "security",
+                    "version": "1.0.0",
                     "dependencies": {
-                        "@ui5/cli": "^3.0.0",
-                        "@sap/ux-ui5-tooling": "1",
-                        "@sap/ux-specification": "UI5-1.124",
-                        "eslint": "8.57.0",
-                        "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-                        "@sapui5/ts-types": "~1.124.0",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3",
-                        "mbt": "^1.2.27"
-                    },
-                    "dependencyCount": 9
-                },
-                {
-                    "file": "app/app6/package.json",
-                    "name": "app6",
-                    "version": "0.0.2",
-                    "dependencies": {
-                        "@ui5/cli": "^3.0.0",
-                        "@sap/ux-ui5-tooling": "1",
-                        "@sap/ux-specification": "UI5-1.125",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3",
-                        "mbt": "^1.2.27"
-                    },
-                    "dependencyCount": 6
-                },
-                {
-                    "file": "app/app7/package.json",
-                    "name": "app7",
-                    "version": "0.0.2",
-                    "dependencies": {
-                        "@ui5/cli": "^3.0.0",
-                        "@sap/ux-ui5-tooling": "1",
-                        "@sap/ux-specification": "UI5-1.124",
-                        "eslint": "8.57.0",
-                        "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-                        "@sapui5/ts-types": "~1.124.0",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3",
-                        "mbt": "^1.2.27"
-                    },
-                    "dependencyCount": 9
-                },
-                {
-                    "file": "app/app8/package.json",
-                    "name": "app8",
-                    "version": "0.0.2",
-                    "dependencies": {
-                        "@ui5/cli": "^3.0.0",
-                        "@sap/ux-ui5-tooling": "1",
-                        "@sap/ux-specification": "UI5-1.124",
-                        "eslint": "8.57.0",
-                        "@sap/eslint-plugin-ui5-jsdocs": "2.0.5",
-                        "@sapui5/ts-types": "~1.124.0",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3",
-                        "mbt": "^1.2.27"
-                    },
-                    "dependencyCount": 9
-                },
-                {
-                    "file": "app/app9/package.json",
-                    "name": "app9",
-                    "version": "0.0.2",
-                    "dependencies": {
-                        "@ui5/cli": "^3.0.0",
-                        "@sap/ux-ui5-tooling": "1",
-                        "@sap/ux-specification": "UI5-1.125",
-                        "@sap/ui5-builder-webide-extension": "^1.1.9",
-                        "ui5-task-zipper": "^3.1.3",
-                        "mbt": "^1.2.27"
-                    },
-                    "dependencyCount": 6
-                },
-                {
-                    "file": "package.json",
-                    "name": "oxyaapp9server",
-                    "version": "1.0.1",
-                    "dependencies": {
-                        "@cap-js/postgres": "1.3",
-                        "@sap/cds": "7.9",
-                        "@sap/xssec": "^3",
+                        "@sap-cloud-sdk/connectivity": "^4.4.0",
+                        "@sap-cloud-sdk/http-client": "^4.4.0",
+                        "@sap/cds": "^9",
+                        "@sap/generator-fiori": "^1.20.0",
+                        "@sap/xssec": "^4",
                         "express": "^4",
-                        "xlsx": "^0.18.5",
-                        "@cap-js/sqlite": "1.11",
-                        "@sap/cds-dk": "7.9",
-                        "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
-                        "@sap/ux-specification": "UI5-1.141",
-                        "@sapui5/ts-types": "^1.92.2",
-                        "eslint": "^7.32.0",
+                        "@azure/storage-blob": "^12.31.0",
+                        "@sap-cloud-sdk/resilience": "^4.5.1",
+                        "jsonwebtoken": "^9.0.3",
+                        "@cap-js/sqlite": "^2",
+                        "@sap/cds-dk": "^9",
+                        "@sap/eslint-plugin-ui5-jsdocs": "^2.0.1",
+                        "@sap/ux-specification": "^1.120.16",
+                        "@ui5/cli": "^4.0.49",
                         "mbt": "^1.2.29",
-                        "rimraf": "^5.0.5"
+                        "rimraf": "^5.0.5",
+                        "cds-plugin-ui5": "^0.16.1",
+                        "ui5-middleware-servestatic": "^3.4.1",
+                        "ui5-tooling-modules": "^3.9.1"
                     },
-                    "dependencyCount": 13
+                    "dependencyCount": 19
                 }
             ],
             "issues": [
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app1/package.json"
+                    "package": "helmet",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-a/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app2/package.json"
+                    "package": "@sap/xssec",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/xssec - Required for XSUAA JWT validation",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-a/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app3/package.json"
+                    "package": "@sap/audit-logging",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-a/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "app1-a",
+                    "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                    "source": "Best Practice",
+                    "code": "MISSING_ENGINES",
+                    "file": "/app/app1-a/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "lockfile",
+                    "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                    "code": "NO_LOCK_FILE",
+                    "source": "Best Practice",
+                    "file": "/app/app1-a/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app4/package.json"
+                    "package": "helmet",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-b/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app5/package.json"
+                    "package": "@sap/xssec",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/xssec - Required for XSUAA JWT validation",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-b/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app6/package.json"
+                    "package": "@sap/audit-logging",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-b/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "app1-b",
+                    "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                    "source": "Best Practice",
+                    "code": "MISSING_ENGINES",
+                    "file": "/app/app1-b/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "lockfile",
+                    "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                    "code": "NO_LOCK_FILE",
+                    "source": "Best Practice",
+                    "file": "/app/app1-b/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app7/package.json"
+                    "package": "helmet",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                    "source": "SAP Best Practice",
+                    "file": "/app/router/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app8/package.json"
+                    "package": "@sap/xssec",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/xssec - Required for XSUAA JWT validation",
+                    "source": "SAP Best Practice",
+                    "file": "/app/router/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "app/app9/package.json"
+                    "package": "@sap/audit-logging",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                    "source": "SAP Best Practice",
+                    "file": "/app/router/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "approuter",
+                    "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                    "source": "Best Practice",
+                    "code": "MISSING_ENGINES",
+                    "file": "/app/router/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "lockfile",
+                    "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                    "code": "NO_LOCK_FILE",
+                    "source": "Best Practice",
+                    "file": "/app/router/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "helmet",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-c/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "@sap/xssec",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/xssec - Required for XSUAA JWT validation",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-c/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "@sap/audit-logging",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                    "source": "SAP Best Practice",
+                    "file": "/app/app1-c/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "app1-c",
+                    "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                    "source": "Best Practice",
+                    "code": "MISSING_ENGINES",
+                    "file": "/app/app1-c/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "lockfile",
+                    "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                    "code": "NO_LOCK_FILE",
+                    "source": "Best Practice",
+                    "file": "/app/app1-c/package.json"
                 },
                 {
                     "severity": "HIGH",
-                    "package": "@sap/xssec",
-                    "version": "^3",
-                    "cve": "CVE-2023-25615",
-                    "description": "Improper authorization in XSUAA validation",
-                    "fix": ">=3.2.0",
-                    "source": "SAP Advisory",
-                    "file": "package.json"
+                    "package": "express",
+                    "version": "^4",
+                    "cve": "CVE-2024-29041",
+                    "code": "CVE-2024-29041",
+                    "description": "Open redirect via malformed URL in express (fix: >=4.19.0)",
+                    "fix": ">=4.19.0",
+                    "source": "SAP Advisory / NVD",
+                    "file": "/package.json"
                 },
                 {
                     "severity": "INFO",
-                    "package": "npm audit",
-                    "description": "Lock file found - run \"npm audit\" in project directory for full vulnerability report",
-                    "source": "Recommendation",
-                    "file": "package.json"
+                    "package": "helmet",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: helmet - Sets secure HTTP headers (CSP, HSTS, X-Frame-Options, etc.)",
+                    "source": "SAP Best Practice",
+                    "file": "/package.json"
+                },
+                {
+                    "severity": "INFO",
+                    "package": "@sap/audit-logging",
+                    "version": null,
+                    "code": "RECOMMENDED_PACKAGES",
+                    "description": "Recommended security package missing: @sap/audit-logging - Required for GDPR audit logging on BTP",
+                    "source": "SAP Best Practice",
+                    "file": "/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "security",
+                    "description": "No \"engines.node\" field - pin the Node.js version to avoid supply-chain runtime differences",
+                    "source": "Best Practice",
+                    "code": "MISSING_ENGINES",
+                    "file": "/package.json"
+                },
+                {
+                    "severity": "LOW",
+                    "package": "lockfile",
+                    "description": "No package-lock.json or yarn.lock found - run \"npm install\" to generate",
+                    "code": "NO_LOCK_FILE",
+                    "source": "Best Practice",
+                    "file": "/package.json"
                 }
             ],
             "sapPackages": [
                 {
                     "name": "@sap/ux-ui5-tooling",
                     "version": "1",
-                    "file": "app/app1/package.json"
-                },
-                {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app1/package.json"
+                    "file": "/app/app1-a/package.json"
                 },
                 {
                     "name": "@sap/ux-ui5-tooling",
                     "version": "1",
-                    "file": "app/app2/package.json"
+                    "file": "/app/app1-b/package.json"
                 },
                 {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app2/package.json"
-                },
-                {
-                    "name": "@sap/ux-ui5-tooling",
-                    "version": "1",
-                    "file": "app/app3/package.json"
-                },
-                {
-                    "name": "@sap/ux-specification",
-                    "version": "UI5-1.124",
-                    "file": "app/app3/package.json"
-                },
-                {
-                    "name": "@sap/eslint-plugin-ui5-jsdocs",
-                    "version": "2.0.5",
-                    "file": "app/app3/package.json"
-                },
-                {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app3/package.json"
+                    "name": "@sap/approuter",
+                    "version": "^20.0.0",
+                    "file": "/app/router/package.json"
                 },
                 {
                     "name": "@sap/ux-ui5-tooling",
                     "version": "1",
-                    "file": "app/app4/package.json"
-                },
-                {
-                    "name": "@sap/ux-specification",
-                    "version": "UI5-1.125",
-                    "file": "app/app4/package.json"
-                },
-                {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app4/package.json"
-                },
-                {
-                    "name": "@sap/ux-ui5-tooling",
-                    "version": "1",
-                    "file": "app/app5/package.json"
-                },
-                {
-                    "name": "@sap/ux-specification",
-                    "version": "UI5-1.124",
-                    "file": "app/app5/package.json"
-                },
-                {
-                    "name": "@sap/eslint-plugin-ui5-jsdocs",
-                    "version": "2.0.5",
-                    "file": "app/app5/package.json"
-                },
-                {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app5/package.json"
-                },
-                {
-                    "name": "@sap/ux-ui5-tooling",
-                    "version": "1",
-                    "file": "app/app6/package.json"
-                },
-                {
-                    "name": "@sap/ux-specification",
-                    "version": "UI5-1.125",
-                    "file": "app/app6/package.json"
-                },
-                {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app6/package.json"
-                },
-                {
-                    "name": "@sap/ux-ui5-tooling",
-                    "version": "1",
-                    "file": "app/app7/package.json"
-                },
-                {
-                    "name": "@sap/ux-specification",
-                    "version": "UI5-1.124",
-                    "file": "app/app7/package.json"
-                },
-                {
-                    "name": "@sap/eslint-plugin-ui5-jsdocs",
-                    "version": "2.0.5",
-                    "file": "app/app7/package.json"
-                },
-                {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app7/package.json"
-                },
-                {
-                    "name": "@sap/ux-ui5-tooling",
-                    "version": "1",
-                    "file": "app/app8/package.json"
-                },
-                {
-                    "name": "@sap/ux-specification",
-                    "version": "UI5-1.124",
-                    "file": "app/app8/package.json"
-                },
-                {
-                    "name": "@sap/eslint-plugin-ui5-jsdocs",
-                    "version": "2.0.5",
-                    "file": "app/app8/package.json"
-                },
-                {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app8/package.json"
-                },
-                {
-                    "name": "@sap/ux-ui5-tooling",
-                    "version": "1",
-                    "file": "app/app9/package.json"
-                },
-                {
-                    "name": "@sap/ux-specification",
-                    "version": "UI5-1.125",
-                    "file": "app/app9/package.json"
-                },
-                {
-                    "name": "@sap/ui5-builder-webide-extension",
-                    "version": "^1.1.9",
-                    "file": "app/app9/package.json"
+                    "file": "/app/app1-c/package.json"
                 },
                 {
                     "name": "@sap/cds",
-                    "version": "7.9",
-                    "file": "package.json"
+                    "version": "^9",
+                    "file": "/package.json"
+                },
+                {
+                    "name": "@sap/generator-fiori",
+                    "version": "^1.20.0",
+                    "file": "/package.json"
                 },
                 {
                     "name": "@sap/xssec",
-                    "version": "^3",
-                    "file": "package.json"
+                    "version": "^4",
+                    "file": "/package.json"
                 },
                 {
                     "name": "@sap/cds-dk",
-                    "version": "7.9",
-                    "file": "package.json"
+                    "version": "^9",
+                    "file": "/package.json"
                 },
                 {
                     "name": "@sap/eslint-plugin-ui5-jsdocs",
-                    "version": "^2.0.5",
-                    "file": "package.json"
+                    "version": "^2.0.1",
+                    "file": "/package.json"
                 },
                 {
                     "name": "@sap/ux-specification",
-                    "version": "UI5-1.141",
-                    "file": "package.json"
+                    "version": "^1.120.16",
+                    "file": "/package.json"
                 }
             ],
             "auditResults": null,
             "summary": {
-                "total": 76,
-                "sap": 34,
+                "total": 29,
+                "sap": 10,
                 "critical": 0,
                 "high": 1,
                 "medium": 0,
-                "low": 0
+                "low": 5,
+                "info": 14
             }
+        },
+        "approuter": {
+            "routeIssues": [
+                {
+                    "severity": "INFO",
+                    "code": "AR_NO_SESSION_TIMEOUT",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
+                    "file": "/app/app1-a/xs-app.json"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_NO_LOGOUT_ENDPOINT",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
+                    "file": "/app/app1-a/xs-app.json"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_MISSING_CSP",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "file": "/app/app1-a/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_XFO",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
+                    "file": "/app/app1-a/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_XCTO",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
+                    "file": "/app/app1-a/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_HSTS",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
+                    "file": "/app/app1-a/xs-app.json"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_MISSING_RP",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "file": "/app/app1-a/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_ROUTE_CSRF_OFF",
+                    "message": "route[0] (source: ^/security/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                    "file": "/app/app1-a/xs-app.json",
+                    "snippet": "source: ^/security/(.*)$"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_ROUTE_NO_SCOPE",
+                    "message": "route[0] (source: ^/security/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
+                    "file": "/app/app1-a/xs-app.json",
+                    "snippet": "source: ^/security/(.*)$"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_ROUTE_NO_AUTH",
+                    "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                    "file": "/app/app1-a/xs-app.json",
+                    "snippet": "source: ^/resources/(.*)$"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_ROUTE_NO_AUTH",
+                    "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                    "file": "/app/app1-a/xs-app.json",
+                    "snippet": "source: ^/test-resources/(.*)$"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "AR_NO_SESSION_TIMEOUT",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
+                    "file": "/app/app1-b/xs-app.json"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_NO_LOGOUT_ENDPOINT",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
+                    "file": "/app/app1-b/xs-app.json"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_MISSING_CSP",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "file": "/app/app1-b/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_XFO",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
+                    "file": "/app/app1-b/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_XCTO",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
+                    "file": "/app/app1-b/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_HSTS",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
+                    "file": "/app/app1-b/xs-app.json"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_MISSING_RP",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "file": "/app/app1-b/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_ROUTE_CSRF_OFF",
+                    "message": "route[0] (source: ^/security/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                    "file": "/app/app1-b/xs-app.json",
+                    "snippet": "source: ^/security/(.*)$"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_ROUTE_NO_SCOPE",
+                    "message": "route[0] (source: ^/security/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
+                    "file": "/app/app1-b/xs-app.json",
+                    "snippet": "source: ^/security/(.*)$"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_ROUTE_NO_AUTH",
+                    "message": "route[1] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                    "file": "/app/app1-b/xs-app.json",
+                    "snippet": "source: ^/resources/(.*)$"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_ROUTE_NO_AUTH",
+                    "message": "route[2] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                    "file": "/app/app1-b/xs-app.json",
+                    "snippet": "source: ^/test-resources/(.*)$"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "AR_NO_SESSION_TIMEOUT",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
+                    "file": "/app/router/xs-app.json"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_NO_LOGOUT_ENDPOINT",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
+                    "file": "/app/router/xs-app.json"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_MISSING_CSP",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "file": "/app/router/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_XFO",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
+                    "file": "/app/router/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_XCTO",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
+                    "file": "/app/router/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_HSTS",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
+                    "file": "/app/router/xs-app.json"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_MISSING_RP",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "file": "/app/router/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_ROUTE_CSRF_OFF",
+                    "message": "route[0] (source: ^/security/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                    "file": "/app/router/xs-app.json",
+                    "snippet": "source: ^/security/(.*)$"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_ROUTE_NO_SCOPE",
+                    "message": "route[0] (source: ^/security/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
+                    "file": "/app/router/xs-app.json",
+                    "snippet": "source: ^/security/(.*)$"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_ROUTE_CSRF_OFF",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                    "file": "/app/router/xs-app.json",
+                    "snippet": "source: /destinations/(.*)/(.*)$"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "AR_NO_SESSION_TIMEOUT",
+                    "message": "xs-app.json: no sessionTimeout configured - default is 15 minutes; verify this matches your security policy",
+                    "file": "/app/app1-c/xs-app.json"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_NO_LOGOUT_ENDPOINT",
+                    "message": "xs-app.json: no logout.logoutEndpoint defined - users cannot explicitly invalidate their session",
+                    "file": "/app/app1-c/xs-app.json"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_MISSING_CSP",
+                    "message": "Content-Security-Policy header not configured - set via httpHeaders in xs-app.json or use helmet in server.js",
+                    "file": "/app/app1-c/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_XFO",
+                    "message": "X-Frame-Options not set - protects against clickjacking; use DENY or SAMEORIGIN",
+                    "file": "/app/app1-c/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_XCTO",
+                    "message": "X-Content-Type-Options: nosniff not set - prevents MIME-type sniffing attacks",
+                    "file": "/app/app1-c/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_MISSING_HSTS",
+                    "message": "Strict-Transport-Security (HSTS) not configured - enforce HTTPS-only communication",
+                    "file": "/app/app1-c/xs-app.json"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_MISSING_RP",
+                    "message": "Referrer-Policy not set - consider \"strict-origin-when-cross-origin\" to limit referrer leakage",
+                    "file": "/app/app1-c/xs-app.json"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_ROUTE_CSRF_OFF",
+                    "message": "route[0] (source: ^/security/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                    "file": "/app/app1-c/xs-app.json",
+                    "snippet": "source: ^/security/(.*)$"
+                },
+                {
+                    "severity": "LOW",
+                    "code": "AR_ROUTE_NO_SCOPE",
+                    "message": "route[0] (source: ^/security/(.*)$): no scope restriction on authenticated route - consider adding a \"scope\" property for fine-grained access control",
+                    "file": "/app/app1-c/xs-app.json",
+                    "snippet": "source: ^/security/(.*)$"
+                },
+                {
+                    "severity": "MEDIUM",
+                    "code": "AR_ROUTE_CSRF_OFF",
+                    "message": "route[1] (source: /destinations/(.*)/(.*)$): csrfProtection disabled - state-changing requests on this route are not CSRF-protected",
+                    "file": "/app/app1-c/xs-app.json",
+                    "snippet": "source: /destinations/(.*)/(.*)$"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_ROUTE_NO_AUTH",
+                    "message": "route[2] (source: ^/resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                    "file": "/app/app1-c/xs-app.json",
+                    "snippet": "source: ^/resources/(.*)$"
+                },
+                {
+                    "severity": "HIGH",
+                    "code": "AR_ROUTE_NO_AUTH",
+                    "message": "route[3] (source: ^/test-resources/(.*)$): authenticationType is \"none\" - unauthenticated access to this route",
+                    "file": "/app/app1-c/xs-app.json",
+                    "snippet": "source: ^/test-resources/(.*)$"
+                }
+            ],
+            "versionIssues": [],
+            "mtaIssues": [
+                {
+                    "severity": "HIGH",
+                    "code": "AR_MTA_NO_XSUAA",
+                    "message": "AppRouter module in mta.yaml has no XSUAA or IAS binding - authentication cannot work without a bound UAA service",
+                    "file": "/mta.yaml",
+                    "line": 60,
+                    "snippet": "type: approuter.nodejs"
+                },
+                {
+                    "severity": "INFO",
+                    "code": "AR_MTA_NO_SESSION_TIMEOUT",
+                    "message": "AppRouter module does not configure SESSION_TIMEOUT - verify the default 15-minute timeout suits your security policy",
+                    "file": "/mta.yaml",
+                    "line": 60,
+                    "snippet": "type: approuter.nodejs"
+                }
+            ],
+            "configIssues": []
         }
     }
 }

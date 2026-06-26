@@ -66,6 +66,41 @@ const CAP_JS_PATTERNS = [
     code: 'CAP_LOG_REQUEST',
     message: 'Logging request object - may expose sensitive data',
   },
+  // NEW: Detect direct DB access bypassing CDS authorization layer
+  {
+    pattern: /require\s*\(\s*['"`]hdb['"`]\s*\)|require\s*\(\s*['"`]@sap\/hana-client['"`]\s*\)/g,
+    severity: 'HIGH',
+    code: 'CAP_DIRECT_HANA',
+    message: 'Direct HANA client used - bypasses CDS authorization layer, ensure manual auth checks',
+  },
+  // NEW: Detect disabled authentication in cds config
+  {
+    pattern: /['"`]security['"`]\s*:\s*false/g,
+    severity: 'CRITICAL',
+    code: 'CAP_SECURITY_DISABLED',
+    message: 'CDS security is explicitly disabled',
+  },
+  // NEW: Detect raw express routes bypassing CDS middleware
+  {
+    pattern: /app\.(?:get|post|put|delete|patch)\s*\(\s*['"`][^'"`]+['"`]\s*,\s*(?!.*passport|.*xsuaa|.*auth)/g,
+    severity: 'MEDIUM',
+    code: 'CAP_EXPRESS_UNPROTECTED',
+    message: 'Raw Express route registered - ensure it is protected by XSUAA/passport middleware',
+  },
+  // NEW: Insecure deserialization via JSON.parse on request input
+  {
+    pattern: /JSON\.parse\s*\(\s*req\.(body|data|query|params)/g,
+    severity: 'MEDIUM',
+    code: 'CAP_JSON_PARSE_INPUT',
+    message: 'JSON.parse on raw request input - validate schema before deserialization',
+  },
+  // NEW: Potential path traversal via user-supplied file paths
+  {
+    pattern: /(?:readFile|readFileSync|createReadStream)\s*\([^)]*req\./g,
+    severity: 'HIGH',
+    code: 'CAP_PATH_TRAVERSAL',
+    message: 'File read using request-supplied input - potential path traversal',
+  },
 ];
 
 const MTA_PATTERNS = [
@@ -104,6 +139,17 @@ const XSUAA_PATTERNS = [
   },
 ];
 
+// NEW: .cdsrc.json / package.json cds config security checks
+const CDS_CONFIG_CHECKS = [
+  {
+    key: 'requires.auth.kind',
+    dangerValues: ['dummy', 'mock'],
+    severity: 'HIGH',
+    code: 'CAP_AUTH_MOCK',
+    message: 'CDS auth kind is set to dummy/mock - never use in production',
+  },
+];
+
 function parseCDSServices(content, filename) {
   const services = [];
   const lines = content.split('\n');
@@ -115,12 +161,11 @@ function parseCDSServices(content, filename) {
     const currentLine = lines[lineNum - 1] || '';
     const prevLine = lines[lineNum - 2] || '';
 
-    // Exclure : "annotate service.X" sur la même ligne ou "using X as service from"
     if (
       /annotate\s+/.test(currentLine) ||
-      /\bservice\s*\./.test(currentLine) ||        // service.Entity
-      /\bas\s+service\b/.test(currentLine) ||      // using X as service from
-      /annotate\s+$/.test(prevLine.trimEnd())      // annotate seul sur la ligne précédente
+      /\bservice\s*\./.test(currentLine) ||
+      /\bas\s+service\b/.test(currentLine) ||
+      /annotate\s+$/.test(prevLine.trimEnd())
     ) {
       continue;
     }
@@ -151,12 +196,68 @@ function parseCDSServices(content, filename) {
   return services;
 }
 
+// NEW: Check .cdsrc.json / package.json[cds] for insecure auth config
+function checkCDSConfig(files) {
+  const issues = [];
+
+  const cdsrcFiles = files.filter(f =>
+    path.basename(f.name) === '.cdsrc.json' ||
+    (path.basename(f.name) === 'package.json' && f.content.includes('"cds"'))
+  );
+
+  for (const file of cdsrcFiles) {
+    try {
+      const cfg = JSON.parse(file.content);
+      const cds = path.basename(file.name) === 'package.json' ? (cfg.cds || {}) : cfg;
+
+      const authKind = cds?.requires?.auth?.kind || cds?.requires?.['auth']?.kind;
+      if (authKind && ['dummy', 'mock', 'basic'].includes(authKind.toLowerCase())) {
+        issues.push({
+          severity: 'HIGH',
+          code: 'CAP_AUTH_MOCK',
+          message: `CDS auth kind is "${authKind}" - remove before production, must use "xsuaa" or "ias"`,
+          file: file.name,
+          snippet: `requires.auth.kind: ${authKind}`,
+        });
+      }
+
+      // Check for csrf disabled in CAP server config
+      if (cds?.server?.['csrf-protection'] === false) {
+        issues.push({
+          severity: 'HIGH',
+          code: 'CAP_CSRF_DISABLED',
+          message: 'CSRF protection explicitly disabled in CDS server config',
+          file: file.name,
+          snippet: 'server.csrf-protection: false',
+        });
+      }
+
+      // Check for insecure profile (development/hybrid used in non-dev)
+      const profiles = cds?.profiles || [];
+      if (profiles.includes('development') || profiles.includes('hybrid')) {
+        issues.push({
+          severity: 'MEDIUM',
+          code: 'CAP_INSECURE_PROFILE',
+          message: `CDS profile includes "development" or "hybrid" - verify this is intentional and not deployed to production`,
+          file: file.name,
+          snippet: `profiles: ${JSON.stringify(profiles)}`,
+        });
+      }
+    } catch (e) {
+      // not parseable
+    }
+  }
+
+  return issues;
+}
+
 function scanCAPCode(files) {
   const results = {
     services: [],
     vulnerabilities: [],
     mtaIssues: [],
     xsuaaIssues: [],
+    configIssues: [],  // NEW
   };
 
   // Scan .cds files
@@ -165,7 +266,6 @@ function scanCAPCode(files) {
     const services = parseCDSServices(file.content, file.name);
     results.services.push(...services);
 
-    // Check for other CDS issues
     if (file.content.includes('@open') || file.content.includes('annotate')) {
       const lines = file.content.split('\n');
       lines.forEach((line, idx) => {
@@ -181,11 +281,43 @@ function scanCAPCode(files) {
         }
       });
     }
+
+    // NEW: Detect @PersonalData without @EndUserText.label (GDPR annotation check)
+    if (file.content.includes('@PersonalData') && !file.content.includes('@EndUserText.label')) {
+      results.vulnerabilities.push({
+        severity: 'INFO',
+        code: 'CDS_PERSONAL_DATA_NO_LABEL',
+        message: '@PersonalData annotation present but @EndUserText.label is missing - required for GDPR audit log readability',
+        file: file.name,
+        snippet: '@PersonalData',
+      });
+    }
+
+    // NEW: Detect @cds.autoexpose without auth (auto-exposed entities are accessible via API)
+    const lines = file.content.split('\n');
+    lines.forEach((line, idx) => {
+      if (/@cds\.autoexpose/.test(line)) {
+        const nearContext = file.content.substring(
+          Math.max(0, file.content.indexOf(line) - 100),
+          file.content.indexOf(line) + 200
+        );
+        if (!/@requires|@restrict/.test(nearContext)) {
+          results.vulnerabilities.push({
+            severity: 'MEDIUM',
+            code: 'CDS_AUTOEXPOSE_NO_AUTH',
+            message: '@cds.autoexpose entity without @requires or @restrict - auto-exposed entities inherit service auth, verify this is intended',
+            file: file.name,
+            line: idx + 1,
+            snippet: line.trim(),
+          });
+        }
+      }
+    });
   }
 
   // Scan .js/.ts handler files
   const jsFiles = files.filter(f =>
-    (f.name.endsWith('.js') || f.name.endsWith('.ts')) &&
+    (f.name.endsWith('.js') || f.name.endsWith('.ts') || f.name.endsWith('.jsx') || f.name.endsWith('.tsx')) &&
     !f.name.includes('node_modules') &&
     !f.name.includes('.min.')
   );
@@ -193,7 +325,7 @@ function scanCAPCode(files) {
   for (const file of jsFiles) {
     const lines = file.content.split('\n');
     for (const rule of CAP_JS_PATTERNS) {
-      if (rule.code === 'CAP_AUTH_CHECK_OK') continue; // skip positive patterns for vuln list
+      if (rule.code === 'CAP_AUTH_CHECK_OK') continue;
       const matches = [...file.content.matchAll(rule.pattern)];
       for (const match of matches) {
         const lineNum = file.content.substring(0, match.index).split('\n').length;
@@ -227,7 +359,6 @@ function scanCAPCode(files) {
       }
     }
 
-    // Check for HTTP (non-HTTPS) endpoints
     const httpMatches = [...file.content.matchAll(/url:\s*http:\/\//g)];
     for (const match of httpMatches) {
       const lineNum = file.content.substring(0, match.index).split('\n').length;
@@ -260,6 +391,9 @@ function scanCAPCode(files) {
       }
     }
   }
+
+  // NEW: Scan .cdsrc.json and package.json[cds]
+  results.configIssues.push(...checkCDSConfig(files));
 
   return results;
 }

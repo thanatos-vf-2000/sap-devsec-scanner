@@ -1,6 +1,21 @@
 # CHANGELOG
 
 <!-- version list -->
+## v1.3.0 (2026-06-26)
+- Enable / Disable Vue DevTools (ENABLE_DEVTOOLS=true/false),
+- Update Secret Scanner: SECRET_KEY / SECRET_PRIVATE_KEY / SECRET_XSUAA / SECRET_HDI_USER / SECRET_HDI_PASSWORD,
+- Update UI5 Scanner: 
+  - Update UI5_SECURITY_PATTERNS,
+  - Add REDIRECT_PATTERNS / SENSITIVE_DATA_PATTERNS / OWASP_PATTERNS / SAP_SPECIFIC_PATTERNS,
+- Add file .jsx and .tsx' to scan,
+- Add Scanner for AppRouter,
+- Update BTP Scanner,
+- Update CAP Scanner,
+- Update NPM Scanner,
+- Update Secret Scanner,
+- Update Documentation,
+- Update UI5 supported version.
+
 ## v1.2.2 (2026-06-21)
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104,
 - Security and Quality - Uncontrolled data used in path expression - routes/scan.js:131,

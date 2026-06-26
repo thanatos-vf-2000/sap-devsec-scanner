@@ -39,6 +39,11 @@ npm install
 ```
 
 ## Development mode - Frontend
+> **Information**
+>
+> Set the ENABLE_DEVTOOLS environment variable to true to enable Vue DevTools (http://localhost:5173/__devtools__/).
+>
+>**export ENABLE_DEVTOOLS=true**
 
 ```bash
 cd frontend
@@ -102,6 +107,6 @@ Contributions are welcome! To suggest an improvement:
 
 1. Fork the **dev** branch of the repository
 2. Create a branch (`git checkout -b feature/my-feature`)
-3. Commit your changes (`git commit -m ‘feat: add ...’`)
+3. Commit your changes (`git commit -m 'feat: add ...'`)
 4. Push the branch (`git push origin feature/my-feature`)
 5. Open a pull request

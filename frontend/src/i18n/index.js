@@ -64,6 +64,7 @@ const messages = {
         secrets: 'Secrets',
         btp: 'BTP',
         npm: 'NPM',
+        approuter: 'AppRouter',
       },
       riskLevel: { LOW: 'Faible', MEDIUM: 'Moyen', HIGH: 'Élevé', CRITICAL: 'Critique' },
       // UI5 tab
@@ -126,6 +127,10 @@ const messages = {
         description: 'Description',
         file: 'Fichier',
         excerpt: 'Extrait',
+      },
+      approuter: {
+        title: 'App Router',
+        noIssues: 'Aucun problème d App Router détecté',
       },
     },
     // History view
@@ -214,6 +219,7 @@ const messages = {
         secrets: 'Secrets',
         btp: 'BTP',
         npm: 'NPM',
+        approuter: 'AppRouter',
       },
       riskLevel: { LOW: 'Low', MEDIUM: 'Medium', HIGH: 'High', CRITICAL: 'Critical' },
       ui5: {
@@ -270,6 +276,10 @@ const messages = {
         description: 'Description',
         file: 'File',
         excerpt: 'Excerpt',
+      },
+      approuter: {
+        title: 'App Router',
+        noIssues: 'No App Router issues detected',
       },
     },
     history: {
