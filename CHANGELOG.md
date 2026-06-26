@@ -1,7 +1,7 @@
 # CHANGELOG
 
 <!-- version list -->
-## v1.3.0 (2026-06-xx)
+## v1.3.0 (2026-06-26)
 - Enable / Disable Vue DevTools (ENABLE_DEVTOOLS=true/false),
 - Update Secret Scanner: SECRET_KEY / SECRET_PRIVATE_KEY / SECRET_XSUAA / SECRET_HDI_USER / SECRET_HDI_PASSWORD,
 - Update UI5 Scanner: 
@@ -13,7 +13,8 @@
 - Update CAP Scanner,
 - Update NPM Scanner,
 - Update Secret Scanner,
-- Update Documentation.
+- Update Documentation,
+- Update UI5 supported version.
 
 ## v1.2.2 (2026-06-21)
 - Security and Quality - Uncontrolled data used in path expression - utils/fileParser.js:104,
