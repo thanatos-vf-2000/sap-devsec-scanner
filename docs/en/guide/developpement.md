@@ -41,7 +41,7 @@ npm install
 ## Development mode - Frontend
 > **Information**
 >
-> Set the ENABLE_DEVTOOLS environment variable to true to enable Vue DevTools (http://localhost:5173/__devtools__/).
+> Set the ENABLE_DEVTOOLS environment variable to true to enable Vue DevTools (`http://localhost:5173/__devtools__/`).
 >
 >**export ENABLE_DEVTOOLS=true**
 
