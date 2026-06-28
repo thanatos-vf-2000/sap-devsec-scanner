@@ -28,7 +28,11 @@
 
       <!-- Right: version table -->
       <div>
-        <div class="font-bold mb-8"><i class="fa-solid fa-arrow-up-right-dots"></i> {{ t.report.ui5.versionTable(data.versionDate) }}</div>
+        <div class="font-bold mb-8"><i class="fa-solid fa-arrow-up-right-dots"></i> {{ data.source !== 'static'
+              ? t.report.ui5.versionTableSAP(data.source)
+              : t.report.ui5.versionTable(data.versionDate)
+          }}
+        </div>
         <table class="version-table">
           <thead>
             <tr>

@@ -7,18 +7,25 @@ const path = require('path');
 const fs = require('fs');
 
 const { parseZip, parseDirectory, detectProjectType } = require('../utils/fileParser');
-const { detectUI5Version } = require('../scanners/ui5Scanner');
+const { detectUI5Version, refreshUI5VersionData } = require('../scanners/ui5Scanner');
 const { scanCAPCode } = require('../scanners/capScanner');
 const { scanSecrets } = require('../scanners/secretsScanner');
 const { scanBTPDestinations } = require('../scanners/btpScanner');
 const { analyzePackageJson } = require('../scanners/npmScanner');
-const { scanApprouter }= require('../scanners/approuterScanner');
+const { scanApprouter } = require('../scanners/approuterScanner');
 
 const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 50 * 1024 * 1024 } });
 
+// Directory where pre-built UI5 resources snapshots are stored
+const UI5_CACHE_DIR = path.join(__dirname, '..', 'ui5', 'version');
+
 // In-memory scan history (use DB in production)
 const scanHistory = new Map();
+
+// ---------------------------------------------------------------------------
+// Risk scoring
+// ---------------------------------------------------------------------------
 
 function calculateRiskScore(results) {
   let score = 100;
@@ -51,28 +58,31 @@ function calculateRiskScore(results) {
   return Math.max(0, Math.min(100, score));
 }
 
+// ---------------------------------------------------------------------------
+// Report builder
+// ---------------------------------------------------------------------------
+
 function buildReport(scanId, files, projectName) {
   const projectTypes = detectProjectType(files);
 
-  const ui5Results = detectUI5Version(files);
-  const capResults = scanCAPCode(files);
-  const secretResults = scanSecrets(files);
-  const btpResults = scanBTPDestinations(files);
-  const npmResults = analyzePackageJson(files);
+  const ui5Results      = detectUI5Version(files);
+  const capResults      = scanCAPCode(files);
+  const secretResults   = scanSecrets(files);
+  const btpResults      = scanBTPDestinations(files);
+  const npmResults      = analyzePackageJson(files);
   const approuterResults = scanApprouter(files);
 
   const results = {
-    ui5: ui5Results,
-    cap: capResults,
-    secrets: { findings: secretResults },
-    btp: { issues: btpResults },
-    npm: npmResults,
+    ui5:      ui5Results,
+    cap:      capResults,
+    secrets:  { findings: secretResults },
+    btp:      { issues: btpResults },
+    npm:      npmResults,
     approuter: approuterResults,
   };
 
   const riskScore = calculateRiskScore(results);
 
-  // Count all issues by severity
   const allIssues = [
     ...secretResults,
     ...(ui5Results.issues || []),
@@ -95,11 +105,11 @@ function buildReport(scanId, files, projectName) {
 
   const summary = {
     critical: allIssues.filter(i => i.severity === 'CRITICAL').length,
-    high: allIssues.filter(i => i.severity === 'HIGH').length,
-    medium: allIssues.filter(i => i.severity === 'MEDIUM').length,
-    low: allIssues.filter(i => i.severity === 'LOW').length,
-    info: allIssues.filter(i => i.severity === 'INFO').length,
-    total: allIssues.length,
+    high:     allIssues.filter(i => i.severity === 'HIGH').length,
+    medium:   allIssues.filter(i => i.severity === 'MEDIUM').length,
+    low:      allIssues.filter(i => i.severity === 'LOW').length,
+    info:     allIssues.filter(i => i.severity === 'INFO').length,
+    total:    allIssues.length,
   };
 
   return {
@@ -114,6 +124,10 @@ function buildReport(scanId, files, projectName) {
     results,
   };
 }
+
+// ---------------------------------------------------------------------------
+// Scan routes
+// ---------------------------------------------------------------------------
 
 // POST /api/scan/upload - Upload ZIP
 router.post('/upload', upload.single('project'), async (req, res) => {
@@ -147,13 +161,13 @@ router.post('/directory', express.json(), async (req, res) => {
     if (!dirPath) return res.status(400).json({ error: t.dirRequired || 'dirPath required' });
 
     const allowedDirPath = fs.realpathSync(dirPath);
-    const resolvedPath = path.resolve(allowedDirPath);
+    const resolvedPath   = path.resolve(allowedDirPath);
     if (!fs.existsSync(resolvedPath)) {
       return res.status(400).json({ error: t.dirNotFound ? t.dirNotFound(resolvedPath) : `Directory not found: ${resolvedPath}` });
     }
 
     const scanId = uuidv4();
-    const files = parseDirectory(resolvedPath);
+    const files  = parseDirectory(resolvedPath);
 
     if (files.length === 0) {
       return res.status(400).json({ error: t.noFilesInDir || 'No scannable files found in directory' });
@@ -172,15 +186,15 @@ router.post('/directory', express.json(), async (req, res) => {
 // GET /api/scan/history
 router.get('/history', (req, res) => {
   const history = Array.from(scanHistory.values()).map(r => ({
-    scanId: r.scanId,
-    projectName: r.projectName,
-    scannedAt: r.scannedAt,
-    riskScore: r.riskScore,
-    riskLevel: r.riskLevel,
-    summary: r.summary,
+    scanId:       r.scanId,
+    projectName:  r.projectName,
+    scannedAt:    r.scannedAt,
+    riskScore:    r.riskScore,
+    riskLevel:    r.riskLevel,
+    summary:      r.summary,
     projectTypes: r.projectTypes,
   }));
-  res.json(history.reverse()); // most recent first
+  res.json(history.reverse());
 });
 
 // GET /api/scan/:scanId
@@ -196,4 +210,131 @@ router.delete('/:scanId', (req, res) => {
   res.json({ success: true });
 });
 
-module.exports = router;
+// ---------------------------------------------------------------------------
+// SAP UI5 utility routes  (/api/sap/ui5/...)
+// Mount this router under /api/sap/ui5 in your main app, or adjust prefix.
+// ---------------------------------------------------------------------------
+
+const ui5Router = express.Router();
+
+/**
+ * GET /api/sap/ui5/version
+ *
+ * Fetches and refreshes both UI5_VERSION_OVERVIEW (versionoverview.json)
+ * and UI5_VERSION (version.json) from ui5.sap.com.
+ *
+ * Response on success:
+ *   { status: 200, message: "https://ui5.sap.com/ OK" }
+ */
+ui5Router.get('/version', async (req, res) => {
+  try {
+    await refreshUI5VersionData();
+    res.json({  status: 200, 
+                message: 'https://ui5.sap.com/ available.'
+     });
+  } catch (err) {
+    console.error('UI5 version refresh error:', err);
+    res.status(502).json({  status: 502,
+                            message: `Failed to reach ui5.sap.com: ${err.message}` });
+  }
+});
+
+/**
+ * GET /api/sap/ui5/resources?version=1.145.3
+ *
+ * 1. Checks ui5/version/<version>.json cache on disk → returns it if found.
+ * 2. Otherwise fetches https://ui5.sap.com/<version>/resources/sap-ui-version.json
+ *    then enriches each library with vendor/copyright/documentation/appData from
+ *    https://ui5.sap.com/<version>/resources/<lib/path>/.library
+ * 3. Returns the enriched JSON.
+ */
+ui5Router.get('/resources', async (req, res) => {
+  const { version } = req.query;
+
+  if (!version || !/^\d+\.\d+\.\d+$/.test(version)) {
+    return res.status(400).json({ error: 'Query parameter "version" is required and must match x.y.z format (e.g. 1.145.3)' });
+  }
+
+  // ── 1. Cache hit ──────────────────────────────────────────────────────────
+  const cacheFile = path.join(UI5_CACHE_DIR, `${version}.json`);
+  if (fs.existsSync(cacheFile)) {
+    try {
+      const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+      return res.json({ source: 'cache', version, data: cached });
+    } catch (e) {
+      console.warn(`Cache file ${cacheFile} is corrupt, re-fetching.`);
+    }
+  }
+
+  // ── 2. Fetch sap-ui-version.json ─────────────────────────────────────────
+  const fetchFn = typeof fetch !== 'undefined' ? fetch : require('node-fetch');
+
+  let sapUiVersion;
+  try {
+    const versionUrl = `https://ui5.sap.com/${version}/resources/sap-ui-version.json`;
+    const vRes = await fetchFn(versionUrl);
+    if (!vRes.ok) throw new Error(`HTTP ${vRes.status} for ${versionUrl}`);
+    sapUiVersion = await vRes.json();
+  } catch (err) {
+    return res.status(502).json({ error: `Cannot fetch sap-ui-version.json for version ${version}: ${err.message}` });
+  }
+
+  // ── 3. Enrich each library with .library metadata ────────────────────────
+  const libraries = sapUiVersion.libraries || [];
+
+  const enriched = await Promise.all(
+    libraries.map(async (lib) => {
+      // sap.ui.core  →  sap/ui/core
+      const libPath = lib.name.replace(/\./g, '/');
+      const libraryUrl = `https://ui5.sap.com/${version}/resources/${libPath}/.library`;
+
+      try {
+        const lRes = await fetchFn(libraryUrl);
+        if (!lRes.ok) throw new Error(`HTTP ${lRes.status}`);
+        const xml = await lRes.text();
+
+        // Parse relevant fields from the XML using simple regex extraction
+        const vendor        = extractXmlValue(xml, 'vendor');
+        const copyright     = extractXmlValue(xml, 'copyright');
+        const documentation = extractXmlValue(xml, 'documentation');
+
+        // appData is everything inside <appData>…</appData>
+        const appDataMatch = xml.match(/<appData>([\s\S]*?)<\/appData>/i);
+        const appData      = appDataMatch ? appDataMatch[1].trim() : null;
+
+        return { ...lib, vendor, copyright, documentation, appData };
+      } catch (e) {
+        // Non-fatal: return original library data with nulls
+        return { ...lib, vendor: null, copyright: null, documentation: null, appData: null };
+      }
+    })
+  );
+
+  const result = { ...sapUiVersion, libraries: enriched };
+
+  // ── 4. Optionally persist to cache ───────────────────────────────────────
+  try {
+    fs.mkdirSync(UI5_CACHE_DIR, { recursive: true });
+    fs.writeFileSync(cacheFile, JSON.stringify(result, null, 2), 'utf8');
+  } catch (e) {
+    console.warn(`Could not write cache file ${cacheFile}: ${e.message}`);
+  }
+
+  return res.json({ source: 'live', version, data: result });
+});
+
+// ---------------------------------------------------------------------------
+// XML helper
+// ---------------------------------------------------------------------------
+
+function extractXmlValue(xml, tag) {
+  const re = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i');
+  const m  = xml.match(re);
+  return m ? m[1].trim() : null;
+}
+
+// ---------------------------------------------------------------------------
+// Exports
+// ---------------------------------------------------------------------------
+
+module.exports = { scanRouter: router, ui5Router };

@@ -76,6 +76,7 @@
                 },
                 "latestVersion": "1.148.1",
                 "ltsVersion": "1.136.19",
+                "source":     "static",
                 "versionTable": [
                     {
                         "version": "1.148",
@@ -3808,6 +3809,7 @@
                 }
             ],
             "versionDate": "2026-06-08",
+            "source": "sap.com",
             "issues": [
                 {
                     "severity": "MEDIUM",
@@ -4970,5 +4972,6 @@
             "configIssues": []
         }
     }
-}
+},
+    "sap_ui5_version": { "status": 200, "message": "https://ui5.sap.com/" }
 }

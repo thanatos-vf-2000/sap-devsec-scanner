@@ -1,6 +1,12 @@
 # CHANGELOG
 
 <!-- version list -->
+## v1.4.0 (2026-07-xx)
+- In ui5Scanner, dynamic version management from https://ui5.sap.com/, if available,
+- Add API /api/sap/ui5/version: 
+- Add API /api/sap/ui5/resources?version=x.xxx.x,
+- Add new GitHub Workflow release.yml tu push ui5.zip on tag release x.x.x.
+
 ## v1.3.0 (2026-06-26)
 - Enable / Disable Vue DevTools (ENABLE_DEVTOOLS=true/false),
 - Update Secret Scanner: SECRET_KEY / SECRET_PRIVATE_KEY / SECRET_XSUAA / SECRET_HDI_USER / SECRET_HDI_PASSWORD,

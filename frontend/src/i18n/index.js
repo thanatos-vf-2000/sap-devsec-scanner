@@ -23,6 +23,9 @@ const messages = {
     },
     // Scan view
     scan: {
+      parametersTitle: 'Paramètres',
+      NoInternetSAP: 'Pas d access au site  https://ui5.sap.com/.',
+      InternetSAP: 'Access au site  https://ui5.sap.com/ possible.',
       zipTitle: 'Scanner un projet ZIP',
       dropHere: 'Déposer un ZIP ici',
       dropOr: 'ou cliquer pour sélectionner',
@@ -77,6 +80,7 @@ const messages = {
         noSources: 'Aucune source trouvée',
         officialVersions: 'Versions officielles SAP',
         versionTable: (date) => `Tableau des versions supportées (${date})`,
+        versionTableSAP: (src) => `Tableau des versions supportées source: ${src} (online)`,
         version: 'Version',
         status: 'Statut',
         endMaintenance: 'Fin maintenance',
@@ -179,6 +183,9 @@ const messages = {
       status: (service, version) => `Connected · ${service} v${version}`,
     },
     scan: {
+      parametersTitle: 'Parameters',
+      NoInternetSAP: 'No access to the site https://ui5.sap.com/.',
+      InternetSAP: 'Access to the website https://ui5.sap.com/ is available.',
       zipTitle: 'Scan a ZIP project',
       dropHere: 'Drop a ZIP here',
       dropOr: 'or click to select',
@@ -231,6 +238,7 @@ const messages = {
         noSources: 'No sources found',
         officialVersions: 'Official SAP versions',
         versionTable: (date) => `Supported versions table (${date})`,
+        versionTableSAP: (src) => `Supported versions table source: ${src} (online)`,
         version: 'Version',
         status: 'Status',
         endMaintenance: 'End of maintenance',

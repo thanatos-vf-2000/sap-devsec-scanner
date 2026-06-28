@@ -1,5 +1,8 @@
 <template>
   <div>
+
+
+    <!-- Select Data Zip or Directory -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
       <!-- Upload ZIP -->
       <div class="card">
@@ -94,6 +97,32 @@
         </div>
       </div>
     </div>
+
+    <!-- Parameters -->
+    <div v-if="parameters && parameters['sap.com']" class="card parameters">
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-sliders"></i>
+          {{ t.scan.parametersTitle }}
+        </div>
+
+        <button
+          class="collapse-btn"
+          @click="parametersExpanded = !parametersExpanded"
+        >
+          <i
+            :class="parametersExpanded
+              ? 'fa-solid fa-chevron-up'
+              : 'fa-solid fa-chevron-down'"
+          ></i>
+        </button>
+      </div>
+
+      <div v-show="parametersExpanded">
+        <div v-if="parameters['sap.com']" class="alert alert-success">{{ t.scan.InternetSAP }}</div>
+        <div v-else class="alert alert-info">{{ t.scan.NoInternetSAP }}</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -106,7 +135,13 @@ const API = '';
 export default {
   name: 'ScanView',
   emits: ['scan-complete'],
-  setup(_, { emit }) {
+  props: {
+    parameters: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  setup(props, { emit }) {
     const fileInput = ref(null);
     const selectedFile = ref(null);
     const zipProjectName = ref('');
@@ -121,6 +156,7 @@ export default {
     const recentItems = ref([]);
     const dropLabel = ref(t.scan.dropHere);
     const dropSubLabel = ref(t.scan.dropOr);
+    const parametersExpanded = ref(false);
 
     function riskColor(score) {
       if (score >= 80) return '#107e3e';
@@ -219,10 +255,31 @@ export default {
     onMounted(loadHistory);
 
     return {
-      t, fileInput, zipProjectName, dirPath, dirProjectName, scanning, scanStatus,
+      t, parametersExpanded, fileInput, zipProjectName, dirPath, dirProjectName, scanning, scanStatus,
       errorMsg, scanDone, lastReport, isDragging, recentItems, dropLabel, dropSubLabel,
       riskColor, onDrop, onFileChange, scanZip, scanDirectory, loadScan,
     };
   },
 };
 </script>
+<style>
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapse-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  padding: 4px 8px;
+  transition: color .2s;
+}
+
+.collapse-btn:hover {
+  color: var(--sap-blue);
+}
+</style>

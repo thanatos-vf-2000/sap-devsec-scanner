@@ -3,10 +3,12 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
+const unzipper = require('unzipper');
 var RateLimit = require('express-rate-limit');
 
 const { version } = require('./package.json');
-const scanRouter = require('./routes/scan');
+const { scanRouter, ui5Router } = require('./routes/scan');
 const i18n = require('./utils/i18n');
 
 const app = express();
@@ -42,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // API Routes
 app.use('/api/scan', scanRouter);
+app.use('/api/sap/ui5', ui5Router);
 
 app.get('/api/health', (req, res) => {
   res.json({
@@ -57,12 +60,42 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`\n🔒 SAP DevSec Scanner`);
-  console.log(`   Version: ${version}`);
-  console.log(`   Backend: http://localhost:${PORT}`);
-  console.log(`   API:     http://localhost:${PORT}/api`);
-  console.log(`   Ready to scan SAP BTP projects\n`);
+// ── ui5.zip extraction ─────────────────────────────────────────
+// If ui5.zip exists alongside server.js, extract it before starting.
+async function extractUi5ZipIfPresent() {
+  const zipPath = path.join(__dirname, 'ui5.zip');
+  if (!fs.existsSync(zipPath)) return;
+
+  const destDir = path.join(__dirname, 'ui5');
+  console.log(`📦 ui5.zip detected — extracting to ${destDir} …`);
+
+  await fs.promises.mkdir(destDir, { recursive: true });
+
+  await new Promise((resolve, reject) => {
+    fs.createReadStream(zipPath)
+      .pipe(unzipper.Extract({ path: destDir }))
+      .on('close', resolve)
+      .on('error', reject);
+  });
+
+  console.log(`✅ ui5.zip extracted successfully.\n`);
+}
+
+async function startServer() {
+  await extractUi5ZipIfPresent();
+
+  app.listen(PORT, () => {
+    console.log(`\n🔒 SAP DevSec Scanner`);
+    console.log(`   Version: ${version}`);
+    console.log(`   Backend: http://localhost:${PORT}`);
+    console.log(`   API:     http://localhost:${PORT}/api`);
+    console.log(`   Ready to scan SAP BTP projects\n`);
+  });
+}
+
+startServer().catch(err => {
+  console.error('❌ Failed to start server:', err);
+  process.exit(1);
 });
 
 module.exports = app;

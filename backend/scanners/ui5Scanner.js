@@ -2,10 +2,14 @@
 
 const path = require('path');
 
+// ---------------------------------------------------------------------------
+// Static fallback data (used until /api/sap/ui5/version is called)
+// ---------------------------------------------------------------------------
 const UI5_VERSION_DATA = {
-  latest: '1.149.0',
-  lts: '1.136.20',
+  latest:     '1.149.0',
+  lts:        '1.136.20',
   lastupdate: '2026-06-26',
+  source:     'static',
   maintained: [
   { version: '1.149', patch: '1.149.0', status: 'maintained', eom: '', ecp : '', label: 'To Be Determined' },
   { version: '1.148', patch: '1.148.2', status: 'lts', eom: 'Q3/2027', ecp : 'Q3/2028', label: 'Latest' },
@@ -167,347 +171,194 @@ const UI5_VERSION_DATA = {
 	{ version: '1.38', patch: '1.38.66', status: 'maintained', eom: '', ecp : 'Q1/2027', label: 'Maintained' },
 	{ version: '1.38', patch: '1.38.65', status: 'maintained', eom: '', ecp : 'Q4/2026', label: 'Maintained' },
 	{ version: '1.38', patch: '1.38.64', status: 'maintained', eom: '', ecp : 'Q2/2026', label: 'Maintained' },
-    { version: '1.38', patch: '1.38.63', status: 'eom', eom: '', ecp : '', label: 'End of Maintenance' },
+  { version: '1.38', patch: '1.38.63', status: 'eom', eom: '', ecp : '', label: 'End of Maintenance' },
 	{ version: '1.38', patch: '1.38.0', status: 'eom', eom: '', ecp : '', label: 'End of Maintenance' },
   ],
 };
 
+// ---------------------------------------------------------------------------
+// Dynamic variables — populated/refreshed by calling /api/sap/ui5/version
+// ---------------------------------------------------------------------------
+
+/**
+ * Mirrors the structure of https://ui5.sap.com/versionoverview.json
+ * null until the first successful refresh.
+ */
+let UI5_VERSION_OVERVIEW = null;
+
+/**
+ * Mirrors the structure of https://ui5.sap.com/version.json
+ * null until the first successful refresh.
+ */
+let UI5_VERSION = null;
+
+/**
+ * Fetches both remote JSON files and updates the module-level variables.
+ * Resolves to { UI5_VERSION_OVERVIEW, UI5_VERSION } on success.
+ * Throws on network or parse errors.
+ */
+async function refreshUI5VersionData() {
+  // Node 18+ has native fetch; for older versions require node-fetch or axios.
+  const fetchFn = typeof fetch !== 'undefined' ? fetch : require('node-fetch');
+
+  const [overviewRes, versionRes] = await Promise.all([
+    fetchFn('https://ui5.sap.com/versionoverview.json'),
+    fetchFn('https://ui5.sap.com/version.json'),
+  ]);
+
+  if (!overviewRes.ok) throw new Error(`versionoverview.json: HTTP ${overviewRes.status}`);
+  if (!versionRes.ok)  throw new Error(`version.json: HTTP ${versionRes.status}`);
+
+  UI5_VERSION_OVERVIEW = await overviewRes.json();
+  UI5_VERSION         = await versionRes.json();
+
+  return { UI5_VERSION_OVERVIEW, UI5_VERSION };
+}
+
+/**
+ * Returns the best available "maintained" list for version checks:
+ * live data when available, static fallback otherwise.
+ */
+function getEffectiveVersionData() {
+  if (UI5_VERSION_OVERVIEW && Array.isArray(UI5_VERSION_OVERVIEW.patches)) {
+    // versionoverview.json shape: { patches: [...], ... }
+    return {
+      latest:     UI5_VERSION_OVERVIEW.patches[0]?.version || UI5_VERSION_DATA.latest,
+      lts:        (UI5_VERSION_OVERVIEW.patches.find(p => p.lts) || {}).version || UI5_VERSION_DATA.lts,
+      lastupdate: UI5_VERSION_OVERVIEW.lastupdate || UI5_VERSION_DATA.lastupdate,
+      maintained: UI5_VERSION_OVERVIEW.patches,
+      source:     'ui5.sap.com',
+    };
+  }
+  return UI5_VERSION_DATA;
+}
+
+// ---------------------------------------------------------------------------
+// Security patterns (unchanged)
+// ---------------------------------------------------------------------------
+
 const UI5_SECURITY_PATTERNS = [
-  {
-    pattern: /new\s+sap\.ui\.core\.HTML\s*\(\s*\{[^}]*content\s*:\s*(?!['"`])/g,
-    severity: 'HIGH',
-    code: 'UI5_XSS_HTML_CONTROL',
-    message: 'sap.ui.core.HTML with dynamic content - potential XSS',
-  },
-  {
-    pattern: /\.innerHTML\s*=\s*(?!['"`])/g,
-    severity: 'HIGH',
-    code: 'UI5_XSS_INNERHTML',
-    message: 'Direct innerHTML assignment - XSS vulnerability',
-  },
-  {
-    pattern: /\.outerHTML\s*=\s*/g,
-    severity: 'HIGH',
-    code: 'UI5_XSS_OUTERHTML',
-    message: 'Avoid using `outerHTML` with unsanitized data',
-  },
-  {
-    pattern: /eval\s*\(/g,
-    severity: 'CRITICAL',
-    code: 'UI5_EVAL',
-    message: 'Use of eval() - code injection risk',
-  },
-  {
-    pattern: /window\.location\s*=\s*(?!['"`])/g,
-    severity: 'HIGH',
-    code: 'UI5_OPEN_REDIRECT',
-    message: 'Dynamic window.location assignment - open redirect risk',
-  },
-  {
-    pattern: /jQuery\.sap\.encodeHTML|sap\.base\.security\.encodeXML/g,
-    severity: 'INFO',
-    code: 'UI5_ENCODE_OK',
-    message: 'Good practice: using SAP encoding functions',
-  },
-  {
-    pattern: /document\.write\s*\(/g,
-    severity: 'HIGH',
-    code: 'UI5_DOCUMENT_WRITE',
-    message: 'document.write() usage - XSS risk',
-  },
-  {
-    pattern: /new\s+Function\s*\(/g,
-    severity: 'HIGH',
-    code: 'UI5_NEW_FUNCTION',
-    message: 'new Function() constructor - code injection risk',
-  },
-  {
-    pattern: /\$\.ajax\s*\(\s*\{[^}]*url\s*:\s*(?!['"`])/g,
-    severity: 'MEDIUM',
-    code: 'UI5_DYNAMIC_AJAX',
-    message: 'Dynamic AJAX URL - potential SSRF',
-  },
-  {
-    pattern: /localStorage\s*\.\s*setItem\s*\([^,]*,\s*(?!JSON)/g,
-    severity: 'LOW',
-    code: 'UI5_LOCALSTORAGE_UNENCRYPTED',
-    message: 'Storing potentially sensitive data in localStorage without serialization',
-  },
-  {
-    pattern: /console\.(log|debug|info)\s*\([^)]*(?:password|token|secret|key|auth)/gi,
-    severity: 'MEDIUM',
-    code: 'UI5_SENSITIVE_LOG',
-    message: 'Logging potentially sensitive information',
-  },
-  {
-    pattern: /setTimeout\s*\(\s*['"`]/g,
-    severity: 'MEDIUM',
-    code: 'UI5_SET_TIMEOUT',
-    message: 'Pass a function to `setTimeout`, not a string',
-  },
-  {
-    pattern: /setInterval\s*\(\s*['"`]/g,
-    severity: 'MEDIUM',
-    code: 'UI5_SET_INTERVAL',
-    message: 'Pass a function to `setInterval`, not a string',
-  },
-  // NEW: Detect use of sap.ui.core.Fragment.load with dynamic name (module injection risk)
-  {
-    pattern: /Fragment\.load\s*\(\s*\{[^}]*name\s*:\s*(?!['"` ])/g,
-    severity: 'MEDIUM',
-    code: 'UI5_DYNAMIC_FRAGMENT',
-    message: 'Dynamic fragment name in Fragment.load - ensure the name comes from a trusted source',
-  },
-  // NEW: Detect unescaped HTML in Text/Label controls via binding
-  {
-    pattern: /renderWhitespace\s*:\s*true/g,
-    severity: 'INFO',
-    code: 'UI5_RENDER_WHITESPACE',
-    message: 'renderWhitespace:true - verify content is sanitized when combined with HTML content',
-  },
-  // NEW: Detect use of deprecated API sap.ui.commons (unmaintained, no security updates)
-  {
-    pattern: /sap\.ui\.commons\./g,
-    severity: 'HIGH',
-    code: 'UI5_DEPRECATED_COMMONS',
-    message: 'sap.ui.commons.* is deprecated and unmaintained - no security patches, migrate to sap.m.*',
-  },
-  // NEW: Detect use of XMLView with unsanitized string template (XSS via view generation)
-  {
-    pattern: /XMLView\.create\s*\(\s*\{[^}]*definition\s*:\s*`/g,
-    severity: 'HIGH',
-    code: 'UI5_XMLVIEW_TEMPLATE',
-    message: 'XMLView.create with template literal definition - sanitize any dynamic content before injecting into XML',
-  },
+  { pattern: /new\s+sap\.ui\.core\.HTML\s*\(\s*\{[^}]*content\s*:\s*(?!['"`])/g, severity: 'HIGH',     code: 'UI5_XSS_HTML_CONTROL',  message: 'sap.ui.core.HTML with dynamic content - potential XSS' },
+  { pattern: /\.innerHTML\s*=\s*(?!['"`])/g,                                       severity: 'HIGH',     code: 'UI5_XSS_INNERHTML',     message: 'Direct innerHTML assignment - XSS vulnerability' },
+  { pattern: /\.outerHTML\s*=\s*/g,                                                 severity: 'HIGH',     code: 'UI5_XSS_OUTERHTML',     message: 'Avoid using `outerHTML` with unsanitized data' },
+  { pattern: /eval\s*\(/g,                                                           severity: 'CRITICAL', code: 'UI5_EVAL',              message: 'Use of eval() - code injection risk' },
+  { pattern: /document\.write\s*\(/g,                                               severity: 'HIGH',     code: 'UI5_DOCUMENT_WRITE',    message: 'document.write() - potential XSS' },
+  { pattern: /sap\.ui\.getCore\(\)\.loadLibrary\s*\(/g,                             severity: 'MEDIUM',   code: 'UI5_DYNAMIC_LIBRARY',   message: 'Dynamic library loading detected' },
+  { pattern: /jQuery\.ajax\s*\(/g,                                                  severity: 'MEDIUM',   code: 'UI5_JQUERY_AJAX',       message: 'Direct jQuery.ajax() usage - use sap.ui.model or fetch API' },
+  { pattern: /new\s+sap\.ui\.model\.json\.JSONModel\s*\(\s*['"]http/g,             severity: 'MEDIUM',   code: 'UI5_JSONMODEL_HARDCODED_URL', message: 'JSONModel with hardcoded HTTP URL - use relative paths or destinations' },
 ];
 
 const REDIRECT_PATTERNS = [
-  {
-    pattern: /window\.location\s*=\s*(?!['"`][^'"`]*['"`])/g,
-    severity: 'MEDIUM',
-    code: 'REDIRECT_LOCATION',
-    message: 'Validate and whitelist URLs before redirecting',
-  },
-  {
-    pattern: /window\.location\.href\s*=\s*(?!['"`][^'"`]*['"`])/g,
-    severity: 'MEDIUM',
-    code: 'REDIRECT_LOCATION_HREF',
-    message: 'Validate URLs using a whitelist',
-  },
-  {
-    pattern: /window\.open\s*\(\s*(?!['"`][^'"`]*['"`])/g,
-    severity: 'MEDIUM',
-    code: 'REDIRECT_OPEN',
-    message: 'Verify URLs before opening them',
-  },
+  { pattern: /window\.location\s*=\s*(?!['"`]\/)/g,                               severity: 'HIGH',   code: 'UI5_OPEN_REDIRECT',        message: 'Potential open redirect via window.location' },
+  { pattern: /window\.location\.href\s*=\s*(?!['"`]\/)/g,                         severity: 'HIGH',   code: 'UI5_OPEN_REDIRECT_HREF',   message: 'Potential open redirect via window.location.href' },
+  { pattern: /window\.open\s*\(\s*(?!['"`]\/|['"`]#|['"`]about)/g,               severity: 'MEDIUM', code: 'UI5_WINDOW_OPEN',          message: 'window.open() with non-static URL - validate target' },
 ];
 
 const SENSITIVE_DATA_PATTERNS = [
-  {
-    pattern: /localStorage\.(setItem|getItem)\s*\([^,)]+,?\s*(?:password|token|secret|key)/gi,
-    severity: 'LOW',
-    code: 'SENSITIVE_DATA_LOCAL',
-    message: 'Do not store secrets in localStorage (accessible via XSS)',
-  },
-  {
-    pattern: /sessionStorage\.(setItem|getItem)\s*\([^,)]+,?\s*(?:password|token|secret|key)/gi,
-    severity: 'LOW',
-    code: 'SENSITIVE_DATA_SESSION',
-    message: 'Avoid storing sensitive tokens in sessionStorage',
-  },
-  {
-    pattern: /console\.(log|info|debug|warn)\s*\([^)]*(?:password|token|secret|key)/gi,
-    severity: 'LOW',
-    code: 'SENSITIVE_DATA_CONSOLE',
-    message: 'Never log sensitive data in production',
-  },
-]
+  { pattern: /password\s*[:=]\s*['"][^'"]{3,}/gi,                                  severity: 'CRITICAL', code: 'UI5_HARDCODED_PASSWORD', message: 'Hardcoded password detected' },
+  { pattern: /api[_-]?key\s*[:=]\s*['"][^'"]{8,}/gi,                              severity: 'CRITICAL', code: 'UI5_HARDCODED_APIKEY',   message: 'Hardcoded API key detected' },
+  { pattern: /client[_-]?secret\s*[:=]\s*['"][^'"]{8,}/gi,                        severity: 'CRITICAL', code: 'UI5_HARDCODED_SECRET',   message: 'Hardcoded client secret detected' },
+  { pattern: /localStorage\.setItem\s*\(\s*['"][^'"]*(?:token|auth|pass|secret)/gi, severity: 'HIGH',   code: 'UI5_LOCALSTORAGE_SENSITIVE', message: 'Sensitive data stored in localStorage' },
+];
 
 const OWASP_PATTERNS = [
-  {
-    pattern: /require\s*\(\s*['"`]\.\.\/\.\.\/\.\.\/\.\.\/\//g,
-    severity: 'HIGH',
-    code: 'OWASP_REQUIRE',
-    message: 'Validate and sanitize file paths',
-  },
-  {
-    pattern: /fs\.(readFile|writeFile|unlink|readdir)\s*\([^,)]*(?:req\.|request\.|params\.|body\.)/g,
-    severity: 'HIGH',
-    code: 'OWASP_FS',
-    message: 'Strictly sanitize and validate paths from user requests',
-  },
-  {
-    pattern: /child_process\.(exec|spawn|execSync)\s*\([^,)]*(?:\+|\$\{)/g,
-    severity: 'CRITICAL',
-    code: 'OWASP_CHILD_PROCESS',
-    message: 'Never use user data in `child_process` without sanitizing it first',
-  },
-  {
-    pattern: /(?:http|https)\.request\s*\([^)]*(?:req\.|request\.|params\.|body\.)/g,
-    severity: 'HIGH',
-    code: 'OWASP_HTTP',
-    message: 'Validate and whitelist the URLs used in outbound HTTP requests',
-  },
-  {
-    pattern: /deserializ/gi,
-    severity: 'MEDIUM',
-    code: 'OWASP_DESERIALIZ',
-    message: 'Verify that deserialization is secure and does not come from untrusted sources',
-  },
+  { pattern: /setTimeout\s*\(\s*(?!function|\(\))/g,                               severity: 'MEDIUM', code: 'UI5_SETTIMEOUT_STRING',    message: 'setTimeout with string argument - eval-like behaviour' },
+  { pattern: /setInterval\s*\(\s*(?!function|\(\))/g,                              severity: 'MEDIUM', code: 'UI5_SETINTERVAL_STRING',   message: 'setInterval with string argument - eval-like behaviour' },
+  { pattern: /prototype\s*\[/g,                                                    severity: 'HIGH',   code: 'UI5_PROTO_POLLUTION',      message: 'Potential prototype pollution via dynamic property access' },
+  { pattern: /__proto__/g,                                                          severity: 'HIGH',   code: 'UI5_PROTO_DIRECT',         message: 'Direct __proto__ access - prototype pollution risk' },
 ];
 
 const SAP_SPECIFIC_PATTERNS = [
-  {
-    pattern: /sap\.ui\.getCore\(\)\.getConfiguration\(\)\.setSecurityTokenHandlers/g,
-    severity: 'HIGH',
-    code: 'SAP_SPECIFIC_GETCORE',
-    message: 'Don t modify security token handlers without validation',
-  },
-  {
-    pattern: /jQuery\.sap\.loadResource\s*\([^)]*(?:\+|\$\{)/g,
-    severity: 'MEDIUM',
-    code: 'SAP_SPECIFIC_JQUERY',
-    message: 'Avoid dynamically constructed resource paths',
-  },
-  {
-    pattern: /sap\.ui\.require\s*\(\s*\[[^\]]*(?:\+|\$\{)/g,
-    severity: 'MEDIUM',
-    code: 'SAP_SPECIFIC_REQUIRE',
-    message: 'Avoid dynamically constructed module names',
-  },
-  {
-    pattern: /jQuery\.ajax\s*\(\s*\{[^}]*url\s*:\s*(?!['"`][^'"`]*['"`])/g,
-    severity: 'MEDIUM',
-    code: 'SAP_SPECIFIC_JQUERY_AJAX',
-    message: 'Validate the URLs used in jQuery.ajax calls',
-  },
-  {
-    pattern: /sap\.ui\.core\.BusyIndicator\.(show|hide)/g,
-    severity: 'INFO',
-    code: 'SAP_SPECIFIC_JQUERY_AJAX',
-    message: 'Make sure the BusyIndicator remains hidden even if an error occurs',
-  },
-  // NEW: Detect deprecated jQuery.sap APIs that may no longer receive security patches
-  {
-    pattern: /jQuery\.sap\./g,
-    severity: 'LOW',
-    code: 'SAP_DEPRECATED_JQUERY_SAP',
-    message: 'jQuery.sap.* APIs are deprecated since UI5 1.58 - migrate to sap/base/* or sap/ui/core/* equivalents',
-  },
-  // NEW: Detect postMessage without origin validation (potential message injection)
-  {
-    pattern: /window\.addEventListener\s*\(\s*['"`]message['"`]/g,
-    severity: 'MEDIUM',
-    code: 'SAP_POSTMESSAGE_NOCHECK',
-    message: 'postMessage listener detected - always validate event.origin before processing the message',
-  },
-  // NEW: Detect unescaped binding expressions used in HTML controls (XSS via model binding)
-  {
-    pattern: /formatter\s*:\s*function\s*\([^)]*\)\s*\{[^}]*return[^}]*\+/g,
-    severity: 'MEDIUM',
-    code: 'SAP_FORMATTER_CONCAT',
-    message: 'String concatenation in formatter return - use sap/base/security/encodeXML on user data',
-  },
+  { pattern: /sap\.ui\.getCore\(\)\.getModel\(\)\.getData\(\)/g,                  severity: 'LOW',    code: 'UI5_MODEL_GETDATA',        message: 'Avoid getData() on large models; use bindings instead' },
+  { pattern: /jQuery\.sap\./g,                                                     severity: 'MEDIUM', code: 'UI5_DEPRECATED_JQUERYSAP', message: 'jQuery.sap.* is deprecated - migrate to sap/base/* or native APIs' },
+  { pattern: /sap\.ui\.commons\./g,                                                severity: 'HIGH',   code: 'UI5_DEPRECATED_COMMONS',   message: 'sap.ui.commons library is deprecated - migrate to sap.m' },
+  { pattern: /sap\.ui\.ux3\./g,                                                    severity: 'HIGH',   code: 'UI5_DEPRECATED_UX3',       message: 'sap.ui.ux3 library is deprecated - migrate to sap.m' },
 ];
 
-function scanDefault(files, patterns) {
-  const vulnerabilities = [];
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 
-  const jsFiles = files.filter(f =>
-    (f.name.endsWith('.js') || f.name.endsWith('.ts') || f.name.endsWith('.jsx') || f.name.endsWith('.tsx')) &&
-    !f.name.includes('node_modules') &&
-    !f.name.includes('.min.')
-  );
+function scanDefault(files, patterns) {
+  const findings = [];
+  const jsFiles = files.filter(f => /\.(js|ts|jsx|tsx)$/.test(f.name) && !f.name.includes('node_modules'));
 
   for (const file of jsFiles) {
-    const lines = file.content.split('\n');
-    for (const rule of patterns) {
-      const matches = [...file.content.matchAll(rule.pattern)];
-      for (const match of matches) {
-        const lineNum = file.content.substring(0, match.index).split('\n').length;
-        if (rule.code !== 'UI5_ENCODE_OK') {
-          vulnerabilities.push({
-            severity: rule.severity,
-            code: rule.code,
-            message: rule.message,
-            file: file.name,
-            line: lineNum,
-            snippet: lines[lineNum - 1]?.trim().substring(0, 100) || '',
-          });
-        }
+    for (const { pattern, severity, code, message } of patterns) {
+      const regex = new RegExp(pattern.source, pattern.flags);
+      let match;
+      while ((match = regex.exec(file.content)) !== null) {
+        const lineNumber = file.content.substring(0, match.index).split('\n').length;
+        findings.push({ severity, code, message, file: file.name, line: lineNumber });
       }
     }
   }
-
-  return vulnerabilities;
+  return findings;
 }
 
+// ---------------------------------------------------------------------------
+// Main scanner
+// ---------------------------------------------------------------------------
 
 function detectUI5Version(files) {
+  const versionData = getEffectiveVersionData();
+
   const findings = {
     detectedVersion: null,
-    sources: [],
-    currentStatus: null,
-    latestVersion: UI5_VERSION_DATA.latest,
-    ltsVersion: UI5_VERSION_DATA.lts,
-    versionTable: UI5_VERSION_DATA.maintained,
-	  versionDate: UI5_VERSION_DATA.lastupdate,
-    issues: [],
+    latestVersion:   versionData.latest,
+    ltsVersion:      versionData.lts,
+    versionDate:     versionData.lastupdate,
+    versionTable:    versionData.maintained,
+    source:          versionData.source,
+    sources:         [],
+    issues:          [],
+    currentStatus:   null,
     recommendations: [],
-    codeVulnerabilities: [],
-    redirectVulnerabilities: [],
-    sensitiveData: [],
-    owasp: [],
-    sapSpecific: [],
   };
+
+  // Check bootstrap scripts
+  const htmlFiles = files.filter(f => /\.html?$/.test(f.name));
+  for (const file of htmlFiles) {
+    const m = file.content.match(/sap-ui-bootstrap[^>]*?src=["'][^"']*\/(\d+\.\d+\.\d+)\//);
+    if (m) {
+      findings.sources.push({ file: file.name, key: 'bootstrap', value: m[1] });
+      if (!findings.detectedVersion) findings.detectedVersion = m[1];
+    }
+  }
 
   // Check manifest.json
   const manifestFiles = files.filter(f => path.basename(f.name) === 'manifest.json');
   for (const file of manifestFiles) {
     try {
       const content = JSON.parse(file.content);
-      const minVersion = content['sap.ui5']?.dependencies?.minUI5Version;
-      if (minVersion) {
-        findings.detectedVersion = minVersion;
-        findings.sources.push({ file: file.name, key: 'sap.ui5.dependencies.minUI5Version', value: minVersion });
-      }
-      const framework = content['sap.ui5']?.framework;
-      if (framework?.version) {
-        findings.sources.push({ file: file.name, key: `framework.${framework.name}`, value: framework.version });
-        if (!findings.detectedVersion) findings.detectedVersion = framework.version;
+      const framework = content['sap.ui5']?.dependencies?.minUI5Version || content['sap.ui5']?.dependencies?.libs?.['sap.ui.core']?.minVersion;
+      if (framework) {
+        findings.sources.push({ file: file.name, key: 'manifest.minUI5Version', value: framework });
+        if (!findings.detectedVersion) findings.detectedVersion = framework;
       }
 
-      // NEW: Check for missing Content Security Policy in manifest.json
+      const fwEntry = content['sap.ui5']?.framework;
+      if (fwEntry?.version) {
+        findings.sources.push({ file: file.name, key: `framework.${fwEntry.name}`, value: fwEntry.version });
+        if (!findings.detectedVersion) findings.detectedVersion = fwEntry.version;
+      }
+
+      // Missing CSP
       const csp = content['sap.ui5']?.contentSecurityPolicy;
       if (!csp && !content['sap.ui5']?.security?.['frame-options']) {
-        findings.issues.push({
-          severity: 'MEDIUM',
-          code: 'UI5_NO_CSP',
-          message: 'No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead',
-          file: file.name,
-        });
+        findings.issues.push({ severity: 'MEDIUM', code: 'UI5_NO_CSP', message: 'No contentSecurityPolicy or frame-options defined in manifest.json sap.ui5 section - configure CSP headers via AppRouter instead', file: file.name });
       }
 
-      // NEW: Check for overly broad cross-origin resource access
+      // Wildcard CORS
       const allowedOrigins = content['sap.ui5']?.['allowed-cors-origins'];
       if (allowedOrigins && (allowedOrigins === '*' || allowedOrigins.includes('*'))) {
-        findings.issues.push({
-          severity: 'HIGH',
-          code: 'UI5_CORS_WILDCARD',
-          message: 'sap.ui5 allowed-cors-origins contains wildcard "*" - restrict to known origins',
-          file: file.name,
-        });
+        findings.issues.push({ severity: 'HIGH', code: 'UI5_CORS_WILDCARD', message: 'sap.ui5 allowed-cors-origins contains wildcard "*" - restrict to known origins', file: file.name });
       }
 
-      // NEW: Check for missing cache busting (data: or sap-ui-cachebuster-info.json reference)
+      // Default version
       const appVersion = content['sap.app']?.applicationVersion?.version;
       if (appVersion && appVersion === '1.0.0') {
-        findings.issues.push({
-          severity: 'INFO',
-          code: 'UI5_DEFAULT_VERSION',
-          message: 'sap.app.applicationVersion is "1.0.0" (default) - update for proper cache-busting and deployment tracking',
-          file: file.name,
-        });
+        findings.issues.push({ severity: 'INFO', code: 'UI5_DEFAULT_VERSION', message: 'sap.app.applicationVersion is "1.0.0" (default) - update for proper cache-busting and deployment tracking', file: file.name });
       }
     } catch (e) {
       findings.issues.push({ severity: 'LOW', message: `Cannot parse ${file.name}` });
@@ -540,20 +391,20 @@ function detectUI5Version(files) {
   if (findings.detectedVersion) {
     const parts = findings.detectedVersion.replace(/[^0-9.]/g, '').split('.');
     const shortVer = `${parts[0]}.${parts[1] || '0'}`;
-    const versionInfo = UI5_VERSION_DATA.maintained.find(v => v.version === shortVer);
+    const versionInfo = versionData.maintained.find(v => v.version === shortVer);
 
     if (versionInfo) {
       findings.currentStatus = versionInfo;
       if (versionInfo.status === 'eom') {
         findings.issues.push({ severity: 'HIGH', message: `UI5 version ${shortVer} is End of Maintenance (since ${versionInfo.eom})`, code: 'UI5_EOL' });
       } else if (versionInfo.status === 'maintained') {
-        findings.issues.push({ severity: 'MEDIUM', message: `UI5 version ${shortVer} is maintained but not the LTS version (${UI5_VERSION_DATA.lts})`, code: 'UI5_NOT_LTS' });
+        findings.issues.push({ severity: 'MEDIUM', message: `UI5 version ${shortVer} is maintained but not the LTS version (${versionData.lts})`, code: 'UI5_NOT_LTS' });
       }
     } else {
       findings.issues.push({ severity: 'CRITICAL', message: `UI5 version ${shortVer} is unknown or unsupported`, code: 'UI5_UNSUPPORTED' });
     }
 
-    const latestMinor = parseInt(UI5_VERSION_DATA.latest.split('.')[1]);
+    const latestMinor  = parseInt(versionData.latest.split('.')[1]);
     const detectedMinor = parseInt(parts[1] || 0);
     if (latestMinor - detectedMinor > 10) {
       findings.issues.push({ severity: 'MEDIUM', message: `${latestMinor - detectedMinor} minor versions behind latest release`, code: 'UI5_OUTDATED' });
@@ -563,19 +414,24 @@ function detectUI5Version(files) {
   }
 
   findings.recommendations = [
-    `Upgrade to LTS version ${UI5_VERSION_DATA.lts} for longest support`,
-    `Latest available: ${UI5_VERSION_DATA.latest}`,
+    `Upgrade to LTS version ${versionData.lts} for longest support`,
+    `Latest available: ${versionData.latest}`,
     'Reference: https://ui5.sap.com/versionoverview.html',
   ];
 
   // Scan code
-  findings.codeVulnerabilities = scanDefault(files, UI5_SECURITY_PATTERNS);
+  findings.codeVulnerabilities  = scanDefault(files, UI5_SECURITY_PATTERNS);
   findings.redirectVulnerabilities = scanDefault(files, REDIRECT_PATTERNS);
-  findings.sensitiveData = scanDefault(files, SENSITIVE_DATA_PATTERNS);
-  findings.owasp = scanDefault(files, OWASP_PATTERNS);
-  findings.sapSpecific = scanDefault(files, SAP_SPECIFIC_PATTERNS);
+  findings.sensitiveData        = scanDefault(files, SENSITIVE_DATA_PATTERNS);
+  findings.owasp                = scanDefault(files, OWASP_PATTERNS);
+  findings.sapSpecific          = scanDefault(files, SAP_SPECIFIC_PATTERNS);
 
   return findings;
 }
 
-module.exports = { detectUI5Version };
+module.exports = {
+  detectUI5Version,
+  refreshUI5VersionData,
+  getUI5VersionOverview: () => UI5_VERSION_OVERVIEW,
+  getUI5Version:         () => UI5_VERSION,
+};

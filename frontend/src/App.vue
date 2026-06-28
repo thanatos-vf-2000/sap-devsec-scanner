@@ -23,7 +23,7 @@
 
     <main class="main">
       <!-- SCAN VIEW -->
-      <ScanView v-show="currentView === 'scan'" @scan-complete="onScanComplete" />
+      <ScanView v-show="currentView === 'scan'" @scan-complete="onScanComplete" :parameters="parameters" />
 
       <!-- REPORT VIEW -->
       <ReportView v-show="currentView === 'report'" :report="currentReport" />
@@ -68,6 +68,7 @@ const currentReport = ref(null);
 const appVersion = ref('...');
 const healthColor = ref('#107e3e');
 const healthMsg = ref(t.health.connected);
+const parameters      = ref({});
 
 let healthInterval = null;
 
@@ -92,6 +93,19 @@ function onLoadScan(report) {
   showView('report');
 }
 
+async function init() {
+  try {
+    const res = await fetch(`${API}/api/sap/ui5/version`);
+    if (res.ok) {
+      const data = await res.json();
+      parameters.value['sap.com']       = true;
+      parameters.value['sap.com.data']  = data;
+    }
+  } catch {
+    parameters.value['sap.com'] = false;
+  }
+}
+
 async function checkBackend() {
   try {
     const res = await fetch(`${API}/api/health`);
@@ -108,6 +122,7 @@ async function checkBackend() {
 }
 
 onMounted(() => {
+  init();
   checkBackend();
   healthInterval = setInterval(checkBackend, 10000);
 });
@@ -262,7 +277,7 @@ body { font-family: var(--font); background: var(--sap-light); color: #333; font
 .tag { display: inline-block; padding: 2px 8px; background: #e0edff; color: var(--sap-blue); border-radius: 10px; font-size: 11px; font-weight: 500; margin: 2px; }
 
 /* Upload zone */
-.upload-zone { border: 2px dashed #b0c9e8; border-radius: var(--radius); padding: 48px 32px; text-align: center; cursor: pointer; transition: all .2s; background: var(--sap-accent); }
+.upload-zone { border: 2px dashed #b0c9e8; border-radius: var(--radius); padding: 24px 32px; text-align: center; cursor: pointer; transition: all .2s; background: var(--sap-accent); }
 .upload-zone:hover, .upload-zone.drag { border-color: var(--sap-blue); background: #d6eaf8; }
 .upload-zone h3 { font-size: 16px; color: var(--sap-dark); margin: 12px 0 8px; }
 .upload-zone p { color: var(--sap-gray); font-size: 13px; }
