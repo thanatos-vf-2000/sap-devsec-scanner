@@ -5,7 +5,9 @@
 - In ui5Scanner, dynamic version management from https://ui5.sap.com/, if available,
 - Add API /api/sap/ui5/version: 
 - Add API /api/sap/ui5/resources?version=x.xxx.x,
-- Add new GitHub Workflow release.yml tu push ui5.zip on tag release x.x.x.
+- Add new GitHub Workflow release.yml tu push ui5.zip on tag release x.x.x,
+- Add page 404 for error,
+- Add page UI5 version Details when you select UI5 version on Report.
 
 ## v1.3.0 (2026-06-26)
 - Enable / Disable Vue DevTools (ENABLE_DEVTOOLS=true/false),

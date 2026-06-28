@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import { t } from '../i18n/index.js';
-import IssuesTable from './IssuesTable.vue';
+import { t } from '../../i18n/index.js';
+import IssuesTable from '../IssuesTable.vue';
 export default {
   name: 'NPMTab',
   components: { IssuesTable },

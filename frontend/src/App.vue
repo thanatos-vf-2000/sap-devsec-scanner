@@ -1,57 +1,50 @@
 <template>
-  <div id="app">
-    <!-- Shell Header -->
-    <header class="shell-header">
-      <div class="shell-logo">
-        <div class="shield"><img src="/logo.png" alt="Logo" /></div>
-        SAP DevSec Scanner
-      </div>
-      <nav class="shell-nav">
-        <a
-          v-for="item in navItems"
-          :key="item.view"
-          :class="{ active: currentView === item.view }"
-          @click="showView(item.view)"
-        ><i :class="['fas', item.icon]"></i> {{ item.label }}</a>
-      </nav>
-      <div class="shell-healt-status">
-        <span class="shell-healt-dot" :style="{ background: healthColor }"></span>
-        <span class="shell-healt-info">{{ healthMsg }}</span>
-      </div>
-      <div class="shell-right">v<span>{{ appVersion }}</span></div>
-    </header>
+  <div v-if="$route.path === '/'">
+    <div id="app">
+      <!-- Shell Header -->
+      <header class="shell-header">
+        <div class="shell-logo">
+          <div class="shield"><img src="/logo.png" alt="Logo" /></div>
+          SAP DevSec Scanner
+        </div>
+        <nav class="shell-nav">
+          <a
+            v-for="item in navItems"
+            :key="item.view"
+            :class="{ active: currentView === item.view }"
+            @click="showView(item.view)"
+          ><i :class="['fas', item.icon]"></i> {{ item.label }}</a>
+        </nav>
+        <div class="shell-healt-status">
+          <span class="shell-healt-dot" :style="{ background: healthColor }"></span>
+          <span class="shell-healt-info">{{ healthMsg }}</span>
+        </div>
+        <div class="shell-right">v<span>{{ appVersion }}</span></div>
+      </header>
 
-    <main class="main">
-      <!-- SCAN VIEW -->
-      <ScanView v-show="currentView === 'scan'" @scan-complete="onScanComplete" :parameters="parameters" />
+      <!-- Main -->
+      <main class="main">
+        <!-- SCAN VIEW -->
+        <ScanView v-show="currentView === 'scan'" @scan-complete="onScanComplete" :parameters="parameters" />
 
-      <!-- REPORT VIEW -->
-      <ReportView v-show="currentView === 'report'" :report="currentReport" />
+        <!-- REPORT VIEW -->
+        <ReportView v-show="currentView === 'report'" :report="currentReport" />
 
-      <!-- HISTORY VIEW -->
-      <HistoryView v-if="currentView === 'history'" @load-scan="onLoadScan" />
+        <!-- HISTORY VIEW -->
+        <HistoryView v-if="currentView === 'history'" @load-scan="onLoadScan" />
 
-      <!-- ABOUT VIEW -->
-      <AboutView v-show="currentView === 'about'" />
-    </main>
+        <!-- ABOUT VIEW -->
+        <AboutView v-show="currentView === 'about'" />
+      </main>
 
-    <footer class="footer">
-      <div>App v{{ APP_VERSION }} · UI v{{ UI_VERSION }} (node: {{ NODE_ENV }} - build: {{ BUILD_NUMBER }})</div>
-      <div>Build: {{ buildTime }}</div>
-      <div>Commit: {{ GIT_HASH }}</div>
-    </footer>
+      <!-- Footer -->
+      <Footer />
+    </div>
   </div>
+  <router-view v-else />
 </template>
 
 <script setup>
-const APP_VERSION = __APP_VERSION__;
-const UI_VERSION = __UI_VERSION__;
-const GIT_HASH = __GIT_HASH__;
-
-const buildTime = new Date(__BUILD_TIME__).toLocaleString();
-
-const NODE_ENV = __NODE_ENV__;
-const BUILD_NUMBER = __BUILD_NUMBER__;
 
 import { ref, onMounted, onUnmounted } from 'vue';
 import { t } from './i18n/index.js';
@@ -61,16 +54,22 @@ import ReportView from './views/ReportView.vue';
 import HistoryView from './views/HistoryView.vue';
 import AboutView from './views/AboutView.vue';
 
-const API = '';
+import Header from './components/ui/Header.vue';
+import Footer from './components/ui/Footer.vue';
 
-const currentView = ref('scan');
-const currentReport = ref(null);
+const API = '';
+let healthInterval = null;
+
 const appVersion = ref('...');
+
 const healthColor = ref('#107e3e');
 const healthMsg = ref(t.health.connected);
+
+const currentReport = ref(null);
+
 const parameters      = ref({});
 
-let healthInterval = null;
+const currentView = ref('scan');
 
 const navItems = [
   { view: 'scan', label: t.nav.scanner, icon: 'fa-magnifying-glass' },
@@ -118,6 +117,7 @@ async function checkBackend() {
   } catch {
     healthColor.value = '#8b0000';
     healthMsg.value = t.health.disconnected;
+    appVersion.value = '---';
   }
 }
 
@@ -130,7 +130,6 @@ onMounted(() => {
 onUnmounted(() => {
   clearInterval(healthInterval);
 });
-
 </script>
 
 <style>

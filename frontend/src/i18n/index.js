@@ -168,6 +168,12 @@ const messages = {
       authors: 'Auteurs',
       maintainers: 'Maintenance',
     },
+    //Page 404
+    e404: {
+      code: '404',
+      message: 'Page introuvable.',
+      url_request: "URL demandée",
+    },
   },
 
   en: {
@@ -318,6 +324,12 @@ const messages = {
       ],
       authors: 'Authors',
       maintainers: 'Maintainers',
+    },
+    //Page 404
+    e404: {
+      code: '404',
+      message: 'Page Not Found.',
+      url_request: "Requested URL",
     },
   },
 };
