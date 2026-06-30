@@ -261,5 +261,5 @@ export default {
 };
 </script>
 <style>
-tr.current.version-row-maintained {background: var(--sap-accent); }
+tr.current {background: var(--sap-accent); }
 </style>

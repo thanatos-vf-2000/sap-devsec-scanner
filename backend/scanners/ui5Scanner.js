@@ -215,18 +215,116 @@ async function refreshUI5VersionData() {
   return { UI5_VERSION_OVERVIEW, UI5_VERSION };
 }
 
+function quarterToMonth(q) {
+  return { Q1: '03', Q2: '06', Q3: '09', Q4: '12' }[q];
+}
+
+function parseQuarterDate(value) {
+  if (!value) return null;
+  const match = value.match(/(Q[1-4])\/(\d{4})/);
+  if (!match) return null;
+  return new Date(`${match[2]}-${quarterToMonth(match[1])}-01`);
+}
+
+function ecpToNumber(ecp) {
+    const match = ecp?.match(/Q([1-4])\/(\d{4})/);
+
+    if (!match) {
+        return -1; // ou Number.MIN_SAFE_INTEGER
+    }
+
+    const [, quarter, year] = match;
+    return Number(year) * 10 + Number(quarter);
+}
 /**
  * Returns the best available "maintained" list for version checks:
  * live data when available, static fallback otherwise.
  */
 function getEffectiveVersionData() {
   if (UI5_VERSION_OVERVIEW && Array.isArray(UI5_VERSION_OVERVIEW.patches)) {
-    // versionoverview.json shape: { patches: [...], ... }
+    // versionoverview.json shape: { versions: [...], patches: [...], ... }
+    const today = new Date();
+    const data = [];
+    for(const req of UI5_VERSION_OVERVIEW.patches) {
+      const version = req.version.match(/^\d+\.\d+/)[0];
+      const recherche = `${version}.*`;
+      const version_data = UI5_VERSION_OVERVIEW.versions.find(v => v.version === recherche);
+
+      let status = '';
+      let eom = '';
+      let ecp = req.eocp;
+      let label = '';
+
+      switch (version_data.support) {
+          case "Maintenance":
+              status = 'maintained';
+              eom = version_data.eom;
+              label = 'Maintained';
+              break;
+
+          case "Out of maintenance":
+              status = 'eom';
+              eom = ''
+              label = 'End of Maintenance';
+              break;
+
+          case "Skipped":
+              status = 'skipped';
+              eom = version_data.eom;
+              break;
+          default:
+              status = version_data.support;
+              eom = version_data.eom;
+      }
+      
+      if (version_data.lts === true) {
+        status='lts';
+        const match = version_data.eom.match(/Q[1-4]\/\d{4}/);
+        eom =  match ? match[0] : null;
+      }
+      if ( ecp === 'To Be Determined') {
+        label = 'To Be Determined';
+        const matcheom = version_data.eom.match(/Q[1-4]\/\d{4}/);
+        eom =  matcheom ? matcheom[0] : null;
+        const matchecp = version_data.eocp.match(/Q[1-4]\/\d{4}/);
+        ecp =  matchecp ? matchecp[0] : null;
+      }
+      const ecpDate = parseQuarterDate(ecp);
+      if (ecpDate && ecpDate < today) {
+        status = 'eom';
+        eom = '';
+      }
+      const eomDate = parseQuarterDate(eom);
+      if (eomDate > ecpDate) {
+        eom = '';
+      }
+      data.push({
+                  version:        version,
+                  patch:          req.version,
+                  status:         status,
+                  eom:            eom,
+                  ecp:            ecp,
+                  extended_ecp:   req.extended_eocp,
+                  label:          label,
+                  sapuiversion:   req.sapuiversion,
+                  frontendserver: req.frontendserver
+      });
+    }
+    
+    const maxItem = data.reduce((max, item) =>
+      ecpToNumber(item.ecp) > ecpToNumber(max.ecp) ? item : max
+  );
+
+    const item = data.find(v => v.patch === maxItem.patch);
+    if (item) item.label= 'LTS (Recommended)';
+
+    const today = new Date().toISOString().split('T')[0];
+
     return {
-      latest:     UI5_VERSION_OVERVIEW.patches[0]?.version || UI5_VERSION_DATA.latest,
-      lts:        (UI5_VERSION_OVERVIEW.patches.find(p => p.lts) || {}).version || UI5_VERSION_DATA.lts,
-      lastupdate: UI5_VERSION_OVERVIEW.lastupdate || UI5_VERSION_DATA.lastupdate,
-      maintained: UI5_VERSION_OVERVIEW.patches,
+      latest:     UI5_VERSION_OVERVIEW.activeVersion,
+      lts:        maxItem.patch,
+      lastupdate: today,
+      maintained: data,
       source:     'ui5.sap.com',
     };
   }
