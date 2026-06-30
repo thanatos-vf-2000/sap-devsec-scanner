@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const fs = require("fs/promises");
 
 // ---------------------------------------------------------------------------
 // Static fallback data (used until /api/sap/ui5/version is called)
@@ -192,25 +193,83 @@ let UI5_VERSION_OVERVIEW = null;
  */
 let UI5_VERSION = null;
 
+// Directory where pre-built UI5 resources snapshots are stored
+const UI5_CACHE_DIR_VERSION = path.join(__dirname, '..', 'ui5');
+
 /**
  * Fetches both remote JSON files and updates the module-level variables.
  * Resolves to { UI5_VERSION_OVERVIEW, UI5_VERSION } on success.
  * Throws on network or parse errors.
  */
+
 async function refreshUI5VersionData() {
-  // Node 18+ has native fetch; for older versions require node-fetch or axios.
-  const fetchFn = typeof fetch !== 'undefined' ? fetch : require('node-fetch');
+  const overviewFile = path.join(UI5_CACHE_DIR_VERSION, "versionoverview.json");
+  const versionFile = path.join(UI5_CACHE_DIR_VERSION, "version.json");
+
+  const CACHE_DURATION = 48 * 60 * 60 * 1000; // 48 heures
+
+  // Vérifie si les deux fichiers existent et sont encore valides
+  try {
+    const [overviewStat, versionStat] = await Promise.all([
+      fs.stat(overviewFile),
+      fs.stat(versionFile),
+    ]);
+
+    const now = Date.now();
+
+    const overviewValid = (now - overviewStat.mtimeMs) < CACHE_DURATION;
+    const versionValid = (now - versionStat.mtimeMs) < CACHE_DURATION;
+
+    if (overviewValid && versionValid) {
+      const [overviewContent, versionContent] = await Promise.all([
+        fs.readFile(overviewFile, "utf8"),
+        fs.readFile(versionFile, "utf8"),
+      ]);
+
+      UI5_VERSION_OVERVIEW = JSON.parse(overviewContent);
+      UI5_VERSION = JSON.parse(versionContent);
+
+      return { UI5_VERSION_OVERVIEW, UI5_VERSION };
+    }
+  } catch (err) {
+    // Les fichiers ou le répertoire n'existent pas -> on télécharge
+  }
+
+  // Node 18+ possède fetch nativement
+  const fetchFn = typeof fetch !== "undefined" ? fetch : require("node-fetch");
 
   const [overviewRes, versionRes] = await Promise.all([
-    fetchFn('https://ui5.sap.com/versionoverview.json'),
-    fetchFn('https://ui5.sap.com/version.json'),
+    fetchFn("https://ui5.sap.com/versionoverview.json"),
+    fetchFn("https://ui5.sap.com/version.json"),
   ]);
 
-  if (!overviewRes.ok) throw new Error(`versionoverview.json: HTTP ${overviewRes.status}`);
-  if (!versionRes.ok)  throw new Error(`version.json: HTTP ${versionRes.status}`);
+  if (!overviewRes.ok) {
+    throw new Error(`versionoverview.json: HTTP ${overviewRes.status}`);
+  }
+
+  if (!versionRes.ok) {
+    throw new Error(`version.json: HTTP ${versionRes.status}`);
+  }
 
   UI5_VERSION_OVERVIEW = await overviewRes.json();
-  UI5_VERSION         = await versionRes.json();
+  UI5_VERSION = await versionRes.json();
+
+  // Création du répertoire de cache si nécessaire
+  await fs.mkdir(UI5_CACHE_DIR_VERSION, { recursive: true });
+
+  // Sauvegarde des fichiers
+  await Promise.all([
+    fs.writeFile(
+      overviewFile,
+      JSON.stringify(UI5_VERSION_OVERVIEW, null, 2),
+      "utf8"
+    ),
+    fs.writeFile(
+      versionFile,
+      JSON.stringify(UI5_VERSION, null, 2),
+      "utf8"
+    ),
+  ]);
 
   return { UI5_VERSION_OVERVIEW, UI5_VERSION };
 }
@@ -318,12 +377,12 @@ function getEffectiveVersionData() {
     const item = data.find(v => v.patch === maxItem.patch);
     if (item) item.label= 'LTS (Recommended)';
 
-    const today = new Date().toISOString().split('T')[0];
+    const now = new Date().toISOString().split('T')[0];
 
     return {
       latest:     UI5_VERSION_OVERVIEW.activeVersion,
       lts:        maxItem.patch,
-      lastupdate: today,
+      lastupdate: now,
       maintained: data,
       source:     'ui5.sap.com',
     };

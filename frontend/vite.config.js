@@ -61,6 +61,8 @@ export default defineConfig({
             return `/${parts[0]}_${parts[1]}`;
           } else if (parts.length === 3) {
             return `/${parts[0]}_${parts[1]}_${parts[2]}`;
+          } else if (parts.length === 4) {
+            return `/${parts[0]}_${parts[1]}_${parts[2]}_${parts[3]}`;
           }
 
           return `/${p}`;

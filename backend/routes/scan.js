@@ -240,7 +240,7 @@ ui5Router.get('/version', async (req, res) => {
 });
 
 /**
- * GET /api/sap/ui5/resources?version=1.145.3
+ * GET /api/sap/ui5/resources/1.145.3
  *
  * 1. Checks ui5/version/<version>.json cache on disk → returns it if found.
  * 2. Otherwise fetches https://ui5.sap.com/<version>/resources/sap-ui-version.json
@@ -248,8 +248,8 @@ ui5Router.get('/version', async (req, res) => {
  *    https://ui5.sap.com/<version>/resources/<lib/path>/.library
  * 3. Returns the enriched JSON.
  */
-ui5Router.get('/resources', async (req, res) => {
-  const { version } = req.query;
+ui5Router.get('/resources/:version', async (req, res) => {
+  const version = req.params.version;
 
   if (!version || !/^\d+\.\d+\.\d+$/.test(version)) {
     return res.status(400).json({ error: 'Query parameter "version" is required and must match x.y.z format (e.g. 1.145.3)' });

@@ -168,6 +168,34 @@ const messages = {
       authors: 'Auteurs',
       maintainers: 'Maintenance',
     },
+    // Page ui Version info
+    ui5: {
+      title: 'Version Info',
+      loading: 'Chargement...',
+      libraries: {
+        title: 'Libraries',
+      },
+      components: {
+        title: 'Components',
+      },
+      themes: {
+        title: 'Themes',
+        empty: 'Aucune donnée Themes',
+        supportedThemes: 'Supported Themes',
+        infoThemes: 'Theme Information',
+        name: 'Nom',
+        themes: 'Theme Name',
+        libraries: 'Libraries',
+      },
+      about: {
+        title: 'About',
+        source: 'Source',
+        name: 'Name',
+        resources: 'Resources',
+        version_info: 'SAPUI5 Version Info',
+        releasenotes: 'SAPUI5 Release Notes',
+      },
+    },
     //Page 404
     e404: {
       code: '404',
@@ -324,6 +352,34 @@ const messages = {
       ],
       authors: 'Authors',
       maintainers: 'Maintainers',
+    },
+    // Page ui Version info
+    ui5: {
+      title: 'Version Info',
+      loading: 'Chargement...',
+      libraries: {
+        title: 'Libraries',
+      },
+      components: {
+        title: 'Components',
+      },
+      themes: {
+        title: 'Themes',
+        empty: 'Aucune donnée Themes',
+        supportedThemes: 'Supported Themes',
+        infoThemes: 'Theme Information',
+        name: 'Name',
+        themes: 'Theme Name',
+        libraries: 'Libraries',
+      },
+      about: {
+        title: 'About',
+        source: 'Source',
+        name: 'Name',
+        resources: 'Resources',
+        version_info: 'SAPUI5 Version Info',
+        releasenotes: 'SAPUI5 Release Notes',
+      },
     },
     //Page 404
     e404: {
