@@ -13,8 +13,8 @@
           </div>
           <div v-else style="color:#999">{{ t.report.ui5.notDetected }}</div>
           <div style="margin-top:8px;font-size:12px">
-            <div><i class="fa-regular fa-star"></i> {{ t.report.ui5.lts }} <strong>{{ data.ltsVersion }}</strong></div>
-            <div><i class="fa-solid fa-star-of-life"></i> {{ t.report.ui5.latest }} <strong>{{ data.latestVersion }}</strong></div>
+            <div><i class="fa-regular fa-star"></i> {{ t.report.ui5.lts }} <strong @click="goUI5(data.ltsVersion)">{{ data.ltsVersion }}</strong></div>
+            <div><i class="fa-solid fa-star-of-life"></i> {{ t.report.ui5.latest }} <strong @click="goUI5(data.latestVersion)">{{ data.latestVersion }}</strong></div>
           </div>
         </div>
 
@@ -64,6 +64,7 @@
                     v-for="(p, pi) in v.patches"
                     :key="pi"
                     style="font-size:10px;background:#f0f0f0;padding:1px 4px;border-radius:3px;color:#555"
+                    @click="goUI5(p)"
                   >{{ p }}</code>
                 </div>
               </td>

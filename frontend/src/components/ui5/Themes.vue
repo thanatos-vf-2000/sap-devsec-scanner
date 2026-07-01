@@ -8,7 +8,7 @@
         <div class="font-bold mb-8"><i class="fa-regular fa-file-lines"></i> {{ t.ui5.themes.supportedThemes }}</div>
         <table class="version-table">
           <thead>
-            <tr><th>{{ t.ui5.themes.name }}</th></tr>
+            <tr><th>{{ t.ui5.name }}</th></tr>
           </thead>
           <tbody>
             <tr
@@ -34,14 +34,16 @@
             <tr
               v-for="(d) in data?.data?.themes"
               :key="d"
+              :class="[data?.data?.supportedThemes?.includes(d?.name) ? 'current' : '']"
             >
               <td>
                 <i
                   v-if="data?.data?.supportedThemes?.includes(d?.name)"
                   class="fa-regular fa-circle-check"
-                  style="margin-left:6px;color:green"
+                  style="margin-left:6px;color: var(--sap-green)"
                 ></i>
-                {{ d?.name }}
+                <strong v-if="data?.data?.supportedThemes?.includes(d?.name)" style="color: var(--sap-green)">{{ d?.name }}</strong>
+                <span v-else>{{ d?.name }}</span>
               </td>
               <td>
                 <div v-if="d?.libraries.length" style="margin-top:3px;display:flex;flex-wrap:wrap;gap:3px">

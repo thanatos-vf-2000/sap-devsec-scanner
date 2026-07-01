@@ -1,5 +1,5 @@
 {
-    "health": {"status":"ok","version":"1.3.0","service":"SAP DevSec Scanner","lang":"fr"},
+    "health": {"status":"ok","version":"1.4.0","service":"SAP DevSec Scanner","lang":"fr"},
     "scan_upload": {
     "success": true,
     "scanId": "4c4086fe-7548-4a30-bb35-18ee026d8c6d",

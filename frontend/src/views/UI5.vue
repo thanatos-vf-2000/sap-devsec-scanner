@@ -4,6 +4,9 @@
     <main class="main">
       <div class="card">
         <h1>{{ t.ui5.title }}: <strong>{{ route.params.version }}</strong></h1>
+        <p>
+          <div>{{ t.ui5.build }}: {{ formatBuildTimestamp(ui5?.data?.buildTimestamp) }}</div>
+        </p>
       </div>
       <!-- Tabs Card -->
       <div class="card" style="padding-bottom:0">
@@ -92,13 +95,27 @@ export default {
       } finally {
         loading.value = false;
       }
-    }
+    };
+
+    function formatBuildTimestamp(timestamp) {
+      if (!timestamp) return '';
+
+      const str = String(timestamp);
+
+      const year = str.slice(0, 4);
+      const month = str.slice(4, 6);
+      const day = str.slice(6, 8);
+      const hour = str.slice(8, 10);
+      const minute = str.slice(10, 12);
+
+      return `${day}/${month}/${year} ${hour}:${minute}`;
+    };
 
     onMounted(loadUI5);
 
     return { t, route, ui5,
             loading, error,
-            currentTab, tabs };
+            currentTab, tabs, formatBuildTimestamp };
   },
 };
 </script>
