@@ -4,9 +4,17 @@
     <main class="main">
       <div class="card">
         <h1>{{ t.ui5.title }}: <strong>{{ route.params.version }}</strong></h1>
-        <p>
-          <div>{{ t.ui5.build }}: {{ formatBuildTimestamp(ui5?.data?.buildTimestamp) }}</div>
+        <p>{{ t.ui5.build }}: {{ formatBuildTimestamp(ui5?.data?.buildTimestamp) }}
         </p>
+        <select v-model="selectedVersion">
+          <option
+            v-for="v in ltsVersions"
+            :key="v.version"
+            :value="v.version"
+          >
+            {{ v.version }} (LTS)
+          </option>
+        </select>
       </div>
       <!-- Tabs Card -->
       <div class="card" style="padding-bottom:0">
@@ -38,8 +46,8 @@
   </div>
 </template>
 <script>
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, onMounted, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 import Header from '../components/ui/Header.vue';
 import LibTab from '../components/ui5/Libraries.vue';
@@ -62,8 +70,13 @@ export default {
   },
   setup() {
     const route = useRoute();
+    const router = useRouter();
+
+    const selectedVersion = ref(route.params.version);
 
     const ui5 = ref(null);
+    const versions = ref(null);
+    const ltsVersions = ref(null);
     const loading = ref(true);
     const error = ref(null);
 
@@ -97,6 +110,33 @@ export default {
       }
     };
 
+    async function loadVersions() {
+      loading.value = true;
+      error.value = null;
+
+      try {
+        const response = await fetch(`/api/sap/ui5/version`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        versions.value = data.data;
+
+        ltsVersions.value = Object.values(data.data || {})
+          .filter(v => v.lts === true)
+          .sort((a, b) =>
+            b.version.localeCompare(a.version)
+        );
+        
+      } catch (e) {
+        error.value = e.message;
+      } finally {
+        loading.value = false;
+      }
+    }
+
     function formatBuildTimestamp(timestamp) {
       if (!timestamp) return '';
 
@@ -111,11 +151,27 @@ export default {
       return `${day}/${month}/${year} ${hour}:${minute}`;
     };
 
-    onMounted(loadUI5);
+    onMounted(async () => {
+      await Promise.all([
+        loadUI5(),
+        loadVersions(),
+      ]);
+    });
+
+    watch(selectedVersion, (newVersion) => {
+      if (!newVersion) return;
+      router.push(`/ui5/${newVersion}`);
+      loading.value = true;
+
+      window.location.href = `/ui5/${newVersion}`;
+
+    });
 
     return { t, route, ui5,
+            versions, ltsVersions, selectedVersion,
             loading, error,
             currentTab, tabs, formatBuildTimestamp };
   },
+  
 };
 </script>

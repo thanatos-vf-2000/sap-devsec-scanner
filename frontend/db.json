@@ -4973,7 +4973,72 @@
         }
     }
 },
-    "sap_ui5_version": { "status": 200, "message": "https://ui5.sap.com/" },
+    "sap_ui5_version": {
+    "status": 200,
+    "message": "https://ui5.sap.com/ available.",
+    "data": {
+        "latest": {
+            "version": "1.149.1",
+            "support": "Maintenance",
+            "lts": false
+        },
+        "active": {
+            "version": "1.149.1",
+            "support": "Maintenance",
+            "lts": false
+        },
+        "1.149": {
+            "version": "1.149.1",
+            "support": "Maintenance",
+            "lts": false
+        },
+        "1.148": {
+            "version": "1.148.2",
+            "support": "Maintenance",
+            "lts": true
+        },
+        "1.145": {
+            "version": "1.145.3",
+            "support": "Maintenance",
+            "lts": false
+        },
+        "1.142": {
+            "version": "1.142.13",
+            "support": "Maintenance",
+            "lts": false
+        },
+        "1.136": {
+            "version": "1.136.20",
+            "support": "Maintenance",
+            "lts": true
+        },
+        "1.120": {
+            "version": "1.120.47",
+            "support": "Maintenance",
+            "lts": true
+        },
+        "1.108": {
+            "version": "1.108.54",
+            "support": "Maintenance",
+            "lts": true
+        },
+        "1.96": {
+            "version": "1.96.49",
+            "support": "Maintenance",
+            "lts": true
+        },
+        "1.71": {
+            "version": "1.71.82",
+            "support": "Maintenance",
+            "lts": true
+        },
+        "1.38": {
+            "version": "1.38.68",
+            "support": "Maintenance",
+            "lts": true
+        }
+    }
+},
     "sap_ui5_resources_1.136.15": {
     "source": "cache",
     "version": "1.136.15",

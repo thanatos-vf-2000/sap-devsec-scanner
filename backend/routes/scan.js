@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { parseZip, parseDirectory, detectProjectType } = require('../utils/fileParser');
-const { detectUI5Version, refreshUI5VersionData } = require('../scanners/ui5Scanner');
+const { detectUI5Version, refreshUI5VersionData, getUI5Version } = require('../scanners/ui5Scanner');
 const { scanCAPCode } = require('../scanners/capScanner');
 const { scanSecrets } = require('../scanners/secretsScanner');
 const { scanBTPDestinations } = require('../scanners/btpScanner');
@@ -230,12 +230,15 @@ ui5Router.get('/version', async (req, res) => {
   try {
     await refreshUI5VersionData();
     res.json({  status: 200, 
-                message: 'https://ui5.sap.com/ available.'
+                message: 'https://ui5.sap.com/ available.',
+                data: getUI5Version()
      });
   } catch (err) {
     console.error('UI5 version refresh error:', err);
     res.status(502).json({  status: 502,
-                            message: `Failed to reach ui5.sap.com: ${err.message}` });
+                            message: `Failed to reach ui5.sap.com: ${err.message}`,
+                            data: {}
+                          });
   }
 });
 

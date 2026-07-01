@@ -3,7 +3,7 @@
 <!-- version list -->
 ## v1.4.0 (2026-07-xx)
 - In ui5Scanner, dynamic version management from https://ui5.sap.com/, if available,
-- Add API /api/sap/ui5/version: 
+- Add API /api/sap/ui5/version,
 - Add API /api/sap/ui5/resources/x.xxx.x,
 - Add new GitHub Workflow release.yml tu push ui5.zip on tag release x.x.x,
 - Add page 404 for error,
