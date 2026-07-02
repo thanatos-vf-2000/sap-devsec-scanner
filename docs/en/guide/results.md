@@ -31,3 +31,10 @@ The report is organized into **tabs per scanner**. Each tab shows:
 - The number of findings by severity
 - Finding details: affected file, line number, description, recommendation
 
+## Version ui5
+
+Detailed view of the ui5 x.x.x version, with data from https://ui5.sap.com/ :
+
+- Librairies,
+- Composants,
+- Themes.

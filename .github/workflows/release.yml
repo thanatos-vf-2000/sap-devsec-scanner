@@ -1,0 +1,32 @@
+name: Attach ui5.zip to Release
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'   # déclenché sur tout tag semver (ex: 1.4.0)
+
+jobs:
+  attach-ui5:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branche dev (pour récupérer ui5.zip)
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+
+      - name: Vérifier que ui5.zip existe
+        run: |
+          if [ ! -f "ui5.zip" ]; then
+            echo "❌ ui5.zip introuvable dans la branche dev"
+            exit 1
+          fi
+          echo "✅ ui5.zip trouvé ($(du -sh ui5.zip | cut -f1))"
+
+      - name: Créer la release GitHub et attacher ui5.zip
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ui5.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

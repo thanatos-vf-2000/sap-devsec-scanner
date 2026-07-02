@@ -6,11 +6,15 @@
       <div>
         <div class="font-bold mb-8"><i class="fa-regular fa-file-lines"></i> {{ t.report.ui5.detectedVersion }}</div>
         <div style="padding:16px;background:#f7f7f7;border:1px solid #ddd;border-radius:4px">
-          <div v-if="data.detectedVersion" style="font-size:24px;font-weight:700;color:#0f2d5b">{{ data.detectedVersion }}</div>
+          <div  v-if="data.detectedVersion" 
+                style="font-size:24px;font-weight:700;color:#0f2d5b" 
+                @click="goUI5(data.detectedVersion)" >
+                  {{ data.detectedVersion }}
+          </div>
           <div v-else style="color:#999">{{ t.report.ui5.notDetected }}</div>
           <div style="margin-top:8px;font-size:12px">
-            <div><i class="fa-regular fa-star"></i> {{ t.report.ui5.lts }} <strong>{{ data.ltsVersion }}</strong></div>
-            <div><i class="fa-solid fa-star-of-life"></i> {{ t.report.ui5.latest }} <strong>{{ data.latestVersion }}</strong></div>
+            <div><i class="fa-regular fa-star"></i> {{ t.report.ui5.lts }} <strong @click="goUI5(data.ltsVersion)">{{ data.ltsVersion }}</strong></div>
+            <div><i class="fa-solid fa-star-of-life"></i> {{ t.report.ui5.latest }} <strong @click="goUI5(data.latestVersion)">{{ data.latestVersion }}</strong></div>
           </div>
         </div>
 
@@ -28,7 +32,11 @@
 
       <!-- Right: version table -->
       <div>
-        <div class="font-bold mb-8"><i class="fa-solid fa-arrow-up-right-dots"></i> {{ t.report.ui5.versionTable(data.versionDate) }}</div>
+        <div class="font-bold mb-8"><i class="fa-solid fa-arrow-up-right-dots"></i> {{ data.source !== 'static'
+              ? t.report.ui5.versionTableSAP(data.source)
+              : t.report.ui5.versionTable(data.versionDate)
+          }}
+        </div>
         <table class="version-table">
           <thead>
             <tr>
@@ -56,6 +64,7 @@
                     v-for="(p, pi) in v.patches"
                     :key="pi"
                     style="font-size:10px;background:#f0f0f0;padding:1px 4px;border-radius:3px;color:#555"
+                    @click="goUI5(p)"
                   >{{ p }}</code>
                 </div>
               </td>
@@ -78,8 +87,12 @@
 
 <script>
 import { computed } from 'vue';
-import { t } from '../i18n/index.js';
-import IssuesTable from './IssuesTable.vue';
+import { t } from '../../i18n/index.js';
+import IssuesTable from '../IssuesTable.vue';
+
+import { useRouter } from 'vue-router';
+
+
 
 function quarterToMonth(q) {
   return { Q1: '03', Q2: '06', Q3: '09', Q4: '12' }[q];
@@ -109,6 +122,19 @@ export default {
   props: { data: { type: Object, default: null } },
   setup(props) {
     const today = new Date();
+
+    const router = useRouter();
+
+    function goUI5(version) {
+      if (!version) return
+
+      const route = router.resolve({
+        name: 'UI5',
+        params: { version }
+      })
+
+      window.open(route.href, '_blank')
+    }
 
     const sortedVersionRows = computed(() => {
       if (!props.data?.versionTable) return [];
@@ -231,10 +257,10 @@ export default {
       ...(props.data?.sapSpecific || []),
     ]);
 
-    return { t, sortedVersionRows, allIssues };
+    return { t, sortedVersionRows, allIssues, goUI5 };
   },
 };
 </script>
 <style>
-tr.current.version-row-maintained {background: var(--sap-accent); }
+tr.current {background: var(--sap-accent); }
 </style>

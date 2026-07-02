@@ -52,6 +52,7 @@ Le scanner accepte :
 | **AppRouter Security Scanner** | xs-app.json, headers HTTP, CSRF, scopes, version @sap/approuter |
 | **Score de risque** | Score 0-100 pondéré par sévérité (CRITICAL / HIGH / MEDIUM / LOW) |
 | **Historique des scans** | Conservation en mémoire des rapports de session |
+| **ui5 versions** | Detail des versions ui5 |
 
 ---
 
@@ -76,6 +77,13 @@ cd sap-devsec-scanner
 ```bash
 npm install
 ```
+
+### 3. Fichier ui5.zip
+
+- Télécharger depuis https://github.com/thanatos-vf-2000/sap-devsec-scanner/releases le fichier ui5.zip de la dernière version,
+- Placer le fichier dans le repertoir sap-devsec-scanner.
+
+> La mise en place du fichier ui5.zip n'est pas obligatoir si le service peut se connecter à https://ui5.sap.com/.
 
 ---
 
@@ -156,6 +164,8 @@ Racine/
 | `GET` | `/api/scan/history` | Liste des scans de la session |
 | `GET` | `/api/scan/:scanId` | Rapport complet d'un scan |
 | `DELETE` | `/api/scan/:scanId` | Supprimer un scan de l'historique |
+| `GET` | `/api/sap/ui5/version` | Verification de l'acces à https://ui5.sap.com/ et telechargement des informations |
+| `GET` | `/api/sap/ui5/resources/:version` | Recuperation du detail de la version |
 
 ### Exemple de réponse `/api/health`
 
@@ -190,6 +200,119 @@ Racine/
     "npm": { ... },
     "approuter": { ... }
   }
+}
+```
+
+### Exemple history `/api/scan/history`
+
+```json
+[
+  {
+      "scanId": "uuid",
+      "projectName": "my-fiori-app",
+      "scannedAt": "2026-06-25T10:00:00.000Z",
+      "riskScore": 0,
+      "riskLevel": "MEDIUM",
+      "summary": {
+          "critical": 0, "high": 2, "medium": 3, "low": 5, "info": 1, "total": 11
+      },
+      "projectTypes": ["UI5", "CAP"],
+  },
+  ...
+]
+```
+
+### Exemple de ui5 version `/api/sap/ui5/version`
+
+```json
+{
+    "status": 200,
+    "message": "https://ui5.sap.com/ available.",
+    "data": {
+        "latest": {
+            "version": "1.149.1",
+            "support": "Maintenance",
+            "lts": false
+        },
+        "active": {
+            "version": "1.149.1",
+            "support": "Maintenance",
+            "lts": false
+        },
+        "1.149": {
+            "version": "1.149.1",
+            "support": "Maintenance",
+            "lts": false
+        },
+        ...
+    }
+}
+```
+
+### Exemple ressource version x.xx.x `/api/sap/ui5/resources/:version`
+
+```json
+{
+    "source": "cache",
+    "version": "1.136.15",
+    "data": {
+        "name": "SAPUI5 Distribution",
+        "version": "1.136.15",
+        "buildTimestamp": "202602251220",
+        "scmRevision": "",
+        "gav": "com.sap.ui5.dist:sapui5-sdk-dist:1.136.15:war",
+        "libraries": [
+            {
+                "name": "sap.ui.core",
+                "version": "1.136.13",
+                "buildTimestamp": "202602231017",
+                "scmRevision": "",
+                "gav": "com.sap.ui5:core:1.136.13:jar",
+                "npmPackageName": "@openui5/sap.ui.core",
+                "themes": [
+                    "base",
+                    "sap_hcb"
+                ],
+                "patchHistory": [
+                    "1.136.0",
+                    ...
+                ],
+                "vendor": "SAP SE",
+                "copyright": "OpenUI5\n * (c) Copyright 2026 SAP SE or an SAP affiliate company.\n * Licensed under the Apache License, Version 2.0 - see LICENSE.txt.",
+                "documentation": "The SAPUI5 Core Runtime.\n\n  Contains the UI5 jQuery plugins (jQuery.sap.*), the Core and all its components,\n  base classes for Controls, Components and the Model View Controller classes.",
+                "appData": "..."
+            },
+            ...
+        ],
+        "components": {
+            "SAPWebAnalyticsFLPPlugin": {
+                "hasOwnPreload": true,
+                "library": "sap.webanalytics.core",
+                "manifestHints": {
+                    "dependencies": {
+                        "libs": {
+                            "sap.ui.core": {}
+                        }
+                    }
+                }
+            },
+            ...
+        },
+        "themes": [
+            {
+                "name": "sap_horizon",
+                "libraries": [
+                    "sap.ca.ui",
+                    ...
+                ]
+            },
+            ...
+        ],
+        "supportedThemes": [
+            "sap_horizon",
+            ...
+        ]
+    }
 }
 ```
 

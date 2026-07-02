@@ -38,12 +38,22 @@ jobs:
 
       - name: Prepare deployment
         run: |
+          set -ex
           mkdir deploy
+          echo "Copie des fichiers..."
           cp -r backend/* deploy/
           cp *.md deploy/
           cp LICENSE deploy/
           mkdir -p deploy/.github/workflows
-          cp .github/workflows/docs.yml deploy/.github/workflows
+          cp .github/workflows/release.yml deploy/.github/workflows
+          echo "Netoyage des fichiers..."
+          cd deploy
+          if [ -f ui5_resources.py ]; then
+            rm ./ui5_resources.py
+          fi
+          if [ -f ui5.zip ]; then
+            rm ./ui5.zip
+          fi
       
       - name: List deployment
         run: |

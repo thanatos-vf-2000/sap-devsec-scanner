@@ -82,12 +82,12 @@
 <script>
 import { ref, computed } from 'vue';
 import { t } from '../i18n/index.js';
-import UI5Tab from '../components/UI5Tab.vue';
-import CAPTab from '../components/CAPTab.vue';
-import SecretsTab from '../components/SecretsTab.vue';
-import BTPTab from '../components/BTPTab.vue';
-import NPMTab from '../components/NPMTab.vue';
-import AppRouterTab from '../components/AppRouterTab.vue';
+import UI5Tab from '../components/reports/UI5Tab.vue';
+import CAPTab from '../components/reports/CAPTab.vue';
+import SecretsTab from '../components/reports/SecretsTab.vue';
+import BTPTab from '../components/reports/BTPTab.vue';
+import NPMTab from '../components/reports/NPMTab.vue';
+import AppRouterTab from '../components/reports/AppRouterTab.vue';
 
 export default {
   name: 'ReportView',

@@ -18,6 +18,13 @@ cd sap-devsec-scanner
 npm install
 ```
 
+## ui5.zip file
+
+- Download the latest version of the ui5.zip file from https://github.com/thanatos-vf-2000/sap-devsec-scanner/releases,
+- Place the file in the sap-devsec-scanner directory.
+
+> Installing the ui5.zip file is not required if the service can connect to https://ui5.sap.com/.
+
 ## Start the application
 
 ```bash

@@ -38,4 +38,7 @@ features:
   - icon: 📊
     title: Risk Score
     details: 0-100 score weighted by severity (CRITICAL / HIGH / MEDIUM / LOW).
+  - icon: 🖥️
+    title: Version UI5
+    details: Detailed view of the UI5 x.x.x version, with data from https://ui5.sap.com/.
 ---

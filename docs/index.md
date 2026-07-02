@@ -38,4 +38,7 @@ features:
   - icon: 📊
     title: Score de risque
     details: Score 0-100 pondéré par sévérité (CRITICAL / HIGH / MEDIUM / LOW).
+  - icon: 🖥️
+    title: UI5 Version
+    details: Affiche de detail de la version UI5 x.x.x avec les données issue de https://ui5.sap.com/.
 ---

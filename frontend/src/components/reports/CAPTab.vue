@@ -24,8 +24,8 @@
 
 <script>
 import { computed } from 'vue';
-import { t } from '../i18n/index.js';
-import IssuesTable from './IssuesTable.vue';
+import { t } from '../../i18n/index.js';
+import IssuesTable from '../IssuesTable.vue';
 export default {
   name: 'CAPTab',
   components: { IssuesTable },
