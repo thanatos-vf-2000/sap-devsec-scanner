@@ -28,3 +28,9 @@ Le rapport est organisé par catégorie de scanner avec un score de risque globa
 Les scans sont conservés en mémoire pour la session courante, accessibles via l'onglet **Historique**.
 
 ![Historique](/screenshots/history.png)
+
+## Detail de la version ui5
+
+Dans le rapport, vous pouvez cliquer sur les version au format x.xxx.xx, et cela vous ouvrira une page avec le detail de la version selectionnée.
+
+![ui5-version](/screenshots/ver-libraries.png)

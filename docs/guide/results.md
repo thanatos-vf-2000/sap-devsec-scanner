@@ -30,3 +30,11 @@ Le rapport est organisé en **onglets par scanner**. Chaque onglet affiche :
 
 - Le nombre de findings par sévérité
 - Le détail de chaque finding : fichier concerné, ligne, description, recommandation
+
+## ui5 Version
+
+Affiche de detail de la version ui5 x.x.x avec les données issue de https://ui5.sap.com/ :
+
+- Librairies,
+- Composants,
+- Themes.

@@ -28,3 +28,9 @@ The report is organized by scanner category with a global risk score.
 Scans are kept in memory for the current session, accessible via the **History** tab.
 
 ![History](/screenshots/history.png)
+
+## ui5 Version Details
+
+In the report, you can click on versions in the x.xxx.xx format, which will open a page with details about the selected version.
+
+![ui5-version](/screenshots/ver-libraries.png)

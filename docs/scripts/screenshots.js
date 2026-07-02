@@ -9,19 +9,22 @@ const SCREENSHOTS_DIR = path.join(__dirname, '..', 'public', 'screenshots');
 const APP_URL = process.env.APP_URL || 'http://localhost:5173';
 
 const PAGES = [
-  { name: 'home' },
-  { name: 'report' },
-  { name: 'scan' },
-  { name: 'history-item' },
-  { name: 'ui5' },
-  { name: 'cap-cds' },
-  { name: 'secrets' },
-  { name: 'btp' },
-  { name: 'npm' },
-  { name: 'approuter' },
-  { name: 'history' },
-  { name: 'about'},
-
+  { name: 'home',           urlPath: '' },
+  { name: 'report',         urlPath: '' },
+  { name: 'scan',           urlPath: '' },
+  { name: 'history-item',   urlPath: '' },
+  { name: 'ui5',            urlPath: '' },
+  { name: 'cap-cds',        urlPath: '' },
+  { name: 'secrets',        urlPath: '' },
+  { name: 'btp',            urlPath: '' },
+  { name: 'npm',            urlPath: '' },
+  { name: 'approuter',      urlPath: '' },
+  { name: 'history',        urlPath: '' },
+  { name: 'about',          urlPath: '' },
+  { name: 'ver-libraries',  urlPath: '/ui5/1.136.15' },
+  { name: 'ver-components', urlPath: '/ui5/1.136.15' },
+  { name: 'ver-themes',     urlPath: '/ui5/1.136.15' },
+  { name: 'ver-about',      urlPath: '/ui5/1.136.15' },
 ];
 
 // PNG 1x1 transparent - placeholder valide si le backend est absent
@@ -63,20 +66,15 @@ async function takeScreenshots() {
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
   });
 
-  for (const { name, path: urlPath } of PAGES) {
+  for (const { name,  urlPath } of PAGES) {
     console.log(`📸 Screenshot: ${name}`);
     // Ouvrir une nouvelle page par screenshot pour éviter les contextes détruits
     const page = await browser.newPage();
     try {
       await page.setViewport({ width: 1280, height: 800 });
-      /*
+      
       await page.goto(`${APP_URL}${urlPath}`, {
         waitUntil: 'networkidle2',
-        timeout: 20000,
-      });
-      */
-      await page.goto(APP_URL, {
-        waitUntil: "networkidle2",
         timeout: 20000,
       });
 
@@ -132,7 +130,23 @@ async function takeScreenshots() {
         case "about":
           await page.locator(".shell-nav a:nth-child(4)").click();
           break;
+        
+        case "ver-libraries":
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(1)").click();
+          break;
+        
+        case "ver-components":
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(2)").click();
+          break;
+        
+        case "ver-themes":
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(3)").click();
+          break;
 
+        case "ver-about":
+          await page.locator(".card > .section-tabs > .section-tab:nth-child(4)").click();
+          break;
+        
       }
 
       // attendre le rendu Vue
@@ -145,7 +159,7 @@ async function takeScreenshots() {
       });
       await new Promise(r => setTimeout(r, 1500));
 
-      await page.waitForSelector(".shell-nav");
+      await page.waitForSelector(".footer");
 
       await page.screenshot({
         path: path.join(SCREENSHOTS_DIR, `${name}.png`),
