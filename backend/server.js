@@ -66,7 +66,7 @@ async function extractUi5ZipIfPresent() {
   const zipPath = path.join(__dirname, 'ui5.zip');
   if (!fs.existsSync(zipPath)) return;
 
-  const destDir = path.join(__dirname, 'ui5');
+  const destDir = path.join(__dirname, '');
   console.log(`📦 ui5.zip detected — extracting to ${destDir} …`);
 
   await fs.promises.mkdir(destDir, { recursive: true });

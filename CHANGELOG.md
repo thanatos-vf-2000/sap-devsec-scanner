@@ -1,7 +1,7 @@
 # CHANGELOG
 
 <!-- version list -->
-## v1.4.0 (2026-07-xx)
+## v1.4.0 (2026-07-03)
 - In ui5Scanner, dynamic version management from https://ui5.sap.com/, if available,
 - Add API /api/sap/ui5/version,
 - Add API /api/sap/ui5/resources/x.xxx.x,
