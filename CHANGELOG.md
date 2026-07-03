@@ -1,6 +1,9 @@
 # CHANGELOG
 
 <!-- version list -->
+## v1.4.1 (2026-07-03)
+- Update Workflow release.yml.
+
 ## v1.4.0 (2026-07-03)
 - In ui5Scanner, dynamic version management from https://ui5.sap.com/, if available,
 - Add API /api/sap/ui5/version,

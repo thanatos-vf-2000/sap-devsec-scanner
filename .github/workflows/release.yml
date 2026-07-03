@@ -3,7 +3,7 @@ name: Attach ui5.zip to Release
 on:
   push:
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+'   # déclenché sur tout tag semver (ex: 1.4.0)
+      - '*.*.*'   # déclenché sur tout tag semver (ex: 1.4.1)
 
 jobs:
   attach-ui5:
