@@ -5,9 +5,9 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { execSync } from 'node:child_process';
 
-import appPkg from '../backend/package.json';
-import uiPkg from './package.json';
-import humans from '../humans.json';
+import appPkg from '../backend/package.json' with { type: "json" };
+import uiPkg from './package.json' with { type: "json" };
+import humans from '../humans.json' with { type: "json" };
 
 
 const buildTime = new Date().toISOString();
