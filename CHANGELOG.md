@@ -1,6 +1,27 @@
 # CHANGELOG
 
 <!-- version list -->
+## v1.5.0 (2026-08-08)
+- NPM frontend update dependencies version:
+  - @fortawesome/fontawesome-free: 7.2.0 => 7.3.1
+  - vue: 3.5.32 => 3.5.41
+  - vue-i18n: 11.4.5 => 11.4.8
+  - vue-router: 5.1.0 => 5.2.0
+- NPM frontend update DevDependencies version:
+  - @vitejs/plugin-vue: 6.0.6 => 6.0.8
+  - concurrently: 10.0.3 => 10.0.4
+  - vite: 8.1.1 => 8.2.1
+  - vite-plugin-vue-devtools: 8.1.1 => 8.2.1
+- NPM backend update dependencies version:
+  - adm-zip: 0.5.10 => 0.6.0
+  - express: 4.18.2 => 5.2.1
+  - glob: 10.3.10 => 13.0.6
+  - multer: 1.4.5-lts.1 => 2.2.0
+  - uuid: 9.0.0 => 14.0.1
+- Backend: Update vite.config.js for solve Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite,
+- Add npn check last version,
+- Update Documentation.
+
 ## v1.4.1 (2026-07-03)
 - Update Workflow release.yml.
 

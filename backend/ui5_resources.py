@@ -167,21 +167,21 @@ def process_version(version: str, output_dir: str, force: bool = False) -> bool:
     """
     cache_path = os.path.join(output_dir, f"{version}.json")
     if os.path.isfile(cache_path) and not force:
-        print(f"[SKIP] {version} — already cached ({cache_path})")
+        print(f"[SKIP] {version} - already cached ({cache_path})")
         return True
 
     try:
         data      = build_resources(version)
         out_path  = save_result(data, version, output_dir)
         lib_count = len(data.get("libraries", []))
-        print(f"[OK] {version} — {lib_count} libraries → {out_path}")
+        print(f"[OK] {version} - {lib_count} libraries → {out_path}")
         return True
     except requests.HTTPError as exc:
-        print(f"[ERROR] {version} — HTTP {exc}", file=sys.stderr)
+        print(f"[ERROR] {version} - HTTP {exc}", file=sys.stderr)
     except requests.ConnectionError as exc:
-        print(f"[ERROR] {version} — connection error: {exc}", file=sys.stderr)
+        print(f"[ERROR] {version} - connection error: {exc}", file=sys.stderr)
     except Exception as exc:
-        print(f"[ERROR] {version} — {exc}", file=sys.stderr)
+        print(f"[ERROR] {version} - {exc}", file=sys.stderr)
     return False
 
 

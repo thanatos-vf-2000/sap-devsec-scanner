@@ -62,14 +62,14 @@ function calculateRiskScore(results) {
 // Report builder
 // ---------------------------------------------------------------------------
 
-function buildReport(scanId, files, projectName) {
+async function buildReport(scanId, files, projectName) {
   const projectTypes = detectProjectType(files);
 
   const ui5Results      = detectUI5Version(files);
   const capResults      = scanCAPCode(files);
   const secretResults   = scanSecrets(files);
   const btpResults      = scanBTPDestinations(files);
-  const npmResults      = analyzePackageJson(files);
+  const npmResults      = await analyzePackageJson(files);
   const approuterResults = scanApprouter(files);
 
   const results = {
@@ -143,7 +143,7 @@ router.post('/upload', upload.single('project'), async (req, res) => {
       return res.status(400).json({ error: t.noFilesInZip || 'No scannable files found in ZIP' });
     }
 
-    const report = buildReport(scanId, files, projectName);
+    const report = await buildReport(scanId, files, projectName);
     scanHistory.set(scanId, report);
 
     res.json({ success: true, scanId, report });
@@ -173,7 +173,7 @@ router.post('/directory', express.json(), async (req, res) => {
       return res.status(400).json({ error: t.noFilesInDir || 'No scannable files found in directory' });
     }
 
-    const report = buildReport(scanId, files, projectName || path.basename(resolvedPath));
+    const report = await buildReport(scanId, files, projectName || path.basename(resolvedPath));
     scanHistory.set(scanId, report);
 
     res.json({ success: true, scanId, report });

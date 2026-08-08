@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const semver = require('semver');
 
 // Known vulnerable SAP package versions (static database supplement)
 const SAP_KNOWN_VULNS = [
@@ -106,6 +107,203 @@ const FORBIDDEN_IN_PROD = [
 
 const OUTDATED_THRESHOLD_DAYS = 365;
 
+const NPM_REGISTRY_URL = 'https://registry.npmjs.org';
+const LATEST_CONCURRENCY = 8;
+
+function isResolvableVersionSpec(spec) {
+  if (typeof spec !== 'string' || !spec.trim()) return false;
+  const value = spec.trim();
+  return !/^(?:\*|latest|workspace:|file:|link:|git\+|git:|https?:|github:)/i.test(value);
+}
+
+function getDeclaredVersion(spec) {
+  if (!isResolvableVersionSpec(spec)) return null;
+  try {
+    return semver.minVersion(spec)?.version || null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function getPackageLockVersions(lockFile) {
+  const versions = new Map();
+  let lock;
+  try {
+    lock = JSON.parse(lockFile.content);
+  } catch (e) {
+    return versions;
+  }
+
+  // npm lockfile v2/v3: prefer top-level node_modules entries.
+  if (lock.packages && typeof lock.packages === 'object') {
+    for (const [key, entry] of Object.entries(lock.packages)) {
+      if (!key.startsWith('node_modules/') || !entry?.version) continue;
+      const packageName = key.slice('node_modules/'.length);
+      if (!packageName.includes('/node_modules/')) versions.set(packageName, entry.version);
+    }
+  }
+
+  // npm lockfile v1 fallback.
+  function walkDependencies(deps) {
+    if (!deps || typeof deps !== 'object') return;
+    for (const [name, entry] of Object.entries(deps)) {
+      if (entry?.version && !versions.has(name)) versions.set(name, entry.version);
+      if (entry?.dependencies) walkDependencies(entry.dependencies);
+    }
+  }
+  walkDependencies(lock.dependencies);
+  return versions;
+}
+
+function getYarnLockVersions(lockFile) {
+  const versions = new Map();
+  const lines = String(lockFile.content || '').split(/\r?\n/);
+  let currentNames = [];
+  let currentVersion = null;
+
+  const flush = () => {
+    if (!currentVersion) return;
+    for (const name of currentNames) {
+      if (!versions.has(name)) versions.set(name, currentVersion);
+    }
+    currentNames = [];
+    currentVersion = null;
+  };
+
+  for (const line of lines) {
+    if (!line.trim() || line.startsWith('#')) continue;
+    if (!/^\s/.test(line)) {
+      flush();
+      const key = line.replace(/:$/, '').trim();
+      const tokens = [...key.matchAll(/(?:^|,\s*)["']?([^,"']+)["']?/g)].map(m => m[1].trim());
+      currentNames = tokens.map(value => {
+        const match = value.match(/^(@[^/]+\/[^@]+|[^@]+)@/);
+        return match ? match[1] : null;
+      }).filter(Boolean);
+      continue;
+    }
+    const versionMatch = line.match(/^\s+version\s+["']([^"']+)["']/);
+    if (versionMatch) currentVersion = versionMatch[1];
+  }
+  flush();
+  return versions;
+}
+
+function getLockFileInfo(files, packageFileName) {
+  const packageDir = path.posix.dirname(packageFileName || '');
+  const lockCandidates = files.filter(f =>
+    ['package-lock.json', 'npm-shrinkwrap.json', 'yarn.lock'].includes(path.basename(f.name))
+  );
+
+  // Prefer a lock file in the same directory, then the closest ancestor.
+  const ranked = lockCandidates
+    .map(file => {
+      const lockDir = path.posix.dirname(file.name);
+      const relative = path.posix.relative(lockDir, packageDir);
+      const isAncestor = relative === '' || (!relative.startsWith('..') && !path.posix.isAbsolute(relative));
+      const distance = isAncestor ? relative.split('/').filter(Boolean).length : Number.MAX_SAFE_INTEGER;
+      return { file, isAncestor, distance };
+    })
+    .sort((a, b) => {
+      if (a.isAncestor !== b.isAncestor) return a.isAncestor ? -1 : 1;
+      return a.distance - b.distance;
+    });
+
+  const selected = ranked[0]?.file;
+  if (!selected) return null;
+
+  const basename = path.basename(selected.name);
+  if (basename === 'package-lock.json') {
+    return { type: 'package-lock', file: selected, versions: getPackageLockVersions(selected) };
+  }
+  if (basename === 'npm-shrinkwrap.json') {
+    return { type: 'npm-shrinkwrap', file: selected, versions: getPackageLockVersions(selected) };
+  }
+  return { type: 'yarn.lock', file: selected, versions: getYarnLockVersions(selected) };
+}
+
+async function fetchLatestVersion(packageName, cache) {
+  if (cache.has(packageName)) return cache.get(packageName);
+
+  const promise = (async () => {
+    try {
+      const encodedName = encodeURIComponent(packageName).replace('%2F', '/');
+      const response = await fetch(`${NPM_REGISTRY_URL}/${encodedName}/latest`, {
+        headers: { accept: 'application/json' },
+      });
+      if (!response.ok) return null;
+      const data = await response.json();
+      return semver.valid(data?.version) ? data.version : null;
+    } catch (e) {
+      return null;
+    }
+  })();
+
+  cache.set(packageName, promise);
+  return promise;
+}
+
+function classifyVersionUpdate(currentVersion, latestVersion) {
+  const current = semver.valid(currentVersion);
+  const latest = semver.valid(latestVersion);
+  if (!current || !latest || !semver.lt(current, latest)) return null;
+
+  const diff = semver.diff(current, latest);
+  if (diff === 'major' || diff === 'premajor') return 'HIGH';
+  if (diff === 'minor' || diff === 'preminor') return 'MEDIUM';
+  return 'LOW';
+}
+
+async function checkLatestVersions(dependencies, lockInfo, fileName) {
+  const entries = Object.entries(dependencies)
+    .map(([name, spec]) => {
+      const lockedVersion = lockInfo?.versions.get(name);
+      const currentVersion = lockedVersion || getDeclaredVersion(spec);
+      return {
+        name,
+        spec,
+        currentVersion,
+        source: lockedVersion ? lockInfo.type : 'package.json',
+      };
+    })
+    .filter(item => item.currentVersion && semver.valid(item.currentVersion));
+
+  const cache = new Map();
+  const updates = [];
+  let cursor = 0;
+
+  async function worker() {
+    while (cursor < entries.length) {
+      const item = entries[cursor++];
+      const latestVersion = await fetchLatestVersion(item.name, cache);
+      if (!latestVersion) continue;
+
+      const severity = classifyVersionUpdate(item.currentVersion, latestVersion);
+      if (!severity) continue;
+
+      updates.push({
+        severity,
+        package: item.name,
+        version: item.currentVersion,
+        latestVersion,
+        requested: item.spec,
+        versionSource: item.source,
+        code: 'NPM_OUTDATED',
+        description: `${item.name}: Current version ${item.currentVersion} is behind the latest npm version ${latestVersion}`,
+        source: 'npm registry',
+        file: fileName,
+      });
+    }
+  }
+
+  await Promise.all(Array.from(
+    { length: Math.min(LATEST_CONCURRENCY, Math.max(1, entries.length)) },
+    () => worker()
+  ));
+
+  return updates.sort((a, b) => a.package.localeCompare(b.package));
+}
+
 function parseSemver(version) {
   const clean = version.replace(/^[^0-9]*/, '');
   const parts = clean.split('.');
@@ -153,12 +351,13 @@ function checkSAPPackages(dependencies) {
   return issues;
 }
 
-function analyzePackageJson(files) {
+async function analyzePackageJson(files) {
   const results = {
     packages: [],
     issues: [],
     sapPackages: [],
     auditResults: null,
+    versionUpdates: [],
     summary: { total: 0, sap: 0, critical: 0, high: 0, medium: 0, low: 0, info: 0 },
   };
 
@@ -173,6 +372,7 @@ function analyzePackageJson(files) {
       const prodDeps = pkg.dependencies || {};
       const devDeps = pkg.devDependencies || {};
       const allDeps = { ...prodDeps, ...devDeps };
+      const lockInfo = getLockFileInfo(files, file.name);
 
       results.packages.push({
         file: file.name,
@@ -197,6 +397,15 @@ function analyzePackageJson(files) {
       for (const issue of sapIssues) {
         results.issues.push({ ...issue, file: file.name });
         results.summary[(issue.severity || 'low').toLowerCase()]++;
+      }
+
+      // Compare the current/installed version with the latest version published on npm.
+      // When a lock file exists, its installed version takes precedence over package.json.
+      const versionUpdates = await checkLatestVersions(allDeps, lockInfo, file.name);
+      for (const update of versionUpdates) {
+        results.versionUpdates.push(update);
+        results.issues.push(update);
+        results.summary[update.severity.toLowerCase()]++;
       }
 
       // Check for wildcard versions
@@ -275,9 +484,7 @@ function analyzePackageJson(files) {
       }
 
       // Lockfile recommendation
-      const lockFile = files.find(f =>
-        f.name.includes('package-lock.json') || f.name.includes('yarn.lock')
-      );
+      const lockFile = lockInfo?.file || null;
 
       if (lockFile) {
         results.issues.push({
@@ -292,7 +499,7 @@ function analyzePackageJson(files) {
         results.issues.push({
           severity: 'LOW',
           package: 'lockfile',
-          description: 'No package-lock.json or yarn.lock found - run "npm install" to generate',
+          description: 'No package-lock.json, npm-shrinkwrap.json or yarn.lock found - run "npm install" to generate',
           code: 'NO_LOCK_FILE',
           source: 'Best Practice',
           file: file.name,
