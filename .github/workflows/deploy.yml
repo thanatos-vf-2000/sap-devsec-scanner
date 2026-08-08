@@ -44,8 +44,7 @@ jobs:
           cp -r backend/* deploy/
           cp *.md deploy/
           cp LICENSE deploy/
-          mkdir -p deploy/.github/workflows
-          cp .github/workflows/release.yml deploy/.github/workflows
+          cp -r .github deploy/
           echo "Netoyage des fichiers..."
           cd deploy
           if [ -f ui5_resources.py ]; then
