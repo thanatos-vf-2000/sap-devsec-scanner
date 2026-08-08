@@ -56,7 +56,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Serve Vue frontend for all other routes (SPA fallback)
-app.get('*', (req, res) => {
+app.get('/{*splat}', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
@@ -67,7 +67,7 @@ async function extractUi5ZipIfPresent() {
   if (!fs.existsSync(zipPath)) return;
 
   const destDir = path.join(__dirname, '');
-  console.log(`📦 ui5.zip detected — extracting to ${destDir} …`);
+  console.log(`📦 ui5.zip detected - extracting to ${destDir} …`);
 
   await fs.promises.mkdir(destDir, { recursive: true });
 
