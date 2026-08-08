@@ -45,6 +45,29 @@
       </tbody>
     </table>
 
+    <div class="font-bold mb-8"><i class="fa-solid fa-arrows-rotate"></i> {{ t.report.npm.versionUpdates }}</div>
+    <table v-if="data.versionUpdates?.length" class="issue-table" style="margin-bottom:16px">
+      <thead>
+        <tr>
+          <th>{{ t.report.npm.package }}</th>
+          <th>{{ t.report.npm.currentVersion }}</th>
+          <th>{{ t.report.npm.latestVersion }}</th>
+          <th>{{ t.report.npm.versionSource }}</th>
+          <th>{{ t.report.table.severity }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(u, i) in data.versionUpdates" :key="`${u.package}-${i}`">
+          <td><code style="font-size:12px">{{ u.package }}</code></td>
+          <td><code style="font-size:12px">{{ u.version }}</code></td>
+          <td><code style="font-size:12px">{{ u.latestVersion }}</code></td>
+          <td class="text-sm text-gray">{{ u.versionSource }}</td>
+          <td><span class="sev" :class="`sev-${u.severity}`">{{ u.severity }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div v-else class="alert alert-success" style="margin-bottom:16px">{{ t.report.npm.noVersionUpdates }}</div>
+
     <div class="font-bold mb-8"><i class="fa-solid fa-triangle-exclamation"></i> {{ t.report.npm.npmIssues }}</div>
     <IssuesTable :issues="data.issues || []" :empty-msg="`${t.report.npm.noIssues}`" />
   </div>

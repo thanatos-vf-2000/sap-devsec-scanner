@@ -26,7 +26,7 @@ function isTextFile(filename) {
   if (TEXT_EXTENSIONS.has(ext)) return true;
   // Files without extension that are commonly text
   const basename = path.basename(filename);
-  return ['.env', '.gitignore', '.npmrc', '.nvmrc', 'Makefile', 'Dockerfile'].includes(basename);
+  return ['.env', '.gitignore', '.npmrc', '.nvmrc', 'Makefile', 'Dockerfile', 'yarn.lock', 'pnpm-lock.yaml'].includes(basename);
 }
 
 function shouldSkip(entryName) {

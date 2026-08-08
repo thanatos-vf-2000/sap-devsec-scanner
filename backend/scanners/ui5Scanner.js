@@ -178,7 +178,7 @@ const UI5_VERSION_DATA = {
 };
 
 // ---------------------------------------------------------------------------
-// Dynamic variables — populated/refreshed by calling /api/sap/ui5/version
+// Dynamic variables - populated/refreshed by calling /api/sap/ui5/version
 // ---------------------------------------------------------------------------
 
 /**

@@ -123,6 +123,11 @@ const messages = {
         npmIssues: 'Problèmes NPM',
         noIssues: 'Aucun problème NPM détecté',
         noData: 'Aucune donnée NPM',
+        versionUpdates: 'Mises à jour de versions',
+        currentVersion: 'Version courante',
+        latestVersion: 'Dernière version',
+        versionSource: 'Source de la version',
+        noVersionUpdates: 'Toutes les dépendances ont la dernière version disponible.'
       },
       // Issues table
       table: {
@@ -326,6 +331,11 @@ const messages = {
         npmIssues: 'NPM issues',
         noIssues: 'No NPM issues detected',
         noData: 'No NPM data',
+        versionUpdates: 'Version updates',
+        currentVersion: 'Current version',
+        latestVersion: 'Latest version',
+        versionSource: 'Version source',
+        noVersionUpdates: 'All dependencies are on the latest available version.'
       },
       table: {
         severity: 'Severity',
