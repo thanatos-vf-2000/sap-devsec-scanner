@@ -31,6 +31,20 @@ Le rapport est organisé en **onglets par scanner**. Chaque onglet affiche :
 - Le nombre de findings par sévérité
 - Le détail de chaque finding : fichier concerné, ligne, description, recommandation
 
+
+
+## Vérification des versions NPM
+
+L'onglet **NPM** compare les dépendances avec la dernière version publiée sur npm. La version de référence est prioritairement celle du lockfile lorsqu'il est présent.
+
+| Écart | Sévérité | Code |
+|---|---|---|
+| Majeur (`x` → `y`) | 🔴 HIGH | `NPM_OUTDATED` |
+| Mineur (`x.y` → `x.z`) | 🟡 MEDIUM | `NPM_OUTDATED` |
+| Correctif (`x.y.z` → `x.y.w`) | 🔵 LOW | `NPM_OUTDATED` |
+
+Le tableau des mises à jour indique la version courante, la dernière version disponible et la source de la version utilisée pour la comparaison.
+
 ## ui5 Version
 
 Affiche de detail de la version ui5 x.x.x avec les données issue de https://ui5.sap.com/ :

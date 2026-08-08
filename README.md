@@ -50,7 +50,7 @@ The scanner accepts:
 | **Secrets Scanner** | Plaintext credentials, JWT tokens, API keys, secrets in CI/CD |
 | **BTP Destinations Scanner** | Analysis of XSUAA configurations, BTP destinations, and mta.yaml |
 | **AppRouter Security Scanner** | xs-app.json, HTTP headers, CSRF, scopes, @sap/approuter version |
-| **Risk Score** | 0–100 score weighted by severity (CRITICAL / HIGH / MEDIUM / LOW) |
+| **Risk Score** | 0-100 score weighted by severity (CRITICAL / HIGH / MEDIUM / LOW) |
 | **Scan History** | Session reports stored in memory |
 | **ui5 versions** | ui5 Version Details |
 
@@ -409,7 +409,20 @@ The **UI5 Code Scanner** inspects JavaScript and TypeScript source files for com
 
 The **NPM Security Scanner** analyzes `package.json` files to inventory project dependencies, identify known vulnerabilities (CVEs), and verify dependency management best practices.
 
-**Analyzed files:** `package.json` (excluding `node_modules`)
+**Analyzed files:** `package.json`, `package-lock.json`, `npm-shrinkwrap.json`, `yarn.lock` (excluding `node_modules`)
+
+
+#### NPM update check
+
+The scanner compares every dependency with the latest version published on npm. When `package-lock.json`, `npm-shrinkwrap.json`, or `yarn.lock` is present, the locked/installed version takes precedence; otherwise the version declared in `package.json` is used as the baseline.
+
+| Version difference | Severity |
+|---|:---:|
+| Major | **HIGH** |
+| Minor | **MEDIUM** |
+| Patch | **LOW** |
+
+The NPM report displays the current version, latest available version, and the source used (`package.json` or lock file). Unresolvable specifications (`workspace:`, `file:`, Git, URL, `latest`, `*`) are skipped for this comparison.
 
 #### Known Vulnerabilities (CVEs)
 

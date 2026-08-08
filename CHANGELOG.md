@@ -19,7 +19,8 @@
   - multer: 1.4.5-lts.1 => 2.2.0
   - uuid: 9.0.0 => 14.0.1
 - Backend: Update vite.config.js for solve Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite,
-- Add npn check last version.
+- Add npn check last version,
+- Update Documentation.
 
 ## v1.4.1 (2026-07-03)
 - Update Workflow release.yml.

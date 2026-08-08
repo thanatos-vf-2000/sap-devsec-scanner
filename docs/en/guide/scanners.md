@@ -10,7 +10,7 @@ This page covers all available scanners, the files they analyze, and every error
 |---|---|---|
 | [UI5 Version](#ui5-version-scanner) | `manifest.json`, `ui5.yaml`, `package.json` | 8 |
 | [UI5 Code](#ui5-code-scanner) | `*.js`, `*.ts`, `*.jsx`, `*.tsx` | 30+ |
-| [NPM Security](#npm-security-scanner) | `package.json` | 11 |
+| [NPM Security](#npm-security-scanner) | `package.json`, `package-lock.json`, `npm-shrinkwrap.json`, `yarn.lock` | 16 |
 | [CAP Security](#cap-security-scanner) | `*.cds`, `*.js`, `*.ts`, `mta.yaml`, `xs-security.json` | 21 |
 | [Secrets](#secrets-scanner) | All text files | 22 |
 | [BTP Destinations](#btp-destinations-scanner) | `*destination*.json`, `xs-security.json`, `mta.yaml` | 18 |
@@ -502,6 +502,22 @@ fs.readFile(safePath, cb);
 Analyzes npm dependencies for known CVEs in SAP and third-party packages, and verifies dependency management best practices.
 
 **Files analyzed:** `package.json` (excludes `node_modules`)
+
+
+### Online version update check
+
+For every dependency declared in `package.json`, the scanner compares the current version with the latest version published to the npm registry.
+
+- When `package-lock.json` or `npm-shrinkwrap.json` is present, the **installed version from the lock file** is used.
+- Otherwise, the version declared in `package.json` is used (the minimum version of a `^`/`~` range is used as the reference).
+- `yarn.lock` is also supported for resolving the locked version.
+- The latest version is fetched from the npm registry (`https://registry.npmjs.org`).
+- A **major** version difference produces `NPM_OUTDATED` with **HIGH** severity.
+- A **minor** version difference produces `NPM_OUTDATED` with **MEDIUM** severity.
+- A **patch** version difference produces `NPM_OUTDATED` with **LOW** severity.
+- `workspace:`, `file:`, Git, URL, `latest`, and `*` specifications without a resolvable version are not compared with the registry.
+
+The report shows the current version, latest available version, and the source of the current version (`package.json`, `package-lock`, `npm-shrinkwrap`, or `yarn.lock`).
 
 ---
 

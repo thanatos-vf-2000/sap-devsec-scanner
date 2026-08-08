@@ -10,7 +10,7 @@ Cette page récapitule tous les scanners disponibles, les fichiers qu'ils analys
 |---|---|---|
 | [UI5 Version](#ui5-version-scanner) | `manifest.json`, `ui5.yaml`, `package.json` | 8 |
 | [UI5 Code](#ui5-code-scanner) | `*.js`, `*.ts`, `*.jsx`, `*.tsx` | 30+ |
-| [NPM Security](#npm-security-scanner) | `package.json` | 11 |
+| [NPM Security](#npm-security-scanner) | `package.json`, `package-lock.json`, `npm-shrinkwrap.json`, `yarn.lock` | 16 |
 | [CAP Security](#cap-security-scanner) | `*.cds`, `*.js`, `*.ts`, `mta.yaml`, `xs-security.json` | 21 |
 | [Secrets](#secrets-scanner) | Tous les fichiers texte | 22 |
 | [BTP Destinations](#btp-destinations-scanner) | `*destination*.json`, `xs-security.json`, `mta.yaml` | 18 |
@@ -504,6 +504,22 @@ fs.readFile(safePath, cb);
 Analyse les dépendances npm à la recherche de CVE connus dans les packages SAP et tiers, et vérifie les bonnes pratiques de gestion des dépendances.
 
 **Fichiers analysés :** `package.json` (hors `node_modules`)
+
+
+### Vérification des versions disponibles en ligne
+
+Pour chaque dépendance déclarée dans `package.json`, le scanner compare la version courante à la dernière version publiée sur le registre npm.
+
+- Si `package-lock.json` ou `npm-shrinkwrap.json` est présent, la **version réellement installée du lockfile** est utilisée.
+- Sinon, la version déclarée dans `package.json` est utilisée (la version minimale du range `^`/`~` est prise comme référence).
+- `yarn.lock` est également pris en compte pour récupérer la version verrouillée.
+- La dernière version est récupérée depuis le registre npm (`https://registry.npmjs.org`).
+- Un écart de **majeur** produit `NPM_OUTDATED` en **HIGH**.
+- Un écart de **mineur** produit `NPM_OUTDATED` en **MEDIUM**.
+- Un écart de **correctif (patch)** produit `NPM_OUTDATED` en **LOW**.
+- Les dépendances `workspace:`, `file:`, Git, URL, `latest` ou `*` sans version résoluble ne sont pas comparées au registre.
+
+Le rapport affiche la version courante, la dernière version disponible et la source de la version courante (`package.json`, `package-lock`, `npm-shrinkwrap` ou `yarn.lock`).
 
 ---
 

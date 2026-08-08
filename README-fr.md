@@ -409,7 +409,20 @@ Parcourt les fichiers `.js` et `.ts` des projets UI5/Fiori à la recherche de pa
 
 Analyse les `package.json` pour inventorier les dépendances SAP, signaler les CVE connus et vérifier les bonnes pratiques de gestion des dépendances.
 
-**Fichiers analysés :** `package.json` (hors `node_modules`)
+**Fichiers analysés :** `package.json`, `package-lock.json`, `npm-shrinkwrap.json`, `yarn.lock` (hors `node_modules`)
+
+
+#### Vérification des mises à jour NPM
+
+Le scanner compare chaque dépendance à la dernière version publiée sur npm. Si `package-lock.json`, `npm-shrinkwrap.json` ou `yarn.lock` est présent, la version verrouillée/ installée est utilisée en priorité ; sinon, la version déclarée dans `package.json` sert de référence.
+
+| Écart de version | Sévérité |
+|---|:---:|
+| Majeur | **HIGH** |
+| Mineur | **MEDIUM** |
+| Correctif (patch) | **LOW** |
+
+Le rapport NPM affiche la version courante, la dernière version disponible et la source utilisée (`package.json` ou lockfile). Les spécifications non résolubles (`workspace:`, `file:`, Git, URL, `latest`, `*`) sont ignorées pour cette comparaison.
 
 #### CVE connus
 
